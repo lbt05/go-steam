@@ -1,0 +1,66 @@
+version: '2'
+run:
+    allow-parallel-runners: true
+
+linters:
+    enable:
+        - testifylint
+        - usestdlibvars
+        - copyloopvar
+        - errorlint
+        - gosec
+        - misspell
+
+    disable:
+        # errcheck: Disabled because we prefer explicit error handling patterns
+        # and use other linters (like errorlint) to catch error handling issues
+        - errcheck
+
+    exclusions:
+        rules:
+            - path: '(.+)_test\.go$'
+              linters:
+                  # Gosec: Disable security linter in test files to allow reading
+                  # fixture files, test data, and other non-production code patterns
+                  # that may trigger security warnings but are safe in test context
+                  - gosec
+
+    settings:
+        staticcheck:
+            checks:
+                - all
+                # S1011: Disable "redundant nil check with len" - allows len(x) == 0
+                # patterns which are often more readable than x == nil checks
+                - '-S1011'
+                # ST1000: Disable "incorrect or missing package comment" - allows
+                # packages without package-level documentation comments
+                - '-ST1000'
+                # ST1003: Disable "poorly chosen receiver name" - allows single-letter
+                # receiver names (e.g., 'c' for Client) which are common Go conventions
+                - '-ST1003'
+                # SA1012: Disable "a nil context.Context being passed to a function" -
+                # allows nil context usage where it's explicitly handled
+                - '-SA1012'
+
+        testifylint:
+            disable:
+                # equal-values: Disable "use assert.Equal(t, expected, actual) instead of
+                # assert.True(t, actual == expected)" - allows direct equality comparisons
+                # which are useful for comparing values stored in different integer types
+                # and other scenarios where the more explicit comparison is preferred
+                - equal-values
+
+        gosec:
+            excludes:
+                # G104: Allows errors to be unhandled in cases where we intentionally
+                # ignore errors (e.g., cleanup operations, optional operations)
+                - 'G104'
+                # G115: Allows integer overflows in cases where they are expected
+                # behavior or are handled appropriately in the application logic
+                - 'G115'
+                # G401: Allows SHA1 to be used for non-cryptographic purposes
+                # (e.g., hashing for data structures, checksums, or legacy compatibility)
+                - 'G401'
+                # G505: Allows crypto/sha1 import for non-cryptographic purposes
+                # (e.g., Steam protocol compatibility, legacy hash requirements)
+                - 'G505'

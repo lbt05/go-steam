@@ -1,0 +1,8 @@
+# coverage
+coverage
+
+# not vendored code
+!vendor/**/*
+
+# environment variables
+.env

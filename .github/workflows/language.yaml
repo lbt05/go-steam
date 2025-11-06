@@ -1,0 +1,67 @@
+name: language
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    update:
+        if: github.actor == 'dependabot[bot]'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4.2.2
+              with:
+                  ref: ${{ github.event.pull_request.head.ref }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  submodules: recursive
+
+            - name: Setup Go
+              uses: actions/setup-go@v5.5.0
+              with:
+                  go-version-file: ./go.mod
+
+            - name: Install Protoc
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y protobuf-compiler
+
+            - name: Generate Language Files
+              id: generate
+              run: |
+                  make language
+                  echo "Generated language files from protobufs"
+
+            - name: Check for Changes
+              id: check_changes
+              run: |
+                  git add -A
+                  if git diff --staged --quiet; then
+                    echo "changed=false" >> $GITHUB_OUTPUT
+                    echo "No files changed after running make language"
+                  else
+                    echo "changed=true" >> $GITHUB_OUTPUT
+                    echo "Files changed after running make language"
+                    git diff --staged --stat
+                  fi
+
+            - name: Commit Generated Files
+              if: steps.check_changes.outputs.changed == 'true'
+              run: |
+                  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git config --local user.name "github-actions[bot]"
+                  git commit -m "chore: regenerate language files from updated protobufs"
+                  git push
+
+            - name: Build
+              if: steps.check_changes.outputs.changed == 'true'
+              run: make build
+
+            - name: Merge Pull Request
+              run: gh pr merge ${{ github.event.pull_request.number }} --auto --squash --delete-branch
+              env:
+                  GH_TOKEN: ${{ github.token }}
