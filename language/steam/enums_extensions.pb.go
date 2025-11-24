@@ -434,6 +434,13 @@ func (x EGameRecordingType) EncodeValues(key string, v *url.Values) error {
 	return nil
 }
 
+// EncodeValues implements the query.Encoder interface for EGRMode.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EGRMode) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
 // EncodeValues implements the query.Encoder interface for EExportCodec.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x EExportCodec) EncodeValues(key string, v *url.Values) error {
@@ -518,9 +525,23 @@ func (x EContentReportResolution) EncodeValues(key string, v *url.Values) error 
 	return nil
 }
 
+// EncodeValues implements the query.Encoder interface for EContentReportSubjectAction.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EContentReportSubjectAction) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
 // EncodeValues implements the query.Encoder interface for EContentReportReason.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x EContentReportReason) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
+// EncodeValues implements the query.Encoder interface for EResolutionAutomation.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EResolutionAutomation) EncodeValues(key string, v *url.Values) error {
 	v.Add(key, strconv.FormatInt(int64(x), 10))
 	return nil
 }

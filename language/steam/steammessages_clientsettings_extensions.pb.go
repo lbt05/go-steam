@@ -28,13 +28,6 @@ func (x ESettingProfileMode) EncodeValues(key string, v *url.Values) error {
 	return nil
 }
 
-// EncodeValues implements the query.Encoder interface for EGRMode.
-// This allows the enum to be encoded as its numerical value in URL parameters.
-func (x EGRMode) EncodeValues(key string, v *url.Values) error {
-	v.Add(key, strconv.FormatInt(int64(x), 10))
-	return nil
-}
-
 // EncodeValues implements the query.Encoder interface for EGRAudio.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x EGRAudio) EncodeValues(key string, v *url.Values) error {
@@ -45,6 +38,13 @@ func (x EGRAudio) EncodeValues(key string, v *url.Values) error {
 // EncodeValues implements the query.Encoder interface for EGRExportLimitType.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x EGRExportLimitType) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
+// EncodeValues implements the query.Encoder interface for EFrameRateReportEnabled.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EFrameRateReportEnabled) EncodeValues(key string, v *url.Values) error {
 	v.Add(key, strconv.FormatInt(int64(x), 10))
 	return nil
 }
