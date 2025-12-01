@@ -982,6 +982,7 @@ type CFriendMessages_ResolveReport_Request struct {
 	SubjectId      *uint64                   `protobuf:"varint,4,opt,name=subject_id,json=subjectId" json:"subject_id,omitempty"`
 	Resolution     *EContentReportResolution `protobuf:"varint,5,opt,name=resolution,enum=EContentReportResolution,def=0" json:"resolution,omitempty"`
 	Reason         *EContentReportReason     `protobuf:"varint,6,opt,name=reason,enum=EContentReportReason,def=0" json:"reason,omitempty"`
+	SkipLock       *bool                     `protobuf:"varint,7,opt,name=skip_lock,json=skipLock" json:"skip_lock,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -1062,6 +1063,13 @@ func (x *CFriendMessages_ResolveReport_Request) GetReason() EContentReportReason
 		return *x.Reason
 	}
 	return Default_CFriendMessages_ResolveReport_Request_Reason
+}
+
+func (x *CFriendMessages_ResolveReport_Request) GetSkipLock() bool {
+	if x != nil && x.SkipLock != nil {
+		return *x.SkipLock
+	}
+	return false
 }
 
 type CFriendMessages_ResolveReport_Response struct {
@@ -1724,7 +1732,7 @@ const file_steammessages_friendmessages_steamclient_proto_rawDesc = "" +
 	"\vreport_text\x18\x06 \x01(\tR\n" +
 	"reportText\x12\x1a\n" +
 	"\blanguage\x18\a \x01(\tR\blanguage\"(\n" +
-	"&CFriendMessages_ReportMessage_Response\"\xe3\x02\n" +
+	"&CFriendMessages_ReportMessage_Response\"\x80\x03\n" +
 	"%CFriendMessages_ResolveReport_Request\x12!\n" +
 	"\fsteamid_from\x18\x01 \x01(\x06R\vsteamidFrom\x12\x1d\n" +
 	"\n" +
@@ -1735,7 +1743,8 @@ const file_steammessages_friendmessages_steamclient_proto_rawDesc = "" +
 	"\n" +
 	"resolution\x18\x05 \x01(\x0e2\x19.EContentReportResolution:%k_EContentReportResolution_UnresolvedR\n" +
 	"resolution\x12M\n" +
-	"\x06reason\x18\x06 \x01(\x0e2\x15.EContentReportReason:\x1ek_EContentReportReason_InvalidR\x06reason\"(\n" +
+	"\x06reason\x18\x06 \x01(\x0e2\x15.EContentReportReason:\x1ek_EContentReportReason_InvalidR\x06reason\x12\x1b\n" +
+	"\tskip_lock\x18\a \x01(\bR\bskipLock\"(\n" +
 	"&CFriendMessages_ResolveReport_Response\"\xae\x01\n" +
 	"1CFriendMessages_DismissSessionNotice_Notification\x12%\n" +
 	"\x0esteamid_friend\x18\x01 \x01(\x06R\rsteamidFriend\x12R\n" +

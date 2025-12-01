@@ -141,10 +141,11 @@ func (x *CStorePageFilter) GetStoreFilters() []*CStorePageFilter_StoreFilter {
 }
 
 type CStorePageFilter_SalePageFilter struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	SaleTagid     *uint32                `protobuf:"varint,1,opt,name=sale_tagid,json=saleTagid" json:"sale_tagid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	SaleTagid            *uint32                `protobuf:"varint,1,opt,name=sale_tagid,json=saleTagid" json:"sale_tagid,omitempty"`
+	CreatorClanAccountId *uint32                `protobuf:"varint,2,opt,name=creator_clan_account_id,json=creatorClanAccountId" json:"creator_clan_account_id,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *CStorePageFilter_SalePageFilter) Reset() {
@@ -180,6 +181,13 @@ func (*CStorePageFilter_SalePageFilter) Descriptor() ([]byte, []int) {
 func (x *CStorePageFilter_SalePageFilter) GetSaleTagid() uint32 {
 	if x != nil && x.SaleTagid != nil {
 		return *x.SaleTagid
+	}
+	return 0
+}
+
+func (x *CStorePageFilter_SalePageFilter) GetCreatorClanAccountId() uint32 {
+	if x != nil && x.CreatorClanAccountId != nil {
+		return *x.CreatorClanAccountId
 	}
 	return 0
 }
@@ -389,15 +397,16 @@ var File_contenthubs_proto protoreflect.FileDescriptor
 
 const file_contenthubs_proto_rawDesc = "" +
 	"\n" +
-	"\x11contenthubs.proto\"\x8f\x06\n" +
+	"\x11contenthubs.proto\"\xc6\x06\n" +
 	"\x10CStorePageFilter\x12A\n" +
 	"\vsale_filter\x18\x01 \x01(\v2 .CStorePageFilter.SalePageFilterR\n" +
 	"saleFilter\x12P\n" +
 	"\x12content_hub_filter\x18\x02 \x01(\v2\".CStorePageFilter.ContentHubFilterR\x10contentHubFilter\x12B\n" +
-	"\rstore_filters\x18\x03 \x03(\v2\x1d.CStorePageFilter.StoreFilterR\fstoreFilters\x1a/\n" +
+	"\rstore_filters\x18\x03 \x03(\v2\x1d.CStorePageFilter.StoreFilterR\fstoreFilters\x1af\n" +
 	"\x0eSalePageFilter\x12\x1d\n" +
 	"\n" +
-	"sale_tagid\x18\x01 \x01(\rR\tsaleTagid\x1a\xa3\x03\n" +
+	"sale_tagid\x18\x01 \x01(\rR\tsaleTagid\x125\n" +
+	"\x17creator_clan_account_id\x18\x02 \x01(\rR\x14creatorClanAccountId\x1a\xa3\x03\n" +
 	"\x10ContentHubFilter\x12\x19\n" +
 	"\bhub_type\x18\x01 \x01(\tR\ahubType\x12!\n" +
 	"\fhub_category\x18\x02 \x01(\tR\vhubCategory\x12\x1b\n" +

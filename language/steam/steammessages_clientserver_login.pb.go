@@ -1350,8 +1350,6 @@ type CMsgClientAccountInfo struct {
 	IpCountry                       *string                `protobuf:"bytes,2,opt,name=ip_country,json=ipCountry" json:"ip_country,omitempty"`
 	CountAuthedComputers            *int32                 `protobuf:"varint,5,opt,name=count_authed_computers,json=countAuthedComputers" json:"count_authed_computers,omitempty"`
 	AccountFlags                    *uint32                `protobuf:"varint,7,opt,name=account_flags,json=accountFlags" json:"account_flags,omitempty"`
-	FacebookId                      *uint64                `protobuf:"varint,8,opt,name=facebook_id,json=facebookId" json:"facebook_id,omitempty"`
-	FacebookName                    *string                `protobuf:"bytes,9,opt,name=facebook_name,json=facebookName" json:"facebook_name,omitempty"`
 	SteamguardMachineNameUserChosen *string                `protobuf:"bytes,15,opt,name=steamguard_machine_name_user_chosen,json=steamguardMachineNameUserChosen" json:"steamguard_machine_name_user_chosen,omitempty"`
 	IsPhoneVerified                 *bool                  `protobuf:"varint,16,opt,name=is_phone_verified,json=isPhoneVerified" json:"is_phone_verified,omitempty"`
 	TwoFactorState                  *uint32                `protobuf:"varint,17,opt,name=two_factor_state,json=twoFactorState" json:"two_factor_state,omitempty"`
@@ -1417,20 +1415,6 @@ func (x *CMsgClientAccountInfo) GetAccountFlags() uint32 {
 		return *x.AccountFlags
 	}
 	return 0
-}
-
-func (x *CMsgClientAccountInfo) GetFacebookId() uint64 {
-	if x != nil && x.FacebookId != nil {
-		return *x.FacebookId
-	}
-	return 0
-}
-
-func (x *CMsgClientAccountInfo) GetFacebookName() string {
-	if x != nil && x.FacebookName != nil {
-		return *x.FacebookName
-	}
-	return ""
 }
 
 func (x *CMsgClientAccountInfo) GetSteamguardMachineNameUserChosen() string {
@@ -1685,16 +1669,13 @@ const file_steammessages_clientserver_login_proto_rawDesc = "" +
 	"\tunique_id\x18\x01 \x01(\rR\buniqueId\x12\x1b\n" +
 	"\tlogin_key\x18\x02 \x01(\tR\bloginKey\"<\n" +
 	"\x1dCMsgClientNewLoginKeyAccepted\x12\x1b\n" +
-	"\tunique_id\x18\x01 \x01(\rR\buniqueId\"\x8b\x04\n" +
+	"\tunique_id\x18\x01 \x01(\rR\buniqueId\"\xc5\x03\n" +
 	"\x15CMsgClientAccountInfo\x12!\n" +
 	"\fpersona_name\x18\x01 \x01(\tR\vpersonaName\x12\x1d\n" +
 	"\n" +
 	"ip_country\x18\x02 \x01(\tR\tipCountry\x124\n" +
 	"\x16count_authed_computers\x18\x05 \x01(\x05R\x14countAuthedComputers\x12#\n" +
-	"\raccount_flags\x18\a \x01(\rR\faccountFlags\x12\x1f\n" +
-	"\vfacebook_id\x18\b \x01(\x04R\n" +
-	"facebookId\x12#\n" +
-	"\rfacebook_name\x18\t \x01(\tR\ffacebookName\x12L\n" +
+	"\raccount_flags\x18\a \x01(\rR\faccountFlags\x12L\n" +
 	"#steamguard_machine_name_user_chosen\x18\x0f \x01(\tR\x1fsteamguardMachineNameUserChosen\x12*\n" +
 	"\x11is_phone_verified\x18\x10 \x01(\bR\x0fisPhoneVerified\x12(\n" +
 	"\x10two_factor_state\x18\x11 \x01(\rR\x0etwoFactorState\x120\n" +

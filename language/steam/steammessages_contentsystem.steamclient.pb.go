@@ -80,148 +80,6 @@ func (EAppContentDetectionType) EnumDescriptor() ([]byte, []int) {
 	return file_steammessages_contentsystem_steamclient_proto_rawDescGZIP(), []int{0}
 }
 
-type EAppAntiCheatType int32
-
-const (
-	EAppAntiCheatType_k_EAppAntiCheatTypeNone            EAppAntiCheatType = 0
-	EAppAntiCheatType_k_EAppAntiCheatTypeEasyAC          EAppAntiCheatType = 1
-	EAppAntiCheatType_k_EAppAntiCheatTypeDenuvo          EAppAntiCheatType = 2
-	EAppAntiCheatType_k_EAppAntiCheatTypeBattlEye        EAppAntiCheatType = 3
-	EAppAntiCheatType_k_EAppAntiCheatTypeXignCode        EAppAntiCheatType = 4
-	EAppAntiCheatType_k_EAppAntiCheatTypePunkBuster      EAppAntiCheatType = 5
-	EAppAntiCheatType_k_EAppAntiCheatTypeVAC             EAppAntiCheatType = 6
-	EAppAntiCheatType_k_EAppAntiCheatTypeGameGuard       EAppAntiCheatType = 7
-	EAppAntiCheatType_k_EAppAntiCheatTypeHackShield      EAppAntiCheatType = 8
-	EAppAntiCheatType_k_EAppAntiCheatTypeAntiCheatExpert EAppAntiCheatType = 9
-	EAppAntiCheatType_k_EAppAntiCheatTypeOther           EAppAntiCheatType = 10
-)
-
-// Enum value maps for EAppAntiCheatType.
-var (
-	EAppAntiCheatType_name = map[int32]string{
-		0:  "k_EAppAntiCheatTypeNone",
-		1:  "k_EAppAntiCheatTypeEasyAC",
-		2:  "k_EAppAntiCheatTypeDenuvo",
-		3:  "k_EAppAntiCheatTypeBattlEye",
-		4:  "k_EAppAntiCheatTypeXignCode",
-		5:  "k_EAppAntiCheatTypePunkBuster",
-		6:  "k_EAppAntiCheatTypeVAC",
-		7:  "k_EAppAntiCheatTypeGameGuard",
-		8:  "k_EAppAntiCheatTypeHackShield",
-		9:  "k_EAppAntiCheatTypeAntiCheatExpert",
-		10: "k_EAppAntiCheatTypeOther",
-	}
-	EAppAntiCheatType_value = map[string]int32{
-		"k_EAppAntiCheatTypeNone":            0,
-		"k_EAppAntiCheatTypeEasyAC":          1,
-		"k_EAppAntiCheatTypeDenuvo":          2,
-		"k_EAppAntiCheatTypeBattlEye":        3,
-		"k_EAppAntiCheatTypeXignCode":        4,
-		"k_EAppAntiCheatTypePunkBuster":      5,
-		"k_EAppAntiCheatTypeVAC":             6,
-		"k_EAppAntiCheatTypeGameGuard":       7,
-		"k_EAppAntiCheatTypeHackShield":      8,
-		"k_EAppAntiCheatTypeAntiCheatExpert": 9,
-		"k_EAppAntiCheatTypeOther":           10,
-	}
-)
-
-func (x EAppAntiCheatType) Enum() *EAppAntiCheatType {
-	p := new(EAppAntiCheatType)
-	*p = x
-	return p
-}
-
-func (x EAppAntiCheatType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (EAppAntiCheatType) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_contentsystem_steamclient_proto_enumTypes[1].Descriptor()
-}
-
-func (EAppAntiCheatType) Type() protoreflect.EnumType {
-	return &file_steammessages_contentsystem_steamclient_proto_enumTypes[1]
-}
-
-func (x EAppAntiCheatType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Do not use.
-func (x *EAppAntiCheatType) UnmarshalJSON(b []byte) error {
-	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
-	if err != nil {
-		return err
-	}
-	*x = EAppAntiCheatType(num)
-	return nil
-}
-
-// Deprecated: Use EAppAntiCheatType.Descriptor instead.
-func (EAppAntiCheatType) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_contentsystem_steamclient_proto_rawDescGZIP(), []int{1}
-}
-
-type EAppGameEngineType int32
-
-const (
-	EAppGameEngineType_k_EAppGameEngineTypeNone   EAppGameEngineType = 0
-	EAppGameEngineType_k_EAppGameEngineTypeUnreal EAppGameEngineType = 1
-	EAppGameEngineType_k_EAppGameEngineTypeUnity  EAppGameEngineType = 2
-)
-
-// Enum value maps for EAppGameEngineType.
-var (
-	EAppGameEngineType_name = map[int32]string{
-		0: "k_EAppGameEngineTypeNone",
-		1: "k_EAppGameEngineTypeUnreal",
-		2: "k_EAppGameEngineTypeUnity",
-	}
-	EAppGameEngineType_value = map[string]int32{
-		"k_EAppGameEngineTypeNone":   0,
-		"k_EAppGameEngineTypeUnreal": 1,
-		"k_EAppGameEngineTypeUnity":  2,
-	}
-)
-
-func (x EAppGameEngineType) Enum() *EAppGameEngineType {
-	p := new(EAppGameEngineType)
-	*p = x
-	return p
-}
-
-func (x EAppGameEngineType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (EAppGameEngineType) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_contentsystem_steamclient_proto_enumTypes[2].Descriptor()
-}
-
-func (EAppGameEngineType) Type() protoreflect.EnumType {
-	return &file_steammessages_contentsystem_steamclient_proto_enumTypes[2]
-}
-
-func (x EAppGameEngineType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Do not use.
-func (x *EAppGameEngineType) UnmarshalJSON(b []byte) error {
-	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
-	if err != nil {
-		return err
-	}
-	*x = EAppGameEngineType(num)
-	return nil
-}
-
-// Deprecated: Use EAppGameEngineType.Descriptor instead.
-func (EAppGameEngineType) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_contentsystem_steamclient_proto_rawDescGZIP(), []int{2}
-}
-
 type CContentServerDirectory_ConnectedSteamPipeServerInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Type          *string                `protobuf:"bytes,1,opt,name=type" json:"type,omitempty"`
@@ -1445,108 +1303,6 @@ func (x *CDepotContentDetection_GetAllDetectedAppContent_Response) GetDetectedAp
 	return nil
 }
 
-type CDepotContentDetection_GetDetectedContentSingleApp_Request struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Appid         *uint32                `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Request) Reset() {
-	*x = CDepotContentDetection_GetDetectedContentSingleApp_Request{}
-	mi := &file_steammessages_contentsystem_steamclient_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Request) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CDepotContentDetection_GetDetectedContentSingleApp_Request) ProtoMessage() {}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_contentsystem_steamclient_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CDepotContentDetection_GetDetectedContentSingleApp_Request.ProtoReflect.Descriptor instead.
-func (*CDepotContentDetection_GetDetectedContentSingleApp_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_contentsystem_steamclient_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Request) GetAppid() uint32 {
-	if x != nil && x.Appid != nil {
-		return *x.Appid
-	}
-	return 0
-}
-
-type CDepotContentDetection_GetDetectedContentSingleApp_Response struct {
-	state              protoimpl.MessageState `protogen:"open.v1"`
-	DetectedAnticheat  *EAppAntiCheatType     `protobuf:"varint,1,opt,name=detected_anticheat,json=detectedAnticheat,enum=EAppAntiCheatType,def=0" json:"detected_anticheat,omitempty"`
-	DetectedGameengine *EAppGameEngineType    `protobuf:"varint,2,opt,name=detected_gameengine,json=detectedGameengine,enum=EAppGameEngineType,def=0" json:"detected_gameengine,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
-}
-
-// Default values for CDepotContentDetection_GetDetectedContentSingleApp_Response fields.
-const (
-	Default_CDepotContentDetection_GetDetectedContentSingleApp_Response_DetectedAnticheat  = EAppAntiCheatType_k_EAppAntiCheatTypeNone
-	Default_CDepotContentDetection_GetDetectedContentSingleApp_Response_DetectedGameengine = EAppGameEngineType_k_EAppGameEngineTypeNone
-)
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Response) Reset() {
-	*x = CDepotContentDetection_GetDetectedContentSingleApp_Response{}
-	mi := &file_steammessages_contentsystem_steamclient_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Response) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CDepotContentDetection_GetDetectedContentSingleApp_Response) ProtoMessage() {}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_contentsystem_steamclient_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CDepotContentDetection_GetDetectedContentSingleApp_Response.ProtoReflect.Descriptor instead.
-func (*CDepotContentDetection_GetDetectedContentSingleApp_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_contentsystem_steamclient_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Response) GetDetectedAnticheat() EAppAntiCheatType {
-	if x != nil && x.DetectedAnticheat != nil {
-		return *x.DetectedAnticheat
-	}
-	return Default_CDepotContentDetection_GetDetectedContentSingleApp_Response_DetectedAnticheat
-}
-
-func (x *CDepotContentDetection_GetDetectedContentSingleApp_Response) GetDetectedGameengine() EAppGameEngineType {
-	if x != nil && x.DetectedGameengine != nil {
-		return *x.DetectedGameengine
-	}
-	return Default_CDepotContentDetection_GetDetectedContentSingleApp_Response_DetectedGameengine
-}
-
 var File_steammessages_contentsystem_steamclient_proto protoreflect.FileDescriptor
 
 const file_steammessages_contentsystem_steamclient_proto_rawDesc = "" +
@@ -1646,33 +1402,11 @@ const file_steammessages_contentsystem_steamclient_proto_rawDesc = "" +
 	"\bdepot_id\x18\x02 \x01(\rR\adepotId\x12)\n" +
 	"\x10detected_content\x18\x03 \x01(\x05R\x0fdetectedContent\"\x81\x01\n" +
 	"8CDepotContentDetection_GetAllDetectedAppContent_Response\x12E\n" +
-	"\x14detected_app_content\x18\x01 \x03(\v2\x13.DetectedAppContentR\x12detectedAppContent\"R\n" +
-	":CDepotContentDetection_GetDetectedContentSingleApp_Request\x12\x14\n" +
-	"\x05appid\x18\x01 \x01(\rR\x05appid\"\xf9\x01\n" +
-	";CDepotContentDetection_GetDetectedContentSingleApp_Response\x12Z\n" +
-	"\x12detected_anticheat\x18\x01 \x01(\x0e2\x12.EAppAntiCheatType:\x17k_EAppAntiCheatTypeNoneR\x11detectedAnticheat\x12^\n" +
-	"\x13detected_gameengine\x18\x02 \x01(\x0e2\x13.EAppGameEngineType:\x18k_EAppGameEngineTypeNoneR\x12detectedGameengine*\x94\x01\n" +
+	"\x14detected_app_content\x18\x01 \x03(\v2\x13.DetectedAppContentR\x12detectedAppContent*\x94\x01\n" +
 	"\x18EAppContentDetectionType\x12#\n" +
 	"\x1fk_EAppContentDetectionType_None\x10\x00\x12(\n" +
 	"$k_EAppContentDetectionType_AntiCheat\x10\x01\x12)\n" +
-	"%k_EAppContentDetectionType_GameEngine\x10\x02*\xfa\x02\n" +
-	"\x11EAppAntiCheatType\x12\x1b\n" +
-	"\x17k_EAppAntiCheatTypeNone\x10\x00\x12\x1d\n" +
-	"\x19k_EAppAntiCheatTypeEasyAC\x10\x01\x12\x1d\n" +
-	"\x19k_EAppAntiCheatTypeDenuvo\x10\x02\x12\x1f\n" +
-	"\x1bk_EAppAntiCheatTypeBattlEye\x10\x03\x12\x1f\n" +
-	"\x1bk_EAppAntiCheatTypeXignCode\x10\x04\x12!\n" +
-	"\x1dk_EAppAntiCheatTypePunkBuster\x10\x05\x12\x1a\n" +
-	"\x16k_EAppAntiCheatTypeVAC\x10\x06\x12 \n" +
-	"\x1ck_EAppAntiCheatTypeGameGuard\x10\a\x12!\n" +
-	"\x1dk_EAppAntiCheatTypeHackShield\x10\b\x12&\n" +
-	"\"k_EAppAntiCheatTypeAntiCheatExpert\x10\t\x12\x1c\n" +
-	"\x18k_EAppAntiCheatTypeOther\x10\n" +
-	"*q\n" +
-	"\x12EAppGameEngineType\x12\x1c\n" +
-	"\x18k_EAppGameEngineTypeNone\x10\x00\x12\x1e\n" +
-	"\x1ak_EAppGameEngineTypeUnreal\x10\x01\x12\x1d\n" +
-	"\x19k_EAppGameEngineTypeUnity\x10\x022\xc7\a\n" +
+	"%k_EAppContentDetectionType_GameEngine\x10\x022\xc7\a\n" +
 	"\x16ContentServerDirectory\x12\x8b\x01\n" +
 	"\x16GetServersForSteamPipe\x127.CContentServerDirectory_GetServersForSteamPipe_Request\x1a8.CContentServerDirectory_GetServersForSteamPipe_Response\x12|\n" +
 	"\x11GetDepotPatchInfo\x122.CContentServerDirectory_GetDepotPatchInfo_Request\x1a3.CContentServerDirectory_GetDepotPatchInfo_Response\x12\x85\x01\n" +
@@ -1680,10 +1414,9 @@ const file_steammessages_contentsystem_steamclient_proto_rawDesc = "" +
 	"\x16GetManifestRequestCode\x127.CContentServerDirectory_GetManifestRequestCode_Request\x1a8.CContentServerDirectory_GetManifestRequestCode_Response\x12v\n" +
 	"\x0fGetCDNAuthToken\x120.CContentServerDirectory_GetCDNAuthToken_Request\x1a1.CContentServerDirectory_GetCDNAuthToken_Response\x12\x91\x01\n" +
 	"\x18RequestPeerContentServer\x129.CContentServerDirectory_RequestPeerContentServer_Request\x1a:.CContentServerDirectory_RequestPeerContentServer_Response\x12\x7f\n" +
-	"\x12GetPeerContentInfo\x123.CContentServerDirectory_GetPeerContentInfo_Request\x1a4.CContentServerDirectory_GetPeerContentInfo_Response2\xc4\x02\n" +
+	"\x12GetPeerContentInfo\x123.CContentServerDirectory_GetPeerContentInfo_Request\x1a4.CContentServerDirectory_GetPeerContentInfo_Response2\xa9\x01\n" +
 	"\x15DepotContentDetection\x12\x8f\x01\n" +
-	"\x18GetAllDetectedAppContent\x128.CDepotContentDetection_GetAllDetectedAppContent_Request\x1a9.CDepotContentDetection_GetAllDetectedAppContent_Response\x12\x98\x01\n" +
-	"\x1bGetDetectedContentSingleApp\x12;.CDepotContentDetection_GetDetectedContentSingleApp_Request\x1a<.CDepotContentDetection_GetDetectedContentSingleApp_ResponseB\x03\x80\x01\x01"
+	"\x18GetAllDetectedAppContent\x128.CDepotContentDetection_GetAllDetectedAppContent_Request\x1a9.CDepotContentDetection_GetAllDetectedAppContent_ResponseB\x03\x80\x01\x01"
 
 var (
 	file_steammessages_contentsystem_steamclient_proto_rawDescOnce sync.Once
@@ -1697,64 +1430,56 @@ func file_steammessages_contentsystem_steamclient_proto_rawDescGZIP() []byte {
 	return file_steammessages_contentsystem_steamclient_proto_rawDescData
 }
 
-var file_steammessages_contentsystem_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_steammessages_contentsystem_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
+var file_steammessages_contentsystem_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_steammessages_contentsystem_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_steammessages_contentsystem_steamclient_proto_goTypes = []any{
-	(EAppContentDetectionType)(0),                                       // 0: EAppContentDetectionType
-	(EAppAntiCheatType)(0),                                              // 1: EAppAntiCheatType
-	(EAppGameEngineType)(0),                                             // 2: EAppGameEngineType
-	(*CContentServerDirectory_ConnectedSteamPipeServerInfo)(nil),        // 3: CContentServerDirectory_ConnectedSteamPipeServerInfo
-	(*CContentServerDirectory_GetServersForSteamPipe_Request)(nil),      // 4: CContentServerDirectory_GetServersForSteamPipe_Request
-	(*CContentServerDirectory_ServerInfo)(nil),                          // 5: CContentServerDirectory_ServerInfo
-	(*CContentServerDirectory_GetServersForSteamPipe_Response)(nil),     // 6: CContentServerDirectory_GetServersForSteamPipe_Response
-	(*CContentServerDirectory_GetDepotPatchInfo_Request)(nil),           // 7: CContentServerDirectory_GetDepotPatchInfo_Request
-	(*CContentServerDirectory_GetDepotPatchInfo_Response)(nil),          // 8: CContentServerDirectory_GetDepotPatchInfo_Response
-	(*CContentServerDirectory_GetClientUpdateHosts_Request)(nil),        // 9: CContentServerDirectory_GetClientUpdateHosts_Request
-	(*CContentServerDirectory_GetClientUpdateHosts_Response)(nil),       // 10: CContentServerDirectory_GetClientUpdateHosts_Response
-	(*CContentServerDirectory_GetManifestRequestCode_Request)(nil),      // 11: CContentServerDirectory_GetManifestRequestCode_Request
-	(*CContentServerDirectory_GetManifestRequestCode_Response)(nil),     // 12: CContentServerDirectory_GetManifestRequestCode_Response
-	(*CContentServerDirectory_GetCDNAuthToken_Request)(nil),             // 13: CContentServerDirectory_GetCDNAuthToken_Request
-	(*CContentServerDirectory_GetCDNAuthToken_Response)(nil),            // 14: CContentServerDirectory_GetCDNAuthToken_Response
-	(*CContentServerDirectory_RequestPeerContentServer_Request)(nil),    // 15: CContentServerDirectory_RequestPeerContentServer_Request
-	(*CContentServerDirectory_RequestPeerContentServer_Response)(nil),   // 16: CContentServerDirectory_RequestPeerContentServer_Response
-	(*CContentServerDirectory_GetPeerContentInfo_Request)(nil),          // 17: CContentServerDirectory_GetPeerContentInfo_Request
-	(*CContentServerDirectory_GetPeerContentInfo_Response)(nil),         // 18: CContentServerDirectory_GetPeerContentInfo_Response
-	(*CDepotContentDetection_GetAllDetectedAppContent_Request)(nil),     // 19: CDepotContentDetection_GetAllDetectedAppContent_Request
-	(*DetectedAppContent)(nil),                                          // 20: DetectedAppContent
-	(*CDepotContentDetection_GetAllDetectedAppContent_Response)(nil),    // 21: CDepotContentDetection_GetAllDetectedAppContent_Response
-	(*CDepotContentDetection_GetDetectedContentSingleApp_Request)(nil),  // 22: CDepotContentDetection_GetDetectedContentSingleApp_Request
-	(*CDepotContentDetection_GetDetectedContentSingleApp_Response)(nil), // 23: CDepotContentDetection_GetDetectedContentSingleApp_Response
+	(EAppContentDetectionType)(0),                                     // 0: EAppContentDetectionType
+	(*CContentServerDirectory_ConnectedSteamPipeServerInfo)(nil),      // 1: CContentServerDirectory_ConnectedSteamPipeServerInfo
+	(*CContentServerDirectory_GetServersForSteamPipe_Request)(nil),    // 2: CContentServerDirectory_GetServersForSteamPipe_Request
+	(*CContentServerDirectory_ServerInfo)(nil),                        // 3: CContentServerDirectory_ServerInfo
+	(*CContentServerDirectory_GetServersForSteamPipe_Response)(nil),   // 4: CContentServerDirectory_GetServersForSteamPipe_Response
+	(*CContentServerDirectory_GetDepotPatchInfo_Request)(nil),         // 5: CContentServerDirectory_GetDepotPatchInfo_Request
+	(*CContentServerDirectory_GetDepotPatchInfo_Response)(nil),        // 6: CContentServerDirectory_GetDepotPatchInfo_Response
+	(*CContentServerDirectory_GetClientUpdateHosts_Request)(nil),      // 7: CContentServerDirectory_GetClientUpdateHosts_Request
+	(*CContentServerDirectory_GetClientUpdateHosts_Response)(nil),     // 8: CContentServerDirectory_GetClientUpdateHosts_Response
+	(*CContentServerDirectory_GetManifestRequestCode_Request)(nil),    // 9: CContentServerDirectory_GetManifestRequestCode_Request
+	(*CContentServerDirectory_GetManifestRequestCode_Response)(nil),   // 10: CContentServerDirectory_GetManifestRequestCode_Response
+	(*CContentServerDirectory_GetCDNAuthToken_Request)(nil),           // 11: CContentServerDirectory_GetCDNAuthToken_Request
+	(*CContentServerDirectory_GetCDNAuthToken_Response)(nil),          // 12: CContentServerDirectory_GetCDNAuthToken_Response
+	(*CContentServerDirectory_RequestPeerContentServer_Request)(nil),  // 13: CContentServerDirectory_RequestPeerContentServer_Request
+	(*CContentServerDirectory_RequestPeerContentServer_Response)(nil), // 14: CContentServerDirectory_RequestPeerContentServer_Response
+	(*CContentServerDirectory_GetPeerContentInfo_Request)(nil),        // 15: CContentServerDirectory_GetPeerContentInfo_Request
+	(*CContentServerDirectory_GetPeerContentInfo_Response)(nil),       // 16: CContentServerDirectory_GetPeerContentInfo_Response
+	(*CDepotContentDetection_GetAllDetectedAppContent_Request)(nil),   // 17: CDepotContentDetection_GetAllDetectedAppContent_Request
+	(*DetectedAppContent)(nil),                                        // 18: DetectedAppContent
+	(*CDepotContentDetection_GetAllDetectedAppContent_Response)(nil),  // 19: CDepotContentDetection_GetAllDetectedAppContent_Response
 }
 var file_steammessages_contentsystem_steamclient_proto_depIdxs = []int32{
-	3,  // 0: CContentServerDirectory_GetServersForSteamPipe_Request.current_connections:type_name -> CContentServerDirectory_ConnectedSteamPipeServerInfo
-	5,  // 1: CContentServerDirectory_GetServersForSteamPipe_Response.servers:type_name -> CContentServerDirectory_ServerInfo
+	1,  // 0: CContentServerDirectory_GetServersForSteamPipe_Request.current_connections:type_name -> CContentServerDirectory_ConnectedSteamPipeServerInfo
+	3,  // 1: CContentServerDirectory_GetServersForSteamPipe_Response.servers:type_name -> CContentServerDirectory_ServerInfo
 	0,  // 2: CDepotContentDetection_GetAllDetectedAppContent_Request.detection_type:type_name -> EAppContentDetectionType
-	20, // 3: CDepotContentDetection_GetAllDetectedAppContent_Response.detected_app_content:type_name -> DetectedAppContent
-	1,  // 4: CDepotContentDetection_GetDetectedContentSingleApp_Response.detected_anticheat:type_name -> EAppAntiCheatType
-	2,  // 5: CDepotContentDetection_GetDetectedContentSingleApp_Response.detected_gameengine:type_name -> EAppGameEngineType
-	4,  // 6: ContentServerDirectory.GetServersForSteamPipe:input_type -> CContentServerDirectory_GetServersForSteamPipe_Request
-	7,  // 7: ContentServerDirectory.GetDepotPatchInfo:input_type -> CContentServerDirectory_GetDepotPatchInfo_Request
-	9,  // 8: ContentServerDirectory.GetClientUpdateHosts:input_type -> CContentServerDirectory_GetClientUpdateHosts_Request
-	11, // 9: ContentServerDirectory.GetManifestRequestCode:input_type -> CContentServerDirectory_GetManifestRequestCode_Request
-	13, // 10: ContentServerDirectory.GetCDNAuthToken:input_type -> CContentServerDirectory_GetCDNAuthToken_Request
-	15, // 11: ContentServerDirectory.RequestPeerContentServer:input_type -> CContentServerDirectory_RequestPeerContentServer_Request
-	17, // 12: ContentServerDirectory.GetPeerContentInfo:input_type -> CContentServerDirectory_GetPeerContentInfo_Request
-	19, // 13: DepotContentDetection.GetAllDetectedAppContent:input_type -> CDepotContentDetection_GetAllDetectedAppContent_Request
-	22, // 14: DepotContentDetection.GetDetectedContentSingleApp:input_type -> CDepotContentDetection_GetDetectedContentSingleApp_Request
-	6,  // 15: ContentServerDirectory.GetServersForSteamPipe:output_type -> CContentServerDirectory_GetServersForSteamPipe_Response
-	8,  // 16: ContentServerDirectory.GetDepotPatchInfo:output_type -> CContentServerDirectory_GetDepotPatchInfo_Response
-	10, // 17: ContentServerDirectory.GetClientUpdateHosts:output_type -> CContentServerDirectory_GetClientUpdateHosts_Response
-	12, // 18: ContentServerDirectory.GetManifestRequestCode:output_type -> CContentServerDirectory_GetManifestRequestCode_Response
-	14, // 19: ContentServerDirectory.GetCDNAuthToken:output_type -> CContentServerDirectory_GetCDNAuthToken_Response
-	16, // 20: ContentServerDirectory.RequestPeerContentServer:output_type -> CContentServerDirectory_RequestPeerContentServer_Response
-	18, // 21: ContentServerDirectory.GetPeerContentInfo:output_type -> CContentServerDirectory_GetPeerContentInfo_Response
-	21, // 22: DepotContentDetection.GetAllDetectedAppContent:output_type -> CDepotContentDetection_GetAllDetectedAppContent_Response
-	23, // 23: DepotContentDetection.GetDetectedContentSingleApp:output_type -> CDepotContentDetection_GetDetectedContentSingleApp_Response
-	15, // [15:24] is the sub-list for method output_type
-	6,  // [6:15] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	18, // 3: CDepotContentDetection_GetAllDetectedAppContent_Response.detected_app_content:type_name -> DetectedAppContent
+	2,  // 4: ContentServerDirectory.GetServersForSteamPipe:input_type -> CContentServerDirectory_GetServersForSteamPipe_Request
+	5,  // 5: ContentServerDirectory.GetDepotPatchInfo:input_type -> CContentServerDirectory_GetDepotPatchInfo_Request
+	7,  // 6: ContentServerDirectory.GetClientUpdateHosts:input_type -> CContentServerDirectory_GetClientUpdateHosts_Request
+	9,  // 7: ContentServerDirectory.GetManifestRequestCode:input_type -> CContentServerDirectory_GetManifestRequestCode_Request
+	11, // 8: ContentServerDirectory.GetCDNAuthToken:input_type -> CContentServerDirectory_GetCDNAuthToken_Request
+	13, // 9: ContentServerDirectory.RequestPeerContentServer:input_type -> CContentServerDirectory_RequestPeerContentServer_Request
+	15, // 10: ContentServerDirectory.GetPeerContentInfo:input_type -> CContentServerDirectory_GetPeerContentInfo_Request
+	17, // 11: DepotContentDetection.GetAllDetectedAppContent:input_type -> CDepotContentDetection_GetAllDetectedAppContent_Request
+	4,  // 12: ContentServerDirectory.GetServersForSteamPipe:output_type -> CContentServerDirectory_GetServersForSteamPipe_Response
+	6,  // 13: ContentServerDirectory.GetDepotPatchInfo:output_type -> CContentServerDirectory_GetDepotPatchInfo_Response
+	8,  // 14: ContentServerDirectory.GetClientUpdateHosts:output_type -> CContentServerDirectory_GetClientUpdateHosts_Response
+	10, // 15: ContentServerDirectory.GetManifestRequestCode:output_type -> CContentServerDirectory_GetManifestRequestCode_Response
+	12, // 16: ContentServerDirectory.GetCDNAuthToken:output_type -> CContentServerDirectory_GetCDNAuthToken_Response
+	14, // 17: ContentServerDirectory.RequestPeerContentServer:output_type -> CContentServerDirectory_RequestPeerContentServer_Response
+	16, // 18: ContentServerDirectory.GetPeerContentInfo:output_type -> CContentServerDirectory_GetPeerContentInfo_Response
+	19, // 19: DepotContentDetection.GetAllDetectedAppContent:output_type -> CDepotContentDetection_GetAllDetectedAppContent_Response
+	12, // [12:20] is the sub-list for method output_type
+	4,  // [4:12] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_contentsystem_steamclient_proto_init() }
@@ -1769,8 +1494,8 @@ func file_steammessages_contentsystem_steamclient_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_contentsystem_steamclient_proto_rawDesc), len(file_steammessages_contentsystem_steamclient_proto_rawDesc)),
-			NumEnums:      3,
-			NumMessages:   21,
+			NumEnums:      1,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

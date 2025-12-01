@@ -1876,6 +1876,182 @@ func (x *CStore_GetUserGameInterestState_Response) GetBetaStatus() EPlaytestStat
 	return Default_CStore_GetUserGameInterestState_Response_BetaStatus
 }
 
+type CStore_GetGamesFollowed_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Steamid       *uint64                `protobuf:"fixed64,1,opt,name=steamid" json:"steamid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CStore_GetGamesFollowed_Request) Reset() {
+	*x = CStore_GetGamesFollowed_Request{}
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CStore_GetGamesFollowed_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CStore_GetGamesFollowed_Request) ProtoMessage() {}
+
+func (x *CStore_GetGamesFollowed_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CStore_GetGamesFollowed_Request.ProtoReflect.Descriptor instead.
+func (*CStore_GetGamesFollowed_Request) Descriptor() ([]byte, []int) {
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CStore_GetGamesFollowed_Request) GetSteamid() uint64 {
+	if x != nil && x.Steamid != nil {
+		return *x.Steamid
+	}
+	return 0
+}
+
+type CStore_GetGamesFollowed_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Appids        []uint32               `protobuf:"varint,1,rep,name=appids" json:"appids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CStore_GetGamesFollowed_Response) Reset() {
+	*x = CStore_GetGamesFollowed_Response{}
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CStore_GetGamesFollowed_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CStore_GetGamesFollowed_Response) ProtoMessage() {}
+
+func (x *CStore_GetGamesFollowed_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CStore_GetGamesFollowed_Response.ProtoReflect.Descriptor instead.
+func (*CStore_GetGamesFollowed_Response) Descriptor() ([]byte, []int) {
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *CStore_GetGamesFollowed_Response) GetAppids() []uint32 {
+	if x != nil {
+		return x.Appids
+	}
+	return nil
+}
+
+type CStore_GetGamesFollowedCount_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Steamid       *uint64                `protobuf:"fixed64,1,opt,name=steamid" json:"steamid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CStore_GetGamesFollowedCount_Request) Reset() {
+	*x = CStore_GetGamesFollowedCount_Request{}
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CStore_GetGamesFollowedCount_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CStore_GetGamesFollowedCount_Request) ProtoMessage() {}
+
+func (x *CStore_GetGamesFollowedCount_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CStore_GetGamesFollowedCount_Request.ProtoReflect.Descriptor instead.
+func (*CStore_GetGamesFollowedCount_Request) Descriptor() ([]byte, []int) {
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *CStore_GetGamesFollowedCount_Request) GetSteamid() uint64 {
+	if x != nil && x.Steamid != nil {
+		return *x.Steamid
+	}
+	return 0
+}
+
+type CStore_GetGamesFollowedCount_Response struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	FollowedGameCount *uint32                `protobuf:"varint,1,opt,name=followed_game_count,json=followedGameCount" json:"followed_game_count,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *CStore_GetGamesFollowedCount_Response) Reset() {
+	*x = CStore_GetGamesFollowedCount_Response{}
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CStore_GetGamesFollowedCount_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CStore_GetGamesFollowedCount_Response) ProtoMessage() {}
+
+func (x *CStore_GetGamesFollowedCount_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CStore_GetGamesFollowedCount_Response.ProtoReflect.Descriptor instead.
+func (*CStore_GetGamesFollowedCount_Response) Descriptor() ([]byte, []int) {
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *CStore_GetGamesFollowedCount_Response) GetFollowedGameCount() uint32 {
+	if x != nil && x.FollowedGameCount != nil {
+		return *x.FollowedGameCount
+	}
+	return 0
+}
+
 type CStore_GetDiscoveryQueueSkippedApps_Request struct {
 	state           protoimpl.MessageState    `protogen:"open.v1"`
 	Steamid         *uint64                   `protobuf:"fixed64,1,opt,name=steamid" json:"steamid,omitempty"`
@@ -1892,7 +2068,7 @@ const (
 
 func (x *CStore_GetDiscoveryQueueSkippedApps_Request) Reset() {
 	*x = CStore_GetDiscoveryQueueSkippedApps_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[20]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1904,7 +2080,7 @@ func (x *CStore_GetDiscoveryQueueSkippedApps_Request) String() string {
 func (*CStore_GetDiscoveryQueueSkippedApps_Request) ProtoMessage() {}
 
 func (x *CStore_GetDiscoveryQueueSkippedApps_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[20]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1917,7 +2093,7 @@ func (x *CStore_GetDiscoveryQueueSkippedApps_Request) ProtoReflect() protoreflec
 
 // Deprecated: Use CStore_GetDiscoveryQueueSkippedApps_Request.ProtoReflect.Descriptor instead.
 func (*CStore_GetDiscoveryQueueSkippedApps_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{20}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CStore_GetDiscoveryQueueSkippedApps_Request) GetSteamid() uint64 {
@@ -1950,7 +2126,7 @@ type CStore_GetDiscoveryQueueSkippedApps_Response struct {
 
 func (x *CStore_GetDiscoveryQueueSkippedApps_Response) Reset() {
 	*x = CStore_GetDiscoveryQueueSkippedApps_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[21]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1962,7 +2138,7 @@ func (x *CStore_GetDiscoveryQueueSkippedApps_Response) String() string {
 func (*CStore_GetDiscoveryQueueSkippedApps_Response) ProtoMessage() {}
 
 func (x *CStore_GetDiscoveryQueueSkippedApps_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[21]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1975,7 +2151,7 @@ func (x *CStore_GetDiscoveryQueueSkippedApps_Response) ProtoReflect() protorefle
 
 // Deprecated: Use CStore_GetDiscoveryQueueSkippedApps_Response.ProtoReflect.Descriptor instead.
 func (*CStore_GetDiscoveryQueueSkippedApps_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{21}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CStore_GetDiscoveryQueueSkippedApps_Response) GetAppids() []uint32 {
@@ -2001,7 +2177,7 @@ const (
 
 func (x *CStore_ReportApp_Request) Reset() {
 	*x = CStore_ReportApp_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[22]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2013,7 +2189,7 @@ func (x *CStore_ReportApp_Request) String() string {
 func (*CStore_ReportApp_Request) ProtoMessage() {}
 
 func (x *CStore_ReportApp_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[22]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2026,7 +2202,7 @@ func (x *CStore_ReportApp_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CStore_ReportApp_Request.ProtoReflect.Descriptor instead.
 func (*CStore_ReportApp_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{22}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *CStore_ReportApp_Request) GetAppid() uint32 {
@@ -2058,7 +2234,7 @@ type CStore_ReportApp_Response struct {
 
 func (x *CStore_ReportApp_Response) Reset() {
 	*x = CStore_ReportApp_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[23]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2070,7 +2246,7 @@ func (x *CStore_ReportApp_Response) String() string {
 func (*CStore_ReportApp_Response) ProtoMessage() {}
 
 func (x *CStore_ReportApp_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[23]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2083,7 +2259,7 @@ func (x *CStore_ReportApp_Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CStore_ReportApp_Response.ProtoReflect.Descriptor instead.
 func (*CStore_ReportApp_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{23}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{27}
 }
 
 type CStore_GetStorePreferences_Request struct {
@@ -2095,7 +2271,7 @@ type CStore_GetStorePreferences_Request struct {
 
 func (x *CStore_GetStorePreferences_Request) Reset() {
 	*x = CStore_GetStorePreferences_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[24]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2107,7 +2283,7 @@ func (x *CStore_GetStorePreferences_Request) String() string {
 func (*CStore_GetStorePreferences_Request) ProtoMessage() {}
 
 func (x *CStore_GetStorePreferences_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[24]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2120,7 +2296,7 @@ func (x *CStore_GetStorePreferences_Request) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CStore_GetStorePreferences_Request.ProtoReflect.Descriptor instead.
 func (*CStore_GetStorePreferences_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{24}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CStore_GetStorePreferences_Request) GetCountryCode() string {
@@ -2155,7 +2331,7 @@ const (
 
 func (x *CStore_UserPreferences) Reset() {
 	*x = CStore_UserPreferences{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[25]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2167,7 +2343,7 @@ func (x *CStore_UserPreferences) String() string {
 func (*CStore_UserPreferences) ProtoMessage() {}
 
 func (x *CStore_UserPreferences) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[25]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2180,7 +2356,7 @@ func (x *CStore_UserPreferences) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CStore_UserPreferences.ProtoReflect.Descriptor instead.
 func (*CStore_UserPreferences) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{25}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CStore_UserPreferences) GetPrimaryLanguage() int32 {
@@ -2269,7 +2445,7 @@ type CStore_UserTagPreferences struct {
 
 func (x *CStore_UserTagPreferences) Reset() {
 	*x = CStore_UserTagPreferences{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[26]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2281,7 +2457,7 @@ func (x *CStore_UserTagPreferences) String() string {
 func (*CStore_UserTagPreferences) ProtoMessage() {}
 
 func (x *CStore_UserTagPreferences) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[26]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2294,7 +2470,7 @@ func (x *CStore_UserTagPreferences) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CStore_UserTagPreferences.ProtoReflect.Descriptor instead.
 func (*CStore_UserTagPreferences) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{26}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CStore_UserTagPreferences) GetTagsToExclude() []*CStore_UserTagPreferences_Tag {
@@ -2315,7 +2491,7 @@ type CStore_GetStorePreferences_Response struct {
 
 func (x *CStore_GetStorePreferences_Response) Reset() {
 	*x = CStore_GetStorePreferences_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[27]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2327,7 +2503,7 @@ func (x *CStore_GetStorePreferences_Response) String() string {
 func (*CStore_GetStorePreferences_Response) ProtoMessage() {}
 
 func (x *CStore_GetStorePreferences_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[27]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2340,7 +2516,7 @@ func (x *CStore_GetStorePreferences_Response) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CStore_GetStorePreferences_Response.ProtoReflect.Descriptor instead.
 func (*CStore_GetStorePreferences_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{27}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CStore_GetStorePreferences_Response) GetPreferences() *CStore_UserPreferences {
@@ -2374,7 +2550,7 @@ type CStore_GetTrendingAppsAmongFriends_Request struct {
 
 func (x *CStore_GetTrendingAppsAmongFriends_Request) Reset() {
 	*x = CStore_GetTrendingAppsAmongFriends_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[28]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2386,7 +2562,7 @@ func (x *CStore_GetTrendingAppsAmongFriends_Request) String() string {
 func (*CStore_GetTrendingAppsAmongFriends_Request) ProtoMessage() {}
 
 func (x *CStore_GetTrendingAppsAmongFriends_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[28]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2399,7 +2575,7 @@ func (x *CStore_GetTrendingAppsAmongFriends_Request) ProtoReflect() protoreflect
 
 // Deprecated: Use CStore_GetTrendingAppsAmongFriends_Request.ProtoReflect.Descriptor instead.
 func (*CStore_GetTrendingAppsAmongFriends_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{28}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CStore_GetTrendingAppsAmongFriends_Request) GetNumApps() uint32 {
@@ -2425,7 +2601,7 @@ type CStore_GetTrendingAppsAmongFriends_Response struct {
 
 func (x *CStore_GetTrendingAppsAmongFriends_Response) Reset() {
 	*x = CStore_GetTrendingAppsAmongFriends_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[29]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2437,7 +2613,7 @@ func (x *CStore_GetTrendingAppsAmongFriends_Response) String() string {
 func (*CStore_GetTrendingAppsAmongFriends_Response) ProtoMessage() {}
 
 func (x *CStore_GetTrendingAppsAmongFriends_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[29]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2450,7 +2626,7 @@ func (x *CStore_GetTrendingAppsAmongFriends_Response) ProtoReflect() protoreflec
 
 // Deprecated: Use CStore_GetTrendingAppsAmongFriends_Response.ProtoReflect.Descriptor instead.
 func (*CStore_GetTrendingAppsAmongFriends_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{29}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CStore_GetTrendingAppsAmongFriends_Response) GetTrendingApps() []*CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData {
@@ -2476,7 +2652,7 @@ const (
 
 func (x *CStore_MigratePartnerLinkTracking_Notification) Reset() {
 	*x = CStore_MigratePartnerLinkTracking_Notification{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[30]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2488,7 +2664,7 @@ func (x *CStore_MigratePartnerLinkTracking_Notification) String() string {
 func (*CStore_MigratePartnerLinkTracking_Notification) ProtoMessage() {}
 
 func (x *CStore_MigratePartnerLinkTracking_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[30]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2501,7 +2677,7 @@ func (x *CStore_MigratePartnerLinkTracking_Notification) ProtoReflect() protoref
 
 // Deprecated: Use CStore_MigratePartnerLinkTracking_Notification.ProtoReflect.Descriptor instead.
 func (*CStore_MigratePartnerLinkTracking_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{30}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CStore_MigratePartnerLinkTracking_Notification) GetAccountid() uint32 {
@@ -2536,7 +2712,7 @@ type CStore_UpdatePackageReservations_Request struct {
 
 func (x *CStore_UpdatePackageReservations_Request) Reset() {
 	*x = CStore_UpdatePackageReservations_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[31]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2548,7 +2724,7 @@ func (x *CStore_UpdatePackageReservations_Request) String() string {
 func (*CStore_UpdatePackageReservations_Request) ProtoMessage() {}
 
 func (x *CStore_UpdatePackageReservations_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[31]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2561,7 +2737,7 @@ func (x *CStore_UpdatePackageReservations_Request) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CStore_UpdatePackageReservations_Request.ProtoReflect.Descriptor instead.
 func (*CStore_UpdatePackageReservations_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{31}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CStore_UpdatePackageReservations_Request) GetPackagesToReserve() []uint32 {
@@ -2594,7 +2770,7 @@ type CStore_UpdatePackageReservations_Response struct {
 
 func (x *CStore_UpdatePackageReservations_Response) Reset() {
 	*x = CStore_UpdatePackageReservations_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[32]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2606,7 +2782,7 @@ func (x *CStore_UpdatePackageReservations_Response) String() string {
 func (*CStore_UpdatePackageReservations_Response) ProtoMessage() {}
 
 func (x *CStore_UpdatePackageReservations_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[32]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2619,7 +2795,7 @@ func (x *CStore_UpdatePackageReservations_Response) ProtoReflect() protoreflect.
 
 // Deprecated: Use CStore_UpdatePackageReservations_Response.ProtoReflect.Descriptor instead.
 func (*CStore_UpdatePackageReservations_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{32}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *CStore_UpdatePackageReservations_Response) GetReservationStatus() []*CPackageReservationStatus {
@@ -2640,7 +2816,7 @@ type CStore_GetWishlistDemoEmailStatus_Request struct {
 
 func (x *CStore_GetWishlistDemoEmailStatus_Request) Reset() {
 	*x = CStore_GetWishlistDemoEmailStatus_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[33]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2652,7 +2828,7 @@ func (x *CStore_GetWishlistDemoEmailStatus_Request) String() string {
 func (*CStore_GetWishlistDemoEmailStatus_Request) ProtoMessage() {}
 
 func (x *CStore_GetWishlistDemoEmailStatus_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[33]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2665,7 +2841,7 @@ func (x *CStore_GetWishlistDemoEmailStatus_Request) ProtoReflect() protoreflect.
 
 // Deprecated: Use CStore_GetWishlistDemoEmailStatus_Request.ProtoReflect.Descriptor instead.
 func (*CStore_GetWishlistDemoEmailStatus_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{33}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *CStore_GetWishlistDemoEmailStatus_Request) GetAppid() uint32 {
@@ -2705,7 +2881,7 @@ const (
 
 func (x *CStore_GetWishlistDemoEmailStatus_Response) Reset() {
 	*x = CStore_GetWishlistDemoEmailStatus_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[34]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2717,7 +2893,7 @@ func (x *CStore_GetWishlistDemoEmailStatus_Response) String() string {
 func (*CStore_GetWishlistDemoEmailStatus_Response) ProtoMessage() {}
 
 func (x *CStore_GetWishlistDemoEmailStatus_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[34]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2730,7 +2906,7 @@ func (x *CStore_GetWishlistDemoEmailStatus_Response) ProtoReflect() protoreflect
 
 // Deprecated: Use CStore_GetWishlistDemoEmailStatus_Response.ProtoReflect.Descriptor instead.
 func (*CStore_GetWishlistDemoEmailStatus_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{34}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CStore_GetWishlistDemoEmailStatus_Response) GetCanFire() bool {
@@ -2765,7 +2941,7 @@ type CStore_QueueWishlistDemoEmailToFire_Request struct {
 
 func (x *CStore_QueueWishlistDemoEmailToFire_Request) Reset() {
 	*x = CStore_QueueWishlistDemoEmailToFire_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[35]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2777,7 +2953,7 @@ func (x *CStore_QueueWishlistDemoEmailToFire_Request) String() string {
 func (*CStore_QueueWishlistDemoEmailToFire_Request) ProtoMessage() {}
 
 func (x *CStore_QueueWishlistDemoEmailToFire_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[35]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2790,7 +2966,7 @@ func (x *CStore_QueueWishlistDemoEmailToFire_Request) ProtoReflect() protoreflec
 
 // Deprecated: Use CStore_QueueWishlistDemoEmailToFire_Request.ProtoReflect.Descriptor instead.
 func (*CStore_QueueWishlistDemoEmailToFire_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{35}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CStore_QueueWishlistDemoEmailToFire_Request) GetAppid() uint32 {
@@ -2822,7 +2998,7 @@ type CStore_QueueWishlistDemoEmailToFire_Response struct {
 
 func (x *CStore_QueueWishlistDemoEmailToFire_Response) Reset() {
 	*x = CStore_QueueWishlistDemoEmailToFire_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[36]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2834,7 +3010,7 @@ func (x *CStore_QueueWishlistDemoEmailToFire_Response) String() string {
 func (*CStore_QueueWishlistDemoEmailToFire_Response) ProtoMessage() {}
 
 func (x *CStore_QueueWishlistDemoEmailToFire_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[36]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2847,7 +3023,7 @@ func (x *CStore_QueueWishlistDemoEmailToFire_Response) ProtoReflect() protorefle
 
 // Deprecated: Use CStore_QueueWishlistDemoEmailToFire_Response.ProtoReflect.Descriptor instead.
 func (*CStore_QueueWishlistDemoEmailToFire_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{36}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{40}
 }
 
 type CReservationPositionMessage struct {
@@ -2865,7 +3041,7 @@ type CReservationPositionMessage struct {
 
 func (x *CReservationPositionMessage) Reset() {
 	*x = CReservationPositionMessage{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[37]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2877,7 +3053,7 @@ func (x *CReservationPositionMessage) String() string {
 func (*CReservationPositionMessage) ProtoMessage() {}
 
 func (x *CReservationPositionMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[37]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2890,7 +3066,7 @@ func (x *CReservationPositionMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CReservationPositionMessage.ProtoReflect.Descriptor instead.
 func (*CReservationPositionMessage) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{37}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *CReservationPositionMessage) GetEdistributor() uint32 {
@@ -2951,7 +3127,7 @@ type CStore_SetReservationPositionMessage_Request struct {
 
 func (x *CStore_SetReservationPositionMessage_Request) Reset() {
 	*x = CStore_SetReservationPositionMessage_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[38]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2963,7 +3139,7 @@ func (x *CStore_SetReservationPositionMessage_Request) String() string {
 func (*CStore_SetReservationPositionMessage_Request) ProtoMessage() {}
 
 func (x *CStore_SetReservationPositionMessage_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[38]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2976,7 +3152,7 @@ func (x *CStore_SetReservationPositionMessage_Request) ProtoReflect() protorefle
 
 // Deprecated: Use CStore_SetReservationPositionMessage_Request.ProtoReflect.Descriptor instead.
 func (*CStore_SetReservationPositionMessage_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{38}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CStore_SetReservationPositionMessage_Request) GetSettings() []*CReservationPositionMessage {
@@ -2994,7 +3170,7 @@ type CStore_SetReservationPositionMessage_Response struct {
 
 func (x *CStore_SetReservationPositionMessage_Response) Reset() {
 	*x = CStore_SetReservationPositionMessage_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[39]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3006,7 +3182,7 @@ func (x *CStore_SetReservationPositionMessage_Response) String() string {
 func (*CStore_SetReservationPositionMessage_Response) ProtoMessage() {}
 
 func (x *CStore_SetReservationPositionMessage_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[39]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3019,7 +3195,7 @@ func (x *CStore_SetReservationPositionMessage_Response) ProtoReflect() protorefl
 
 // Deprecated: Use CStore_SetReservationPositionMessage_Response.ProtoReflect.Descriptor instead.
 func (*CStore_SetReservationPositionMessage_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{39}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{43}
 }
 
 type CStore_DeleteReservationPositionMessage_Request struct {
@@ -3033,7 +3209,7 @@ type CStore_DeleteReservationPositionMessage_Request struct {
 
 func (x *CStore_DeleteReservationPositionMessage_Request) Reset() {
 	*x = CStore_DeleteReservationPositionMessage_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[40]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3045,7 +3221,7 @@ func (x *CStore_DeleteReservationPositionMessage_Request) String() string {
 func (*CStore_DeleteReservationPositionMessage_Request) ProtoMessage() {}
 
 func (x *CStore_DeleteReservationPositionMessage_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[40]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3058,7 +3234,7 @@ func (x *CStore_DeleteReservationPositionMessage_Request) ProtoReflect() protore
 
 // Deprecated: Use CStore_DeleteReservationPositionMessage_Request.ProtoReflect.Descriptor instead.
 func (*CStore_DeleteReservationPositionMessage_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{40}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CStore_DeleteReservationPositionMessage_Request) GetEdistributor() uint32 {
@@ -3090,7 +3266,7 @@ type CStore_DeleteReservationPositionMessage_Response struct {
 
 func (x *CStore_DeleteReservationPositionMessage_Response) Reset() {
 	*x = CStore_DeleteReservationPositionMessage_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[41]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3102,7 +3278,7 @@ func (x *CStore_DeleteReservationPositionMessage_Response) String() string {
 func (*CStore_DeleteReservationPositionMessage_Response) ProtoMessage() {}
 
 func (x *CStore_DeleteReservationPositionMessage_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[41]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3115,7 +3291,7 @@ func (x *CStore_DeleteReservationPositionMessage_Response) ProtoReflect() protor
 
 // Deprecated: Use CStore_DeleteReservationPositionMessage_Response.ProtoReflect.Descriptor instead.
 func (*CStore_DeleteReservationPositionMessage_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{41}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{45}
 }
 
 type CStore_GetAllReservationPositionMessages_Request struct {
@@ -3126,7 +3302,7 @@ type CStore_GetAllReservationPositionMessages_Request struct {
 
 func (x *CStore_GetAllReservationPositionMessages_Request) Reset() {
 	*x = CStore_GetAllReservationPositionMessages_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[42]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3138,7 +3314,7 @@ func (x *CStore_GetAllReservationPositionMessages_Request) String() string {
 func (*CStore_GetAllReservationPositionMessages_Request) ProtoMessage() {}
 
 func (x *CStore_GetAllReservationPositionMessages_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[42]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3151,7 +3327,7 @@ func (x *CStore_GetAllReservationPositionMessages_Request) ProtoReflect() protor
 
 // Deprecated: Use CStore_GetAllReservationPositionMessages_Request.ProtoReflect.Descriptor instead.
 func (*CStore_GetAllReservationPositionMessages_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{42}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{46}
 }
 
 type CStore_GetAllReservationPositionMessages_Response struct {
@@ -3163,7 +3339,7 @@ type CStore_GetAllReservationPositionMessages_Response struct {
 
 func (x *CStore_GetAllReservationPositionMessages_Response) Reset() {
 	*x = CStore_GetAllReservationPositionMessages_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[43]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3175,7 +3351,7 @@ func (x *CStore_GetAllReservationPositionMessages_Response) String() string {
 func (*CStore_GetAllReservationPositionMessages_Response) ProtoMessage() {}
 
 func (x *CStore_GetAllReservationPositionMessages_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[43]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3188,7 +3364,7 @@ func (x *CStore_GetAllReservationPositionMessages_Response) ProtoReflect() proto
 
 // Deprecated: Use CStore_GetAllReservationPositionMessages_Response.ProtoReflect.Descriptor instead.
 func (*CStore_GetAllReservationPositionMessages_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{43}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CStore_GetAllReservationPositionMessages_Response) GetSettings() []*CReservationPositionMessage {
@@ -3206,7 +3382,7 @@ type CStore_ReloadAllReservationPositionMessages_Notification struct {
 
 func (x *CStore_ReloadAllReservationPositionMessages_Notification) Reset() {
 	*x = CStore_ReloadAllReservationPositionMessages_Notification{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[44]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3218,7 +3394,7 @@ func (x *CStore_ReloadAllReservationPositionMessages_Notification) String() stri
 func (*CStore_ReloadAllReservationPositionMessages_Notification) ProtoMessage() {}
 
 func (x *CStore_ReloadAllReservationPositionMessages_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[44]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3231,7 +3407,7 @@ func (x *CStore_ReloadAllReservationPositionMessages_Notification) ProtoReflect(
 
 // Deprecated: Use CStore_ReloadAllReservationPositionMessages_Notification.ProtoReflect.Descriptor instead.
 func (*CStore_ReloadAllReservationPositionMessages_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{44}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{48}
 }
 
 type CSteamDeckCompatibility_SetFeedback_Request struct {
@@ -3249,7 +3425,7 @@ const (
 
 func (x *CSteamDeckCompatibility_SetFeedback_Request) Reset() {
 	*x = CSteamDeckCompatibility_SetFeedback_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[45]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3261,7 +3437,7 @@ func (x *CSteamDeckCompatibility_SetFeedback_Request) String() string {
 func (*CSteamDeckCompatibility_SetFeedback_Request) ProtoMessage() {}
 
 func (x *CSteamDeckCompatibility_SetFeedback_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[45]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3274,7 +3450,7 @@ func (x *CSteamDeckCompatibility_SetFeedback_Request) ProtoReflect() protoreflec
 
 // Deprecated: Use CSteamDeckCompatibility_SetFeedback_Request.ProtoReflect.Descriptor instead.
 func (*CSteamDeckCompatibility_SetFeedback_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{45}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CSteamDeckCompatibility_SetFeedback_Request) GetAppid() uint32 {
@@ -3299,7 +3475,7 @@ type CSteamDeckCompatibility_SetFeedback_Response struct {
 
 func (x *CSteamDeckCompatibility_SetFeedback_Response) Reset() {
 	*x = CSteamDeckCompatibility_SetFeedback_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[46]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3311,7 +3487,7 @@ func (x *CSteamDeckCompatibility_SetFeedback_Response) String() string {
 func (*CSteamDeckCompatibility_SetFeedback_Response) ProtoMessage() {}
 
 func (x *CSteamDeckCompatibility_SetFeedback_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[46]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3324,7 +3500,7 @@ func (x *CSteamDeckCompatibility_SetFeedback_Response) ProtoReflect() protorefle
 
 // Deprecated: Use CSteamDeckCompatibility_SetFeedback_Response.ProtoReflect.Descriptor instead.
 func (*CSteamDeckCompatibility_SetFeedback_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{46}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{50}
 }
 
 type CSteamDeckCompatibility_ShouldPrompt_Request struct {
@@ -3336,7 +3512,7 @@ type CSteamDeckCompatibility_ShouldPrompt_Request struct {
 
 func (x *CSteamDeckCompatibility_ShouldPrompt_Request) Reset() {
 	*x = CSteamDeckCompatibility_ShouldPrompt_Request{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[47]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3348,7 +3524,7 @@ func (x *CSteamDeckCompatibility_ShouldPrompt_Request) String() string {
 func (*CSteamDeckCompatibility_ShouldPrompt_Request) ProtoMessage() {}
 
 func (x *CSteamDeckCompatibility_ShouldPrompt_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[47]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3361,7 +3537,7 @@ func (x *CSteamDeckCompatibility_ShouldPrompt_Request) ProtoReflect() protorefle
 
 // Deprecated: Use CSteamDeckCompatibility_ShouldPrompt_Request.ProtoReflect.Descriptor instead.
 func (*CSteamDeckCompatibility_ShouldPrompt_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{47}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *CSteamDeckCompatibility_ShouldPrompt_Request) GetAppid() uint32 {
@@ -3387,7 +3563,7 @@ const (
 
 func (x *CSteamDeckCompatibility_ShouldPrompt_Response) Reset() {
 	*x = CSteamDeckCompatibility_ShouldPrompt_Response{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[48]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3399,7 +3575,7 @@ func (x *CSteamDeckCompatibility_ShouldPrompt_Response) String() string {
 func (*CSteamDeckCompatibility_ShouldPrompt_Response) ProtoMessage() {}
 
 func (x *CSteamDeckCompatibility_ShouldPrompt_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[48]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3412,7 +3588,7 @@ func (x *CSteamDeckCompatibility_ShouldPrompt_Response) ProtoReflect() protorefl
 
 // Deprecated: Use CSteamDeckCompatibility_ShouldPrompt_Response.ProtoReflect.Descriptor instead.
 func (*CSteamDeckCompatibility_ShouldPrompt_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{48}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CSteamDeckCompatibility_ShouldPrompt_Response) GetPrompt() bool {
@@ -3447,7 +3623,7 @@ type CStore_StorePreferencesChanged_Notification struct {
 
 func (x *CStore_StorePreferencesChanged_Notification) Reset() {
 	*x = CStore_StorePreferencesChanged_Notification{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[49]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3459,7 +3635,7 @@ func (x *CStore_StorePreferencesChanged_Notification) String() string {
 func (*CStore_StorePreferencesChanged_Notification) ProtoMessage() {}
 
 func (x *CStore_StorePreferencesChanged_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[49]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3472,7 +3648,7 @@ func (x *CStore_StorePreferencesChanged_Notification) ProtoReflect() protoreflec
 
 // Deprecated: Use CStore_StorePreferencesChanged_Notification.ProtoReflect.Descriptor instead.
 func (*CStore_StorePreferencesChanged_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{49}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *CStore_StorePreferencesChanged_Notification) GetPreferences() *CStore_UserPreferences {
@@ -3507,7 +3683,7 @@ type CStore_PurchaseReceiptInfo_LineItem struct {
 
 func (x *CStore_PurchaseReceiptInfo_LineItem) Reset() {
 	*x = CStore_PurchaseReceiptInfo_LineItem{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[50]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3519,7 +3695,7 @@ func (x *CStore_PurchaseReceiptInfo_LineItem) String() string {
 func (*CStore_PurchaseReceiptInfo_LineItem) ProtoMessage() {}
 
 func (x *CStore_PurchaseReceiptInfo_LineItem) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[50]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3567,7 +3743,7 @@ type CStore_GetRecommendedTagsForUser_Response_Tag struct {
 
 func (x *CStore_GetRecommendedTagsForUser_Response_Tag) Reset() {
 	*x = CStore_GetRecommendedTagsForUser_Response_Tag{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[51]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3579,7 +3755,7 @@ func (x *CStore_GetRecommendedTagsForUser_Response_Tag) String() string {
 func (*CStore_GetRecommendedTagsForUser_Response_Tag) ProtoMessage() {}
 
 func (x *CStore_GetRecommendedTagsForUser_Response_Tag) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[51]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3626,7 +3802,7 @@ type CStore_GetMostPopularTags_Response_Tag struct {
 
 func (x *CStore_GetMostPopularTags_Response_Tag) Reset() {
 	*x = CStore_GetMostPopularTags_Response_Tag{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[52]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3638,7 +3814,7 @@ func (x *CStore_GetMostPopularTags_Response_Tag) String() string {
 func (*CStore_GetMostPopularTags_Response_Tag) ProtoMessage() {}
 
 func (x *CStore_GetMostPopularTags_Response_Tag) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[52]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3680,7 +3856,7 @@ type CStore_GetLocalizedNameForTags_Response_Tag struct {
 
 func (x *CStore_GetLocalizedNameForTags_Response_Tag) Reset() {
 	*x = CStore_GetLocalizedNameForTags_Response_Tag{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[53]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3692,7 +3868,7 @@ func (x *CStore_GetLocalizedNameForTags_Response_Tag) String() string {
 func (*CStore_GetLocalizedNameForTags_Response_Tag) ProtoMessage() {}
 
 func (x *CStore_GetLocalizedNameForTags_Response_Tag) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[53]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3746,7 +3922,7 @@ type CStore_GetTagList_Response_Tag struct {
 
 func (x *CStore_GetTagList_Response_Tag) Reset() {
 	*x = CStore_GetTagList_Response_Tag{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[54]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3758,7 +3934,7 @@ func (x *CStore_GetTagList_Response_Tag) String() string {
 func (*CStore_GetTagList_Response_Tag) ProtoMessage() {}
 
 func (x *CStore_GetTagList_Response_Tag) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[54]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3806,7 +3982,7 @@ const (
 
 func (x *CStore_GetUserGameInterestState_Response_InQueue) Reset() {
 	*x = CStore_GetUserGameInterestState_Response_InQueue{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[55]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3818,7 +3994,7 @@ func (x *CStore_GetUserGameInterestState_Response_InQueue) String() string {
 func (*CStore_GetUserGameInterestState_Response_InQueue) ProtoMessage() {}
 
 func (x *CStore_GetUserGameInterestState_Response_InQueue) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[55]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3880,7 +4056,7 @@ type CStore_UserTagPreferences_Tag struct {
 
 func (x *CStore_UserTagPreferences_Tag) Reset() {
 	*x = CStore_UserTagPreferences_Tag{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[56]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3892,7 +4068,7 @@ func (x *CStore_UserTagPreferences_Tag) String() string {
 func (*CStore_UserTagPreferences_Tag) ProtoMessage() {}
 
 func (x *CStore_UserTagPreferences_Tag) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[56]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3905,7 +4081,7 @@ func (x *CStore_UserTagPreferences_Tag) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CStore_UserTagPreferences_Tag.ProtoReflect.Descriptor instead.
 func (*CStore_UserTagPreferences_Tag) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{26, 0}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{30, 0}
 }
 
 func (x *CStore_UserTagPreferences_Tag) GetTagid() uint32 {
@@ -3940,7 +4116,7 @@ type CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData struct {
 
 func (x *CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) Reset() {
 	*x = CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData{}
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[57]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3952,7 +4128,7 @@ func (x *CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) String() s
 func (*CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) ProtoMessage() {}
 
 func (x *CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_store_steamclient_proto_msgTypes[57]
+	mi := &file_steammessages_store_steamclient_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3965,7 +4141,7 @@ func (x *CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) ProtoRefle
 
 // Deprecated: Use CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData.ProtoReflect.Descriptor instead.
 func (*CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) Descriptor() ([]byte, []int) {
-	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{29, 0}
+	return file_steammessages_store_steamclient_proto_rawDescGZIP(), []int{33, 0}
 }
 
 func (x *CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData) GetAppid() uint32 {
@@ -4147,7 +4323,15 @@ const file_steammessages_store_steamclient_proto_rawDesc = "" +
 	"\x0fitems_remaining\x18\x03 \x01(\x05R\x0eitemsRemaining\x12\x1d\n" +
 	"\n" +
 	"next_appid\x18\x04 \x01(\rR\tnextAppid\x12/\n" +
-	"\x13experimental_cohort\x18\x05 \x01(\rR\x12experimentalCohort\"\xdf\x01\n" +
+	"\x13experimental_cohort\x18\x05 \x01(\rR\x12experimentalCohort\";\n" +
+	"\x1fCStore_GetGamesFollowed_Request\x12\x18\n" +
+	"\asteamid\x18\x01 \x01(\x06R\asteamid\":\n" +
+	" CStore_GetGamesFollowed_Response\x12\x16\n" +
+	"\x06appids\x18\x01 \x03(\rR\x06appids\"@\n" +
+	"$CStore_GetGamesFollowedCount_Request\x12\x18\n" +
+	"\asteamid\x18\x01 \x01(\x06R\asteamid\"W\n" +
+	"%CStore_GetGamesFollowedCount_Response\x12.\n" +
+	"\x13followed_game_count\x18\x01 \x01(\rR\x11followedGameCount\"\xdf\x01\n" +
 	"+CStore_GetDiscoveryQueueSkippedApps_Request\x12\x18\n" +
 	"\asteamid\x18\x01 \x01(\x06R\asteamid\x12W\n" +
 	"\n" +
@@ -4304,7 +4488,7 @@ const file_steammessages_store_steamclient_proto_rawDesc = "" +
 	")k_EPartnerLinkTrackingBackfillSource_None\x10\x00\x12,\n" +
 	"(k_EPartnerLinkTrackingBackfillSource_Web\x10\x01\x12/\n" +
 	"+k_EPartnerLinkTrackingBackfillSource_Mobile\x10\x02\x120\n" +
-	",k_EPartnerLinkTrackingBackfillSource_Desktop\x10\x032\xf4\x13\n" +
+	",k_EPartnerLinkTrackingBackfillSource_Desktop\x10\x032\xb5\x15\n" +
 	"\x05Store\x12N\n" +
 	"\rRegisterCDKey\x12\x1d.CStore_RegisterCDKey_Request\x1a\x1e.CStore_RegisterCDKey_Response\x12r\n" +
 	"\x19GetRecommendedTagsForUser\x12).CStore_GetRecommendedTagsForUser_Request\x1a*.CStore_GetRecommendedTagsForUser_Response\x12]\n" +
@@ -4315,7 +4499,9 @@ const file_steammessages_store_steamclient_proto_rawDesc = "" +
 	"\x11GetDiscoveryQueue\x12!.CStore_GetDiscoveryQueue_Request\x1a\".CStore_GetDiscoveryQueue_Response\x12r\n" +
 	"\x19GetDiscoveryQueueSettings\x12).CStore_GetDiscoveryQueueSettings_Request\x1a*.CStore_GetDiscoveryQueueSettings_Response\x12i\n" +
 	"\x16SkipDiscoveryQueueItem\x12&.CStore_SkipDiscoveryQueueItem_Request\x1a'.CStore_SkipDiscoveryQueueItem_Response\x12o\n" +
-	"\x18GetUserGameInterestState\x12(.CStore_GetUserGameInterestState_Request\x1a).CStore_GetUserGameInterestState_Response\x12{\n" +
+	"\x18GetUserGameInterestState\x12(.CStore_GetUserGameInterestState_Request\x1a).CStore_GetUserGameInterestState_Response\x12W\n" +
+	"\x10GetGamesFollowed\x12 .CStore_GetGamesFollowed_Request\x1a!.CStore_GetGamesFollowed_Response\x12f\n" +
+	"\x15GetGamesFollowedCount\x12%.CStore_GetGamesFollowedCount_Request\x1a&.CStore_GetGamesFollowedCount_Response\x12{\n" +
 	"\x1cGetDiscoveryQueueSkippedApps\x12,.CStore_GetDiscoveryQueueSkippedApps_Request\x1a-.CStore_GetDiscoveryQueueSkippedApps_Response\x12B\n" +
 	"\tReportApp\x12\x19.CStore_ReportApp_Request\x1a\x1a.CStore_ReportApp_Response\x12`\n" +
 	"\x13GetStorePreferences\x12#.CStore_GetStorePreferences_Request\x1a$.CStore_GetStorePreferences_Response\x12x\n" +
@@ -4346,7 +4532,7 @@ func file_steammessages_store_steamclient_proto_rawDescGZIP() []byte {
 }
 
 var file_steammessages_store_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_steammessages_store_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 58)
+var file_steammessages_store_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 62)
 var file_steammessages_store_steamclient_proto_goTypes = []any{
 	(EStoreDiscoveryQueueType)(0),                                       // 0: EStoreDiscoveryQueueType
 	(EPlaytestStatus)(0),                                                // 1: EPlaytestStatus
@@ -4373,96 +4559,100 @@ var file_steammessages_store_steamclient_proto_goTypes = []any{
 	(*CStore_SkipDiscoveryQueueItem_Response)(nil),                      // 22: CStore_SkipDiscoveryQueueItem_Response
 	(*CStore_GetUserGameInterestState_Request)(nil),                     // 23: CStore_GetUserGameInterestState_Request
 	(*CStore_GetUserGameInterestState_Response)(nil),                    // 24: CStore_GetUserGameInterestState_Response
-	(*CStore_GetDiscoveryQueueSkippedApps_Request)(nil),                 // 25: CStore_GetDiscoveryQueueSkippedApps_Request
-	(*CStore_GetDiscoveryQueueSkippedApps_Response)(nil),                // 26: CStore_GetDiscoveryQueueSkippedApps_Response
-	(*CStore_ReportApp_Request)(nil),                                    // 27: CStore_ReportApp_Request
-	(*CStore_ReportApp_Response)(nil),                                   // 28: CStore_ReportApp_Response
-	(*CStore_GetStorePreferences_Request)(nil),                          // 29: CStore_GetStorePreferences_Request
-	(*CStore_UserPreferences)(nil),                                      // 30: CStore_UserPreferences
-	(*CStore_UserTagPreferences)(nil),                                   // 31: CStore_UserTagPreferences
-	(*CStore_GetStorePreferences_Response)(nil),                         // 32: CStore_GetStorePreferences_Response
-	(*CStore_GetTrendingAppsAmongFriends_Request)(nil),                  // 33: CStore_GetTrendingAppsAmongFriends_Request
-	(*CStore_GetTrendingAppsAmongFriends_Response)(nil),                 // 34: CStore_GetTrendingAppsAmongFriends_Response
-	(*CStore_MigratePartnerLinkTracking_Notification)(nil),              // 35: CStore_MigratePartnerLinkTracking_Notification
-	(*CStore_UpdatePackageReservations_Request)(nil),                    // 36: CStore_UpdatePackageReservations_Request
-	(*CStore_UpdatePackageReservations_Response)(nil),                   // 37: CStore_UpdatePackageReservations_Response
-	(*CStore_GetWishlistDemoEmailStatus_Request)(nil),                   // 38: CStore_GetWishlistDemoEmailStatus_Request
-	(*CStore_GetWishlistDemoEmailStatus_Response)(nil),                  // 39: CStore_GetWishlistDemoEmailStatus_Response
-	(*CStore_QueueWishlistDemoEmailToFire_Request)(nil),                 // 40: CStore_QueueWishlistDemoEmailToFire_Request
-	(*CStore_QueueWishlistDemoEmailToFire_Response)(nil),                // 41: CStore_QueueWishlistDemoEmailToFire_Response
-	(*CReservationPositionMessage)(nil),                                 // 42: CReservationPositionMessage
-	(*CStore_SetReservationPositionMessage_Request)(nil),                // 43: CStore_SetReservationPositionMessage_Request
-	(*CStore_SetReservationPositionMessage_Response)(nil),               // 44: CStore_SetReservationPositionMessage_Response
-	(*CStore_DeleteReservationPositionMessage_Request)(nil),             // 45: CStore_DeleteReservationPositionMessage_Request
-	(*CStore_DeleteReservationPositionMessage_Response)(nil),            // 46: CStore_DeleteReservationPositionMessage_Response
-	(*CStore_GetAllReservationPositionMessages_Request)(nil),            // 47: CStore_GetAllReservationPositionMessages_Request
-	(*CStore_GetAllReservationPositionMessages_Response)(nil),           // 48: CStore_GetAllReservationPositionMessages_Response
-	(*CStore_ReloadAllReservationPositionMessages_Notification)(nil),    // 49: CStore_ReloadAllReservationPositionMessages_Notification
-	(*CSteamDeckCompatibility_SetFeedback_Request)(nil),                 // 50: CSteamDeckCompatibility_SetFeedback_Request
-	(*CSteamDeckCompatibility_SetFeedback_Response)(nil),                // 51: CSteamDeckCompatibility_SetFeedback_Response
-	(*CSteamDeckCompatibility_ShouldPrompt_Request)(nil),                // 52: CSteamDeckCompatibility_ShouldPrompt_Request
-	(*CSteamDeckCompatibility_ShouldPrompt_Response)(nil),               // 53: CSteamDeckCompatibility_ShouldPrompt_Response
-	(*CStore_StorePreferencesChanged_Notification)(nil),                 // 54: CStore_StorePreferencesChanged_Notification
-	(*CStore_PurchaseReceiptInfo_LineItem)(nil),                         // 55: CStore_PurchaseReceiptInfo.LineItem
-	(*CStore_GetRecommendedTagsForUser_Response_Tag)(nil),               // 56: CStore_GetRecommendedTagsForUser_Response.Tag
-	(*CStore_GetMostPopularTags_Response_Tag)(nil),                      // 57: CStore_GetMostPopularTags_Response.Tag
-	(*CStore_GetLocalizedNameForTags_Response_Tag)(nil),                 // 58: CStore_GetLocalizedNameForTags_Response.Tag
-	(*CStore_GetTagList_Response_Tag)(nil),                              // 59: CStore_GetTagList_Response.Tag
-	(*CStore_GetUserGameInterestState_Response_InQueue)(nil),            // 60: CStore_GetUserGameInterestState_Response.InQueue
-	(*CStore_UserTagPreferences_Tag)(nil),                               // 61: CStore_UserTagPreferences.Tag
-	(*CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData)(nil), // 62: CStore_GetTrendingAppsAmongFriends_Response.TrendingAppData
-	(*CStorePageFilter)(nil),                                            // 63: CStorePageFilter
-	(*StoreBrowseContext)(nil),                                          // 64: StoreBrowseContext
-	(*StoreBrowseItemDataRequest)(nil),                                  // 65: StoreBrowseItemDataRequest
-	(*StoreItem)(nil),                                                   // 66: StoreItem
-	(EProvideDeckFeedbackPreference)(0),                                 // 67: EProvideDeckFeedbackPreference
-	(*UserContentDescriptorPreferences)(nil),                            // 68: UserContentDescriptorPreferences
-	(*CPackageReservationStatus)(nil),                                   // 69: CPackageReservationStatus
-	(ESteamDeckCompatibilityFeedback)(0),                                // 70: ESteamDeckCompatibilityFeedback
-	(*NoResponse)(nil),                                                  // 71: NoResponse
+	(*CStore_GetGamesFollowed_Request)(nil),                             // 25: CStore_GetGamesFollowed_Request
+	(*CStore_GetGamesFollowed_Response)(nil),                            // 26: CStore_GetGamesFollowed_Response
+	(*CStore_GetGamesFollowedCount_Request)(nil),                        // 27: CStore_GetGamesFollowedCount_Request
+	(*CStore_GetGamesFollowedCount_Response)(nil),                       // 28: CStore_GetGamesFollowedCount_Response
+	(*CStore_GetDiscoveryQueueSkippedApps_Request)(nil),                 // 29: CStore_GetDiscoveryQueueSkippedApps_Request
+	(*CStore_GetDiscoveryQueueSkippedApps_Response)(nil),                // 30: CStore_GetDiscoveryQueueSkippedApps_Response
+	(*CStore_ReportApp_Request)(nil),                                    // 31: CStore_ReportApp_Request
+	(*CStore_ReportApp_Response)(nil),                                   // 32: CStore_ReportApp_Response
+	(*CStore_GetStorePreferences_Request)(nil),                          // 33: CStore_GetStorePreferences_Request
+	(*CStore_UserPreferences)(nil),                                      // 34: CStore_UserPreferences
+	(*CStore_UserTagPreferences)(nil),                                   // 35: CStore_UserTagPreferences
+	(*CStore_GetStorePreferences_Response)(nil),                         // 36: CStore_GetStorePreferences_Response
+	(*CStore_GetTrendingAppsAmongFriends_Request)(nil),                  // 37: CStore_GetTrendingAppsAmongFriends_Request
+	(*CStore_GetTrendingAppsAmongFriends_Response)(nil),                 // 38: CStore_GetTrendingAppsAmongFriends_Response
+	(*CStore_MigratePartnerLinkTracking_Notification)(nil),              // 39: CStore_MigratePartnerLinkTracking_Notification
+	(*CStore_UpdatePackageReservations_Request)(nil),                    // 40: CStore_UpdatePackageReservations_Request
+	(*CStore_UpdatePackageReservations_Response)(nil),                   // 41: CStore_UpdatePackageReservations_Response
+	(*CStore_GetWishlistDemoEmailStatus_Request)(nil),                   // 42: CStore_GetWishlistDemoEmailStatus_Request
+	(*CStore_GetWishlistDemoEmailStatus_Response)(nil),                  // 43: CStore_GetWishlistDemoEmailStatus_Response
+	(*CStore_QueueWishlistDemoEmailToFire_Request)(nil),                 // 44: CStore_QueueWishlistDemoEmailToFire_Request
+	(*CStore_QueueWishlistDemoEmailToFire_Response)(nil),                // 45: CStore_QueueWishlistDemoEmailToFire_Response
+	(*CReservationPositionMessage)(nil),                                 // 46: CReservationPositionMessage
+	(*CStore_SetReservationPositionMessage_Request)(nil),                // 47: CStore_SetReservationPositionMessage_Request
+	(*CStore_SetReservationPositionMessage_Response)(nil),               // 48: CStore_SetReservationPositionMessage_Response
+	(*CStore_DeleteReservationPositionMessage_Request)(nil),             // 49: CStore_DeleteReservationPositionMessage_Request
+	(*CStore_DeleteReservationPositionMessage_Response)(nil),            // 50: CStore_DeleteReservationPositionMessage_Response
+	(*CStore_GetAllReservationPositionMessages_Request)(nil),            // 51: CStore_GetAllReservationPositionMessages_Request
+	(*CStore_GetAllReservationPositionMessages_Response)(nil),           // 52: CStore_GetAllReservationPositionMessages_Response
+	(*CStore_ReloadAllReservationPositionMessages_Notification)(nil),    // 53: CStore_ReloadAllReservationPositionMessages_Notification
+	(*CSteamDeckCompatibility_SetFeedback_Request)(nil),                 // 54: CSteamDeckCompatibility_SetFeedback_Request
+	(*CSteamDeckCompatibility_SetFeedback_Response)(nil),                // 55: CSteamDeckCompatibility_SetFeedback_Response
+	(*CSteamDeckCompatibility_ShouldPrompt_Request)(nil),                // 56: CSteamDeckCompatibility_ShouldPrompt_Request
+	(*CSteamDeckCompatibility_ShouldPrompt_Response)(nil),               // 57: CSteamDeckCompatibility_ShouldPrompt_Response
+	(*CStore_StorePreferencesChanged_Notification)(nil),                 // 58: CStore_StorePreferencesChanged_Notification
+	(*CStore_PurchaseReceiptInfo_LineItem)(nil),                         // 59: CStore_PurchaseReceiptInfo.LineItem
+	(*CStore_GetRecommendedTagsForUser_Response_Tag)(nil),               // 60: CStore_GetRecommendedTagsForUser_Response.Tag
+	(*CStore_GetMostPopularTags_Response_Tag)(nil),                      // 61: CStore_GetMostPopularTags_Response.Tag
+	(*CStore_GetLocalizedNameForTags_Response_Tag)(nil),                 // 62: CStore_GetLocalizedNameForTags_Response.Tag
+	(*CStore_GetTagList_Response_Tag)(nil),                              // 63: CStore_GetTagList_Response.Tag
+	(*CStore_GetUserGameInterestState_Response_InQueue)(nil),            // 64: CStore_GetUserGameInterestState_Response.InQueue
+	(*CStore_UserTagPreferences_Tag)(nil),                               // 65: CStore_UserTagPreferences.Tag
+	(*CStore_GetTrendingAppsAmongFriends_Response_TrendingAppData)(nil), // 66: CStore_GetTrendingAppsAmongFriends_Response.TrendingAppData
+	(*CStorePageFilter)(nil),                                            // 67: CStorePageFilter
+	(*StoreBrowseContext)(nil),                                          // 68: StoreBrowseContext
+	(*StoreBrowseItemDataRequest)(nil),                                  // 69: StoreBrowseItemDataRequest
+	(*StoreItem)(nil),                                                   // 70: StoreItem
+	(EProvideDeckFeedbackPreference)(0),                                 // 71: EProvideDeckFeedbackPreference
+	(*UserContentDescriptorPreferences)(nil),                            // 72: UserContentDescriptorPreferences
+	(*CPackageReservationStatus)(nil),                                   // 73: CPackageReservationStatus
+	(ESteamDeckCompatibilityFeedback)(0),                                // 74: ESteamDeckCompatibilityFeedback
+	(*NoResponse)(nil),                                                  // 75: NoResponse
 }
 var file_steammessages_store_steamclient_proto_depIdxs = []int32{
-	55, // 0: CStore_PurchaseReceiptInfo.line_items:type_name -> CStore_PurchaseReceiptInfo.LineItem
+	59, // 0: CStore_PurchaseReceiptInfo.line_items:type_name -> CStore_PurchaseReceiptInfo.LineItem
 	6,  // 1: CStore_RegisterCDKey_Response.purchase_receipt_info:type_name -> CStore_PurchaseReceiptInfo
-	56, // 2: CStore_GetRecommendedTagsForUser_Response.tags:type_name -> CStore_GetRecommendedTagsForUser_Response.Tag
-	57, // 3: CStore_GetMostPopularTags_Response.tags:type_name -> CStore_GetMostPopularTags_Response.Tag
-	58, // 4: CStore_GetLocalizedNameForTags_Response.tags:type_name -> CStore_GetLocalizedNameForTags_Response.Tag
-	59, // 5: CStore_GetTagList_Response.tags:type_name -> CStore_GetTagList_Response.Tag
+	60, // 2: CStore_GetRecommendedTagsForUser_Response.tags:type_name -> CStore_GetRecommendedTagsForUser_Response.Tag
+	61, // 3: CStore_GetMostPopularTags_Response.tags:type_name -> CStore_GetMostPopularTags_Response.Tag
+	62, // 4: CStore_GetLocalizedNameForTags_Response.tags:type_name -> CStore_GetLocalizedNameForTags_Response.Tag
+	63, // 5: CStore_GetTagList_Response.tags:type_name -> CStore_GetTagList_Response.Tag
 	0,  // 6: CStore_GetDiscoveryQueue_Request.queue_type:type_name -> EStoreDiscoveryQueueType
 	16, // 7: CStore_GetDiscoveryQueue_Request.settings:type_name -> CStoreDiscoveryQueueSettings
-	63, // 8: CStore_GetDiscoveryQueue_Request.store_page_filter:type_name -> CStorePageFilter
-	64, // 9: CStore_GetDiscoveryQueue_Request.context:type_name -> StoreBrowseContext
-	65, // 10: CStore_GetDiscoveryQueue_Request.data_request:type_name -> StoreBrowseItemDataRequest
+	67, // 8: CStore_GetDiscoveryQueue_Request.store_page_filter:type_name -> CStorePageFilter
+	68, // 9: CStore_GetDiscoveryQueue_Request.context:type_name -> StoreBrowseContext
+	69, // 10: CStore_GetDiscoveryQueue_Request.data_request:type_name -> StoreBrowseItemDataRequest
 	16, // 11: CStore_GetDiscoveryQueue_Response.settings:type_name -> CStoreDiscoveryQueueSettings
-	66, // 12: CStore_GetDiscoveryQueue_Response.store_items:type_name -> StoreItem
+	70, // 12: CStore_GetDiscoveryQueue_Response.store_items:type_name -> StoreItem
 	0,  // 13: CStore_GetDiscoveryQueueSettings_Request.queue_type:type_name -> EStoreDiscoveryQueueType
-	63, // 14: CStore_GetDiscoveryQueueSettings_Request.store_page_filter:type_name -> CStorePageFilter
+	67, // 14: CStore_GetDiscoveryQueueSettings_Request.store_page_filter:type_name -> CStorePageFilter
 	16, // 15: CStore_GetDiscoveryQueueSettings_Response.settings:type_name -> CStoreDiscoveryQueueSettings
 	0,  // 16: CStore_SkipDiscoveryQueueItem_Request.queue_type:type_name -> EStoreDiscoveryQueueType
-	63, // 17: CStore_SkipDiscoveryQueueItem_Request.store_page_filter:type_name -> CStorePageFilter
+	67, // 17: CStore_SkipDiscoveryQueueItem_Request.store_page_filter:type_name -> CStorePageFilter
 	0,  // 18: CStore_GetUserGameInterestState_Response.in_queues:type_name -> EStoreDiscoveryQueueType
 	0,  // 19: CStore_GetUserGameInterestState_Response.queues_with_skip:type_name -> EStoreDiscoveryQueueType
-	60, // 20: CStore_GetUserGameInterestState_Response.queues:type_name -> CStore_GetUserGameInterestState_Response.InQueue
+	64, // 20: CStore_GetUserGameInterestState_Response.queues:type_name -> CStore_GetUserGameInterestState_Response.InQueue
 	1,  // 21: CStore_GetUserGameInterestState_Response.beta_status:type_name -> EPlaytestStatus
 	0,  // 22: CStore_GetDiscoveryQueueSkippedApps_Request.queue_type:type_name -> EStoreDiscoveryQueueType
-	63, // 23: CStore_GetDiscoveryQueueSkippedApps_Request.store_page_filter:type_name -> CStorePageFilter
+	67, // 23: CStore_GetDiscoveryQueueSkippedApps_Request.store_page_filter:type_name -> CStorePageFilter
 	2,  // 24: CStore_ReportApp_Request.report_type:type_name -> EAppReportType
 	3,  // 25: CStore_UserPreferences.review_score_preference:type_name -> EUserReviewScorePreference
-	67, // 26: CStore_UserPreferences.provide_deck_feedback:type_name -> EProvideDeckFeedbackPreference
-	61, // 27: CStore_UserTagPreferences.tags_to_exclude:type_name -> CStore_UserTagPreferences.Tag
-	30, // 28: CStore_GetStorePreferences_Response.preferences:type_name -> CStore_UserPreferences
-	31, // 29: CStore_GetStorePreferences_Response.tag_preferences:type_name -> CStore_UserTagPreferences
-	68, // 30: CStore_GetStorePreferences_Response.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
-	62, // 31: CStore_GetTrendingAppsAmongFriends_Response.trending_apps:type_name -> CStore_GetTrendingAppsAmongFriends_Response.TrendingAppData
+	71, // 26: CStore_UserPreferences.provide_deck_feedback:type_name -> EProvideDeckFeedbackPreference
+	65, // 27: CStore_UserTagPreferences.tags_to_exclude:type_name -> CStore_UserTagPreferences.Tag
+	34, // 28: CStore_GetStorePreferences_Response.preferences:type_name -> CStore_UserPreferences
+	35, // 29: CStore_GetStorePreferences_Response.tag_preferences:type_name -> CStore_UserTagPreferences
+	72, // 30: CStore_GetStorePreferences_Response.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
+	66, // 31: CStore_GetTrendingAppsAmongFriends_Response.trending_apps:type_name -> CStore_GetTrendingAppsAmongFriends_Response.TrendingAppData
 	4,  // 32: CStore_MigratePartnerLinkTracking_Notification.backfill_source:type_name -> EPartnerLinkTrackingBackfillSource
-	69, // 33: CStore_UpdatePackageReservations_Response.reservation_status:type_name -> CPackageReservationStatus
-	42, // 34: CStore_SetReservationPositionMessage_Request.settings:type_name -> CReservationPositionMessage
-	42, // 35: CStore_GetAllReservationPositionMessages_Response.settings:type_name -> CReservationPositionMessage
-	70, // 36: CSteamDeckCompatibility_SetFeedback_Request.feedback:type_name -> ESteamDeckCompatibilityFeedback
-	70, // 37: CSteamDeckCompatibility_ShouldPrompt_Response.existing_feedback:type_name -> ESteamDeckCompatibilityFeedback
-	30, // 38: CStore_StorePreferencesChanged_Notification.preferences:type_name -> CStore_UserPreferences
-	31, // 39: CStore_StorePreferencesChanged_Notification.tag_preferences:type_name -> CStore_UserTagPreferences
-	68, // 40: CStore_StorePreferencesChanged_Notification.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
+	73, // 33: CStore_UpdatePackageReservations_Response.reservation_status:type_name -> CPackageReservationStatus
+	46, // 34: CStore_SetReservationPositionMessage_Request.settings:type_name -> CReservationPositionMessage
+	46, // 35: CStore_GetAllReservationPositionMessages_Response.settings:type_name -> CReservationPositionMessage
+	74, // 36: CSteamDeckCompatibility_SetFeedback_Request.feedback:type_name -> ESteamDeckCompatibilityFeedback
+	74, // 37: CSteamDeckCompatibility_ShouldPrompt_Response.existing_feedback:type_name -> ESteamDeckCompatibilityFeedback
+	34, // 38: CStore_StorePreferencesChanged_Notification.preferences:type_name -> CStore_UserPreferences
+	35, // 39: CStore_StorePreferencesChanged_Notification.tag_preferences:type_name -> CStore_UserTagPreferences
+	72, // 40: CStore_StorePreferencesChanged_Notification.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
 	0,  // 41: CStore_GetUserGameInterestState_Response.InQueue.type:type_name -> EStoreDiscoveryQueueType
 	5,  // 42: Store.RegisterCDKey:input_type -> CStore_RegisterCDKey_Request
 	8,  // 43: Store.GetRecommendedTagsForUser:input_type -> CStore_GetRecommendedTagsForUser_Request
@@ -4473,47 +4663,51 @@ var file_steammessages_store_steamclient_proto_depIdxs = []int32{
 	19, // 48: Store.GetDiscoveryQueueSettings:input_type -> CStore_GetDiscoveryQueueSettings_Request
 	21, // 49: Store.SkipDiscoveryQueueItem:input_type -> CStore_SkipDiscoveryQueueItem_Request
 	23, // 50: Store.GetUserGameInterestState:input_type -> CStore_GetUserGameInterestState_Request
-	25, // 51: Store.GetDiscoveryQueueSkippedApps:input_type -> CStore_GetDiscoveryQueueSkippedApps_Request
-	27, // 52: Store.ReportApp:input_type -> CStore_ReportApp_Request
-	29, // 53: Store.GetStorePreferences:input_type -> CStore_GetStorePreferences_Request
-	33, // 54: Store.GetTrendingAppsAmongFriends:input_type -> CStore_GetTrendingAppsAmongFriends_Request
-	35, // 55: Store.MigratePartnerLinkTracking:input_type -> CStore_MigratePartnerLinkTracking_Notification
-	36, // 56: Store.UpdatePackageReservations:input_type -> CStore_UpdatePackageReservations_Request
-	38, // 57: Store.GetWishlistDemoEmailStatus:input_type -> CStore_GetWishlistDemoEmailStatus_Request
-	40, // 58: Store.QueueWishlistDemoEmailToFire:input_type -> CStore_QueueWishlistDemoEmailToFire_Request
-	43, // 59: Store.SetReservationPositionMessage:input_type -> CStore_SetReservationPositionMessage_Request
-	45, // 60: Store.DeleteReservationPositionMessage:input_type -> CStore_DeleteReservationPositionMessage_Request
-	47, // 61: Store.GetAllReservationPositionMessages:input_type -> CStore_GetAllReservationPositionMessages_Request
-	49, // 62: Store.ReloadAllReservationPositionMessages:input_type -> CStore_ReloadAllReservationPositionMessages_Notification
-	50, // 63: Store.SetCompatibilityFeedback:input_type -> CSteamDeckCompatibility_SetFeedback_Request
-	52, // 64: Store.ShouldPromptForCompatibilityFeedback:input_type -> CSteamDeckCompatibility_ShouldPrompt_Request
-	54, // 65: StoreClient.NotifyStorePreferencesChanged:input_type -> CStore_StorePreferencesChanged_Notification
-	7,  // 66: Store.RegisterCDKey:output_type -> CStore_RegisterCDKey_Response
-	9,  // 67: Store.GetRecommendedTagsForUser:output_type -> CStore_GetRecommendedTagsForUser_Response
-	11, // 68: Store.GetMostPopularTags:output_type -> CStore_GetMostPopularTags_Response
-	13, // 69: Store.GetLocalizedNameForTags:output_type -> CStore_GetLocalizedNameForTags_Response
-	15, // 70: Store.GetTagList:output_type -> CStore_GetTagList_Response
-	18, // 71: Store.GetDiscoveryQueue:output_type -> CStore_GetDiscoveryQueue_Response
-	20, // 72: Store.GetDiscoveryQueueSettings:output_type -> CStore_GetDiscoveryQueueSettings_Response
-	22, // 73: Store.SkipDiscoveryQueueItem:output_type -> CStore_SkipDiscoveryQueueItem_Response
-	24, // 74: Store.GetUserGameInterestState:output_type -> CStore_GetUserGameInterestState_Response
-	26, // 75: Store.GetDiscoveryQueueSkippedApps:output_type -> CStore_GetDiscoveryQueueSkippedApps_Response
-	28, // 76: Store.ReportApp:output_type -> CStore_ReportApp_Response
-	32, // 77: Store.GetStorePreferences:output_type -> CStore_GetStorePreferences_Response
-	34, // 78: Store.GetTrendingAppsAmongFriends:output_type -> CStore_GetTrendingAppsAmongFriends_Response
-	71, // 79: Store.MigratePartnerLinkTracking:output_type -> NoResponse
-	37, // 80: Store.UpdatePackageReservations:output_type -> CStore_UpdatePackageReservations_Response
-	39, // 81: Store.GetWishlistDemoEmailStatus:output_type -> CStore_GetWishlistDemoEmailStatus_Response
-	41, // 82: Store.QueueWishlistDemoEmailToFire:output_type -> CStore_QueueWishlistDemoEmailToFire_Response
-	44, // 83: Store.SetReservationPositionMessage:output_type -> CStore_SetReservationPositionMessage_Response
-	46, // 84: Store.DeleteReservationPositionMessage:output_type -> CStore_DeleteReservationPositionMessage_Response
-	48, // 85: Store.GetAllReservationPositionMessages:output_type -> CStore_GetAllReservationPositionMessages_Response
-	71, // 86: Store.ReloadAllReservationPositionMessages:output_type -> NoResponse
-	51, // 87: Store.SetCompatibilityFeedback:output_type -> CSteamDeckCompatibility_SetFeedback_Response
-	53, // 88: Store.ShouldPromptForCompatibilityFeedback:output_type -> CSteamDeckCompatibility_ShouldPrompt_Response
-	71, // 89: StoreClient.NotifyStorePreferencesChanged:output_type -> NoResponse
-	66, // [66:90] is the sub-list for method output_type
-	42, // [42:66] is the sub-list for method input_type
+	25, // 51: Store.GetGamesFollowed:input_type -> CStore_GetGamesFollowed_Request
+	27, // 52: Store.GetGamesFollowedCount:input_type -> CStore_GetGamesFollowedCount_Request
+	29, // 53: Store.GetDiscoveryQueueSkippedApps:input_type -> CStore_GetDiscoveryQueueSkippedApps_Request
+	31, // 54: Store.ReportApp:input_type -> CStore_ReportApp_Request
+	33, // 55: Store.GetStorePreferences:input_type -> CStore_GetStorePreferences_Request
+	37, // 56: Store.GetTrendingAppsAmongFriends:input_type -> CStore_GetTrendingAppsAmongFriends_Request
+	39, // 57: Store.MigratePartnerLinkTracking:input_type -> CStore_MigratePartnerLinkTracking_Notification
+	40, // 58: Store.UpdatePackageReservations:input_type -> CStore_UpdatePackageReservations_Request
+	42, // 59: Store.GetWishlistDemoEmailStatus:input_type -> CStore_GetWishlistDemoEmailStatus_Request
+	44, // 60: Store.QueueWishlistDemoEmailToFire:input_type -> CStore_QueueWishlistDemoEmailToFire_Request
+	47, // 61: Store.SetReservationPositionMessage:input_type -> CStore_SetReservationPositionMessage_Request
+	49, // 62: Store.DeleteReservationPositionMessage:input_type -> CStore_DeleteReservationPositionMessage_Request
+	51, // 63: Store.GetAllReservationPositionMessages:input_type -> CStore_GetAllReservationPositionMessages_Request
+	53, // 64: Store.ReloadAllReservationPositionMessages:input_type -> CStore_ReloadAllReservationPositionMessages_Notification
+	54, // 65: Store.SetCompatibilityFeedback:input_type -> CSteamDeckCompatibility_SetFeedback_Request
+	56, // 66: Store.ShouldPromptForCompatibilityFeedback:input_type -> CSteamDeckCompatibility_ShouldPrompt_Request
+	58, // 67: StoreClient.NotifyStorePreferencesChanged:input_type -> CStore_StorePreferencesChanged_Notification
+	7,  // 68: Store.RegisterCDKey:output_type -> CStore_RegisterCDKey_Response
+	9,  // 69: Store.GetRecommendedTagsForUser:output_type -> CStore_GetRecommendedTagsForUser_Response
+	11, // 70: Store.GetMostPopularTags:output_type -> CStore_GetMostPopularTags_Response
+	13, // 71: Store.GetLocalizedNameForTags:output_type -> CStore_GetLocalizedNameForTags_Response
+	15, // 72: Store.GetTagList:output_type -> CStore_GetTagList_Response
+	18, // 73: Store.GetDiscoveryQueue:output_type -> CStore_GetDiscoveryQueue_Response
+	20, // 74: Store.GetDiscoveryQueueSettings:output_type -> CStore_GetDiscoveryQueueSettings_Response
+	22, // 75: Store.SkipDiscoveryQueueItem:output_type -> CStore_SkipDiscoveryQueueItem_Response
+	24, // 76: Store.GetUserGameInterestState:output_type -> CStore_GetUserGameInterestState_Response
+	26, // 77: Store.GetGamesFollowed:output_type -> CStore_GetGamesFollowed_Response
+	28, // 78: Store.GetGamesFollowedCount:output_type -> CStore_GetGamesFollowedCount_Response
+	30, // 79: Store.GetDiscoveryQueueSkippedApps:output_type -> CStore_GetDiscoveryQueueSkippedApps_Response
+	32, // 80: Store.ReportApp:output_type -> CStore_ReportApp_Response
+	36, // 81: Store.GetStorePreferences:output_type -> CStore_GetStorePreferences_Response
+	38, // 82: Store.GetTrendingAppsAmongFriends:output_type -> CStore_GetTrendingAppsAmongFriends_Response
+	75, // 83: Store.MigratePartnerLinkTracking:output_type -> NoResponse
+	41, // 84: Store.UpdatePackageReservations:output_type -> CStore_UpdatePackageReservations_Response
+	43, // 85: Store.GetWishlistDemoEmailStatus:output_type -> CStore_GetWishlistDemoEmailStatus_Response
+	45, // 86: Store.QueueWishlistDemoEmailToFire:output_type -> CStore_QueueWishlistDemoEmailToFire_Response
+	48, // 87: Store.SetReservationPositionMessage:output_type -> CStore_SetReservationPositionMessage_Response
+	50, // 88: Store.DeleteReservationPositionMessage:output_type -> CStore_DeleteReservationPositionMessage_Response
+	52, // 89: Store.GetAllReservationPositionMessages:output_type -> CStore_GetAllReservationPositionMessages_Response
+	75, // 90: Store.ReloadAllReservationPositionMessages:output_type -> NoResponse
+	55, // 91: Store.SetCompatibilityFeedback:output_type -> CSteamDeckCompatibility_SetFeedback_Response
+	57, // 92: Store.ShouldPromptForCompatibilityFeedback:output_type -> CSteamDeckCompatibility_ShouldPrompt_Response
+	75, // 93: StoreClient.NotifyStorePreferencesChanged:output_type -> NoResponse
+	68, // [68:94] is the sub-list for method output_type
+	42, // [42:68] is the sub-list for method input_type
 	42, // [42:42] is the sub-list for extension type_name
 	42, // [42:42] is the sub-list for extension extendee
 	0,  // [0:42] is the sub-list for field type_name
@@ -4535,7 +4729,7 @@ func file_steammessages_store_steamclient_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_store_steamclient_proto_rawDesc), len(file_steammessages_store_steamclient_proto_rawDesc)),
 			NumEnums:      5,
-			NumMessages:   58,
+			NumMessages:   62,
 			NumExtensions: 0,
 			NumServices:   2,
 		},

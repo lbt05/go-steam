@@ -411,66 +411,6 @@ func (x *CMsgClientStatsUpdated) GetUpdatedStats() []*CMsgClientStatsUpdated_Upd
 	return nil
 }
 
-type CMsgClientStoreUserStats struct {
-	state         protoimpl.MessageState                     `protogen:"open.v1"`
-	GameId        *uint64                                    `protobuf:"fixed64,1,opt,name=game_id,json=gameId" json:"game_id,omitempty"`
-	ExplicitReset *bool                                      `protobuf:"varint,2,opt,name=explicit_reset,json=explicitReset" json:"explicit_reset,omitempty"`
-	StatsToStore  []*CMsgClientStoreUserStats_Stats_To_Store `protobuf:"bytes,3,rep,name=stats_to_store,json=statsToStore" json:"stats_to_store,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CMsgClientStoreUserStats) Reset() {
-	*x = CMsgClientStoreUserStats{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CMsgClientStoreUserStats) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CMsgClientStoreUserStats) ProtoMessage() {}
-
-func (x *CMsgClientStoreUserStats) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CMsgClientStoreUserStats.ProtoReflect.Descriptor instead.
-func (*CMsgClientStoreUserStats) Descriptor() ([]byte, []int) {
-	return file_steammessages_clientserver_userstats_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *CMsgClientStoreUserStats) GetGameId() uint64 {
-	if x != nil && x.GameId != nil {
-		return *x.GameId
-	}
-	return 0
-}
-
-func (x *CMsgClientStoreUserStats) GetExplicitReset() bool {
-	if x != nil && x.ExplicitReset != nil {
-		return *x.ExplicitReset
-	}
-	return false
-}
-
-func (x *CMsgClientStoreUserStats) GetStatsToStore() []*CMsgClientStoreUserStats_Stats_To_Store {
-	if x != nil {
-		return x.StatsToStore
-	}
-	return nil
-}
-
 type CMsgClientGetUserStatsResponse_Stats struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StatId        *uint32                `protobuf:"varint,1,opt,name=stat_id,json=statId" json:"stat_id,omitempty"`
@@ -481,7 +421,7 @@ type CMsgClientGetUserStatsResponse_Stats struct {
 
 func (x *CMsgClientGetUserStatsResponse_Stats) Reset() {
 	*x = CMsgClientGetUserStatsResponse_Stats{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[6]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -493,7 +433,7 @@ func (x *CMsgClientGetUserStatsResponse_Stats) String() string {
 func (*CMsgClientGetUserStatsResponse_Stats) ProtoMessage() {}
 
 func (x *CMsgClientGetUserStatsResponse_Stats) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[6]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -533,7 +473,7 @@ type CMsgClientGetUserStatsResponse_Achievement_Blocks struct {
 
 func (x *CMsgClientGetUserStatsResponse_Achievement_Blocks) Reset() {
 	*x = CMsgClientGetUserStatsResponse_Achievement_Blocks{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[7]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -545,7 +485,7 @@ func (x *CMsgClientGetUserStatsResponse_Achievement_Blocks) String() string {
 func (*CMsgClientGetUserStatsResponse_Achievement_Blocks) ProtoMessage() {}
 
 func (x *CMsgClientGetUserStatsResponse_Achievement_Blocks) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[7]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -585,7 +525,7 @@ type CMsgClientStoreUserStatsResponse_Stats_Failed_Validation struct {
 
 func (x *CMsgClientStoreUserStatsResponse_Stats_Failed_Validation) Reset() {
 	*x = CMsgClientStoreUserStatsResponse_Stats_Failed_Validation{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[8]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -597,7 +537,7 @@ func (x *CMsgClientStoreUserStatsResponse_Stats_Failed_Validation) String() stri
 func (*CMsgClientStoreUserStatsResponse_Stats_Failed_Validation) ProtoMessage() {}
 
 func (x *CMsgClientStoreUserStatsResponse_Stats_Failed_Validation) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[8]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -637,7 +577,7 @@ type CMsgClientStoreUserStats2_Stats struct {
 
 func (x *CMsgClientStoreUserStats2_Stats) Reset() {
 	*x = CMsgClientStoreUserStats2_Stats{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[9]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -649,7 +589,7 @@ func (x *CMsgClientStoreUserStats2_Stats) String() string {
 func (*CMsgClientStoreUserStats2_Stats) ProtoMessage() {}
 
 func (x *CMsgClientStoreUserStats2_Stats) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[9]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -689,7 +629,7 @@ type CMsgClientStatsUpdated_Updated_Stats struct {
 
 func (x *CMsgClientStatsUpdated_Updated_Stats) Reset() {
 	*x = CMsgClientStatsUpdated_Updated_Stats{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[10]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -701,7 +641,7 @@ func (x *CMsgClientStatsUpdated_Updated_Stats) String() string {
 func (*CMsgClientStatsUpdated_Updated_Stats) ProtoMessage() {}
 
 func (x *CMsgClientStatsUpdated_Updated_Stats) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[10]
+	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -725,58 +665,6 @@ func (x *CMsgClientStatsUpdated_Updated_Stats) GetStatId() uint32 {
 }
 
 func (x *CMsgClientStatsUpdated_Updated_Stats) GetStatValue() uint32 {
-	if x != nil && x.StatValue != nil {
-		return *x.StatValue
-	}
-	return 0
-}
-
-type CMsgClientStoreUserStats_Stats_To_Store struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StatId        *uint32                `protobuf:"varint,1,opt,name=stat_id,json=statId" json:"stat_id,omitempty"`
-	StatValue     *uint32                `protobuf:"varint,2,opt,name=stat_value,json=statValue" json:"stat_value,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CMsgClientStoreUserStats_Stats_To_Store) Reset() {
-	*x = CMsgClientStoreUserStats_Stats_To_Store{}
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CMsgClientStoreUserStats_Stats_To_Store) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CMsgClientStoreUserStats_Stats_To_Store) ProtoMessage() {}
-
-func (x *CMsgClientStoreUserStats_Stats_To_Store) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientserver_userstats_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CMsgClientStoreUserStats_Stats_To_Store.ProtoReflect.Descriptor instead.
-func (*CMsgClientStoreUserStats_Stats_To_Store) Descriptor() ([]byte, []int) {
-	return file_steammessages_clientserver_userstats_proto_rawDescGZIP(), []int{5, 0}
-}
-
-func (x *CMsgClientStoreUserStats_Stats_To_Store) GetStatId() uint32 {
-	if x != nil && x.StatId != nil {
-		return *x.StatId
-	}
-	return 0
-}
-
-func (x *CMsgClientStoreUserStats_Stats_To_Store) GetStatValue() uint32 {
 	if x != nil && x.StatValue != nil {
 		return *x.StatValue
 	}
@@ -836,14 +724,6 @@ const file_steammessages_clientserver_userstats_proto_rawDesc = "" +
 	"\rUpdated_Stats\x12\x17\n" +
 	"\astat_id\x18\x01 \x01(\rR\x06statId\x12\x1d\n" +
 	"\n" +
-	"stat_value\x18\x02 \x01(\rR\tstatValue\"\xf4\x01\n" +
-	"\x18CMsgClientStoreUserStats\x12\x17\n" +
-	"\agame_id\x18\x01 \x01(\x06R\x06gameId\x12%\n" +
-	"\x0eexplicit_reset\x18\x02 \x01(\bR\rexplicitReset\x12N\n" +
-	"\x0estats_to_store\x18\x03 \x03(\v2(.CMsgClientStoreUserStats.Stats_To_StoreR\fstatsToStore\x1aH\n" +
-	"\x0eStats_To_Store\x12\x17\n" +
-	"\astat_id\x18\x01 \x01(\rR\x06statId\x12\x1d\n" +
-	"\n" +
 	"stat_value\x18\x02 \x01(\rR\tstatValueB\x05H\x01\x80\x01\x00"
 
 var (
@@ -858,33 +738,30 @@ func file_steammessages_clientserver_userstats_proto_rawDescGZIP() []byte {
 	return file_steammessages_clientserver_userstats_proto_rawDescData
 }
 
-var file_steammessages_clientserver_userstats_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_steammessages_clientserver_userstats_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_steammessages_clientserver_userstats_proto_goTypes = []any{
 	(*CMsgClientGetUserStats)(nil),                                   // 0: CMsgClientGetUserStats
 	(*CMsgClientGetUserStatsResponse)(nil),                           // 1: CMsgClientGetUserStatsResponse
 	(*CMsgClientStoreUserStatsResponse)(nil),                         // 2: CMsgClientStoreUserStatsResponse
 	(*CMsgClientStoreUserStats2)(nil),                                // 3: CMsgClientStoreUserStats2
 	(*CMsgClientStatsUpdated)(nil),                                   // 4: CMsgClientStatsUpdated
-	(*CMsgClientStoreUserStats)(nil),                                 // 5: CMsgClientStoreUserStats
-	(*CMsgClientGetUserStatsResponse_Stats)(nil),                     // 6: CMsgClientGetUserStatsResponse.Stats
-	(*CMsgClientGetUserStatsResponse_Achievement_Blocks)(nil),        // 7: CMsgClientGetUserStatsResponse.Achievement_Blocks
-	(*CMsgClientStoreUserStatsResponse_Stats_Failed_Validation)(nil), // 8: CMsgClientStoreUserStatsResponse.Stats_Failed_Validation
-	(*CMsgClientStoreUserStats2_Stats)(nil),                          // 9: CMsgClientStoreUserStats2.Stats
-	(*CMsgClientStatsUpdated_Updated_Stats)(nil),                     // 10: CMsgClientStatsUpdated.Updated_Stats
-	(*CMsgClientStoreUserStats_Stats_To_Store)(nil),                  // 11: CMsgClientStoreUserStats.Stats_To_Store
+	(*CMsgClientGetUserStatsResponse_Stats)(nil),                     // 5: CMsgClientGetUserStatsResponse.Stats
+	(*CMsgClientGetUserStatsResponse_Achievement_Blocks)(nil),        // 6: CMsgClientGetUserStatsResponse.Achievement_Blocks
+	(*CMsgClientStoreUserStatsResponse_Stats_Failed_Validation)(nil), // 7: CMsgClientStoreUserStatsResponse.Stats_Failed_Validation
+	(*CMsgClientStoreUserStats2_Stats)(nil),                          // 8: CMsgClientStoreUserStats2.Stats
+	(*CMsgClientStatsUpdated_Updated_Stats)(nil),                     // 9: CMsgClientStatsUpdated.Updated_Stats
 }
 var file_steammessages_clientserver_userstats_proto_depIdxs = []int32{
-	6,  // 0: CMsgClientGetUserStatsResponse.stats:type_name -> CMsgClientGetUserStatsResponse.Stats
-	7,  // 1: CMsgClientGetUserStatsResponse.achievement_blocks:type_name -> CMsgClientGetUserStatsResponse.Achievement_Blocks
-	8,  // 2: CMsgClientStoreUserStatsResponse.stats_failed_validation:type_name -> CMsgClientStoreUserStatsResponse.Stats_Failed_Validation
-	9,  // 3: CMsgClientStoreUserStats2.stats:type_name -> CMsgClientStoreUserStats2.Stats
-	10, // 4: CMsgClientStatsUpdated.updated_stats:type_name -> CMsgClientStatsUpdated.Updated_Stats
-	11, // 5: CMsgClientStoreUserStats.stats_to_store:type_name -> CMsgClientStoreUserStats.Stats_To_Store
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	5, // 0: CMsgClientGetUserStatsResponse.stats:type_name -> CMsgClientGetUserStatsResponse.Stats
+	6, // 1: CMsgClientGetUserStatsResponse.achievement_blocks:type_name -> CMsgClientGetUserStatsResponse.Achievement_Blocks
+	7, // 2: CMsgClientStoreUserStatsResponse.stats_failed_validation:type_name -> CMsgClientStoreUserStatsResponse.Stats_Failed_Validation
+	8, // 3: CMsgClientStoreUserStats2.stats:type_name -> CMsgClientStoreUserStats2.Stats
+	9, // 4: CMsgClientStatsUpdated.updated_stats:type_name -> CMsgClientStatsUpdated.Updated_Stats
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_clientserver_userstats_proto_init() }
@@ -899,7 +776,7 @@ func file_steammessages_clientserver_userstats_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_clientserver_userstats_proto_rawDesc), len(file_steammessages_clientserver_userstats_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

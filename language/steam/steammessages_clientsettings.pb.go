@@ -860,6 +860,15 @@ type CMsgClientSettings struct {
 	AccessibilityColorFilterName          *string                   `protobuf:"bytes,26009,opt,name=accessibility_color_filter_name,json=accessibilityColorFilterName" json:"accessibility_color_filter_name,omitempty"`
 	AccessibilityDesktopUiScale           *float32                  `protobuf:"fixed32,26010,opt,name=accessibility_desktop_ui_scale,json=accessibilityDesktopUiScale" json:"accessibility_desktop_ui_scale,omitempty"`
 	AccessibilityScreenReaderLocale       *string                   `protobuf:"bytes,26011,opt,name=accessibility_screen_reader_locale,json=accessibilityScreenReaderLocale" json:"accessibility_screen_reader_locale,omitempty"`
+	RemotePlayWifiApEnabled               *bool                     `protobuf:"varint,27000,opt,name=remote_play_wifi_ap_enabled,json=remotePlayWifiApEnabled" json:"remote_play_wifi_ap_enabled,omitempty"`
+	RemotePlayWifiApChannel_5Ghz          *int32                    `protobuf:"varint,27001,opt,name=remote_play_wifi_ap_channel_5ghz,json=remotePlayWifiApChannel5ghz" json:"remote_play_wifi_ap_channel_5ghz,omitempty"`
+	RemotePlayWifiApChannel_6Ghz          *int32                    `protobuf:"varint,27002,opt,name=remote_play_wifi_ap_channel_6ghz,json=remotePlayWifiApChannel6ghz" json:"remote_play_wifi_ap_channel_6ghz,omitempty"`
+	RemotePlayWifiApChannelWidth          *int32                    `protobuf:"varint,27003,opt,name=remote_play_wifi_ap_channel_width,json=remotePlayWifiApChannelWidth" json:"remote_play_wifi_ap_channel_width,omitempty"`
+	RemotePlayWifiApHotspotMode           *bool                     `protobuf:"varint,27004,opt,name=remote_play_wifi_ap_hotspot_mode,json=remotePlayWifiApHotspotMode" json:"remote_play_wifi_ap_hotspot_mode,omitempty"`
+	RemotePlayWifiApHotspotSsid           *string                   `protobuf:"bytes,27005,opt,name=remote_play_wifi_ap_hotspot_ssid,json=remotePlayWifiApHotspotSsid" json:"remote_play_wifi_ap_hotspot_ssid,omitempty"`
+	RemotePlayWifiApHotspotPassword       *string                   `protobuf:"bytes,27006,opt,name=remote_play_wifi_ap_hotspot_password,json=remotePlayWifiApHotspotPassword" json:"remote_play_wifi_ap_hotspot_password,omitempty"`
+	RemotePlayWifiApHotspotRouting        *string                   `protobuf:"bytes,27007,opt,name=remote_play_wifi_ap_hotspot_routing,json=remotePlayWifiApHotspotRouting" json:"remote_play_wifi_ap_hotspot_routing,omitempty"`
+	RemotePlayWifiApShowAdvanced          *bool                     `protobuf:"varint,27008,opt,name=remote_play_wifi_ap_show_advanced,json=remotePlayWifiApShowAdvanced" json:"remote_play_wifi_ap_show_advanced,omitempty"`
 	unknownFields                         protoimpl.UnknownFields
 	sizeCache                             protoimpl.SizeCache
 }
@@ -2454,6 +2463,69 @@ func (x *CMsgClientSettings) GetAccessibilityScreenReaderLocale() string {
 	return ""
 }
 
+func (x *CMsgClientSettings) GetRemotePlayWifiApEnabled() bool {
+	if x != nil && x.RemotePlayWifiApEnabled != nil {
+		return *x.RemotePlayWifiApEnabled
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApChannel_5Ghz() int32 {
+	if x != nil && x.RemotePlayWifiApChannel_5Ghz != nil {
+		return *x.RemotePlayWifiApChannel_5Ghz
+	}
+	return 0
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApChannel_6Ghz() int32 {
+	if x != nil && x.RemotePlayWifiApChannel_6Ghz != nil {
+		return *x.RemotePlayWifiApChannel_6Ghz
+	}
+	return 0
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApChannelWidth() int32 {
+	if x != nil && x.RemotePlayWifiApChannelWidth != nil {
+		return *x.RemotePlayWifiApChannelWidth
+	}
+	return 0
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApHotspotMode() bool {
+	if x != nil && x.RemotePlayWifiApHotspotMode != nil {
+		return *x.RemotePlayWifiApHotspotMode
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApHotspotSsid() string {
+	if x != nil && x.RemotePlayWifiApHotspotSsid != nil {
+		return *x.RemotePlayWifiApHotspotSsid
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApHotspotPassword() string {
+	if x != nil && x.RemotePlayWifiApHotspotPassword != nil {
+		return *x.RemotePlayWifiApHotspotPassword
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApHotspotRouting() string {
+	if x != nil && x.RemotePlayWifiApHotspotRouting != nil {
+		return *x.RemotePlayWifiApHotspotRouting
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetRemotePlayWifiApShowAdvanced() bool {
+	if x != nil && x.RemotePlayWifiApShowAdvanced != nil {
+		return *x.RemotePlayWifiApShowAdvanced
+	}
+	return false
+}
+
 var file_steammessages_clientsettings_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
@@ -2615,7 +2687,7 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"valueFloat\x12#\n" +
 	"\fvalue_string\x18\a \x01(\tH\x00R\vvalueString\x120\n" +
 	"\fvalue_hotkey\x18\b \x01(\v2\v.CMsgHotkeyH\x00R\vvalueHotkeyB\a\n" +
-	"\x05value\"\xe1\xb0\x01\n" +
+	"\x05value\"\xbd\xb9\x01\n" +
 	"\x12CMsgClientSettings\x12b\n" +
 	"\x15no_save_personal_info\x18\x01 \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'Software\\Valve\\Steam\\NoSavePersonalInfoR\x12noSavePersonalInfo\x12e\n" +
 	"\x16oobe_test_mode_enabled\x18\x02 \x01(\bB0\x80\xa6\x1d\x01\x8a\xa6\x1d(Software\\Valve\\Steam\\OOBETestModeEnabledR\x13oobeTestModeEnabled\x12.\n" +
@@ -2710,8 +2782,8 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x1adownload_while_app_running\x18\xca> \x01(\bB\x04\x80\xa6\x1d\x05R\x17downloadWhileAppRunning\x12P\n" +
 	"!download_throttle_while_streaming\x18\xcb> \x01(\bB\x04\x80\xa6\x1d\x05R\x1edownloadThrottleWhileStreaming\x12;\n" +
 	"\x16download_throttle_rate\x18\xcc> \x01(\x05B\x04\x80\xa6\x1d\x05R\x14downloadThrottleRate\x12D\n" +
-	"\x1bdefault_app_update_behavior\x18\xcd> \x01(\x05B\x04\x80\xa6\x1d\x05R\x18defaultAppUpdateBehavior\x12*\n" +
-	"\rcloud_enabled\x18\x90N \x01(\bB\x04\x80\xa6\x1d\x05R\fcloudEnabled\x12k\n" +
+	"\x1bdefault_app_update_behavior\x18\xcd> \x01(\x05B\x04\x80\xa6\x1d\x05R\x18defaultAppUpdateBehavior\x12S\n" +
+	"\rcloud_enabled\x18\x90N \x01(\bB-\x80\xa6\x1d\x02\x8a\xa6\x1d!Software\\Valve\\Steam\\CloudEnabled\x98\xa6\x1d\x01R\fcloudEnabled\x12k\n" +
 	"\x17show_screenshot_manager\x18\x91N \x01(\bB2\x80\xa6\x1d\x02\x8a\xa6\x1d*Software\\Valve\\Steam\\ShowScreenshotManagerR\x15showScreenshotManager\x12(\n" +
 	"\fmusic_volume\x18\xf8U \x01(\x05B\x04\x80\xa6\x1d\x05R\vmusicVolume\x12_\n" +
 	"\x18music_pause_on_app_start\x18\xf9U \x01(\bB&\x80\xa6\x1d\x01\x8a\xa6\x1d\x1eMusic\\PauseOnAppStartedProcessR\x14musicPauseOnAppStart\x12Y\n" +
@@ -2842,7 +2914,16 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x1faccessibility_minimum_font_size\x18\x98\xcb\x01 \x01(\rB)\x80\xa6\x1d\x03\x8a\xa6\x1d\x1dAccessibility/MinimumFontSize\xa0\xa6\x1d\x00R\x1caccessibilityMinimumFontSize\x12r\n" +
 	"\x1faccessibility_color_filter_name\x18\x99\xcb\x01 \x01(\tB)\x80\xa6\x1d\x01\x8a\xa6\x1d\x1dAccessibility/ColorFilterName\xba\xa6\x1d\x00R\x1caccessibilityColorFilterName\x12r\n" +
 	"\x1eaccessibility_desktop_ui_scale\x18\x9a\xcb\x01 \x01(\x02B+\x80\xa6\x1d\x01\x8a\xa6\x1d\x1cAccessibility/DesktopUIScale\xb5\xa6\x1d\x00\x00\x80?R\x1baccessibilityDesktopUiScale\x12\x7f\n" +
-	"\"accessibility_screen_reader_locale\x18\x9b\xcb\x01 \x01(\tB0\x80\xa6\x1d\x01\x8a\xa6\x1d Accessibility/ScreenReaderLocale\xba\xa6\x1d\x04autoR\x1faccessibilityScreenReaderLocale*\x95\x02\n" +
+	"\"accessibility_screen_reader_locale\x18\x9b\xcb\x01 \x01(\tB0\x80\xa6\x1d\x01\x8a\xa6\x1d Accessibility/ScreenReaderLocale\xba\xa6\x1d\x04autoR\x1faccessibilityScreenReaderLocale\x12f\n" +
+	"\x1bremote_play_wifi_ap_enabled\x18\xf8\xd2\x01 \x01(\bB&\x80\xa6\x1d\x01\x8a\xa6\x1d\x1astreaming_v2\\WifiAPEnabled\x98\xa6\x1d\x01R\x17remotePlayWifiApEnabled\x12s\n" +
+	" remote_play_wifi_ap_channel_5ghz\x18\xf9\xd2\x01 \x01(\x05B*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPChannel5GHz\xa0\xa6\x1d\x00R\x1bremotePlayWifiApChannel5ghz\x12s\n" +
+	" remote_play_wifi_ap_channel_6ghz\x18\xfa\xd2\x01 \x01(\x05B*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPChannel6GHz\xa0\xa6\x1d\x00R\x1bremotePlayWifiApChannel6ghz\x12v\n" +
+	"!remote_play_wifi_ap_channel_width\x18\xfb\xd2\x01 \x01(\x05B+\x80\xa6\x1d\x01\x8a\xa6\x1d\x1fstreaming_v2\\WifiAPChannelWidth\xa0\xa6\x1d\x00R\x1cremotePlayWifiApChannelWidth\x12s\n" +
+	" remote_play_wifi_ap_hotspot_mode\x18\xfc\xd2\x01 \x01(\bB*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPHotspotMode\x98\xa6\x1d\x00R\x1bremotePlayWifiApHotspotMode\x12s\n" +
+	" remote_play_wifi_ap_hotspot_ssid\x18\xfd\xd2\x01 \x01(\tB*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPHotspotSSID\xba\xa6\x1d\x00R\x1bremotePlayWifiApHotspotSsid\x12\x7f\n" +
+	"$remote_play_wifi_ap_hotspot_password\x18\xfe\xd2\x01 \x01(\tB.\x80\xa6\x1d\x01\x8a\xa6\x1d\"streaming_v2\\WifiAPHotspotPassword\xba\xa6\x1d\x00R\x1fremotePlayWifiApHotspotPassword\x12\x83\x01\n" +
+	"#remote_play_wifi_ap_hotspot_routing\x18\xff\xd2\x01 \x01(\tB4\x80\xa6\x1d\x01\x8a\xa6\x1d!streaming_v2\\WifiAPHotspotRouting\xba\xa6\x1d\anorouteR\x1eremotePlayWifiApHotspotRouting\x12v\n" +
+	"!remote_play_wifi_ap_show_advanced\x18\x80\xd3\x01 \x01(\bB+\x80\xa6\x1d\x03\x8a\xa6\x1d\x1fstreaming_v2/WifiAPShowAdvanced\x98\xa6\x1d\x00R\x1cremotePlayWifiApShowAdvanced*\x95\x02\n" +
 	"\x13EClientSettingStore\x12!\n" +
 	"\x1dk_EClientSettingStore_Invalid\x10\x00\x12-\n" +
 	")k_EClientSettingStore_ConfigStore_Install\x10\x01\x121\n" +

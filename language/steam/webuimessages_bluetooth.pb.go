@@ -786,6 +786,102 @@ func (*CBluetoothManager_SetDiscovering_Response) Descriptor() ([]byte, []int) {
 	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{12}
 }
 
+type CBluetoothManager_SetLoginAdvertising_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Enabled       *bool                  `protobuf:"varint,1,opt,name=enabled" json:"enabled,omitempty"`
+	ClientId      *uint64                `protobuf:"varint,2,opt,name=client_id,json=clientId" json:"client_id,omitempty"`
+	DeviceId      *uint32                `protobuf:"varint,3,opt,name=device_id,json=deviceId" json:"device_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Request) Reset() {
+	*x = CBluetoothManager_SetLoginAdvertising_Request{}
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CBluetoothManager_SetLoginAdvertising_Request) ProtoMessage() {}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CBluetoothManager_SetLoginAdvertising_Request.ProtoReflect.Descriptor instead.
+func (*CBluetoothManager_SetLoginAdvertising_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Request) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Request) GetClientId() uint64 {
+	if x != nil && x.ClientId != nil {
+		return *x.ClientId
+	}
+	return 0
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Request) GetDeviceId() uint32 {
+	if x != nil && x.DeviceId != nil {
+		return *x.DeviceId
+	}
+	return 0
+}
+
+type CBluetoothManager_SetLoginAdvertising_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Response) Reset() {
+	*x = CBluetoothManager_SetLoginAdvertising_Response{}
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CBluetoothManager_SetLoginAdvertising_Response) ProtoMessage() {}
+
+func (x *CBluetoothManager_SetLoginAdvertising_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CBluetoothManager_SetLoginAdvertising_Response.ProtoReflect.Descriptor instead.
+func (*CBluetoothManager_SetLoginAdvertising_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{14}
+}
+
 type CBluetoothManager_Pair_Request struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Device        *uint32                `protobuf:"varint,1,opt,name=device" json:"device,omitempty"`
@@ -795,7 +891,7 @@ type CBluetoothManager_Pair_Request struct {
 
 func (x *CBluetoothManager_Pair_Request) Reset() {
 	*x = CBluetoothManager_Pair_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[13]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -807,7 +903,7 @@ func (x *CBluetoothManager_Pair_Request) String() string {
 func (*CBluetoothManager_Pair_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_Pair_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[13]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -820,7 +916,7 @@ func (x *CBluetoothManager_Pair_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CBluetoothManager_Pair_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Pair_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{13}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CBluetoothManager_Pair_Request) GetDevice() uint32 {
@@ -838,7 +934,7 @@ type CBluetoothManager_Pair_Response struct {
 
 func (x *CBluetoothManager_Pair_Response) Reset() {
 	*x = CBluetoothManager_Pair_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[14]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -850,7 +946,7 @@ func (x *CBluetoothManager_Pair_Response) String() string {
 func (*CBluetoothManager_Pair_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_Pair_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[14]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -863,7 +959,7 @@ func (x *CBluetoothManager_Pair_Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CBluetoothManager_Pair_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Pair_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{14}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{16}
 }
 
 type CBluetoothManager_CancelPair_Request struct {
@@ -875,7 +971,7 @@ type CBluetoothManager_CancelPair_Request struct {
 
 func (x *CBluetoothManager_CancelPair_Request) Reset() {
 	*x = CBluetoothManager_CancelPair_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[15]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -887,7 +983,7 @@ func (x *CBluetoothManager_CancelPair_Request) String() string {
 func (*CBluetoothManager_CancelPair_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_CancelPair_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[15]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -900,7 +996,7 @@ func (x *CBluetoothManager_CancelPair_Request) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CBluetoothManager_CancelPair_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_CancelPair_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{15}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CBluetoothManager_CancelPair_Request) GetDevice() uint32 {
@@ -918,7 +1014,7 @@ type CBluetoothManager_CancelPair_Response struct {
 
 func (x *CBluetoothManager_CancelPair_Response) Reset() {
 	*x = CBluetoothManager_CancelPair_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[16]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -930,7 +1026,7 @@ func (x *CBluetoothManager_CancelPair_Response) String() string {
 func (*CBluetoothManager_CancelPair_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_CancelPair_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[16]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -943,7 +1039,7 @@ func (x *CBluetoothManager_CancelPair_Response) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CBluetoothManager_CancelPair_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_CancelPair_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{16}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{18}
 }
 
 type CBluetoothManager_Forget_Request struct {
@@ -955,7 +1051,7 @@ type CBluetoothManager_Forget_Request struct {
 
 func (x *CBluetoothManager_Forget_Request) Reset() {
 	*x = CBluetoothManager_Forget_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[17]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -967,7 +1063,7 @@ func (x *CBluetoothManager_Forget_Request) String() string {
 func (*CBluetoothManager_Forget_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_Forget_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[17]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -980,7 +1076,7 @@ func (x *CBluetoothManager_Forget_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CBluetoothManager_Forget_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Forget_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{17}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CBluetoothManager_Forget_Request) GetDevice() uint32 {
@@ -998,7 +1094,7 @@ type CBluetoothManager_Forget_Response struct {
 
 func (x *CBluetoothManager_Forget_Response) Reset() {
 	*x = CBluetoothManager_Forget_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[18]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1010,7 +1106,7 @@ func (x *CBluetoothManager_Forget_Response) String() string {
 func (*CBluetoothManager_Forget_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_Forget_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[18]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1023,7 +1119,7 @@ func (x *CBluetoothManager_Forget_Response) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CBluetoothManager_Forget_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Forget_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{18}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{20}
 }
 
 type CBluetoothManager_Connect_Request struct {
@@ -1035,7 +1131,7 @@ type CBluetoothManager_Connect_Request struct {
 
 func (x *CBluetoothManager_Connect_Request) Reset() {
 	*x = CBluetoothManager_Connect_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[19]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1047,7 +1143,7 @@ func (x *CBluetoothManager_Connect_Request) String() string {
 func (*CBluetoothManager_Connect_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_Connect_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[19]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1060,7 +1156,7 @@ func (x *CBluetoothManager_Connect_Request) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CBluetoothManager_Connect_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Connect_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{19}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CBluetoothManager_Connect_Request) GetDevice() uint32 {
@@ -1078,7 +1174,7 @@ type CBluetoothManager_Connect_Response struct {
 
 func (x *CBluetoothManager_Connect_Response) Reset() {
 	*x = CBluetoothManager_Connect_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[20]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1090,7 +1186,7 @@ func (x *CBluetoothManager_Connect_Response) String() string {
 func (*CBluetoothManager_Connect_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_Connect_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[20]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1103,7 +1199,7 @@ func (x *CBluetoothManager_Connect_Response) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CBluetoothManager_Connect_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Connect_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{20}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{22}
 }
 
 type CBluetoothManager_Disconnect_Request struct {
@@ -1115,7 +1211,7 @@ type CBluetoothManager_Disconnect_Request struct {
 
 func (x *CBluetoothManager_Disconnect_Request) Reset() {
 	*x = CBluetoothManager_Disconnect_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[21]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1127,7 +1223,7 @@ func (x *CBluetoothManager_Disconnect_Request) String() string {
 func (*CBluetoothManager_Disconnect_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_Disconnect_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[21]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1140,7 +1236,7 @@ func (x *CBluetoothManager_Disconnect_Request) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CBluetoothManager_Disconnect_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Disconnect_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{21}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CBluetoothManager_Disconnect_Request) GetDevice() uint32 {
@@ -1158,7 +1254,7 @@ type CBluetoothManager_Disconnect_Response struct {
 
 func (x *CBluetoothManager_Disconnect_Response) Reset() {
 	*x = CBluetoothManager_Disconnect_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[22]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1170,7 +1266,7 @@ func (x *CBluetoothManager_Disconnect_Response) String() string {
 func (*CBluetoothManager_Disconnect_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_Disconnect_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[22]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1183,7 +1279,7 @@ func (x *CBluetoothManager_Disconnect_Response) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CBluetoothManager_Disconnect_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_Disconnect_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{22}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{24}
 }
 
 type CBluetoothManager_SetWakeAllowed_Request struct {
@@ -1196,7 +1292,7 @@ type CBluetoothManager_SetWakeAllowed_Request struct {
 
 func (x *CBluetoothManager_SetWakeAllowed_Request) Reset() {
 	*x = CBluetoothManager_SetWakeAllowed_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[23]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1208,7 +1304,7 @@ func (x *CBluetoothManager_SetWakeAllowed_Request) String() string {
 func (*CBluetoothManager_SetWakeAllowed_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_SetWakeAllowed_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[23]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1221,7 +1317,7 @@ func (x *CBluetoothManager_SetWakeAllowed_Request) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CBluetoothManager_SetWakeAllowed_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_SetWakeAllowed_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{23}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CBluetoothManager_SetWakeAllowed_Request) GetDevice() uint32 {
@@ -1246,7 +1342,7 @@ type CBluetoothManager_SetWakeAllowed_Response struct {
 
 func (x *CBluetoothManager_SetWakeAllowed_Response) Reset() {
 	*x = CBluetoothManager_SetWakeAllowed_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[24]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1258,7 +1354,7 @@ func (x *CBluetoothManager_SetWakeAllowed_Response) String() string {
 func (*CBluetoothManager_SetWakeAllowed_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_SetWakeAllowed_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[24]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1271,7 +1367,7 @@ func (x *CBluetoothManager_SetWakeAllowed_Response) ProtoReflect() protoreflect.
 
 // Deprecated: Use CBluetoothManager_SetWakeAllowed_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_SetWakeAllowed_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{24}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{26}
 }
 
 type CBluetoothManager_SetTrusted_Request struct {
@@ -1284,7 +1380,7 @@ type CBluetoothManager_SetTrusted_Request struct {
 
 func (x *CBluetoothManager_SetTrusted_Request) Reset() {
 	*x = CBluetoothManager_SetTrusted_Request{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[25]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1296,7 +1392,7 @@ func (x *CBluetoothManager_SetTrusted_Request) String() string {
 func (*CBluetoothManager_SetTrusted_Request) ProtoMessage() {}
 
 func (x *CBluetoothManager_SetTrusted_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[25]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1309,7 +1405,7 @@ func (x *CBluetoothManager_SetTrusted_Request) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CBluetoothManager_SetTrusted_Request.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_SetTrusted_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{25}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CBluetoothManager_SetTrusted_Request) GetDevice() uint32 {
@@ -1334,7 +1430,7 @@ type CBluetoothManager_SetTrusted_Response struct {
 
 func (x *CBluetoothManager_SetTrusted_Response) Reset() {
 	*x = CBluetoothManager_SetTrusted_Response{}
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[26]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1346,7 +1442,7 @@ func (x *CBluetoothManager_SetTrusted_Response) String() string {
 func (*CBluetoothManager_SetTrusted_Response) ProtoMessage() {}
 
 func (x *CBluetoothManager_SetTrusted_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_bluetooth_proto_msgTypes[26]
+	mi := &file_webuimessages_bluetooth_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1359,7 +1455,7 @@ func (x *CBluetoothManager_SetTrusted_Response) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CBluetoothManager_SetTrusted_Response.ProtoReflect.Descriptor instead.
 func (*CBluetoothManager_SetTrusted_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{26}
+	return file_webuimessages_bluetooth_proto_rawDescGZIP(), []int{28}
 }
 
 var File_webuimessages_bluetooth_proto protoreflect.FileDescriptor
@@ -1420,7 +1516,12 @@ const file_webuimessages_bluetooth_proto_rawDesc = "" +
 	"+CBluetoothManager_StateChanged_Notification\"D\n" +
 	"(CBluetoothManager_SetDiscovering_Request\x12\x18\n" +
 	"\aenabled\x18\x01 \x01(\bR\aenabled\"+\n" +
-	")CBluetoothManager_SetDiscovering_Response\"8\n" +
+	")CBluetoothManager_SetDiscovering_Response\"\x83\x01\n" +
+	"-CBluetoothManager_SetLoginAdvertising_Request\x12\x18\n" +
+	"\aenabled\x18\x01 \x01(\bR\aenabled\x12\x1b\n" +
+	"\tclient_id\x18\x02 \x01(\x04R\bclientId\x12\x1b\n" +
+	"\tdevice_id\x18\x03 \x01(\rR\bdeviceId\"0\n" +
+	".CBluetoothManager_SetLoginAdvertising_Response\"8\n" +
 	"\x1eCBluetoothManager_Pair_Request\x12\x16\n" +
 	"\x06device\x18\x01 \x01(\rR\x06device\"!\n" +
 	"\x1fCBluetoothManager_Pair_Response\">\n" +
@@ -1443,13 +1544,14 @@ const file_webuimessages_bluetooth_proto_rawDesc = "" +
 	"$CBluetoothManager_SetTrusted_Request\x12\x16\n" +
 	"\x06device\x18\x01 \x01(\rR\x06device\x12\x18\n" +
 	"\atrusted\x18\x02 \x01(\bR\atrusted\"'\n" +
-	"%CBluetoothManager_SetTrusted_Response2\xff\b\n" +
+	"%CBluetoothManager_SetTrusted_Response2\xf7\t\n" +
 	"\x10BluetoothManager\x12U\n" +
 	"\bGetState\x12#.CBluetoothManager_GetState_Request\x1a$.CBluetoothManager_GetState_Response\x12p\n" +
 	"\x11GetAdapterDetails\x12,.CBluetoothManager_GetAdapterDetails_Request\x1a-.CBluetoothManager_GetAdapterDetails_Response\x12m\n" +
 	"\x10GetDeviceDetails\x12+.CBluetoothManager_GetDeviceDetails_Request\x1a,.CBluetoothManager_GetDeviceDetails_Response\x12T\n" +
 	"\x12NotifyStateChanged\x12,.CBluetoothManager_StateChanged_Notification\x1a\x10.WebUINoResponse\x12g\n" +
-	"\x0eSetDiscovering\x12).CBluetoothManager_SetDiscovering_Request\x1a*.CBluetoothManager_SetDiscovering_Response\x12I\n" +
+	"\x0eSetDiscovering\x12).CBluetoothManager_SetDiscovering_Request\x1a*.CBluetoothManager_SetDiscovering_Response\x12v\n" +
+	"\x13SetLoginAdvertising\x12..CBluetoothManager_SetLoginAdvertising_Request\x1a/.CBluetoothManager_SetLoginAdvertising_Response\x12I\n" +
 	"\x04Pair\x12\x1f.CBluetoothManager_Pair_Request\x1a .CBluetoothManager_Pair_Response\x12[\n" +
 	"\n" +
 	"CancelPair\x12%.CBluetoothManager_CancelPair_Request\x1a&.CBluetoothManager_CancelPair_Response\x12O\n" +
@@ -1473,71 +1575,75 @@ func file_webuimessages_bluetooth_proto_rawDescGZIP() []byte {
 	return file_webuimessages_bluetooth_proto_rawDescData
 }
 
-var file_webuimessages_bluetooth_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_webuimessages_bluetooth_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_webuimessages_bluetooth_proto_goTypes = []any{
-	(*CBluetoothManager_GetState_Request)(nil),           // 0: CBluetoothManager_GetState_Request
-	(*CMsgBluetoothManagerAdapterInfo)(nil),              // 1: CMsgBluetoothManagerAdapterInfo
-	(*CMsgBluetoothManagerDeviceInfo)(nil),               // 2: CMsgBluetoothManagerDeviceInfo
-	(*CBluetoothManager_GetState_Response)(nil),          // 3: CBluetoothManager_GetState_Response
-	(*CBluetoothManager_GetAdapterDetails_Request)(nil),  // 4: CBluetoothManager_GetAdapterDetails_Request
-	(*CMsgBluetoothManagerAdapterDetails)(nil),           // 5: CMsgBluetoothManagerAdapterDetails
-	(*CBluetoothManager_GetAdapterDetails_Response)(nil), // 6: CBluetoothManager_GetAdapterDetails_Response
-	(*CBluetoothManager_GetDeviceDetails_Request)(nil),   // 7: CBluetoothManager_GetDeviceDetails_Request
-	(*CMsgBluetoothManagerDeviceDetails)(nil),            // 8: CMsgBluetoothManagerDeviceDetails
-	(*CBluetoothManager_GetDeviceDetails_Response)(nil),  // 9: CBluetoothManager_GetDeviceDetails_Response
-	(*CBluetoothManager_StateChanged_Notification)(nil),  // 10: CBluetoothManager_StateChanged_Notification
-	(*CBluetoothManager_SetDiscovering_Request)(nil),     // 11: CBluetoothManager_SetDiscovering_Request
-	(*CBluetoothManager_SetDiscovering_Response)(nil),    // 12: CBluetoothManager_SetDiscovering_Response
-	(*CBluetoothManager_Pair_Request)(nil),               // 13: CBluetoothManager_Pair_Request
-	(*CBluetoothManager_Pair_Response)(nil),              // 14: CBluetoothManager_Pair_Response
-	(*CBluetoothManager_CancelPair_Request)(nil),         // 15: CBluetoothManager_CancelPair_Request
-	(*CBluetoothManager_CancelPair_Response)(nil),        // 16: CBluetoothManager_CancelPair_Response
-	(*CBluetoothManager_Forget_Request)(nil),             // 17: CBluetoothManager_Forget_Request
-	(*CBluetoothManager_Forget_Response)(nil),            // 18: CBluetoothManager_Forget_Response
-	(*CBluetoothManager_Connect_Request)(nil),            // 19: CBluetoothManager_Connect_Request
-	(*CBluetoothManager_Connect_Response)(nil),           // 20: CBluetoothManager_Connect_Response
-	(*CBluetoothManager_Disconnect_Request)(nil),         // 21: CBluetoothManager_Disconnect_Request
-	(*CBluetoothManager_Disconnect_Response)(nil),        // 22: CBluetoothManager_Disconnect_Response
-	(*CBluetoothManager_SetWakeAllowed_Request)(nil),     // 23: CBluetoothManager_SetWakeAllowed_Request
-	(*CBluetoothManager_SetWakeAllowed_Response)(nil),    // 24: CBluetoothManager_SetWakeAllowed_Response
-	(*CBluetoothManager_SetTrusted_Request)(nil),         // 25: CBluetoothManager_SetTrusted_Request
-	(*CBluetoothManager_SetTrusted_Response)(nil),        // 26: CBluetoothManager_SetTrusted_Response
-	(EBluetoothDeviceType)(0),                            // 27: EBluetoothDeviceType
-	(*WebUINoResponse)(nil),                              // 28: WebUINoResponse
+	(*CBluetoothManager_GetState_Request)(nil),             // 0: CBluetoothManager_GetState_Request
+	(*CMsgBluetoothManagerAdapterInfo)(nil),                // 1: CMsgBluetoothManagerAdapterInfo
+	(*CMsgBluetoothManagerDeviceInfo)(nil),                 // 2: CMsgBluetoothManagerDeviceInfo
+	(*CBluetoothManager_GetState_Response)(nil),            // 3: CBluetoothManager_GetState_Response
+	(*CBluetoothManager_GetAdapterDetails_Request)(nil),    // 4: CBluetoothManager_GetAdapterDetails_Request
+	(*CMsgBluetoothManagerAdapterDetails)(nil),             // 5: CMsgBluetoothManagerAdapterDetails
+	(*CBluetoothManager_GetAdapterDetails_Response)(nil),   // 6: CBluetoothManager_GetAdapterDetails_Response
+	(*CBluetoothManager_GetDeviceDetails_Request)(nil),     // 7: CBluetoothManager_GetDeviceDetails_Request
+	(*CMsgBluetoothManagerDeviceDetails)(nil),              // 8: CMsgBluetoothManagerDeviceDetails
+	(*CBluetoothManager_GetDeviceDetails_Response)(nil),    // 9: CBluetoothManager_GetDeviceDetails_Response
+	(*CBluetoothManager_StateChanged_Notification)(nil),    // 10: CBluetoothManager_StateChanged_Notification
+	(*CBluetoothManager_SetDiscovering_Request)(nil),       // 11: CBluetoothManager_SetDiscovering_Request
+	(*CBluetoothManager_SetDiscovering_Response)(nil),      // 12: CBluetoothManager_SetDiscovering_Response
+	(*CBluetoothManager_SetLoginAdvertising_Request)(nil),  // 13: CBluetoothManager_SetLoginAdvertising_Request
+	(*CBluetoothManager_SetLoginAdvertising_Response)(nil), // 14: CBluetoothManager_SetLoginAdvertising_Response
+	(*CBluetoothManager_Pair_Request)(nil),                 // 15: CBluetoothManager_Pair_Request
+	(*CBluetoothManager_Pair_Response)(nil),                // 16: CBluetoothManager_Pair_Response
+	(*CBluetoothManager_CancelPair_Request)(nil),           // 17: CBluetoothManager_CancelPair_Request
+	(*CBluetoothManager_CancelPair_Response)(nil),          // 18: CBluetoothManager_CancelPair_Response
+	(*CBluetoothManager_Forget_Request)(nil),               // 19: CBluetoothManager_Forget_Request
+	(*CBluetoothManager_Forget_Response)(nil),              // 20: CBluetoothManager_Forget_Response
+	(*CBluetoothManager_Connect_Request)(nil),              // 21: CBluetoothManager_Connect_Request
+	(*CBluetoothManager_Connect_Response)(nil),             // 22: CBluetoothManager_Connect_Response
+	(*CBluetoothManager_Disconnect_Request)(nil),           // 23: CBluetoothManager_Disconnect_Request
+	(*CBluetoothManager_Disconnect_Response)(nil),          // 24: CBluetoothManager_Disconnect_Response
+	(*CBluetoothManager_SetWakeAllowed_Request)(nil),       // 25: CBluetoothManager_SetWakeAllowed_Request
+	(*CBluetoothManager_SetWakeAllowed_Response)(nil),      // 26: CBluetoothManager_SetWakeAllowed_Response
+	(*CBluetoothManager_SetTrusted_Request)(nil),           // 27: CBluetoothManager_SetTrusted_Request
+	(*CBluetoothManager_SetTrusted_Response)(nil),          // 28: CBluetoothManager_SetTrusted_Response
+	(EBluetoothDeviceType)(0),                              // 29: EBluetoothDeviceType
+	(*WebUINoResponse)(nil),                                // 30: WebUINoResponse
 }
 var file_webuimessages_bluetooth_proto_depIdxs = []int32{
-	27, // 0: CMsgBluetoothManagerDeviceInfo.etype:type_name -> EBluetoothDeviceType
+	29, // 0: CMsgBluetoothManagerDeviceInfo.etype:type_name -> EBluetoothDeviceType
 	1,  // 1: CBluetoothManager_GetState_Response.adapters:type_name -> CMsgBluetoothManagerAdapterInfo
 	2,  // 2: CBluetoothManager_GetState_Response.devices:type_name -> CMsgBluetoothManagerDeviceInfo
 	5,  // 3: CBluetoothManager_GetAdapterDetails_Response.adapter:type_name -> CMsgBluetoothManagerAdapterDetails
-	27, // 4: CMsgBluetoothManagerDeviceDetails.etype:type_name -> EBluetoothDeviceType
+	29, // 4: CMsgBluetoothManagerDeviceDetails.etype:type_name -> EBluetoothDeviceType
 	8,  // 5: CBluetoothManager_GetDeviceDetails_Response.device:type_name -> CMsgBluetoothManagerDeviceDetails
 	0,  // 6: BluetoothManager.GetState:input_type -> CBluetoothManager_GetState_Request
 	4,  // 7: BluetoothManager.GetAdapterDetails:input_type -> CBluetoothManager_GetAdapterDetails_Request
 	7,  // 8: BluetoothManager.GetDeviceDetails:input_type -> CBluetoothManager_GetDeviceDetails_Request
 	10, // 9: BluetoothManager.NotifyStateChanged:input_type -> CBluetoothManager_StateChanged_Notification
 	11, // 10: BluetoothManager.SetDiscovering:input_type -> CBluetoothManager_SetDiscovering_Request
-	13, // 11: BluetoothManager.Pair:input_type -> CBluetoothManager_Pair_Request
-	15, // 12: BluetoothManager.CancelPair:input_type -> CBluetoothManager_CancelPair_Request
-	17, // 13: BluetoothManager.Forget:input_type -> CBluetoothManager_Forget_Request
-	19, // 14: BluetoothManager.Connect:input_type -> CBluetoothManager_Connect_Request
-	21, // 15: BluetoothManager.Disconnect:input_type -> CBluetoothManager_Disconnect_Request
-	23, // 16: BluetoothManager.SetWakeAllowed:input_type -> CBluetoothManager_SetWakeAllowed_Request
-	25, // 17: BluetoothManager.SetTrusted:input_type -> CBluetoothManager_SetTrusted_Request
-	3,  // 18: BluetoothManager.GetState:output_type -> CBluetoothManager_GetState_Response
-	6,  // 19: BluetoothManager.GetAdapterDetails:output_type -> CBluetoothManager_GetAdapterDetails_Response
-	9,  // 20: BluetoothManager.GetDeviceDetails:output_type -> CBluetoothManager_GetDeviceDetails_Response
-	28, // 21: BluetoothManager.NotifyStateChanged:output_type -> WebUINoResponse
-	12, // 22: BluetoothManager.SetDiscovering:output_type -> CBluetoothManager_SetDiscovering_Response
-	14, // 23: BluetoothManager.Pair:output_type -> CBluetoothManager_Pair_Response
-	16, // 24: BluetoothManager.CancelPair:output_type -> CBluetoothManager_CancelPair_Response
-	18, // 25: BluetoothManager.Forget:output_type -> CBluetoothManager_Forget_Response
-	20, // 26: BluetoothManager.Connect:output_type -> CBluetoothManager_Connect_Response
-	22, // 27: BluetoothManager.Disconnect:output_type -> CBluetoothManager_Disconnect_Response
-	24, // 28: BluetoothManager.SetWakeAllowed:output_type -> CBluetoothManager_SetWakeAllowed_Response
-	26, // 29: BluetoothManager.SetTrusted:output_type -> CBluetoothManager_SetTrusted_Response
-	18, // [18:30] is the sub-list for method output_type
-	6,  // [6:18] is the sub-list for method input_type
+	13, // 11: BluetoothManager.SetLoginAdvertising:input_type -> CBluetoothManager_SetLoginAdvertising_Request
+	15, // 12: BluetoothManager.Pair:input_type -> CBluetoothManager_Pair_Request
+	17, // 13: BluetoothManager.CancelPair:input_type -> CBluetoothManager_CancelPair_Request
+	19, // 14: BluetoothManager.Forget:input_type -> CBluetoothManager_Forget_Request
+	21, // 15: BluetoothManager.Connect:input_type -> CBluetoothManager_Connect_Request
+	23, // 16: BluetoothManager.Disconnect:input_type -> CBluetoothManager_Disconnect_Request
+	25, // 17: BluetoothManager.SetWakeAllowed:input_type -> CBluetoothManager_SetWakeAllowed_Request
+	27, // 18: BluetoothManager.SetTrusted:input_type -> CBluetoothManager_SetTrusted_Request
+	3,  // 19: BluetoothManager.GetState:output_type -> CBluetoothManager_GetState_Response
+	6,  // 20: BluetoothManager.GetAdapterDetails:output_type -> CBluetoothManager_GetAdapterDetails_Response
+	9,  // 21: BluetoothManager.GetDeviceDetails:output_type -> CBluetoothManager_GetDeviceDetails_Response
+	30, // 22: BluetoothManager.NotifyStateChanged:output_type -> WebUINoResponse
+	12, // 23: BluetoothManager.SetDiscovering:output_type -> CBluetoothManager_SetDiscovering_Response
+	14, // 24: BluetoothManager.SetLoginAdvertising:output_type -> CBluetoothManager_SetLoginAdvertising_Response
+	16, // 25: BluetoothManager.Pair:output_type -> CBluetoothManager_Pair_Response
+	18, // 26: BluetoothManager.CancelPair:output_type -> CBluetoothManager_CancelPair_Response
+	20, // 27: BluetoothManager.Forget:output_type -> CBluetoothManager_Forget_Response
+	22, // 28: BluetoothManager.Connect:output_type -> CBluetoothManager_Connect_Response
+	24, // 29: BluetoothManager.Disconnect:output_type -> CBluetoothManager_Disconnect_Response
+	26, // 30: BluetoothManager.SetWakeAllowed:output_type -> CBluetoothManager_SetWakeAllowed_Response
+	28, // 31: BluetoothManager.SetTrusted:output_type -> CBluetoothManager_SetTrusted_Response
+	19, // [19:32] is the sub-list for method output_type
+	6,  // [6:19] is the sub-list for method input_type
 	6,  // [6:6] is the sub-list for extension type_name
 	6,  // [6:6] is the sub-list for extension extendee
 	0,  // [0:6] is the sub-list for field type_name
@@ -1557,7 +1663,7 @@ func file_webuimessages_bluetooth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_webuimessages_bluetooth_proto_rawDesc), len(file_webuimessages_bluetooth_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -461,6 +461,86 @@ func (*CHardwareUpdate_UpdateStateChanged_Notification) Descriptor() ([]byte, []
 	return file_webuimessages_hardwareupdate_proto_rawDescGZIP(), []int{9}
 }
 
+type CHardwareUpdate_PrepForUpdate_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SerialNumber  *string                `protobuf:"bytes,1,opt,name=serial_number,json=serialNumber" json:"serial_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CHardwareUpdate_PrepForUpdate_Request) Reset() {
+	*x = CHardwareUpdate_PrepForUpdate_Request{}
+	mi := &file_webuimessages_hardwareupdate_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CHardwareUpdate_PrepForUpdate_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CHardwareUpdate_PrepForUpdate_Request) ProtoMessage() {}
+
+func (x *CHardwareUpdate_PrepForUpdate_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_hardwareupdate_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CHardwareUpdate_PrepForUpdate_Request.ProtoReflect.Descriptor instead.
+func (*CHardwareUpdate_PrepForUpdate_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_hardwareupdate_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *CHardwareUpdate_PrepForUpdate_Request) GetSerialNumber() string {
+	if x != nil && x.SerialNumber != nil {
+		return *x.SerialNumber
+	}
+	return ""
+}
+
+type CHardwareUpdate_PrepForUpdate_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CHardwareUpdate_PrepForUpdate_Response) Reset() {
+	*x = CHardwareUpdate_PrepForUpdate_Response{}
+	mi := &file_webuimessages_hardwareupdate_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CHardwareUpdate_PrepForUpdate_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CHardwareUpdate_PrepForUpdate_Response) ProtoMessage() {}
+
+func (x *CHardwareUpdate_PrepForUpdate_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_hardwareupdate_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CHardwareUpdate_PrepForUpdate_Response.ProtoReflect.Descriptor instead.
+func (*CHardwareUpdate_PrepForUpdate_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_hardwareupdate_proto_rawDescGZIP(), []int{11}
+}
+
 var File_webuimessages_hardwareupdate_proto protoreflect.FileDescriptor
 
 const file_webuimessages_hardwareupdate_proto_rawDesc = "" +
@@ -487,11 +567,15 @@ const file_webuimessages_hardwareupdate_proto_rawDesc = "" +
 	"\x1fCHardwareUpdate_Update_Response\"I\n" +
 	"+CHardwareUpdate_UpdateProgress_Notification\x12\x1a\n" +
 	"\bprogress\x18\x01 \x01(\x05R\bprogress\"1\n" +
-	"/CHardwareUpdate_UpdateStateChanged_Notification2\xaa\x04\n" +
+	"/CHardwareUpdate_UpdateStateChanged_Notification\"L\n" +
+	"%CHardwareUpdate_PrepForUpdate_Request\x12#\n" +
+	"\rserial_number\x18\x01 \x01(\tR\fserialNumber\"(\n" +
+	"&CHardwareUpdate_PrepForUpdate_Response2\x8c\x05\n" +
 	"\x0eHardwareUpdate\x12Q\n" +
 	"\bGetState\x12!.CHardwareUpdate_GetState_Request\x1a\".CHardwareUpdate_GetState_Response\x12R\n" +
 	"\x12NotifyStateChanged\x12*.CHardwareUpdate_StateChanged_Notification\x1a\x10.WebUINoResponse\x12f\n" +
-	"\x0fCheckForUpdates\x12(.CHardwareUpdate_CheckForUpdates_Request\x1a).CHardwareUpdate_CheckForUpdates_Response\x12K\n" +
+	"\x0fCheckForUpdates\x12(.CHardwareUpdate_CheckForUpdates_Request\x1a).CHardwareUpdate_CheckForUpdates_Response\x12`\n" +
+	"\rPrepForUpdate\x12&.CHardwareUpdate_PrepForUpdate_Request\x1a'.CHardwareUpdate_PrepForUpdate_Response\x12K\n" +
 	"\x06Update\x12\x1f.CHardwareUpdate_Update_Request\x1a .CHardwareUpdate_Update_Response\x12V\n" +
 	"\x14NotifyUpdateProgress\x12,.CHardwareUpdate_UpdateProgress_Notification\x1a\x10.WebUINoResponse\x12^\n" +
 	"\x18NotifyUpdateStateChanged\x120.CHardwareUpdate_UpdateStateChanged_Notification\x1a\x10.WebUINoResponse\x1a\x04\x80\x97\"\x01B\x05H\x01\x80\x01\x01"
@@ -508,7 +592,7 @@ func file_webuimessages_hardwareupdate_proto_rawDescGZIP() []byte {
 	return file_webuimessages_hardwareupdate_proto_rawDescData
 }
 
-var file_webuimessages_hardwareupdate_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_webuimessages_hardwareupdate_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_webuimessages_hardwareupdate_proto_goTypes = []any{
 	(*CHardwareUpdate_GetState_Request)(nil),                // 0: CHardwareUpdate_GetState_Request
 	(*CHardwareUpdate_GetState_Response)(nil),               // 1: CHardwareUpdate_GetState_Response
@@ -520,24 +604,28 @@ var file_webuimessages_hardwareupdate_proto_goTypes = []any{
 	(*CHardwareUpdate_Update_Response)(nil),                 // 7: CHardwareUpdate_Update_Response
 	(*CHardwareUpdate_UpdateProgress_Notification)(nil),     // 8: CHardwareUpdate_UpdateProgress_Notification
 	(*CHardwareUpdate_UpdateStateChanged_Notification)(nil), // 9: CHardwareUpdate_UpdateStateChanged_Notification
-	(*WebUINoResponse)(nil),                                 // 10: WebUINoResponse
+	(*CHardwareUpdate_PrepForUpdate_Request)(nil),           // 10: CHardwareUpdate_PrepForUpdate_Request
+	(*CHardwareUpdate_PrepForUpdate_Response)(nil),          // 11: CHardwareUpdate_PrepForUpdate_Response
+	(*WebUINoResponse)(nil),                                 // 12: WebUINoResponse
 }
 var file_webuimessages_hardwareupdate_proto_depIdxs = []int32{
 	4,  // 0: CHardwareUpdate_CheckForUpdates_Response.updates:type_name -> CMsgAvailableHardwareUpdate
 	0,  // 1: HardwareUpdate.GetState:input_type -> CHardwareUpdate_GetState_Request
 	2,  // 2: HardwareUpdate.NotifyStateChanged:input_type -> CHardwareUpdate_StateChanged_Notification
 	3,  // 3: HardwareUpdate.CheckForUpdates:input_type -> CHardwareUpdate_CheckForUpdates_Request
-	6,  // 4: HardwareUpdate.Update:input_type -> CHardwareUpdate_Update_Request
-	8,  // 5: HardwareUpdate.NotifyUpdateProgress:input_type -> CHardwareUpdate_UpdateProgress_Notification
-	9,  // 6: HardwareUpdate.NotifyUpdateStateChanged:input_type -> CHardwareUpdate_UpdateStateChanged_Notification
-	1,  // 7: HardwareUpdate.GetState:output_type -> CHardwareUpdate_GetState_Response
-	10, // 8: HardwareUpdate.NotifyStateChanged:output_type -> WebUINoResponse
-	5,  // 9: HardwareUpdate.CheckForUpdates:output_type -> CHardwareUpdate_CheckForUpdates_Response
-	7,  // 10: HardwareUpdate.Update:output_type -> CHardwareUpdate_Update_Response
-	10, // 11: HardwareUpdate.NotifyUpdateProgress:output_type -> WebUINoResponse
-	10, // 12: HardwareUpdate.NotifyUpdateStateChanged:output_type -> WebUINoResponse
-	7,  // [7:13] is the sub-list for method output_type
-	1,  // [1:7] is the sub-list for method input_type
+	10, // 4: HardwareUpdate.PrepForUpdate:input_type -> CHardwareUpdate_PrepForUpdate_Request
+	6,  // 5: HardwareUpdate.Update:input_type -> CHardwareUpdate_Update_Request
+	8,  // 6: HardwareUpdate.NotifyUpdateProgress:input_type -> CHardwareUpdate_UpdateProgress_Notification
+	9,  // 7: HardwareUpdate.NotifyUpdateStateChanged:input_type -> CHardwareUpdate_UpdateStateChanged_Notification
+	1,  // 8: HardwareUpdate.GetState:output_type -> CHardwareUpdate_GetState_Response
+	12, // 9: HardwareUpdate.NotifyStateChanged:output_type -> WebUINoResponse
+	5,  // 10: HardwareUpdate.CheckForUpdates:output_type -> CHardwareUpdate_CheckForUpdates_Response
+	11, // 11: HardwareUpdate.PrepForUpdate:output_type -> CHardwareUpdate_PrepForUpdate_Response
+	7,  // 12: HardwareUpdate.Update:output_type -> CHardwareUpdate_Update_Response
+	12, // 13: HardwareUpdate.NotifyUpdateProgress:output_type -> WebUINoResponse
+	12, // 14: HardwareUpdate.NotifyUpdateStateChanged:output_type -> WebUINoResponse
+	8,  // [8:15] is the sub-list for method output_type
+	1,  // [1:8] is the sub-list for method input_type
 	1,  // [1:1] is the sub-list for extension type_name
 	1,  // [1:1] is the sub-list for extension extendee
 	0,  // [0:1] is the sub-list for field type_name
@@ -557,7 +645,7 @@ func file_webuimessages_hardwareupdate_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_webuimessages_hardwareupdate_proto_rawDesc), len(file_webuimessages_hardwareupdate_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

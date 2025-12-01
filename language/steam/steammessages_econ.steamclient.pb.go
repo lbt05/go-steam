@@ -21,6 +21,71 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type EAssetPropertyType int32
+
+const (
+	EAssetPropertyType_k_EAssetPropertyType_Unknown EAssetPropertyType = 0
+	EAssetPropertyType_k_EAssetPropertyType_Float   EAssetPropertyType = 1
+	EAssetPropertyType_k_EAssetPropertyType_Int     EAssetPropertyType = 2
+	EAssetPropertyType_k_EAssetPropertyType_String  EAssetPropertyType = 3
+	EAssetPropertyType_k_EAssetPropertyType_MAX     EAssetPropertyType = 4
+)
+
+// Enum value maps for EAssetPropertyType.
+var (
+	EAssetPropertyType_name = map[int32]string{
+		0: "k_EAssetPropertyType_Unknown",
+		1: "k_EAssetPropertyType_Float",
+		2: "k_EAssetPropertyType_Int",
+		3: "k_EAssetPropertyType_String",
+		4: "k_EAssetPropertyType_MAX",
+	}
+	EAssetPropertyType_value = map[string]int32{
+		"k_EAssetPropertyType_Unknown": 0,
+		"k_EAssetPropertyType_Float":   1,
+		"k_EAssetPropertyType_Int":     2,
+		"k_EAssetPropertyType_String":  3,
+		"k_EAssetPropertyType_MAX":     4,
+	}
+)
+
+func (x EAssetPropertyType) Enum() *EAssetPropertyType {
+	p := new(EAssetPropertyType)
+	*p = x
+	return p
+}
+
+func (x EAssetPropertyType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (EAssetPropertyType) Descriptor() protoreflect.EnumDescriptor {
+	return file_steammessages_econ_steamclient_proto_enumTypes[0].Descriptor()
+}
+
+func (EAssetPropertyType) Type() protoreflect.EnumType {
+	return &file_steammessages_econ_steamclient_proto_enumTypes[0]
+}
+
+func (x EAssetPropertyType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Do not use.
+func (x *EAssetPropertyType) UnmarshalJSON(b []byte) error {
+	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
+	if err != nil {
+		return err
+	}
+	*x = EAssetPropertyType(num)
+	return nil
+}
+
+// Deprecated: Use EAssetPropertyType.Descriptor instead.
+func (EAssetPropertyType) EnumDescriptor() ([]byte, []int) {
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{0}
+}
+
 type CEcon_GetInventoryItemsWithDescriptions_Request struct {
 	state                     protoimpl.MessageState                                         `protogen:"open.v1"`
 	Steamid                   *uint64                                                        `protobuf:"fixed64,1,opt,name=steamid" json:"steamid,omitempty"`
@@ -858,6 +923,7 @@ type CEconItem_AssetProperty struct {
 	Propertyid    *uint32                `protobuf:"varint,1,opt,name=propertyid" json:"propertyid,omitempty"`
 	IntValue      *int64                 `protobuf:"varint,2,opt,name=int_value,json=intValue" json:"int_value,omitempty"`
 	FloatValue    *float32               `protobuf:"fixed32,3,opt,name=float_value,json=floatValue" json:"float_value,omitempty"`
+	StringValue   *string                `protobuf:"bytes,4,opt,name=string_value,json=stringValue" json:"string_value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -913,19 +979,103 @@ func (x *CEconItem_AssetProperty) GetFloatValue() float32 {
 	return 0
 }
 
+func (x *CEconItem_AssetProperty) GetStringValue() string {
+	if x != nil && x.StringValue != nil {
+		return *x.StringValue
+	}
+	return ""
+}
+
+type CEconItem_AssetAccessory struct {
+	state                        protoimpl.MessageState      `protogen:"open.v1"`
+	Classid                      *uint64                     `protobuf:"varint,1,opt,name=classid" json:"classid,omitempty"`
+	Instanceid                   *uint64                     `protobuf:"varint,2,opt,name=instanceid" json:"instanceid,omitempty"`
+	StandaloneProperties         []*CEconItem_AssetProperty  `protobuf:"bytes,3,rep,name=standalone_properties,json=standaloneProperties" json:"standalone_properties,omitempty"`
+	ParentRelationshipProperties []*CEconItem_AssetProperty  `protobuf:"bytes,4,rep,name=parent_relationship_properties,json=parentRelationshipProperties" json:"parent_relationship_properties,omitempty"`
+	NestedAccessories            []*CEconItem_AssetAccessory `protobuf:"bytes,5,rep,name=nested_accessories,json=nestedAccessories" json:"nested_accessories,omitempty"`
+	unknownFields                protoimpl.UnknownFields
+	sizeCache                    protoimpl.SizeCache
+}
+
+func (x *CEconItem_AssetAccessory) Reset() {
+	*x = CEconItem_AssetAccessory{}
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CEconItem_AssetAccessory) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CEconItem_AssetAccessory) ProtoMessage() {}
+
+func (x *CEconItem_AssetAccessory) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CEconItem_AssetAccessory.ProtoReflect.Descriptor instead.
+func (*CEconItem_AssetAccessory) Descriptor() ([]byte, []int) {
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CEconItem_AssetAccessory) GetClassid() uint64 {
+	if x != nil && x.Classid != nil {
+		return *x.Classid
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetAccessory) GetInstanceid() uint64 {
+	if x != nil && x.Instanceid != nil {
+		return *x.Instanceid
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetAccessory) GetStandaloneProperties() []*CEconItem_AssetProperty {
+	if x != nil {
+		return x.StandaloneProperties
+	}
+	return nil
+}
+
+func (x *CEconItem_AssetAccessory) GetParentRelationshipProperties() []*CEconItem_AssetProperty {
+	if x != nil {
+		return x.ParentRelationshipProperties
+	}
+	return nil
+}
+
+func (x *CEconItem_AssetAccessory) GetNestedAccessories() []*CEconItem_AssetAccessory {
+	if x != nil {
+		return x.NestedAccessories
+	}
+	return nil
+}
+
 type CEconItem_AssetProperties struct {
-	state           protoimpl.MessageState     `protogen:"open.v1"`
-	Appid           *uint32                    `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
-	Contextid       *uint64                    `protobuf:"varint,2,opt,name=contextid" json:"contextid,omitempty"`
-	Assetid         *uint64                    `protobuf:"varint,3,opt,name=assetid" json:"assetid,omitempty"`
-	AssetProperties []*CEconItem_AssetProperty `protobuf:"bytes,4,rep,name=asset_properties,json=assetProperties" json:"asset_properties,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state            protoimpl.MessageState      `protogen:"open.v1"`
+	Appid            *uint32                     `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
+	Contextid        *uint64                     `protobuf:"varint,2,opt,name=contextid" json:"contextid,omitempty"`
+	Assetid          *uint64                     `protobuf:"varint,3,opt,name=assetid" json:"assetid,omitempty"`
+	AssetProperties  []*CEconItem_AssetProperty  `protobuf:"bytes,4,rep,name=asset_properties,json=assetProperties" json:"asset_properties,omitempty"`
+	AssetAccessories []*CEconItem_AssetAccessory `protobuf:"bytes,5,rep,name=asset_accessories,json=assetAccessories" json:"asset_accessories,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *CEconItem_AssetProperties) Reset() {
 	*x = CEconItem_AssetProperties{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[9]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -937,7 +1087,7 @@ func (x *CEconItem_AssetProperties) String() string {
 func (*CEconItem_AssetProperties) ProtoMessage() {}
 
 func (x *CEconItem_AssetProperties) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[9]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -950,7 +1100,7 @@ func (x *CEconItem_AssetProperties) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CEconItem_AssetProperties.ProtoReflect.Descriptor instead.
 func (*CEconItem_AssetProperties) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{9}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CEconItem_AssetProperties) GetAppid() uint32 {
@@ -981,6 +1131,13 @@ func (x *CEconItem_AssetProperties) GetAssetProperties() []*CEconItem_AssetPrope
 	return nil
 }
 
+func (x *CEconItem_AssetProperties) GetAssetAccessories() []*CEconItem_AssetAccessory {
+	if x != nil {
+		return x.AssetAccessories
+	}
+	return nil
+}
+
 type CEcon_GetInventoryItemsWithDescriptions_Response struct {
 	state               protoimpl.MessageState       `protogen:"open.v1"`
 	Assets              []*CEcon_Asset               `protobuf:"bytes,1,rep,name=assets" json:"assets,omitempty"`
@@ -996,7 +1153,7 @@ type CEcon_GetInventoryItemsWithDescriptions_Response struct {
 
 func (x *CEcon_GetInventoryItemsWithDescriptions_Response) Reset() {
 	*x = CEcon_GetInventoryItemsWithDescriptions_Response{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[10]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1008,7 +1165,7 @@ func (x *CEcon_GetInventoryItemsWithDescriptions_Response) String() string {
 func (*CEcon_GetInventoryItemsWithDescriptions_Response) ProtoMessage() {}
 
 func (x *CEcon_GetInventoryItemsWithDescriptions_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[10]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1021,7 +1178,7 @@ func (x *CEcon_GetInventoryItemsWithDescriptions_Response) ProtoReflect() protor
 
 // Deprecated: Use CEcon_GetInventoryItemsWithDescriptions_Response.ProtoReflect.Descriptor instead.
 func (*CEcon_GetInventoryItemsWithDescriptions_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{10}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CEcon_GetInventoryItemsWithDescriptions_Response) GetAssets() []*CEcon_Asset {
@@ -1082,7 +1239,7 @@ type CEcon_GetTradeOfferAccessToken_Request struct {
 
 func (x *CEcon_GetTradeOfferAccessToken_Request) Reset() {
 	*x = CEcon_GetTradeOfferAccessToken_Request{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[11]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1094,7 +1251,7 @@ func (x *CEcon_GetTradeOfferAccessToken_Request) String() string {
 func (*CEcon_GetTradeOfferAccessToken_Request) ProtoMessage() {}
 
 func (x *CEcon_GetTradeOfferAccessToken_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[11]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1107,7 +1264,7 @@ func (x *CEcon_GetTradeOfferAccessToken_Request) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CEcon_GetTradeOfferAccessToken_Request.ProtoReflect.Descriptor instead.
 func (*CEcon_GetTradeOfferAccessToken_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{11}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CEcon_GetTradeOfferAccessToken_Request) GetGenerateNewToken() bool {
@@ -1126,7 +1283,7 @@ type CEcon_GetTradeOfferAccessToken_Response struct {
 
 func (x *CEcon_GetTradeOfferAccessToken_Response) Reset() {
 	*x = CEcon_GetTradeOfferAccessToken_Response{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[12]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1138,7 +1295,7 @@ func (x *CEcon_GetTradeOfferAccessToken_Response) String() string {
 func (*CEcon_GetTradeOfferAccessToken_Response) ProtoMessage() {}
 
 func (x *CEcon_GetTradeOfferAccessToken_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[12]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1151,7 +1308,7 @@ func (x *CEcon_GetTradeOfferAccessToken_Response) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CEcon_GetTradeOfferAccessToken_Response.ProtoReflect.Descriptor instead.
 func (*CEcon_GetTradeOfferAccessToken_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{12}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CEcon_GetTradeOfferAccessToken_Response) GetTradeOfferAccessToken() string {
@@ -1170,7 +1327,7 @@ type CEcon_ClientGetItemShopOverlayAuthURL_Request struct {
 
 func (x *CEcon_ClientGetItemShopOverlayAuthURL_Request) Reset() {
 	*x = CEcon_ClientGetItemShopOverlayAuthURL_Request{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[13]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1182,7 +1339,7 @@ func (x *CEcon_ClientGetItemShopOverlayAuthURL_Request) String() string {
 func (*CEcon_ClientGetItemShopOverlayAuthURL_Request) ProtoMessage() {}
 
 func (x *CEcon_ClientGetItemShopOverlayAuthURL_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[13]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1195,7 +1352,7 @@ func (x *CEcon_ClientGetItemShopOverlayAuthURL_Request) ProtoReflect() protorefl
 
 // Deprecated: Use CEcon_ClientGetItemShopOverlayAuthURL_Request.ProtoReflect.Descriptor instead.
 func (*CEcon_ClientGetItemShopOverlayAuthURL_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{13}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CEcon_ClientGetItemShopOverlayAuthURL_Request) GetReturnUrl() string {
@@ -1214,7 +1371,7 @@ type CEcon_ClientGetItemShopOverlayAuthURL_Response struct {
 
 func (x *CEcon_ClientGetItemShopOverlayAuthURL_Response) Reset() {
 	*x = CEcon_ClientGetItemShopOverlayAuthURL_Response{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[14]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1226,7 +1383,7 @@ func (x *CEcon_ClientGetItemShopOverlayAuthURL_Response) String() string {
 func (*CEcon_ClientGetItemShopOverlayAuthURL_Response) ProtoMessage() {}
 
 func (x *CEcon_ClientGetItemShopOverlayAuthURL_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[14]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1239,7 +1396,7 @@ func (x *CEcon_ClientGetItemShopOverlayAuthURL_Response) ProtoReflect() protoref
 
 // Deprecated: Use CEcon_ClientGetItemShopOverlayAuthURL_Response.ProtoReflect.Descriptor instead.
 func (*CEcon_ClientGetItemShopOverlayAuthURL_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{14}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CEcon_ClientGetItemShopOverlayAuthURL_Response) GetUrl() string {
@@ -1261,7 +1418,7 @@ type CEcon_GetAssetClassInfo_Request struct {
 
 func (x *CEcon_GetAssetClassInfo_Request) Reset() {
 	*x = CEcon_GetAssetClassInfo_Request{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[15]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1273,7 +1430,7 @@ func (x *CEcon_GetAssetClassInfo_Request) String() string {
 func (*CEcon_GetAssetClassInfo_Request) ProtoMessage() {}
 
 func (x *CEcon_GetAssetClassInfo_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[15]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1286,7 +1443,7 @@ func (x *CEcon_GetAssetClassInfo_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CEcon_GetAssetClassInfo_Request.ProtoReflect.Descriptor instead.
 func (*CEcon_GetAssetClassInfo_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{15}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CEcon_GetAssetClassInfo_Request) GetLanguage() string {
@@ -1326,7 +1483,7 @@ type CEcon_GetAssetClassInfo_Response struct {
 
 func (x *CEcon_GetAssetClassInfo_Response) Reset() {
 	*x = CEcon_GetAssetClassInfo_Response{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[16]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1338,7 +1495,7 @@ func (x *CEcon_GetAssetClassInfo_Response) String() string {
 func (*CEcon_GetAssetClassInfo_Response) ProtoMessage() {}
 
 func (x *CEcon_GetAssetClassInfo_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[16]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1351,12 +1508,221 @@ func (x *CEcon_GetAssetClassInfo_Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CEcon_GetAssetClassInfo_Response.ProtoReflect.Descriptor instead.
 func (*CEcon_GetAssetClassInfo_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{16}
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CEcon_GetAssetClassInfo_Response) GetDescriptions() []*CEconItem_Description {
 	if x != nil {
 		return x.Descriptions
+	}
+	return nil
+}
+
+type CEcon_GetAssetPropertySchema_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Appid         *uint32                `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
+	Language      *string                `protobuf:"bytes,2,opt,name=language" json:"language,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CEcon_GetAssetPropertySchema_Request) Reset() {
+	*x = CEcon_GetAssetPropertySchema_Request{}
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CEcon_GetAssetPropertySchema_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CEcon_GetAssetPropertySchema_Request) ProtoMessage() {}
+
+func (x *CEcon_GetAssetPropertySchema_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CEcon_GetAssetPropertySchema_Request.ProtoReflect.Descriptor instead.
+func (*CEcon_GetAssetPropertySchema_Request) Descriptor() ([]byte, []int) {
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CEcon_GetAssetPropertySchema_Request) GetAppid() uint32 {
+	if x != nil && x.Appid != nil {
+		return *x.Appid
+	}
+	return 0
+}
+
+func (x *CEcon_GetAssetPropertySchema_Request) GetLanguage() string {
+	if x != nil && x.Language != nil {
+		return *x.Language
+	}
+	return ""
+}
+
+type CEconItem_AssetPropertySchema struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	Id                  *uint32                `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Name                *string                `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Type                *EAssetPropertyType    `protobuf:"varint,3,opt,name=type,enum=EAssetPropertyType,def=0" json:"type,omitempty"`
+	FloatMin            *float32               `protobuf:"fixed32,4,opt,name=float_min,json=floatMin" json:"float_min,omitempty"`
+	FloatMax            *float32               `protobuf:"fixed32,5,opt,name=float_max,json=floatMax" json:"float_max,omitempty"`
+	IntMin              *int64                 `protobuf:"varint,6,opt,name=int_min,json=intMin" json:"int_min,omitempty"`
+	IntMax              *int64                 `protobuf:"varint,7,opt,name=int_max,json=intMax" json:"int_max,omitempty"`
+	LocalizedLabel      *string                `protobuf:"bytes,8,opt,name=localized_label,json=localizedLabel" json:"localized_label,omitempty"`
+	HideFromDescription *bool                  `protobuf:"varint,9,opt,name=hide_from_description,json=hideFromDescription" json:"hide_from_description,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+// Default values for CEconItem_AssetPropertySchema fields.
+const (
+	Default_CEconItem_AssetPropertySchema_Type = EAssetPropertyType_k_EAssetPropertyType_Unknown
+)
+
+func (x *CEconItem_AssetPropertySchema) Reset() {
+	*x = CEconItem_AssetPropertySchema{}
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CEconItem_AssetPropertySchema) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CEconItem_AssetPropertySchema) ProtoMessage() {}
+
+func (x *CEconItem_AssetPropertySchema) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CEconItem_AssetPropertySchema.ProtoReflect.Descriptor instead.
+func (*CEconItem_AssetPropertySchema) Descriptor() ([]byte, []int) {
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *CEconItem_AssetPropertySchema) GetId() uint32 {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetPropertySchema) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CEconItem_AssetPropertySchema) GetType() EAssetPropertyType {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return Default_CEconItem_AssetPropertySchema_Type
+}
+
+func (x *CEconItem_AssetPropertySchema) GetFloatMin() float32 {
+	if x != nil && x.FloatMin != nil {
+		return *x.FloatMin
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetPropertySchema) GetFloatMax() float32 {
+	if x != nil && x.FloatMax != nil {
+		return *x.FloatMax
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetPropertySchema) GetIntMin() int64 {
+	if x != nil && x.IntMin != nil {
+		return *x.IntMin
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetPropertySchema) GetIntMax() int64 {
+	if x != nil && x.IntMax != nil {
+		return *x.IntMax
+	}
+	return 0
+}
+
+func (x *CEconItem_AssetPropertySchema) GetLocalizedLabel() string {
+	if x != nil && x.LocalizedLabel != nil {
+		return *x.LocalizedLabel
+	}
+	return ""
+}
+
+func (x *CEconItem_AssetPropertySchema) GetHideFromDescription() bool {
+	if x != nil && x.HideFromDescription != nil {
+		return *x.HideFromDescription
+	}
+	return false
+}
+
+type CEcon_GetAssetPropertySchema_Response struct {
+	state           protoimpl.MessageState           `protogen:"open.v1"`
+	PropertySchemas []*CEconItem_AssetPropertySchema `protobuf:"bytes,1,rep,name=property_schemas,json=propertySchemas" json:"property_schemas,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CEcon_GetAssetPropertySchema_Response) Reset() {
+	*x = CEcon_GetAssetPropertySchema_Response{}
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CEcon_GetAssetPropertySchema_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CEcon_GetAssetPropertySchema_Response) ProtoMessage() {}
+
+func (x *CEcon_GetAssetPropertySchema_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CEcon_GetAssetPropertySchema_Response.ProtoReflect.Descriptor instead.
+func (*CEcon_GetAssetPropertySchema_Response) Descriptor() ([]byte, []int) {
+	return file_steammessages_econ_steamclient_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CEcon_GetAssetPropertySchema_Response) GetPropertySchemas() []*CEconItem_AssetPropertySchema {
+	if x != nil {
+		return x.PropertySchemas
 	}
 	return nil
 }
@@ -1373,7 +1739,7 @@ type CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions struct {
 
 func (x *CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions) Reset() {
 	*x = CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions{}
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[17]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1385,7 +1751,7 @@ func (x *CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions) String()
 func (*CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions) ProtoMessage() {}
 
 func (x *CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_econ_steamclient_proto_msgTypes[17]
+	mi := &file_steammessages_econ_steamclient_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1531,19 +1897,29 @@ const file_steammessages_econ_steamclient_proto_rawDesc = "" +
 	"\x1dCEconItem_ContainerProperties\x12D\n" +
 	"\x0fcontained_items\x18\x01 \x03(\v2\x1b.CEconItem_ClassIdentifiersR\x0econtainedItems\x12/\n" +
 	"\vsearch_tags\x18\x02 \x03(\v2\x0e.CEconItem_TagR\n" +
-	"searchTags\"w\n" +
+	"searchTags\"\x9a\x01\n" +
 	"\x17CEconItem_AssetProperty\x12\x1e\n" +
 	"\n" +
 	"propertyid\x18\x01 \x01(\rR\n" +
 	"propertyid\x12\x1b\n" +
 	"\tint_value\x18\x02 \x01(\x03R\bintValue\x12\x1f\n" +
 	"\vfloat_value\x18\x03 \x01(\x02R\n" +
-	"floatValue\"\xae\x01\n" +
+	"floatValue\x12!\n" +
+	"\fstring_value\x18\x04 \x01(\tR\vstringValue\"\xcd\x02\n" +
+	"\x18CEconItem_AssetAccessory\x12\x18\n" +
+	"\aclassid\x18\x01 \x01(\x04R\aclassid\x12\x1e\n" +
+	"\n" +
+	"instanceid\x18\x02 \x01(\x04R\n" +
+	"instanceid\x12M\n" +
+	"\x15standalone_properties\x18\x03 \x03(\v2\x18.CEconItem_AssetPropertyR\x14standaloneProperties\x12^\n" +
+	"\x1eparent_relationship_properties\x18\x04 \x03(\v2\x18.CEconItem_AssetPropertyR\x1cparentRelationshipProperties\x12H\n" +
+	"\x12nested_accessories\x18\x05 \x03(\v2\x19.CEconItem_AssetAccessoryR\x11nestedAccessories\"\xf6\x01\n" +
 	"\x19CEconItem_AssetProperties\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12\x1c\n" +
 	"\tcontextid\x18\x02 \x01(\x04R\tcontextid\x12\x18\n" +
 	"\aassetid\x18\x03 \x01(\x04R\aassetid\x12C\n" +
-	"\x10asset_properties\x18\x04 \x03(\v2\x18.CEconItem_AssetPropertyR\x0fassetProperties\"\x86\x03\n" +
+	"\x10asset_properties\x18\x04 \x03(\v2\x18.CEconItem_AssetPropertyR\x0fassetProperties\x12F\n" +
+	"\x11asset_accessories\x18\x05 \x03(\v2\x19.CEconItem_AssetAccessoryR\x10assetAccessories\"\x86\x03\n" +
 	"0CEcon_GetInventoryItemsWithDescriptions_Response\x12$\n" +
 	"\x06assets\x18\x01 \x03(\v2\f.CEcon_AssetR\x06assets\x12:\n" +
 	"\fdescriptions\x18\x02 \x03(\v2\x16.CEconItem_DescriptionR\fdescriptions\x123\n" +
@@ -1568,12 +1944,34 @@ const file_steammessages_econ_steamclient_proto_rawDesc = "" +
 	"\aclasses\x18\x03 \x03(\v2\x1b.CEconItem_ClassIdentifiersR\aclasses\x12\x19\n" +
 	"\bhigh_pri\x18\x04 \x01(\bR\ahighPri\"^\n" +
 	" CEcon_GetAssetClassInfo_Response\x12:\n" +
-	"\fdescriptions\x18\x01 \x03(\v2\x16.CEconItem_DescriptionR\fdescriptions2\xdf\x03\n" +
+	"\fdescriptions\x18\x01 \x03(\v2\x16.CEconItem_DescriptionR\fdescriptions\"X\n" +
+	"$CEcon_GetAssetPropertySchema_Request\x12\x14\n" +
+	"\x05appid\x18\x01 \x01(\rR\x05appid\x12\x1a\n" +
+	"\blanguage\x18\x02 \x01(\tR\blanguage\"\xd3\x02\n" +
+	"\x1dCEconItem_AssetPropertySchema\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12E\n" +
+	"\x04type\x18\x03 \x01(\x0e2\x13.EAssetPropertyType:\x1ck_EAssetPropertyType_UnknownR\x04type\x12\x1b\n" +
+	"\tfloat_min\x18\x04 \x01(\x02R\bfloatMin\x12\x1b\n" +
+	"\tfloat_max\x18\x05 \x01(\x02R\bfloatMax\x12\x17\n" +
+	"\aint_min\x18\x06 \x01(\x03R\x06intMin\x12\x17\n" +
+	"\aint_max\x18\a \x01(\x03R\x06intMax\x12'\n" +
+	"\x0flocalized_label\x18\b \x01(\tR\x0elocalizedLabel\x122\n" +
+	"\x15hide_from_description\x18\t \x01(\bR\x13hideFromDescription\"r\n" +
+	"%CEcon_GetAssetPropertySchema_Response\x12I\n" +
+	"\x10property_schemas\x18\x01 \x03(\v2\x1e.CEconItem_AssetPropertySchemaR\x0fpropertySchemas*\xb3\x01\n" +
+	"\x12EAssetPropertyType\x12 \n" +
+	"\x1ck_EAssetPropertyType_Unknown\x10\x00\x12\x1e\n" +
+	"\x1ak_EAssetPropertyType_Float\x10\x01\x12\x1c\n" +
+	"\x18k_EAssetPropertyType_Int\x10\x02\x12\x1f\n" +
+	"\x1bk_EAssetPropertyType_String\x10\x03\x12\x1c\n" +
+	"\x18k_EAssetPropertyType_MAX\x10\x042\xc8\x04\n" +
 	"\x04Econ\x12\x88\x01\n" +
 	"!GetInventoryItemsWithDescriptions\x120.CEcon_GetInventoryItemsWithDescriptions_Request\x1a1.CEcon_GetInventoryItemsWithDescriptions_Response\x12m\n" +
 	"\x18GetTradeOfferAccessToken\x12'.CEcon_GetTradeOfferAccessToken_Request\x1a(.CEcon_GetTradeOfferAccessToken_Response\x12\x82\x01\n" +
 	"\x1fClientGetItemShopOverlayAuthURL\x12..CEcon_ClientGetItemShopOverlayAuthURL_Request\x1a/.CEcon_ClientGetItemShopOverlayAuthURL_Response\x12X\n" +
-	"\x11GetAssetClassInfo\x12 .CEcon_GetAssetClassInfo_Request\x1a!.CEcon_GetAssetClassInfo_ResponseB\x03\x80\x01\x01"
+	"\x11GetAssetClassInfo\x12 .CEcon_GetAssetClassInfo_Request\x1a!.CEcon_GetAssetClassInfo_Response\x12g\n" +
+	"\x16GetAssetPropertySchema\x12%.CEcon_GetAssetPropertySchema_Request\x1a&.CEcon_GetAssetPropertySchema_ResponseB\x03\x80\x01\x01"
 
 var (
 	file_steammessages_econ_steamclient_proto_rawDescOnce sync.Once
@@ -1587,59 +1985,73 @@ func file_steammessages_econ_steamclient_proto_rawDescGZIP() []byte {
 	return file_steammessages_econ_steamclient_proto_rawDescData
 }
 
-var file_steammessages_econ_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_steammessages_econ_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_steammessages_econ_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_steammessages_econ_steamclient_proto_goTypes = []any{
-	(*CEcon_GetInventoryItemsWithDescriptions_Request)(nil), // 0: CEcon_GetInventoryItemsWithDescriptions_Request
-	(*CEcon_Asset)(nil),                                                   // 1: CEcon_Asset
-	(*CEconItem_DescriptionLine)(nil),                                     // 2: CEconItem_DescriptionLine
-	(*CEconItem_Action)(nil),                                              // 3: CEconItem_Action
-	(*CEconItem_Description)(nil),                                         // 4: CEconItem_Description
-	(*CEconItem_Tag)(nil),                                                 // 5: CEconItem_Tag
-	(*CEconItem_ClassIdentifiers)(nil),                                    // 6: CEconItem_ClassIdentifiers
-	(*CEconItem_ContainerProperties)(nil),                                 // 7: CEconItem_ContainerProperties
-	(*CEconItem_AssetProperty)(nil),                                       // 8: CEconItem_AssetProperty
-	(*CEconItem_AssetProperties)(nil),                                     // 9: CEconItem_AssetProperties
-	(*CEcon_GetInventoryItemsWithDescriptions_Response)(nil),              // 10: CEcon_GetInventoryItemsWithDescriptions_Response
-	(*CEcon_GetTradeOfferAccessToken_Request)(nil),                        // 11: CEcon_GetTradeOfferAccessToken_Request
-	(*CEcon_GetTradeOfferAccessToken_Response)(nil),                       // 12: CEcon_GetTradeOfferAccessToken_Response
-	(*CEcon_ClientGetItemShopOverlayAuthURL_Request)(nil),                 // 13: CEcon_ClientGetItemShopOverlayAuthURL_Request
-	(*CEcon_ClientGetItemShopOverlayAuthURL_Response)(nil),                // 14: CEcon_ClientGetItemShopOverlayAuthURL_Response
-	(*CEcon_GetAssetClassInfo_Request)(nil),                               // 15: CEcon_GetAssetClassInfo_Request
-	(*CEcon_GetAssetClassInfo_Response)(nil),                              // 16: CEcon_GetAssetClassInfo_Response
-	(*CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions)(nil), // 17: CEcon_GetInventoryItemsWithDescriptions_Request.FilterOptions
+	(EAssetPropertyType)(0),                                               // 0: EAssetPropertyType
+	(*CEcon_GetInventoryItemsWithDescriptions_Request)(nil),               // 1: CEcon_GetInventoryItemsWithDescriptions_Request
+	(*CEcon_Asset)(nil),                                                   // 2: CEcon_Asset
+	(*CEconItem_DescriptionLine)(nil),                                     // 3: CEconItem_DescriptionLine
+	(*CEconItem_Action)(nil),                                              // 4: CEconItem_Action
+	(*CEconItem_Description)(nil),                                         // 5: CEconItem_Description
+	(*CEconItem_Tag)(nil),                                                 // 6: CEconItem_Tag
+	(*CEconItem_ClassIdentifiers)(nil),                                    // 7: CEconItem_ClassIdentifiers
+	(*CEconItem_ContainerProperties)(nil),                                 // 8: CEconItem_ContainerProperties
+	(*CEconItem_AssetProperty)(nil),                                       // 9: CEconItem_AssetProperty
+	(*CEconItem_AssetAccessory)(nil),                                      // 10: CEconItem_AssetAccessory
+	(*CEconItem_AssetProperties)(nil),                                     // 11: CEconItem_AssetProperties
+	(*CEcon_GetInventoryItemsWithDescriptions_Response)(nil),              // 12: CEcon_GetInventoryItemsWithDescriptions_Response
+	(*CEcon_GetTradeOfferAccessToken_Request)(nil),                        // 13: CEcon_GetTradeOfferAccessToken_Request
+	(*CEcon_GetTradeOfferAccessToken_Response)(nil),                       // 14: CEcon_GetTradeOfferAccessToken_Response
+	(*CEcon_ClientGetItemShopOverlayAuthURL_Request)(nil),                 // 15: CEcon_ClientGetItemShopOverlayAuthURL_Request
+	(*CEcon_ClientGetItemShopOverlayAuthURL_Response)(nil),                // 16: CEcon_ClientGetItemShopOverlayAuthURL_Response
+	(*CEcon_GetAssetClassInfo_Request)(nil),                               // 17: CEcon_GetAssetClassInfo_Request
+	(*CEcon_GetAssetClassInfo_Response)(nil),                              // 18: CEcon_GetAssetClassInfo_Response
+	(*CEcon_GetAssetPropertySchema_Request)(nil),                          // 19: CEcon_GetAssetPropertySchema_Request
+	(*CEconItem_AssetPropertySchema)(nil),                                 // 20: CEconItem_AssetPropertySchema
+	(*CEcon_GetAssetPropertySchema_Response)(nil),                         // 21: CEcon_GetAssetPropertySchema_Response
+	(*CEcon_GetInventoryItemsWithDescriptions_Request_FilterOptions)(nil), // 22: CEcon_GetInventoryItemsWithDescriptions_Request.FilterOptions
 }
 var file_steammessages_econ_steamclient_proto_depIdxs = []int32{
-	17, // 0: CEcon_GetInventoryItemsWithDescriptions_Request.filters:type_name -> CEcon_GetInventoryItemsWithDescriptions_Request.FilterOptions
-	2,  // 1: CEconItem_Description.descriptions:type_name -> CEconItem_DescriptionLine
-	3,  // 2: CEconItem_Description.actions:type_name -> CEconItem_Action
-	2,  // 3: CEconItem_Description.owner_descriptions:type_name -> CEconItem_DescriptionLine
-	3,  // 4: CEconItem_Description.owner_actions:type_name -> CEconItem_Action
-	4,  // 5: CEconItem_Description.contained_item:type_name -> CEconItem_Description
-	3,  // 6: CEconItem_Description.market_actions:type_name -> CEconItem_Action
-	5,  // 7: CEconItem_Description.tags:type_name -> CEconItem_Tag
-	7,  // 8: CEconItem_Description.container_properties:type_name -> CEconItem_ContainerProperties
-	6,  // 9: CEconItem_ContainerProperties.contained_items:type_name -> CEconItem_ClassIdentifiers
-	5,  // 10: CEconItem_ContainerProperties.search_tags:type_name -> CEconItem_Tag
-	8,  // 11: CEconItem_AssetProperties.asset_properties:type_name -> CEconItem_AssetProperty
-	1,  // 12: CEcon_GetInventoryItemsWithDescriptions_Response.assets:type_name -> CEcon_Asset
-	4,  // 13: CEcon_GetInventoryItemsWithDescriptions_Response.descriptions:type_name -> CEconItem_Description
-	1,  // 14: CEcon_GetInventoryItemsWithDescriptions_Response.missing_assets:type_name -> CEcon_Asset
-	9,  // 15: CEcon_GetInventoryItemsWithDescriptions_Response.asset_properties:type_name -> CEconItem_AssetProperties
-	6,  // 16: CEcon_GetAssetClassInfo_Request.classes:type_name -> CEconItem_ClassIdentifiers
-	4,  // 17: CEcon_GetAssetClassInfo_Response.descriptions:type_name -> CEconItem_Description
-	0,  // 18: Econ.GetInventoryItemsWithDescriptions:input_type -> CEcon_GetInventoryItemsWithDescriptions_Request
-	11, // 19: Econ.GetTradeOfferAccessToken:input_type -> CEcon_GetTradeOfferAccessToken_Request
-	13, // 20: Econ.ClientGetItemShopOverlayAuthURL:input_type -> CEcon_ClientGetItemShopOverlayAuthURL_Request
-	15, // 21: Econ.GetAssetClassInfo:input_type -> CEcon_GetAssetClassInfo_Request
-	10, // 22: Econ.GetInventoryItemsWithDescriptions:output_type -> CEcon_GetInventoryItemsWithDescriptions_Response
-	12, // 23: Econ.GetTradeOfferAccessToken:output_type -> CEcon_GetTradeOfferAccessToken_Response
-	14, // 24: Econ.ClientGetItemShopOverlayAuthURL:output_type -> CEcon_ClientGetItemShopOverlayAuthURL_Response
-	16, // 25: Econ.GetAssetClassInfo:output_type -> CEcon_GetAssetClassInfo_Response
-	22, // [22:26] is the sub-list for method output_type
-	18, // [18:22] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	22, // 0: CEcon_GetInventoryItemsWithDescriptions_Request.filters:type_name -> CEcon_GetInventoryItemsWithDescriptions_Request.FilterOptions
+	3,  // 1: CEconItem_Description.descriptions:type_name -> CEconItem_DescriptionLine
+	4,  // 2: CEconItem_Description.actions:type_name -> CEconItem_Action
+	3,  // 3: CEconItem_Description.owner_descriptions:type_name -> CEconItem_DescriptionLine
+	4,  // 4: CEconItem_Description.owner_actions:type_name -> CEconItem_Action
+	5,  // 5: CEconItem_Description.contained_item:type_name -> CEconItem_Description
+	4,  // 6: CEconItem_Description.market_actions:type_name -> CEconItem_Action
+	6,  // 7: CEconItem_Description.tags:type_name -> CEconItem_Tag
+	8,  // 8: CEconItem_Description.container_properties:type_name -> CEconItem_ContainerProperties
+	7,  // 9: CEconItem_ContainerProperties.contained_items:type_name -> CEconItem_ClassIdentifiers
+	6,  // 10: CEconItem_ContainerProperties.search_tags:type_name -> CEconItem_Tag
+	9,  // 11: CEconItem_AssetAccessory.standalone_properties:type_name -> CEconItem_AssetProperty
+	9,  // 12: CEconItem_AssetAccessory.parent_relationship_properties:type_name -> CEconItem_AssetProperty
+	10, // 13: CEconItem_AssetAccessory.nested_accessories:type_name -> CEconItem_AssetAccessory
+	9,  // 14: CEconItem_AssetProperties.asset_properties:type_name -> CEconItem_AssetProperty
+	10, // 15: CEconItem_AssetProperties.asset_accessories:type_name -> CEconItem_AssetAccessory
+	2,  // 16: CEcon_GetInventoryItemsWithDescriptions_Response.assets:type_name -> CEcon_Asset
+	5,  // 17: CEcon_GetInventoryItemsWithDescriptions_Response.descriptions:type_name -> CEconItem_Description
+	2,  // 18: CEcon_GetInventoryItemsWithDescriptions_Response.missing_assets:type_name -> CEcon_Asset
+	11, // 19: CEcon_GetInventoryItemsWithDescriptions_Response.asset_properties:type_name -> CEconItem_AssetProperties
+	7,  // 20: CEcon_GetAssetClassInfo_Request.classes:type_name -> CEconItem_ClassIdentifiers
+	5,  // 21: CEcon_GetAssetClassInfo_Response.descriptions:type_name -> CEconItem_Description
+	0,  // 22: CEconItem_AssetPropertySchema.type:type_name -> EAssetPropertyType
+	20, // 23: CEcon_GetAssetPropertySchema_Response.property_schemas:type_name -> CEconItem_AssetPropertySchema
+	1,  // 24: Econ.GetInventoryItemsWithDescriptions:input_type -> CEcon_GetInventoryItemsWithDescriptions_Request
+	13, // 25: Econ.GetTradeOfferAccessToken:input_type -> CEcon_GetTradeOfferAccessToken_Request
+	15, // 26: Econ.ClientGetItemShopOverlayAuthURL:input_type -> CEcon_ClientGetItemShopOverlayAuthURL_Request
+	17, // 27: Econ.GetAssetClassInfo:input_type -> CEcon_GetAssetClassInfo_Request
+	19, // 28: Econ.GetAssetPropertySchema:input_type -> CEcon_GetAssetPropertySchema_Request
+	12, // 29: Econ.GetInventoryItemsWithDescriptions:output_type -> CEcon_GetInventoryItemsWithDescriptions_Response
+	14, // 30: Econ.GetTradeOfferAccessToken:output_type -> CEcon_GetTradeOfferAccessToken_Response
+	16, // 31: Econ.ClientGetItemShopOverlayAuthURL:output_type -> CEcon_ClientGetItemShopOverlayAuthURL_Response
+	18, // 32: Econ.GetAssetClassInfo:output_type -> CEcon_GetAssetClassInfo_Response
+	21, // 33: Econ.GetAssetPropertySchema:output_type -> CEcon_GetAssetPropertySchema_Response
+	29, // [29:34] is the sub-list for method output_type
+	24, // [24:29] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_econ_steamclient_proto_init() }
@@ -1654,13 +2066,14 @@ func file_steammessages_econ_steamclient_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_econ_steamclient_proto_rawDesc), len(file_steammessages_econ_steamclient_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   18,
+			NumEnums:      1,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_steammessages_econ_steamclient_proto_goTypes,
 		DependencyIndexes: file_steammessages_econ_steamclient_proto_depIdxs,
+		EnumInfos:         file_steammessages_econ_steamclient_proto_enumTypes,
 		MessageInfos:      file_steammessages_econ_steamclient_proto_msgTypes,
 	}.Build()
 	File_steammessages_econ_steamclient_proto = out.File

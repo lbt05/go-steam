@@ -1021,6 +1021,7 @@ type StoreItem struct {
 	PurchaseOptions                 []*StoreItem_PurchaseOption    `protobuf:"bytes,41,rep,name=purchase_options,json=purchaseOptions" json:"purchase_options,omitempty"`
 	Accessories                     []*StoreItem_PurchaseOption    `protobuf:"bytes,42,rep,name=accessories" json:"accessories,omitempty"`
 	SelfPurchaseOption              *StoreItem_PurchaseOption      `protobuf:"bytes,43,opt,name=self_purchase_option,json=selfPurchaseOption" json:"self_purchase_option,omitempty"`
+	InvalidPurchaseOptions          []*StoreItem_PurchaseOption    `protobuf:"bytes,44,rep,name=invalid_purchase_options,json=invalidPurchaseOptions" json:"invalid_purchase_options,omitempty"`
 	Screenshots                     *StoreItem_Screenshots         `protobuf:"bytes,50,opt,name=screenshots" json:"screenshots,omitempty"`
 	Trailers                        *StoreItem_Trailers            `protobuf:"bytes,51,opt,name=trailers" json:"trailers,omitempty"`
 	SupportedLanguages              []*StoreItem_SupportedLanguage `protobuf:"bytes,52,rep,name=supported_languages,json=supportedLanguages" json:"supported_languages,omitempty"`
@@ -1280,6 +1281,13 @@ func (x *StoreItem) GetAccessories() []*StoreItem_PurchaseOption {
 func (x *StoreItem) GetSelfPurchaseOption() *StoreItem_PurchaseOption {
 	if x != nil {
 		return x.SelfPurchaseOption
+	}
+	return nil
+}
+
+func (x *StoreItem) GetInvalidPurchaseOptions() []*StoreItem_PurchaseOption {
+	if x != nil {
+		return x.InvalidPurchaseOptions
 	}
 	return nil
 }
@@ -3219,6 +3227,7 @@ type StoreItem_PurchaseOption struct {
 	RequiresShipping                   *bool                                    `protobuf:"varint,45,opt,name=requires_shipping,json=requiresShipping" json:"requires_shipping,omitempty"`
 	RecurrenceInfo                     *StoreItem_PurchaseOption_RecurrenceInfo `protobuf:"bytes,46,opt,name=recurrence_info,json=recurrenceInfo" json:"recurrence_info,omitempty"`
 	FreeToKeepEnds                     *uint32                                  `protobuf:"varint,47,opt,name=free_to_keep_ends,json=freeToKeepEnds" json:"free_to_keep_ends,omitempty"`
+	MustPurchaseAsSet                  *bool                                    `protobuf:"varint,48,opt,name=must_purchase_as_set,json=mustPurchaseAsSet,def=0" json:"must_purchase_as_set,omitempty"`
 	unknownFields                      protoimpl.UnknownFields
 	sizeCache                          protoimpl.SizeCache
 }
@@ -3227,6 +3236,7 @@ type StoreItem_PurchaseOption struct {
 const (
 	Default_StoreItem_PurchaseOption_HideDiscountPctForCompliance = bool(false)
 	Default_StoreItem_PurchaseOption_IncludedGameCount            = int32(1)
+	Default_StoreItem_PurchaseOption_MustPurchaseAsSet            = bool(false)
 )
 
 func (x *StoreItem_PurchaseOption) Reset() {
@@ -3411,6 +3421,13 @@ func (x *StoreItem_PurchaseOption) GetFreeToKeepEnds() uint32 {
 		return *x.FreeToKeepEnds
 	}
 	return 0
+}
+
+func (x *StoreItem_PurchaseOption) GetMustPurchaseAsSet() bool {
+	if x != nil && x.MustPurchaseAsSet != nil {
+		return *x.MustPurchaseAsSet
+	}
+	return Default_StoreItem_PurchaseOption_MustPurchaseAsSet
 }
 
 type StoreItem_Screenshots struct {
@@ -4476,14 +4493,18 @@ func (x *CStoreBrowse_GetStoreCategories_Response_Category) GetEditSortOrder() u
 }
 
 type CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Hubcategoryid *uint32                `protobuf:"varint,1,opt,name=hubcategoryid" json:"hubcategoryid,omitempty"`
-	Type          *string                `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
-	Handle        *string                `protobuf:"bytes,3,opt,name=handle" json:"handle,omitempty"`
-	DisplayName   *string                `protobuf:"bytes,4,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	UrlPath       *string                `protobuf:"bytes,5,opt,name=url_path,json=urlPath" json:"url_path,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Hubcategoryid   *uint32                `protobuf:"varint,1,opt,name=hubcategoryid" json:"hubcategoryid,omitempty"`
+	Type            *string                `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
+	Handle          *string                `protobuf:"bytes,3,opt,name=handle" json:"handle,omitempty"`
+	DisplayName     *string                `protobuf:"bytes,4,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
+	UrlPath         *string                `protobuf:"bytes,5,opt,name=url_path,json=urlPath" json:"url_path,omitempty"`
+	ReplacesTags    []uint32               `protobuf:"varint,6,rep,name=replaces_tags,json=replacesTags" json:"replaces_tags,omitempty"`
+	MustHaveTags    []uint32               `protobuf:"varint,7,rep,name=must_have_tags,json=mustHaveTags" json:"must_have_tags,omitempty"`
+	AnyOneOfTags    []uint32               `protobuf:"varint,8,rep,name=any_one_of_tags,json=anyOneOfTags" json:"any_one_of_tags,omitempty"`
+	MustNotHaveTags []uint32               `protobuf:"varint,9,rep,name=must_not_have_tags,json=mustNotHaveTags" json:"must_not_have_tags,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) Reset() {
@@ -4549,6 +4570,34 @@ func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetUrlPath(
 		return *x.UrlPath
 	}
 	return ""
+}
+
+func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetReplacesTags() []uint32 {
+	if x != nil {
+		return x.ReplacesTags
+	}
+	return nil
+}
+
+func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetMustHaveTags() []uint32 {
+	if x != nil {
+		return x.MustHaveTags
+	}
+	return nil
+}
+
+func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetAnyOneOfTags() []uint32 {
+	if x != nil {
+		return x.AnyOneOfTags
+	}
+	return nil
+}
+
+func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetMustNotHaveTags() []uint32 {
+	if x != nil {
+		return x.MustNotHaveTags
+	}
+	return nil
 }
 
 type CStoreBrowse_GetPriceStops_Response_PriceStop struct {
@@ -4847,7 +4896,7 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x1dCStoreBrowse_GetItems_Request\x12\x1e\n" +
 	"\x03ids\x18\x01 \x03(\v2\f.StoreItemIDR\x03ids\x12-\n" +
 	"\acontext\x18\x02 \x01(\v2\x13.StoreBrowseContextR\acontext\x12>\n" +
-	"\fdata_request\x18\x03 \x01(\v2\x1b.StoreBrowseItemDataRequestR\vdataRequest\"\xd0C\n" +
+	"\fdata_request\x18\x03 \x01(\v2\x1b.StoreBrowseItemDataRequestR\vdataRequest\"\xddD\n" +
 	"\tStoreItem\x12F\n" +
 	"\titem_type\x18\x01 \x01(\x0e2\x0f.EStoreItemType:\x18k_EStoreItemType_InvalidR\bitemType\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\rR\x02id\x12\x18\n" +
@@ -4883,7 +4932,8 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x14best_purchase_option\x18( \x01(\v2\x19.StoreItem.PurchaseOptionR\x12bestPurchaseOption\x12D\n" +
 	"\x10purchase_options\x18) \x03(\v2\x19.StoreItem.PurchaseOptionR\x0fpurchaseOptions\x12;\n" +
 	"\vaccessories\x18* \x03(\v2\x19.StoreItem.PurchaseOptionR\vaccessories\x12K\n" +
-	"\x14self_purchase_option\x18+ \x01(\v2\x19.StoreItem.PurchaseOptionR\x12selfPurchaseOption\x128\n" +
+	"\x14self_purchase_option\x18+ \x01(\v2\x19.StoreItem.PurchaseOptionR\x12selfPurchaseOption\x12S\n" +
+	"\x18invalid_purchase_options\x18, \x03(\v2\x19.StoreItem.PurchaseOptionR\x16invalidPurchaseOptions\x128\n" +
 	"\vscreenshots\x182 \x01(\v2\x16.StoreItem.ScreenshotsR\vscreenshots\x12/\n" +
 	"\btrailers\x183 \x01(\v2\x13.StoreItem.TrailersR\btrailers\x12M\n" +
 	"\x13supported_languages\x184 \x03(\v2\x1c.StoreItem.SupportedLanguageR\x12supportedLanguages\x125\n" +
@@ -4993,7 +5043,7 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\n" +
 	"windows_mr\x18* \x01(\bR\twindowsMr\x12\x1f\n" +
 	"\vvalve_index\x18+ \x01(\bR\n" +
-	"valveIndex\x1a\x91\r\n" +
+	"valveIndex\x1a\xc9\r\n" +
 	"\x0ePurchaseOption\x12\x1c\n" +
 	"\tpackageid\x18\x01 \x01(\x05R\tpackageid\x12\x1a\n" +
 	"\bbundleid\x18\x02 \x01(\x05R\bbundleid\x120\n" +
@@ -5017,7 +5067,8 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x1clowest_recent_price_in_cents\x18, \x01(\x03R\x18lowestRecentPriceInCents\x12+\n" +
 	"\x11requires_shipping\x18- \x01(\bR\x10requiresShipping\x12Q\n" +
 	"\x0frecurrence_info\x18. \x01(\v2(.StoreItem.PurchaseOption.RecurrenceInfoR\x0erecurrenceInfo\x12)\n" +
-	"\x11free_to_keep_ends\x18/ \x01(\rR\x0efreeToKeepEnds\x1a\x92\x01\n" +
+	"\x11free_to_keep_ends\x18/ \x01(\rR\x0efreeToKeepEnds\x126\n" +
+	"\x14must_purchase_as_set\x180 \x01(\b:\x05falseR\x11mustPurchaseAsSet\x1a\x92\x01\n" +
 	"\bDiscount\x12'\n" +
 	"\x0fdiscount_amount\x18\x01 \x01(\x03R\x0ediscountAmount\x121\n" +
 	"\x14discount_description\x18\x02 \x01(\tR\x13discountDescription\x12*\n" +
@@ -5127,17 +5178,21 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x0fedit_sort_order\x18\t \x01(\rR\reditSortOrder\"\xb6\x01\n" +
 	"(CStoreBrowse_GetContentHubConfig_Request\x12-\n" +
 	"\acontext\x18\x01 \x01(\v2\x13.StoreBrowseContextR\acontext\x12[\n" +
-	"\x1eexcluded_content_descriptorids\x18\x02 \x03(\x0e2\x15.EContentDescriptorIDR\x1cexcludedContentDescriptorids\"\xad\x02\n" +
+	"\x1eexcluded_content_descriptorids\x18\x02 \x03(\x0e2\x15.EContentDescriptorIDR\x1cexcludedContentDescriptorids\"\xcc\x03\n" +
 	")CStoreBrowse_GetContentHubConfig_Response\x12[\n" +
 	"\n" +
 	"hubconfigs\x18\x01 \x03(\v2;.CStoreBrowse_GetContentHubConfig_Response.ContentHubConfigR\n" +
-	"hubconfigs\x1a\xa2\x01\n" +
+	"hubconfigs\x1a\xc1\x02\n" +
 	"\x10ContentHubConfig\x12$\n" +
 	"\rhubcategoryid\x18\x01 \x01(\rR\rhubcategoryid\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x12\x16\n" +
 	"\x06handle\x18\x03 \x01(\tR\x06handle\x12!\n" +
 	"\fdisplay_name\x18\x04 \x01(\tR\vdisplayName\x12\x19\n" +
-	"\burl_path\x18\x05 \x01(\tR\aurlPath\"l\n" +
+	"\burl_path\x18\x05 \x01(\tR\aurlPath\x12#\n" +
+	"\rreplaces_tags\x18\x06 \x03(\rR\freplacesTags\x12$\n" +
+	"\x0emust_have_tags\x18\a \x03(\rR\fmustHaveTags\x12%\n" +
+	"\x0fany_one_of_tags\x18\b \x03(\rR\fanyOneOfTags\x12+\n" +
+	"\x12must_not_have_tags\x18\t \x03(\rR\x0fmustNotHaveTags\"l\n" +
 	"\"CStoreBrowse_GetPriceStops_Request\x12!\n" +
 	"\fcountry_code\x18\x01 \x01(\tR\vcountryCode\x12#\n" +
 	"\rcurrency_code\x18\x02 \x01(\tR\fcurrencyCode\"\xfb\x01\n" +
@@ -5403,75 +5458,76 @@ var file_steammessages_storebrowse_steamclient_proto_depIdxs = []int32{
 	37, // 19: StoreItem.purchase_options:type_name -> StoreItem.PurchaseOption
 	37, // 20: StoreItem.accessories:type_name -> StoreItem.PurchaseOption
 	37, // 21: StoreItem.self_purchase_option:type_name -> StoreItem.PurchaseOption
-	38, // 22: StoreItem.screenshots:type_name -> StoreItem.Screenshots
-	39, // 23: StoreItem.trailers:type_name -> StoreItem.Trailers
-	40, // 24: StoreItem.supported_languages:type_name -> StoreItem.SupportedLanguage
-	41, // 25: StoreItem.free_weekend:type_name -> StoreItem.FreeWeekend
-	34, // 26: StoreItem.assets_without_overrides:type_name -> StoreItem.Assets
-	13, // 27: StoreItem.user_filter_failure:type_name -> StoreBrowseFilterFailure
-	42, // 28: StoreItem.links:type_name -> StoreItem.Link
-	4,  // 29: StoreBrowseFilterFailure.filter_failure:type_name -> EStoreBrowseFilterFailure
-	58, // 30: StoreBrowseFilterFailure.excluded_content_descriptorids:type_name -> EContentDescriptorID
-	11, // 31: CStoreBrowse_GetItems_Response.store_items:type_name -> StoreItem
-	52, // 32: CStoreBrowse_GetStoreCategories_Response.categories:type_name -> CStoreBrowse_GetStoreCategories_Response.Category
-	8,  // 33: CStoreBrowse_GetContentHubConfig_Request.context:type_name -> StoreBrowseContext
-	58, // 34: CStoreBrowse_GetContentHubConfig_Request.excluded_content_descriptorids:type_name -> EContentDescriptorID
-	53, // 35: CStoreBrowse_GetContentHubConfig_Response.hubconfigs:type_name -> CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig
-	54, // 36: CStoreBrowse_GetPriceStops_Response.price_stops:type_name -> CStoreBrowse_GetPriceStops_Response.PriceStop
-	8,  // 37: CStoreBrowse_GetDLCForApps_Request.context:type_name -> StoreBrowseContext
-	59, // 38: CStoreBrowse_GetDLCForApps_Request.store_page_filter:type_name -> CStorePageFilter
-	7,  // 39: CStoreBrowse_GetDLCForApps_Request.appids:type_name -> StoreItemID
-	55, // 40: CStoreBrowse_GetDLCForApps_Response.dlc_data:type_name -> CStoreBrowse_GetDLCForApps_Response.DLCData
-	56, // 41: CStoreBrowse_GetDLCForApps_Response.playtime:type_name -> CStoreBrowse_GetDLCForApps_Response.PlaytimeForApp
-	8,  // 42: CStoreBrowse_GetDLCForAppsSolr_Request.context:type_name -> StoreBrowseContext
-	59, // 43: CStoreBrowse_GetDLCForAppsSolr_Request.store_page_filter:type_name -> CStorePageFilter
-	57, // 44: CStoreBrowse_GetDLCForAppsSolr_Response.dlc_lists:type_name -> CStoreBrowse_GetDLCForAppsSolr_Response.DLCList
-	8,  // 45: CStoreBrowse_GetHardwareItems_Request.context:type_name -> StoreBrowseContext
-	26, // 46: CStoreBrowse_GetHardwareItems_Response.details:type_name -> CHardwarePackageDetails
-	11, // 47: StoreItem.IncludedItems.included_apps:type_name -> StoreItem
-	11, // 48: StoreItem.IncludedItems.included_packages:type_name -> StoreItem
-	43, // 49: StoreItem.Reviews.summary_filtered:type_name -> StoreItem.Reviews.StoreReviewSummary
-	43, // 50: StoreItem.Reviews.summary_unfiltered:type_name -> StoreItem.Reviews.StoreReviewSummary
-	43, // 51: StoreItem.Reviews.summary_language_specific:type_name -> StoreItem.Reviews.StoreReviewSummary
-	44, // 52: StoreItem.BasicInfo.publishers:type_name -> StoreItem.BasicInfo.CreatorHomeLink
-	44, // 53: StoreItem.BasicInfo.developers:type_name -> StoreItem.BasicInfo.CreatorHomeLink
-	44, // 54: StoreItem.BasicInfo.franchises:type_name -> StoreItem.BasicInfo.CreatorHomeLink
-	45, // 55: StoreItem.Platforms.vr_support:type_name -> StoreItem.Platforms.VRSupport
-	60, // 56: StoreItem.Platforms.steam_deck_compat_category:type_name -> ESteamDeckCompatibilityCategory
-	61, // 57: StoreItem.Platforms.steam_os_compat_category:type_name -> ESteamOSCompatibilityCategory
-	46, // 58: StoreItem.PurchaseOption.active_discounts:type_name -> StoreItem.PurchaseOption.Discount
-	47, // 59: StoreItem.PurchaseOption.recurrence_info:type_name -> StoreItem.PurchaseOption.RecurrenceInfo
-	48, // 60: StoreItem.Screenshots.all_ages_screenshots:type_name -> StoreItem.Screenshots.Screenshot
-	48, // 61: StoreItem.Screenshots.mature_content_screenshots:type_name -> StoreItem.Screenshots.Screenshot
-	51, // 62: StoreItem.Trailers.highlights:type_name -> StoreItem.Trailers.Trailer
-	51, // 63: StoreItem.Trailers.other_trailers:type_name -> StoreItem.Trailers.Trailer
-	5,  // 64: StoreItem.Link.link_type:type_name -> EStoreLinkType
-	2,  // 65: StoreItem.Reviews.StoreReviewSummary.review_score:type_name -> EUserReviewScore
-	3,  // 66: StoreItem.Trailers.Trailer.trailer_category:type_name -> ETrailerCategory
-	49, // 67: StoreItem.Trailers.Trailer.trailer_480p:type_name -> StoreItem.Trailers.VideoSource
-	49, // 68: StoreItem.Trailers.Trailer.trailer_max:type_name -> StoreItem.Trailers.VideoSource
-	49, // 69: StoreItem.Trailers.Trailer.microtrailer:type_name -> StoreItem.Trailers.VideoSource
-	50, // 70: StoreItem.Trailers.Trailer.adaptive_trailers:type_name -> StoreItem.Trailers.AdaptiveTrailer
-	6,  // 71: CStoreBrowse_GetStoreCategories_Response.Category.type:type_name -> EStoreCategoryType
-	10, // 72: StoreBrowse.GetItems:input_type -> CStoreBrowse_GetItems_Request
-	15, // 73: StoreBrowse.GetStoreCategories:input_type -> CStoreBrowse_GetStoreCategories_Request
-	17, // 74: StoreBrowse.GetContentHubConfig:input_type -> CStoreBrowse_GetContentHubConfig_Request
-	19, // 75: StoreBrowse.GetPriceStops:input_type -> CStoreBrowse_GetPriceStops_Request
-	21, // 76: StoreBrowse.GetDLCForApps:input_type -> CStoreBrowse_GetDLCForApps_Request
-	23, // 77: StoreBrowse.GetDLCForAppsSolr:input_type -> CStoreBrowse_GetDLCForAppsSolr_Request
-	25, // 78: StoreBrowse.GetHardwareItems:input_type -> CStoreBrowse_GetHardwareItems_Request
-	14, // 79: StoreBrowse.GetItems:output_type -> CStoreBrowse_GetItems_Response
-	16, // 80: StoreBrowse.GetStoreCategories:output_type -> CStoreBrowse_GetStoreCategories_Response
-	18, // 81: StoreBrowse.GetContentHubConfig:output_type -> CStoreBrowse_GetContentHubConfig_Response
-	20, // 82: StoreBrowse.GetPriceStops:output_type -> CStoreBrowse_GetPriceStops_Response
-	22, // 83: StoreBrowse.GetDLCForApps:output_type -> CStoreBrowse_GetDLCForApps_Response
-	24, // 84: StoreBrowse.GetDLCForAppsSolr:output_type -> CStoreBrowse_GetDLCForAppsSolr_Response
-	27, // 85: StoreBrowse.GetHardwareItems:output_type -> CStoreBrowse_GetHardwareItems_Response
-	79, // [79:86] is the sub-list for method output_type
-	72, // [72:79] is the sub-list for method input_type
-	72, // [72:72] is the sub-list for extension type_name
-	72, // [72:72] is the sub-list for extension extendee
-	0,  // [0:72] is the sub-list for field type_name
+	37, // 22: StoreItem.invalid_purchase_options:type_name -> StoreItem.PurchaseOption
+	38, // 23: StoreItem.screenshots:type_name -> StoreItem.Screenshots
+	39, // 24: StoreItem.trailers:type_name -> StoreItem.Trailers
+	40, // 25: StoreItem.supported_languages:type_name -> StoreItem.SupportedLanguage
+	41, // 26: StoreItem.free_weekend:type_name -> StoreItem.FreeWeekend
+	34, // 27: StoreItem.assets_without_overrides:type_name -> StoreItem.Assets
+	13, // 28: StoreItem.user_filter_failure:type_name -> StoreBrowseFilterFailure
+	42, // 29: StoreItem.links:type_name -> StoreItem.Link
+	4,  // 30: StoreBrowseFilterFailure.filter_failure:type_name -> EStoreBrowseFilterFailure
+	58, // 31: StoreBrowseFilterFailure.excluded_content_descriptorids:type_name -> EContentDescriptorID
+	11, // 32: CStoreBrowse_GetItems_Response.store_items:type_name -> StoreItem
+	52, // 33: CStoreBrowse_GetStoreCategories_Response.categories:type_name -> CStoreBrowse_GetStoreCategories_Response.Category
+	8,  // 34: CStoreBrowse_GetContentHubConfig_Request.context:type_name -> StoreBrowseContext
+	58, // 35: CStoreBrowse_GetContentHubConfig_Request.excluded_content_descriptorids:type_name -> EContentDescriptorID
+	53, // 36: CStoreBrowse_GetContentHubConfig_Response.hubconfigs:type_name -> CStoreBrowse_GetContentHubConfig_Response.ContentHubConfig
+	54, // 37: CStoreBrowse_GetPriceStops_Response.price_stops:type_name -> CStoreBrowse_GetPriceStops_Response.PriceStop
+	8,  // 38: CStoreBrowse_GetDLCForApps_Request.context:type_name -> StoreBrowseContext
+	59, // 39: CStoreBrowse_GetDLCForApps_Request.store_page_filter:type_name -> CStorePageFilter
+	7,  // 40: CStoreBrowse_GetDLCForApps_Request.appids:type_name -> StoreItemID
+	55, // 41: CStoreBrowse_GetDLCForApps_Response.dlc_data:type_name -> CStoreBrowse_GetDLCForApps_Response.DLCData
+	56, // 42: CStoreBrowse_GetDLCForApps_Response.playtime:type_name -> CStoreBrowse_GetDLCForApps_Response.PlaytimeForApp
+	8,  // 43: CStoreBrowse_GetDLCForAppsSolr_Request.context:type_name -> StoreBrowseContext
+	59, // 44: CStoreBrowse_GetDLCForAppsSolr_Request.store_page_filter:type_name -> CStorePageFilter
+	57, // 45: CStoreBrowse_GetDLCForAppsSolr_Response.dlc_lists:type_name -> CStoreBrowse_GetDLCForAppsSolr_Response.DLCList
+	8,  // 46: CStoreBrowse_GetHardwareItems_Request.context:type_name -> StoreBrowseContext
+	26, // 47: CStoreBrowse_GetHardwareItems_Response.details:type_name -> CHardwarePackageDetails
+	11, // 48: StoreItem.IncludedItems.included_apps:type_name -> StoreItem
+	11, // 49: StoreItem.IncludedItems.included_packages:type_name -> StoreItem
+	43, // 50: StoreItem.Reviews.summary_filtered:type_name -> StoreItem.Reviews.StoreReviewSummary
+	43, // 51: StoreItem.Reviews.summary_unfiltered:type_name -> StoreItem.Reviews.StoreReviewSummary
+	43, // 52: StoreItem.Reviews.summary_language_specific:type_name -> StoreItem.Reviews.StoreReviewSummary
+	44, // 53: StoreItem.BasicInfo.publishers:type_name -> StoreItem.BasicInfo.CreatorHomeLink
+	44, // 54: StoreItem.BasicInfo.developers:type_name -> StoreItem.BasicInfo.CreatorHomeLink
+	44, // 55: StoreItem.BasicInfo.franchises:type_name -> StoreItem.BasicInfo.CreatorHomeLink
+	45, // 56: StoreItem.Platforms.vr_support:type_name -> StoreItem.Platforms.VRSupport
+	60, // 57: StoreItem.Platforms.steam_deck_compat_category:type_name -> ESteamDeckCompatibilityCategory
+	61, // 58: StoreItem.Platforms.steam_os_compat_category:type_name -> ESteamOSCompatibilityCategory
+	46, // 59: StoreItem.PurchaseOption.active_discounts:type_name -> StoreItem.PurchaseOption.Discount
+	47, // 60: StoreItem.PurchaseOption.recurrence_info:type_name -> StoreItem.PurchaseOption.RecurrenceInfo
+	48, // 61: StoreItem.Screenshots.all_ages_screenshots:type_name -> StoreItem.Screenshots.Screenshot
+	48, // 62: StoreItem.Screenshots.mature_content_screenshots:type_name -> StoreItem.Screenshots.Screenshot
+	51, // 63: StoreItem.Trailers.highlights:type_name -> StoreItem.Trailers.Trailer
+	51, // 64: StoreItem.Trailers.other_trailers:type_name -> StoreItem.Trailers.Trailer
+	5,  // 65: StoreItem.Link.link_type:type_name -> EStoreLinkType
+	2,  // 66: StoreItem.Reviews.StoreReviewSummary.review_score:type_name -> EUserReviewScore
+	3,  // 67: StoreItem.Trailers.Trailer.trailer_category:type_name -> ETrailerCategory
+	49, // 68: StoreItem.Trailers.Trailer.trailer_480p:type_name -> StoreItem.Trailers.VideoSource
+	49, // 69: StoreItem.Trailers.Trailer.trailer_max:type_name -> StoreItem.Trailers.VideoSource
+	49, // 70: StoreItem.Trailers.Trailer.microtrailer:type_name -> StoreItem.Trailers.VideoSource
+	50, // 71: StoreItem.Trailers.Trailer.adaptive_trailers:type_name -> StoreItem.Trailers.AdaptiveTrailer
+	6,  // 72: CStoreBrowse_GetStoreCategories_Response.Category.type:type_name -> EStoreCategoryType
+	10, // 73: StoreBrowse.GetItems:input_type -> CStoreBrowse_GetItems_Request
+	15, // 74: StoreBrowse.GetStoreCategories:input_type -> CStoreBrowse_GetStoreCategories_Request
+	17, // 75: StoreBrowse.GetContentHubConfig:input_type -> CStoreBrowse_GetContentHubConfig_Request
+	19, // 76: StoreBrowse.GetPriceStops:input_type -> CStoreBrowse_GetPriceStops_Request
+	21, // 77: StoreBrowse.GetDLCForApps:input_type -> CStoreBrowse_GetDLCForApps_Request
+	23, // 78: StoreBrowse.GetDLCForAppsSolr:input_type -> CStoreBrowse_GetDLCForAppsSolr_Request
+	25, // 79: StoreBrowse.GetHardwareItems:input_type -> CStoreBrowse_GetHardwareItems_Request
+	14, // 80: StoreBrowse.GetItems:output_type -> CStoreBrowse_GetItems_Response
+	16, // 81: StoreBrowse.GetStoreCategories:output_type -> CStoreBrowse_GetStoreCategories_Response
+	18, // 82: StoreBrowse.GetContentHubConfig:output_type -> CStoreBrowse_GetContentHubConfig_Response
+	20, // 83: StoreBrowse.GetPriceStops:output_type -> CStoreBrowse_GetPriceStops_Response
+	22, // 84: StoreBrowse.GetDLCForApps:output_type -> CStoreBrowse_GetDLCForApps_Response
+	24, // 85: StoreBrowse.GetDLCForAppsSolr:output_type -> CStoreBrowse_GetDLCForAppsSolr_Response
+	27, // 86: StoreBrowse.GetHardwareItems:output_type -> CStoreBrowse_GetHardwareItems_Response
+	80, // [80:87] is the sub-list for method output_type
+	73, // [73:80] is the sub-list for method input_type
+	73, // [73:73] is the sub-list for extension type_name
+	73, // [73:73] is the sub-list for extension extendee
+	0,  // [0:73] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_storebrowse_steamclient_proto_init() }

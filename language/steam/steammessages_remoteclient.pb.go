@@ -21,6 +21,77 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ERemoteClientPairWifiAPResult int32
+
+const (
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPOK              ERemoteClientPairWifiAPResult = 1
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPFail            ERemoteClientPairWifiAPResult = 2
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPNetworkError    ERemoteClientPairWifiAPResult = 3
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPUnauthorized    ERemoteClientPairWifiAPResult = 4
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPNoDonglePresent ERemoteClientPairWifiAPResult = 5
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPTimeout         ERemoteClientPairWifiAPResult = 6
+	ERemoteClientPairWifiAPResult_k_ERemoteClientPairWifiAPCanceled        ERemoteClientPairWifiAPResult = 7
+)
+
+// Enum value maps for ERemoteClientPairWifiAPResult.
+var (
+	ERemoteClientPairWifiAPResult_name = map[int32]string{
+		1: "k_ERemoteClientPairWifiAPOK",
+		2: "k_ERemoteClientPairWifiAPFail",
+		3: "k_ERemoteClientPairWifiAPNetworkError",
+		4: "k_ERemoteClientPairWifiAPUnauthorized",
+		5: "k_ERemoteClientPairWifiAPNoDonglePresent",
+		6: "k_ERemoteClientPairWifiAPTimeout",
+		7: "k_ERemoteClientPairWifiAPCanceled",
+	}
+	ERemoteClientPairWifiAPResult_value = map[string]int32{
+		"k_ERemoteClientPairWifiAPOK":              1,
+		"k_ERemoteClientPairWifiAPFail":            2,
+		"k_ERemoteClientPairWifiAPNetworkError":    3,
+		"k_ERemoteClientPairWifiAPUnauthorized":    4,
+		"k_ERemoteClientPairWifiAPNoDonglePresent": 5,
+		"k_ERemoteClientPairWifiAPTimeout":         6,
+		"k_ERemoteClientPairWifiAPCanceled":        7,
+	}
+)
+
+func (x ERemoteClientPairWifiAPResult) Enum() *ERemoteClientPairWifiAPResult {
+	p := new(ERemoteClientPairWifiAPResult)
+	*p = x
+	return p
+}
+
+func (x ERemoteClientPairWifiAPResult) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ERemoteClientPairWifiAPResult) Descriptor() protoreflect.EnumDescriptor {
+	return file_steammessages_remoteclient_proto_enumTypes[0].Descriptor()
+}
+
+func (ERemoteClientPairWifiAPResult) Type() protoreflect.EnumType {
+	return &file_steammessages_remoteclient_proto_enumTypes[0]
+}
+
+func (x ERemoteClientPairWifiAPResult) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Do not use.
+func (x *ERemoteClientPairWifiAPResult) UnmarshalJSON(b []byte) error {
+	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
+	if err != nil {
+		return err
+	}
+	*x = ERemoteClientPairWifiAPResult(num)
+	return nil
+}
+
+// Deprecated: Use ERemoteClientPairWifiAPResult.Descriptor instead.
+func (ERemoteClientPairWifiAPResult) EnumDescriptor() ([]byte, []int) {
+	return file_steammessages_remoteclient_proto_rawDescGZIP(), []int{0}
+}
+
 type CMsgRemoteClientStatus struct {
 	state         protoimpl.MessageState           `protogen:"open.v1"`
 	ClientId      *uint64                          `protobuf:"varint,1,opt,name=client_id,json=clientId" json:"client_id,omitempty"`
@@ -672,12 +743,14 @@ func (x *CMsgRemoteClientStreamingEnabled) GetEnabled() bool {
 }
 
 type CMsgRemoteClientWifiAPStatus struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Ssid          *string                `protobuf:"bytes,1,opt,name=ssid" json:"ssid,omitempty"`
-	Password      *string                `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
-	Wpa2          *bool                  `protobuf:"varint,3,opt,name=wpa2" json:"wpa2,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Ssid              *string                `protobuf:"bytes,1,opt,name=ssid" json:"ssid,omitempty"`
+	Password          *string                `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
+	Wpa2Deprecated    *bool                  `protobuf:"varint,3,opt,name=wpa2_deprecated,json=wpa2Deprecated" json:"wpa2_deprecated,omitempty"`
+	IsPairingCapable  *bool                  `protobuf:"varint,4,opt,name=is_pairing_capable,json=isPairingCapable" json:"is_pairing_capable,omitempty"`
+	PairedNetworkHash *uint64                `protobuf:"fixed64,5,opt,name=paired_network_hash,json=pairedNetworkHash" json:"paired_network_hash,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *CMsgRemoteClientWifiAPStatus) Reset() {
@@ -724,11 +797,142 @@ func (x *CMsgRemoteClientWifiAPStatus) GetPassword() string {
 	return ""
 }
 
-func (x *CMsgRemoteClientWifiAPStatus) GetWpa2() bool {
-	if x != nil && x.Wpa2 != nil {
-		return *x.Wpa2
+func (x *CMsgRemoteClientWifiAPStatus) GetWpa2Deprecated() bool {
+	if x != nil && x.Wpa2Deprecated != nil {
+		return *x.Wpa2Deprecated
 	}
 	return false
+}
+
+func (x *CMsgRemoteClientWifiAPStatus) GetIsPairingCapable() bool {
+	if x != nil && x.IsPairingCapable != nil {
+		return *x.IsPairingCapable
+	}
+	return false
+}
+
+func (x *CMsgRemoteClientWifiAPStatus) GetPairedNetworkHash() uint64 {
+	if x != nil && x.PairedNetworkHash != nil {
+		return *x.PairedNetworkHash
+	}
+	return 0
+}
+
+type CMsgRemoteClientPairWifiAP struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ssid          *string                `protobuf:"bytes,1,opt,name=ssid" json:"ssid,omitempty"`
+	Password      *string                `protobuf:"bytes,2,opt,name=password" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CMsgRemoteClientPairWifiAP) Reset() {
+	*x = CMsgRemoteClientPairWifiAP{}
+	mi := &file_steammessages_remoteclient_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CMsgRemoteClientPairWifiAP) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CMsgRemoteClientPairWifiAP) ProtoMessage() {}
+
+func (x *CMsgRemoteClientPairWifiAP) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_remoteclient_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CMsgRemoteClientPairWifiAP.ProtoReflect.Descriptor instead.
+func (*CMsgRemoteClientPairWifiAP) Descriptor() ([]byte, []int) {
+	return file_steammessages_remoteclient_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CMsgRemoteClientPairWifiAP) GetSsid() string {
+	if x != nil && x.Ssid != nil {
+		return *x.Ssid
+	}
+	return ""
+}
+
+func (x *CMsgRemoteClientPairWifiAP) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
+}
+
+type CMsgRemoteClientPairWifiAPResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EPairResult   *int32                 `protobuf:"varint,1,opt,name=e_pair_result,json=ePairResult,def=2" json:"e_pair_result,omitempty"`
+	Ssid          *string                `protobuf:"bytes,2,opt,name=ssid" json:"ssid,omitempty"`
+	Password      *string                `protobuf:"bytes,3,opt,name=password" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+// Default values for CMsgRemoteClientPairWifiAPResponse fields.
+const (
+	Default_CMsgRemoteClientPairWifiAPResponse_EPairResult = int32(2)
+)
+
+func (x *CMsgRemoteClientPairWifiAPResponse) Reset() {
+	*x = CMsgRemoteClientPairWifiAPResponse{}
+	mi := &file_steammessages_remoteclient_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CMsgRemoteClientPairWifiAPResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CMsgRemoteClientPairWifiAPResponse) ProtoMessage() {}
+
+func (x *CMsgRemoteClientPairWifiAPResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_remoteclient_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CMsgRemoteClientPairWifiAPResponse.ProtoReflect.Descriptor instead.
+func (*CMsgRemoteClientPairWifiAPResponse) Descriptor() ([]byte, []int) {
+	return file_steammessages_remoteclient_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *CMsgRemoteClientPairWifiAPResponse) GetEPairResult() int32 {
+	if x != nil && x.EPairResult != nil {
+		return *x.EPairResult
+	}
+	return Default_CMsgRemoteClientPairWifiAPResponse_EPairResult
+}
+
+func (x *CMsgRemoteClientPairWifiAPResponse) GetSsid() string {
+	if x != nil && x.Ssid != nil {
+		return *x.Ssid
+	}
+	return ""
+}
+
+func (x *CMsgRemoteClientPairWifiAPResponse) GetPassword() string {
+	if x != nil && x.Password != nil {
+		return *x.Password
+	}
+	return ""
 }
 
 type CMsgRemoteClientAppStatus_AppUpdateInfo struct {
@@ -752,7 +956,7 @@ const (
 
 func (x *CMsgRemoteClientAppStatus_AppUpdateInfo) Reset() {
 	*x = CMsgRemoteClientAppStatus_AppUpdateInfo{}
-	mi := &file_steammessages_remoteclient_proto_msgTypes[11]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -764,7 +968,7 @@ func (x *CMsgRemoteClientAppStatus_AppUpdateInfo) String() string {
 func (*CMsgRemoteClientAppStatus_AppUpdateInfo) ProtoMessage() {}
 
 func (x *CMsgRemoteClientAppStatus_AppUpdateInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_proto_msgTypes[11]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -848,7 +1052,7 @@ type CMsgRemoteClientAppStatus_ShortcutInfo struct {
 
 func (x *CMsgRemoteClientAppStatus_ShortcutInfo) Reset() {
 	*x = CMsgRemoteClientAppStatus_ShortcutInfo{}
-	mi := &file_steammessages_remoteclient_proto_msgTypes[12]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -860,7 +1064,7 @@ func (x *CMsgRemoteClientAppStatus_ShortcutInfo) String() string {
 func (*CMsgRemoteClientAppStatus_ShortcutInfo) ProtoMessage() {}
 
 func (x *CMsgRemoteClientAppStatus_ShortcutInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_proto_msgTypes[12]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -922,7 +1126,7 @@ const (
 
 func (x *CMsgRemoteClientAppStatus_AppStatus) Reset() {
 	*x = CMsgRemoteClientAppStatus_AppStatus{}
-	mi := &file_steammessages_remoteclient_proto_msgTypes[13]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -934,7 +1138,7 @@ func (x *CMsgRemoteClientAppStatus_AppStatus) String() string {
 func (*CMsgRemoteClientAppStatus_AppStatus) ProtoMessage() {}
 
 func (x *CMsgRemoteClientAppStatus_AppStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_proto_msgTypes[13]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -995,7 +1199,7 @@ type CMsgRemoteClientStartStream_ReservedGamepad struct {
 
 func (x *CMsgRemoteClientStartStream_ReservedGamepad) Reset() {
 	*x = CMsgRemoteClientStartStream_ReservedGamepad{}
-	mi := &file_steammessages_remoteclient_proto_msgTypes[14]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1007,7 +1211,7 @@ func (x *CMsgRemoteClientStartStream_ReservedGamepad) String() string {
 func (*CMsgRemoteClientStartStream_ReservedGamepad) ProtoMessage() {}
 
 func (x *CMsgRemoteClientStartStream_ReservedGamepad) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_proto_msgTypes[14]
+	mi := &file_steammessages_remoteclient_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1118,11 +1322,28 @@ const file_steammessages_remoteclient_proto_rawDesc = "" +
 	"\n" +
 	"config_vdf\x18\x02 \x01(\fR\tconfigVdf\"<\n" +
 	" CMsgRemoteClientStreamingEnabled\x12\x18\n" +
-	"\aenabled\x18\x01 \x02(\bR\aenabled\"b\n" +
+	"\aenabled\x18\x01 \x02(\bR\aenabled\"\xd5\x01\n" +
 	"\x1cCMsgRemoteClientWifiAPStatus\x12\x12\n" +
 	"\x04ssid\x18\x01 \x01(\tR\x04ssid\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04wpa2\x18\x03 \x01(\bR\x04wpa2B\x05H\x01\x80\x01\x00"
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12'\n" +
+	"\x0fwpa2_deprecated\x18\x03 \x01(\bR\x0ewpa2Deprecated\x12,\n" +
+	"\x12is_pairing_capable\x18\x04 \x01(\bR\x10isPairingCapable\x12.\n" +
+	"\x13paired_network_hash\x18\x05 \x01(\x06R\x11pairedNetworkHash\"L\n" +
+	"\x1aCMsgRemoteClientPairWifiAP\x12\x12\n" +
+	"\x04ssid\x18\x01 \x01(\tR\x04ssid\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\"{\n" +
+	"\"CMsgRemoteClientPairWifiAPResponse\x12%\n" +
+	"\re_pair_result\x18\x01 \x01(\x05:\x012R\vePairResult\x12\x12\n" +
+	"\x04ssid\x18\x02 \x01(\tR\x04ssid\x12\x1a\n" +
+	"\bpassword\x18\x03 \x01(\tR\bpassword*\xb4\x02\n" +
+	"\x1dERemoteClientPairWifiAPResult\x12\x1f\n" +
+	"\x1bk_ERemoteClientPairWifiAPOK\x10\x01\x12!\n" +
+	"\x1dk_ERemoteClientPairWifiAPFail\x10\x02\x12)\n" +
+	"%k_ERemoteClientPairWifiAPNetworkError\x10\x03\x12)\n" +
+	"%k_ERemoteClientPairWifiAPUnauthorized\x10\x04\x12,\n" +
+	"(k_ERemoteClientPairWifiAPNoDonglePresent\x10\x05\x12$\n" +
+	" k_ERemoteClientPairWifiAPTimeout\x10\x06\x12%\n" +
+	"!k_ERemoteClientPairWifiAPCanceled\x10\aB\x05H\x01\x80\x01\x00"
 
 var (
 	file_steammessages_remoteclient_proto_rawDescOnce sync.Once
@@ -1136,34 +1357,38 @@ func file_steammessages_remoteclient_proto_rawDescGZIP() []byte {
 	return file_steammessages_remoteclient_proto_rawDescData
 }
 
-var file_steammessages_remoteclient_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_steammessages_remoteclient_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_steammessages_remoteclient_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_steammessages_remoteclient_proto_goTypes = []any{
-	(*CMsgRemoteClientStatus)(nil),                      // 0: CMsgRemoteClientStatus
-	(*CMsgRemoteClientAppStatus)(nil),                   // 1: CMsgRemoteClientAppStatus
-	(*CMsgRemoteClientStartStream)(nil),                 // 2: CMsgRemoteClientStartStream
-	(*CMsgRemoteClientStartStreamResponse)(nil),         // 3: CMsgRemoteClientStartStreamResponse
-	(*CMsgRemoteClientPing)(nil),                        // 4: CMsgRemoteClientPing
-	(*CMsgRemoteClientPingResponse)(nil),                // 5: CMsgRemoteClientPingResponse
-	(*CMsgRemoteClientAcceptEULA)(nil),                  // 6: CMsgRemoteClientAcceptEULA
-	(*CMsgRemoteClientGetControllerConfig)(nil),         // 7: CMsgRemoteClientGetControllerConfig
-	(*CMsgRemoteClientGetControllerConfigResponse)(nil), // 8: CMsgRemoteClientGetControllerConfigResponse
-	(*CMsgRemoteClientStreamingEnabled)(nil),            // 9: CMsgRemoteClientStreamingEnabled
-	(*CMsgRemoteClientWifiAPStatus)(nil),                // 10: CMsgRemoteClientWifiAPStatus
-	(*CMsgRemoteClientAppStatus_AppUpdateInfo)(nil),     // 11: CMsgRemoteClientAppStatus.AppUpdateInfo
-	(*CMsgRemoteClientAppStatus_ShortcutInfo)(nil),      // 12: CMsgRemoteClientAppStatus.ShortcutInfo
-	(*CMsgRemoteClientAppStatus_AppStatus)(nil),         // 13: CMsgRemoteClientAppStatus.AppStatus
-	(*CMsgRemoteClientStartStream_ReservedGamepad)(nil), // 14: CMsgRemoteClientStartStream.ReservedGamepad
-	(*CMsgRemoteClientBroadcastStatus)(nil),             // 15: CMsgRemoteClientBroadcastStatus
-	(EStreamTransport)(0),                               // 16: EStreamTransport
+	(ERemoteClientPairWifiAPResult)(0),                  // 0: ERemoteClientPairWifiAPResult
+	(*CMsgRemoteClientStatus)(nil),                      // 1: CMsgRemoteClientStatus
+	(*CMsgRemoteClientAppStatus)(nil),                   // 2: CMsgRemoteClientAppStatus
+	(*CMsgRemoteClientStartStream)(nil),                 // 3: CMsgRemoteClientStartStream
+	(*CMsgRemoteClientStartStreamResponse)(nil),         // 4: CMsgRemoteClientStartStreamResponse
+	(*CMsgRemoteClientPing)(nil),                        // 5: CMsgRemoteClientPing
+	(*CMsgRemoteClientPingResponse)(nil),                // 6: CMsgRemoteClientPingResponse
+	(*CMsgRemoteClientAcceptEULA)(nil),                  // 7: CMsgRemoteClientAcceptEULA
+	(*CMsgRemoteClientGetControllerConfig)(nil),         // 8: CMsgRemoteClientGetControllerConfig
+	(*CMsgRemoteClientGetControllerConfigResponse)(nil), // 9: CMsgRemoteClientGetControllerConfigResponse
+	(*CMsgRemoteClientStreamingEnabled)(nil),            // 10: CMsgRemoteClientStreamingEnabled
+	(*CMsgRemoteClientWifiAPStatus)(nil),                // 11: CMsgRemoteClientWifiAPStatus
+	(*CMsgRemoteClientPairWifiAP)(nil),                  // 12: CMsgRemoteClientPairWifiAP
+	(*CMsgRemoteClientPairWifiAPResponse)(nil),          // 13: CMsgRemoteClientPairWifiAPResponse
+	(*CMsgRemoteClientAppStatus_AppUpdateInfo)(nil),     // 14: CMsgRemoteClientAppStatus.AppUpdateInfo
+	(*CMsgRemoteClientAppStatus_ShortcutInfo)(nil),      // 15: CMsgRemoteClientAppStatus.ShortcutInfo
+	(*CMsgRemoteClientAppStatus_AppStatus)(nil),         // 16: CMsgRemoteClientAppStatus.AppStatus
+	(*CMsgRemoteClientStartStream_ReservedGamepad)(nil), // 17: CMsgRemoteClientStartStream.ReservedGamepad
+	(*CMsgRemoteClientBroadcastStatus)(nil),             // 18: CMsgRemoteClientBroadcastStatus
+	(EStreamTransport)(0),                               // 19: EStreamTransport
 }
 var file_steammessages_remoteclient_proto_depIdxs = []int32{
-	15, // 0: CMsgRemoteClientStatus.status:type_name -> CMsgRemoteClientBroadcastStatus
-	13, // 1: CMsgRemoteClientAppStatus.status_updates:type_name -> CMsgRemoteClientAppStatus.AppStatus
-	14, // 2: CMsgRemoteClientStartStream.gamepads:type_name -> CMsgRemoteClientStartStream.ReservedGamepad
-	16, // 3: CMsgRemoteClientStartStream.supported_transport:type_name -> EStreamTransport
-	16, // 4: CMsgRemoteClientStartStreamResponse.transport:type_name -> EStreamTransport
-	11, // 5: CMsgRemoteClientAppStatus.AppStatus.update_info:type_name -> CMsgRemoteClientAppStatus.AppUpdateInfo
-	12, // 6: CMsgRemoteClientAppStatus.AppStatus.shortcut_info:type_name -> CMsgRemoteClientAppStatus.ShortcutInfo
+	18, // 0: CMsgRemoteClientStatus.status:type_name -> CMsgRemoteClientBroadcastStatus
+	16, // 1: CMsgRemoteClientAppStatus.status_updates:type_name -> CMsgRemoteClientAppStatus.AppStatus
+	17, // 2: CMsgRemoteClientStartStream.gamepads:type_name -> CMsgRemoteClientStartStream.ReservedGamepad
+	19, // 3: CMsgRemoteClientStartStream.supported_transport:type_name -> EStreamTransport
+	19, // 4: CMsgRemoteClientStartStreamResponse.transport:type_name -> EStreamTransport
+	14, // 5: CMsgRemoteClientAppStatus.AppStatus.update_info:type_name -> CMsgRemoteClientAppStatus.AppUpdateInfo
+	15, // 6: CMsgRemoteClientAppStatus.AppStatus.shortcut_info:type_name -> CMsgRemoteClientAppStatus.ShortcutInfo
 	7,  // [7:7] is the sub-list for method output_type
 	7,  // [7:7] is the sub-list for method input_type
 	7,  // [7:7] is the sub-list for extension type_name
@@ -1183,13 +1408,14 @@ func file_steammessages_remoteclient_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_remoteclient_proto_rawDesc), len(file_steammessages_remoteclient_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   15,
+			NumEnums:      1,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_steammessages_remoteclient_proto_goTypes,
 		DependencyIndexes: file_steammessages_remoteclient_proto_depIdxs,
+		EnumInfos:         file_steammessages_remoteclient_proto_enumTypes,
 		MessageInfos:      file_steammessages_remoteclient_proto_msgTypes,
 	}.Build()
 	File_steammessages_remoteclient_proto = out.File

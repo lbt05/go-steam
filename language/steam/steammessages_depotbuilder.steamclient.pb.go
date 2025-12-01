@@ -22,15 +22,16 @@ const (
 )
 
 type CContentBuilder_InitDepotBuild_Request struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Appid          *uint32                `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
-	Depotid        *uint32                `protobuf:"varint,2,opt,name=depotid" json:"depotid,omitempty"`
-	WorkshopItemid *uint64                `protobuf:"varint,3,opt,name=workshop_itemid,json=workshopItemid" json:"workshop_itemid,omitempty"`
-	ForLocalCs     *bool                  `protobuf:"varint,4,opt,name=for_local_cs,json=forLocalCs" json:"for_local_cs,omitempty"`
-	TargetBranch   *string                `protobuf:"bytes,5,opt,name=target_branch,json=targetBranch" json:"target_branch,omitempty"`
-	ShaderDepot    *bool                  `protobuf:"varint,6,opt,name=shader_depot,json=shaderDepot" json:"shader_depot,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Appid              *uint32                `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
+	Depotid            *uint32                `protobuf:"varint,2,opt,name=depotid" json:"depotid,omitempty"`
+	WorkshopItemid     *uint64                `protobuf:"varint,3,opt,name=workshop_itemid,json=workshopItemid" json:"workshop_itemid,omitempty"`
+	ForLocalCs         *bool                  `protobuf:"varint,4,opt,name=for_local_cs,json=forLocalCs" json:"for_local_cs,omitempty"`
+	TargetBranch       *string                `protobuf:"bytes,5,opt,name=target_branch,json=targetBranch" json:"target_branch,omitempty"`
+	ShaderDepot        *bool                  `protobuf:"varint,6,opt,name=shader_depot,json=shaderDepot" json:"shader_depot,omitempty"`
+	BaselineManifestId *uint64                `protobuf:"varint,7,opt,name=baseline_manifest_id,json=baselineManifestId" json:"baseline_manifest_id,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *CContentBuilder_InitDepotBuild_Request) Reset() {
@@ -103,6 +104,13 @@ func (x *CContentBuilder_InitDepotBuild_Request) GetShaderDepot() bool {
 		return *x.ShaderDepot
 	}
 	return false
+}
+
+func (x *CContentBuilder_InitDepotBuild_Request) GetBaselineManifestId() uint64 {
+	if x != nil && x.BaselineManifestId != nil {
+		return *x.BaselineManifestId
+	}
+	return 0
 }
 
 type CContentBuilder_InitDepotBuild_Response struct {
@@ -628,6 +636,7 @@ type CContentBuilder_CommitAppBuild_Request struct {
 	BuildNotes     *string                                          `protobuf:"bytes,4,opt,name=build_notes,json=buildNotes" json:"build_notes,omitempty"`
 	LiveBranch     *string                                          `protobuf:"bytes,5,opt,name=live_branch,json=liveBranch" json:"live_branch,omitempty"`
 	ForLocalCs     *bool                                            `protobuf:"varint,6,opt,name=for_local_cs,json=forLocalCs" json:"for_local_cs,omitempty"`
+	WebUpload      *bool                                            `protobuf:"varint,7,opt,name=web_upload,json=webUpload" json:"web_upload,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -693,6 +702,13 @@ func (x *CContentBuilder_CommitAppBuild_Request) GetLiveBranch() string {
 func (x *CContentBuilder_CommitAppBuild_Request) GetForLocalCs() bool {
 	if x != nil && x.ForLocalCs != nil {
 		return *x.ForLocalCs
+	}
+	return false
+}
+
+func (x *CContentBuilder_CommitAppBuild_Request) GetWebUpload() bool {
+	if x != nil && x.WebUpload != nil {
+		return *x.WebUpload
 	}
 	return false
 }
@@ -945,7 +961,7 @@ var File_steammessages_depotbuilder_steamclient_proto protoreflect.FileDescripto
 
 const file_steammessages_depotbuilder_steamclient_proto_rawDesc = "" +
 	"\n" +
-	",steammessages_depotbuilder.steamclient.proto\x1a\x18steammessages_base.proto\x1a,steammessages_unified_base.steamclient.proto\"\xeb\x01\n" +
+	",steammessages_depotbuilder.steamclient.proto\x1a\x18steammessages_base.proto\x1a,steammessages_unified_base.steamclient.proto\"\x9d\x02\n" +
 	"&CContentBuilder_InitDepotBuild_Request\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12\x18\n" +
 	"\adepotid\x18\x02 \x01(\rR\adepotid\x12'\n" +
@@ -953,7 +969,8 @@ const file_steammessages_depotbuilder_steamclient_proto_rawDesc = "" +
 	"\ffor_local_cs\x18\x04 \x01(\bR\n" +
 	"forLocalCs\x12#\n" +
 	"\rtarget_branch\x18\x05 \x01(\tR\ftargetBranch\x12!\n" +
-	"\fshader_depot\x18\x06 \x01(\bR\vshaderDepot\"\xda\x06\n" +
+	"\fshader_depot\x18\x06 \x01(\bR\vshaderDepot\x120\n" +
+	"\x14baseline_manifest_id\x18\a \x01(\x04R\x12baselineManifestId\"\xda\x06\n" +
 	"'CContentBuilder_InitDepotBuild_Response\x12/\n" +
 	"\x13baseline_manifestid\x18\x01 \x01(\x04R\x12baselineManifestid\x12\x1d\n" +
 	"\n" +
@@ -1001,7 +1018,7 @@ const file_steammessages_depotbuilder_steamclient_proto_rawDesc = "" +
 	"manifestid\x12\x1f\n" +
 	"\vprev_reused\x18\x02 \x01(\bR\n" +
 	"prevReused\x122\n" +
-	"\x15manifest_request_code\x18\x03 \x01(\x04R\x13manifestRequestCode\"\xbf\x02\n" +
+	"\x15manifest_request_code\x18\x03 \x01(\x04R\x13manifestRequestCode\"\xde\x02\n" +
 	"&CContentBuilder_CommitAppBuild_Request\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12W\n" +
 	"\x0fdepot_manifests\x18\x02 \x03(\v2..CContentBuilder_CommitAppBuild_Request.DepotsR\x0edepotManifests\x12\x1f\n" +
@@ -1010,7 +1027,9 @@ const file_steammessages_depotbuilder_steamclient_proto_rawDesc = "" +
 	"\vlive_branch\x18\x05 \x01(\tR\n" +
 	"liveBranch\x12 \n" +
 	"\ffor_local_cs\x18\x06 \x01(\bR\n" +
-	"forLocalCs\x1aB\n" +
+	"forLocalCs\x12\x1d\n" +
+	"\n" +
+	"web_upload\x18\a \x01(\bR\twebUpload\x1aB\n" +
 	"\x06Depots\x12\x18\n" +
 	"\adepotid\x18\x01 \x01(\rR\adepotid\x12\x1e\n" +
 	"\n" +

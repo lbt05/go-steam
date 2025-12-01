@@ -5116,7 +5116,9 @@ const (
 	EContentReportResolution_k_EContentReportResolution_SuspiciousIncludingUpvoters EContentReportResolution = 8
 	EContentReportResolution_k_EContentReportResolution_VisibilityChanged           EContentReportResolution = 9
 	EContentReportResolution_k_EContentReportResolution_CountryRestrictionsChanged  EContentReportResolution = 10
-	EContentReportResolution_k_EContentReportResolution_MAX                         EContentReportResolution = 11
+	EContentReportResolution_k_EContentReportResolution_RemoveAndWarn               EContentReportResolution = 11
+	EContentReportResolution_k_EContentReportResolution_RemoveAndBan                EContentReportResolution = 12
+	EContentReportResolution_k_EContentReportResolution_MAX                         EContentReportResolution = 13
 )
 
 // Enum value maps for EContentReportResolution.
@@ -5133,7 +5135,9 @@ var (
 		8:  "k_EContentReportResolution_SuspiciousIncludingUpvoters",
 		9:  "k_EContentReportResolution_VisibilityChanged",
 		10: "k_EContentReportResolution_CountryRestrictionsChanged",
-		11: "k_EContentReportResolution_MAX",
+		11: "k_EContentReportResolution_RemoveAndWarn",
+		12: "k_EContentReportResolution_RemoveAndBan",
+		13: "k_EContentReportResolution_MAX",
 	}
 	EContentReportResolution_value = map[string]int32{
 		"k_EContentReportResolution_Unresolved":                  0,
@@ -5147,7 +5151,9 @@ var (
 		"k_EContentReportResolution_SuspiciousIncludingUpvoters": 8,
 		"k_EContentReportResolution_VisibilityChanged":           9,
 		"k_EContentReportResolution_CountryRestrictionsChanged":  10,
-		"k_EContentReportResolution_MAX":                         11,
+		"k_EContentReportResolution_RemoveAndWarn":               11,
+		"k_EContentReportResolution_RemoveAndBan":                12,
+		"k_EContentReportResolution_MAX":                         13,
 	}
 )
 
@@ -5191,17 +5197,28 @@ func (EContentReportResolution) EnumDescriptor() ([]byte, []int) {
 type EContentReportSubjectAction int32
 
 const (
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Invalid            EContentReportSubjectAction = 0
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Unresolved         EContentReportSubjectAction = 1
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Sanctioned         EContentReportSubjectAction = 2
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Acquitted          EContentReportSubjectAction = 3
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Cancelled          EContentReportSubjectAction = 4
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Updated            EContentReportSubjectAction = 5
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Escalated          EContentReportSubjectAction = 6
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Disputed           EContentReportSubjectAction = 7
-	EContentReportSubjectAction_k_EContentReportSubjectAction_SustainedOnDispute EContentReportSubjectAction = 8
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Locked             EContentReportSubjectAction = 9
-	EContentReportSubjectAction_k_EContentReportSubjectAction_Unlocked           EContentReportSubjectAction = 10
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Invalid               EContentReportSubjectAction = 0
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Unresolved            EContentReportSubjectAction = 1
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Sanctioned            EContentReportSubjectAction = 2
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Acquitted             EContentReportSubjectAction = 3
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Cancelled             EContentReportSubjectAction = 4
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Updated               EContentReportSubjectAction = 5
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Escalated             EContentReportSubjectAction = 6
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Disputed              EContentReportSubjectAction = 7
+	EContentReportSubjectAction_k_EContentReportSubjectAction_SustainedOnDispute    EContentReportSubjectAction = 8
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Locked                EContentReportSubjectAction = 9
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Unlocked              EContentReportSubjectAction = 10
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Deleted               EContentReportSubjectAction = 11
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Warned                EContentReportSubjectAction = 12
+	EContentReportSubjectAction_k_EContentReportSubjectAction_BannedFromHub         EContentReportSubjectAction = 13
+	EContentReportSubjectAction_k_EContentReportSubjectAction_BannedFromCommunity   EContentReportSubjectAction = 14
+	EContentReportSubjectAction_k_EContentReportSubjectAction_TradeBanned           EContentReportSubjectAction = 15
+	EContentReportSubjectAction_k_EContentReportSubjectAction_MarkedAsSuspicious    EContentReportSubjectAction = 16
+	EContentReportSubjectAction_k_EContentReportSubjectAction_ResetContent          EContentReportSubjectAction = 17
+	EContentReportSubjectAction_k_EContentReportSubjectAction_EscalatedForCSAM      EContentReportSubjectAction = 18
+	EContentReportSubjectAction_k_EContentReportSubjectAction_EscalatedForTerrorism EContentReportSubjectAction = 19
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Claimed               EContentReportSubjectAction = 20
+	EContentReportSubjectAction_k_EContentReportSubjectAction_Released              EContentReportSubjectAction = 21
 )
 
 // Enum value maps for EContentReportSubjectAction.
@@ -5218,19 +5235,41 @@ var (
 		8:  "k_EContentReportSubjectAction_SustainedOnDispute",
 		9:  "k_EContentReportSubjectAction_Locked",
 		10: "k_EContentReportSubjectAction_Unlocked",
+		11: "k_EContentReportSubjectAction_Deleted",
+		12: "k_EContentReportSubjectAction_Warned",
+		13: "k_EContentReportSubjectAction_BannedFromHub",
+		14: "k_EContentReportSubjectAction_BannedFromCommunity",
+		15: "k_EContentReportSubjectAction_TradeBanned",
+		16: "k_EContentReportSubjectAction_MarkedAsSuspicious",
+		17: "k_EContentReportSubjectAction_ResetContent",
+		18: "k_EContentReportSubjectAction_EscalatedForCSAM",
+		19: "k_EContentReportSubjectAction_EscalatedForTerrorism",
+		20: "k_EContentReportSubjectAction_Claimed",
+		21: "k_EContentReportSubjectAction_Released",
 	}
 	EContentReportSubjectAction_value = map[string]int32{
-		"k_EContentReportSubjectAction_Invalid":            0,
-		"k_EContentReportSubjectAction_Unresolved":         1,
-		"k_EContentReportSubjectAction_Sanctioned":         2,
-		"k_EContentReportSubjectAction_Acquitted":          3,
-		"k_EContentReportSubjectAction_Cancelled":          4,
-		"k_EContentReportSubjectAction_Updated":            5,
-		"k_EContentReportSubjectAction_Escalated":          6,
-		"k_EContentReportSubjectAction_Disputed":           7,
-		"k_EContentReportSubjectAction_SustainedOnDispute": 8,
-		"k_EContentReportSubjectAction_Locked":             9,
-		"k_EContentReportSubjectAction_Unlocked":           10,
+		"k_EContentReportSubjectAction_Invalid":               0,
+		"k_EContentReportSubjectAction_Unresolved":            1,
+		"k_EContentReportSubjectAction_Sanctioned":            2,
+		"k_EContentReportSubjectAction_Acquitted":             3,
+		"k_EContentReportSubjectAction_Cancelled":             4,
+		"k_EContentReportSubjectAction_Updated":               5,
+		"k_EContentReportSubjectAction_Escalated":             6,
+		"k_EContentReportSubjectAction_Disputed":              7,
+		"k_EContentReportSubjectAction_SustainedOnDispute":    8,
+		"k_EContentReportSubjectAction_Locked":                9,
+		"k_EContentReportSubjectAction_Unlocked":              10,
+		"k_EContentReportSubjectAction_Deleted":               11,
+		"k_EContentReportSubjectAction_Warned":                12,
+		"k_EContentReportSubjectAction_BannedFromHub":         13,
+		"k_EContentReportSubjectAction_BannedFromCommunity":   14,
+		"k_EContentReportSubjectAction_TradeBanned":           15,
+		"k_EContentReportSubjectAction_MarkedAsSuspicious":    16,
+		"k_EContentReportSubjectAction_ResetContent":          17,
+		"k_EContentReportSubjectAction_EscalatedForCSAM":      18,
+		"k_EContentReportSubjectAction_EscalatedForTerrorism": 19,
+		"k_EContentReportSubjectAction_Claimed":               20,
+		"k_EContentReportSubjectAction_Released":              21,
 	}
 )
 
@@ -5336,7 +5375,8 @@ const (
 	EContentReportReason_k_EContentReportReason_FakedGenderedNonConsensualMaterial           EContentReportReason = 59
 	EContentReportReason_k_EContentReportReason_FakedNonConsensualMaterial                   EContentReportReason = 60
 	EContentReportReason_k_EContentReportReason_NegativeEffectonDiscourseOrElections         EContentReportReason = 61
-	EContentReportReason_k_EContentReportReason_MAX                                          EContentReportReason = 62
+	EContentReportReason_k_EContentReportReason_QuotesModeratedContent                       EContentReportReason = 62
+	EContentReportReason_k_EContentReportReason_MAX                                          EContentReportReason = 63
 )
 
 // Enum value maps for EContentReportReason.
@@ -5404,7 +5444,8 @@ var (
 		59: "k_EContentReportReason_FakedGenderedNonConsensualMaterial",
 		60: "k_EContentReportReason_FakedNonConsensualMaterial",
 		61: "k_EContentReportReason_NegativeEffectonDiscourseOrElections",
-		62: "k_EContentReportReason_MAX",
+		62: "k_EContentReportReason_QuotesModeratedContent",
+		63: "k_EContentReportReason_MAX",
 	}
 	EContentReportReason_value = map[string]int32{
 		"k_EContentReportReason_Invalid":                                      0,
@@ -5469,7 +5510,8 @@ var (
 		"k_EContentReportReason_FakedGenderedNonConsensualMaterial":           59,
 		"k_EContentReportReason_FakedNonConsensualMaterial":                   60,
 		"k_EContentReportReason_NegativeEffectonDiscourseOrElections":         61,
-		"k_EContentReportReason_MAX":                                          62,
+		"k_EContentReportReason_QuotesModeratedContent":                       62,
+		"k_EContentReportReason_MAX":                                          63,
 	}
 )
 
@@ -5570,6 +5612,80 @@ func (x *EResolutionAutomation) UnmarshalJSON(b []byte) error {
 // Deprecated: Use EResolutionAutomation.Descriptor instead.
 func (EResolutionAutomation) EnumDescriptor() ([]byte, []int) {
 	return file_enums_proto_rawDescGZIP(), []int{76}
+}
+
+type EPressOutletAction int32
+
+const (
+	EPressOutletAction_k_EPressOutletAction_Invalid   EPressOutletAction = 0
+	EPressOutletAction_k_EPressOutletAction_Granted   EPressOutletAction = 1
+	EPressOutletAction_k_EPressOutletAction_Removed   EPressOutletAction = 2
+	EPressOutletAction_k_EPressOutletAction_Created   EPressOutletAction = 3
+	EPressOutletAction_k_EPressOutletAction_Updated   EPressOutletAction = 4
+	EPressOutletAction_k_EPressOutletAction_Deleted   EPressOutletAction = 5
+	EPressOutletAction_k_EPressOutletAction_Undeleted EPressOutletAction = 6
+	EPressOutletAction_k_EPressOutletAction_MAX       EPressOutletAction = 7
+)
+
+// Enum value maps for EPressOutletAction.
+var (
+	EPressOutletAction_name = map[int32]string{
+		0: "k_EPressOutletAction_Invalid",
+		1: "k_EPressOutletAction_Granted",
+		2: "k_EPressOutletAction_Removed",
+		3: "k_EPressOutletAction_Created",
+		4: "k_EPressOutletAction_Updated",
+		5: "k_EPressOutletAction_Deleted",
+		6: "k_EPressOutletAction_Undeleted",
+		7: "k_EPressOutletAction_MAX",
+	}
+	EPressOutletAction_value = map[string]int32{
+		"k_EPressOutletAction_Invalid":   0,
+		"k_EPressOutletAction_Granted":   1,
+		"k_EPressOutletAction_Removed":   2,
+		"k_EPressOutletAction_Created":   3,
+		"k_EPressOutletAction_Updated":   4,
+		"k_EPressOutletAction_Deleted":   5,
+		"k_EPressOutletAction_Undeleted": 6,
+		"k_EPressOutletAction_MAX":       7,
+	}
+)
+
+func (x EPressOutletAction) Enum() *EPressOutletAction {
+	p := new(EPressOutletAction)
+	*p = x
+	return p
+}
+
+func (x EPressOutletAction) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (EPressOutletAction) Descriptor() protoreflect.EnumDescriptor {
+	return file_enums_proto_enumTypes[77].Descriptor()
+}
+
+func (EPressOutletAction) Type() protoreflect.EnumType {
+	return &file_enums_proto_enumTypes[77]
+}
+
+func (x EPressOutletAction) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Do not use.
+func (x *EPressOutletAction) UnmarshalJSON(b []byte) error {
+	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
+	if err != nil {
+		return err
+	}
+	*x = EPressOutletAction(num)
+	return nil
+}
+
+// Deprecated: Use EPressOutletAction.Descriptor instead.
+func (EPressOutletAction) EnumDescriptor() ([]byte, []int) {
+	return file_enums_proto_rawDescGZIP(), []int{77}
 }
 
 var File_enums_proto protoreflect.FileDescriptor
@@ -6139,7 +6255,7 @@ const file_enums_proto_rawDesc = "" +
 	"#k_EContentModeratorLevel_Supervisor\x10\x01\x12\"\n" +
 	"\x1ek_EContentModeratorLevel_Valve\x10\n" +
 	"\x12 \n" +
-	"\x1ck_EContentModeratorLevel_MAX\x10\v*\xc6\x04\n" +
+	"\x1ck_EContentModeratorLevel_MAX\x10\v*\xa1\x05\n" +
 	"\x18EContentReportResolution\x12)\n" +
 	"%k_EContentReportResolution_Unresolved\x10\x00\x12(\n" +
 	"$k_EContentReportResolution_Acquitted\x10\x01\x12&\n" +
@@ -6152,8 +6268,10 @@ const file_enums_proto_rawDesc = "" +
 	"6k_EContentReportResolution_SuspiciousIncludingUpvoters\x10\b\x120\n" +
 	",k_EContentReportResolution_VisibilityChanged\x10\t\x129\n" +
 	"5k_EContentReportResolution_CountryRestrictionsChanged\x10\n" +
-	"\x12\"\n" +
-	"\x1ek_EContentReportResolution_MAX\x10\v*\x8e\x04\n" +
+	"\x12,\n" +
+	"(k_EContentReportResolution_RemoveAndWarn\x10\v\x12+\n" +
+	"'k_EContentReportResolution_RemoveAndBan\x10\f\x12\"\n" +
+	"\x1ek_EContentReportResolution_MAX\x10\r*\xa4\b\n" +
 	"\x1bEContentReportSubjectAction\x12)\n" +
 	"%k_EContentReportSubjectAction_Invalid\x10\x00\x12,\n" +
 	"(k_EContentReportSubjectAction_Unresolved\x10\x01\x12,\n" +
@@ -6166,7 +6284,18 @@ const file_enums_proto_rawDesc = "" +
 	"0k_EContentReportSubjectAction_SustainedOnDispute\x10\b\x12(\n" +
 	"$k_EContentReportSubjectAction_Locked\x10\t\x12*\n" +
 	"&k_EContentReportSubjectAction_Unlocked\x10\n" +
-	"*\xc1\x17\n" +
+	"\x12)\n" +
+	"%k_EContentReportSubjectAction_Deleted\x10\v\x12(\n" +
+	"$k_EContentReportSubjectAction_Warned\x10\f\x12/\n" +
+	"+k_EContentReportSubjectAction_BannedFromHub\x10\r\x125\n" +
+	"1k_EContentReportSubjectAction_BannedFromCommunity\x10\x0e\x12-\n" +
+	")k_EContentReportSubjectAction_TradeBanned\x10\x0f\x124\n" +
+	"0k_EContentReportSubjectAction_MarkedAsSuspicious\x10\x10\x12.\n" +
+	"*k_EContentReportSubjectAction_ResetContent\x10\x11\x122\n" +
+	".k_EContentReportSubjectAction_EscalatedForCSAM\x10\x12\x127\n" +
+	"3k_EContentReportSubjectAction_EscalatedForTerrorism\x10\x13\x12)\n" +
+	"%k_EContentReportSubjectAction_Claimed\x10\x14\x12*\n" +
+	"&k_EContentReportSubjectAction_Released\x10\x15*\xf4\x17\n" +
 	"\x14EContentReportReason\x12\"\n" +
 	"\x1ek_EContentReportReason_Invalid\x10\x00\x12\x1f\n" +
 	"\x1bk_EContentReportReason_None\x10\x01\x12\"\n" +
@@ -6230,13 +6359,23 @@ const file_enums_proto_rawDesc = "" +
 	"4k_EContentReportReason_GenderedNonConsensualMaterial\x10:\x12=\n" +
 	"9k_EContentReportReason_FakedGenderedNonConsensualMaterial\x10;\x125\n" +
 	"1k_EContentReportReason_FakedNonConsensualMaterial\x10<\x12?\n" +
-	";k_EContentReportReason_NegativeEffectonDiscourseOrElections\x10=\x12\x1e\n" +
-	"\x1ak_EContentReportReason_MAX\x10>*\xb8\x01\n" +
+	";k_EContentReportReason_NegativeEffectonDiscourseOrElections\x10=\x121\n" +
+	"-k_EContentReportReason_QuotesModeratedContent\x10>\x12\x1e\n" +
+	"\x1ak_EContentReportReason_MAX\x10?*\xb8\x01\n" +
 	"\x15EResolutionAutomation\x12\"\n" +
 	"\x1ek_EResolutionAutomation_Manual\x10\x00\x12.\n" +
 	"*k_EResolutionAutomation_PartiallyAutomated\x10\x01\x12*\n" +
 	"&k_EResolutionAutomation_FullyAutomated\x10\x02\x12\x1f\n" +
-	"\x1bk_EResolutionAutomation_MAX\x10\x03B\x02H\x01"
+	"\x1bk_EResolutionAutomation_MAX\x10\x03*\xa2\x02\n" +
+	"\x12EPressOutletAction\x12 \n" +
+	"\x1ck_EPressOutletAction_Invalid\x10\x00\x12 \n" +
+	"\x1ck_EPressOutletAction_Granted\x10\x01\x12 \n" +
+	"\x1ck_EPressOutletAction_Removed\x10\x02\x12 \n" +
+	"\x1ck_EPressOutletAction_Created\x10\x03\x12 \n" +
+	"\x1ck_EPressOutletAction_Updated\x10\x04\x12 \n" +
+	"\x1ck_EPressOutletAction_Deleted\x10\x05\x12\"\n" +
+	"\x1ek_EPressOutletAction_Undeleted\x10\x06\x12\x1c\n" +
+	"\x18k_EPressOutletAction_MAX\x10\aB\x02H\x01"
 
 var (
 	file_enums_proto_rawDescOnce sync.Once
@@ -6250,7 +6389,7 @@ func file_enums_proto_rawDescGZIP() []byte {
 	return file_enums_proto_rawDescData
 }
 
-var file_enums_proto_enumTypes = make([]protoimpl.EnumInfo, 77)
+var file_enums_proto_enumTypes = make([]protoimpl.EnumInfo, 78)
 var file_enums_proto_goTypes = []any{
 	(EPublishedFileQueryType)(0),                  // 0: EPublishedFileQueryType
 	(EPublishedFileInappropriateProvider)(0),      // 1: EPublishedFileInappropriateProvider
@@ -6329,6 +6468,7 @@ var file_enums_proto_goTypes = []any{
 	(EContentReportSubjectAction)(0),              // 74: EContentReportSubjectAction
 	(EContentReportReason)(0),                     // 75: EContentReportReason
 	(EResolutionAutomation)(0),                    // 76: EResolutionAutomation
+	(EPressOutletAction)(0),                       // 77: EPressOutletAction
 }
 var file_enums_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -6348,7 +6488,7 @@ func file_enums_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_enums_proto_rawDesc), len(file_enums_proto_rawDesc)),
-			NumEnums:      77,
+			NumEnums:      78,
 			NumMessages:   0,
 			NumExtensions: 0,
 			NumServices:   0,

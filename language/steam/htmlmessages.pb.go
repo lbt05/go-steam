@@ -1462,8 +1462,8 @@ type CMsgBrowserResized struct {
 	DpiHorizontal *float64               `protobuf:"fixed64,7,opt,name=dpi_horizontal,json=dpiHorizontal" json:"dpi_horizontal,omitempty"`
 	DpiVertical   *float64               `protobuf:"fixed64,8,opt,name=dpi_vertical,json=dpiVertical" json:"dpi_vertical,omitempty"`
 	DisplayName   *string                `protobuf:"bytes,9,opt,name=display_name,json=displayName" json:"display_name,omitempty"`
-	DisplayWidth  *uint32                `protobuf:"varint,10,opt,name=display_width,json=displayWidth" json:"display_width,omitempty"`
-	DisplayHeight *uint32                `protobuf:"varint,11,opt,name=display_height,json=displayHeight" json:"display_height,omitempty"`
+	DisplayWidth  *int32                 `protobuf:"varint,10,opt,name=display_width,json=displayWidth" json:"display_width,omitempty"`
+	DisplayHeight *int32                 `protobuf:"varint,11,opt,name=display_height,json=displayHeight" json:"display_height,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1561,14 +1561,14 @@ func (x *CMsgBrowserResized) GetDisplayName() string {
 	return ""
 }
 
-func (x *CMsgBrowserResized) GetDisplayWidth() uint32 {
+func (x *CMsgBrowserResized) GetDisplayWidth() int32 {
 	if x != nil && x.DisplayWidth != nil {
 		return *x.DisplayWidth
 	}
 	return 0
 }
 
-func (x *CMsgBrowserResized) GetDisplayHeight() uint32 {
+func (x *CMsgBrowserResized) GetDisplayHeight() int32 {
 	if x != nil && x.DisplayHeight != nil {
 		return *x.DisplayHeight
 	}
@@ -10887,8 +10887,8 @@ const file_htmlmessages_proto_rawDesc = "" +
 	"\fdpi_vertical\x18\b \x01(\x01R\vdpiVertical\x12!\n" +
 	"\fdisplay_name\x18\t \x01(\tR\vdisplayName\x12#\n" +
 	"\rdisplay_width\x18\n" +
-	" \x01(\rR\fdisplayWidth\x12%\n" +
-	"\x0edisplay_height\x18\v \x01(\rR\rdisplayHeight\"\x9f\x01\n" +
+	" \x01(\x05R\fdisplayWidth\x12%\n" +
+	"\x0edisplay_height\x18\v \x01(\x05R\rdisplayHeight\"\x9f\x01\n" +
 	"\vCMsgPostURL\x12%\n" +
 	"\x0ebrowser_handle\x18\x01 \x01(\rR\rbrowserHandle\x12\x10\n" +
 	"\x03url\x18\x02 \x01(\tR\x03url\x12\x12\n" +

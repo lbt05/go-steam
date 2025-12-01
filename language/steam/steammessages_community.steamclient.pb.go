@@ -21,6 +21,77 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ECommentDeleteReason int32
+
+const (
+	ECommentDeleteReason_k_ECommentDeleteReason_Invalid         ECommentDeleteReason = 0
+	ECommentDeleteReason_k_ECommentDeleteReason_User            ECommentDeleteReason = 1
+	ECommentDeleteReason_k_ECommentDeleteReason_ThreadOwner     ECommentDeleteReason = 2
+	ECommentDeleteReason_k_ECommentDeleteReason_Moderator       ECommentDeleteReason = 3
+	ECommentDeleteReason_k_ECommentDeleteReason_Support         ECommentDeleteReason = 4
+	ECommentDeleteReason_k_ECommentDeleteReason_Spam            ECommentDeleteReason = 5
+	ECommentDeleteReason_k_ECommentDeleteReason_AccountDeletion ECommentDeleteReason = 6
+)
+
+// Enum value maps for ECommentDeleteReason.
+var (
+	ECommentDeleteReason_name = map[int32]string{
+		0: "k_ECommentDeleteReason_Invalid",
+		1: "k_ECommentDeleteReason_User",
+		2: "k_ECommentDeleteReason_ThreadOwner",
+		3: "k_ECommentDeleteReason_Moderator",
+		4: "k_ECommentDeleteReason_Support",
+		5: "k_ECommentDeleteReason_Spam",
+		6: "k_ECommentDeleteReason_AccountDeletion",
+	}
+	ECommentDeleteReason_value = map[string]int32{
+		"k_ECommentDeleteReason_Invalid":         0,
+		"k_ECommentDeleteReason_User":            1,
+		"k_ECommentDeleteReason_ThreadOwner":     2,
+		"k_ECommentDeleteReason_Moderator":       3,
+		"k_ECommentDeleteReason_Support":         4,
+		"k_ECommentDeleteReason_Spam":            5,
+		"k_ECommentDeleteReason_AccountDeletion": 6,
+	}
+)
+
+func (x ECommentDeleteReason) Enum() *ECommentDeleteReason {
+	p := new(ECommentDeleteReason)
+	*p = x
+	return p
+}
+
+func (x ECommentDeleteReason) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ECommentDeleteReason) Descriptor() protoreflect.EnumDescriptor {
+	return file_steammessages_community_steamclient_proto_enumTypes[0].Descriptor()
+}
+
+func (ECommentDeleteReason) Type() protoreflect.EnumType {
+	return &file_steammessages_community_steamclient_proto_enumTypes[0]
+}
+
+func (x ECommentDeleteReason) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Do not use.
+func (x *ECommentDeleteReason) UnmarshalJSON(b []byte) error {
+	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
+	if err != nil {
+		return err
+	}
+	*x = ECommentDeleteReason(num)
+	return nil
+}
+
+// Deprecated: Use ECommentDeleteReason.Descriptor instead.
+func (ECommentDeleteReason) EnumDescriptor() ([]byte, []int) {
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{0}
+}
+
 type EClanImageGroup int32
 
 const (
@@ -54,11 +125,11 @@ func (x EClanImageGroup) String() string {
 }
 
 func (EClanImageGroup) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[0].Descriptor()
+	return file_steammessages_community_steamclient_proto_enumTypes[1].Descriptor()
 }
 
 func (EClanImageGroup) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[0]
+	return &file_steammessages_community_steamclient_proto_enumTypes[1]
 }
 
 func (x EClanImageGroup) Number() protoreflect.EnumNumber {
@@ -77,7 +148,7 @@ func (x *EClanImageGroup) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use EClanImageGroup.Descriptor instead.
 func (EClanImageGroup) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{0}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{1}
 }
 
 type EClanImageFileType int32
@@ -137,11 +208,11 @@ func (x EClanImageFileType) String() string {
 }
 
 func (EClanImageFileType) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[1].Descriptor()
+	return file_steammessages_community_steamclient_proto_enumTypes[2].Descriptor()
 }
 
 func (EClanImageFileType) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[1]
+	return &file_steammessages_community_steamclient_proto_enumTypes[2]
 }
 
 func (x EClanImageFileType) Number() protoreflect.EnumNumber {
@@ -160,7 +231,7 @@ func (x *EClanImageFileType) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use EClanImageFileType.Descriptor instead.
 func (EClanImageFileType) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{1}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{2}
 }
 
 type EPartnerEventDisplayLocation int32
@@ -220,11 +291,11 @@ func (x EPartnerEventDisplayLocation) String() string {
 }
 
 func (EPartnerEventDisplayLocation) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[2].Descriptor()
+	return file_steammessages_community_steamclient_proto_enumTypes[3].Descriptor()
 }
 
 func (EPartnerEventDisplayLocation) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[2]
+	return &file_steammessages_community_steamclient_proto_enumTypes[3]
 }
 
 func (x EPartnerEventDisplayLocation) Number() protoreflect.EnumNumber {
@@ -243,7 +314,7 @@ func (x *EPartnerEventDisplayLocation) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use EPartnerEventDisplayLocation.Descriptor instead.
 func (EPartnerEventDisplayLocation) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{2}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{3}
 }
 
 type CCommunity_GetApps_Request struct {
@@ -598,9 +669,15 @@ type CCommunity_Comment struct {
 	UpvotedByUser    *bool                          `protobuf:"varint,11,opt,name=upvoted_by_user,json=upvotedByUser" json:"upvoted_by_user,omitempty"`
 	Reactions        []*CCommunity_Comment_Reaction `protobuf:"bytes,12,rep,name=reactions" json:"reactions,omitempty"`
 	Gidparentcomment *uint64                        `protobuf:"fixed64,13,opt,name=gidparentcomment" json:"gidparentcomment,omitempty"`
+	DeleteReason     *ECommentDeleteReason          `protobuf:"varint,14,opt,name=delete_reason,json=deleteReason,enum=ECommentDeleteReason,def=0" json:"delete_reason,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
+
+// Default values for CCommunity_Comment fields.
+const (
+	Default_CCommunity_Comment_DeleteReason = ECommentDeleteReason_k_ECommentDeleteReason_Invalid
+)
 
 func (x *CCommunity_Comment) Reset() {
 	*x = CCommunity_Comment{}
@@ -721,6 +798,13 @@ func (x *CCommunity_Comment) GetGidparentcomment() uint64 {
 		return *x.Gidparentcomment
 	}
 	return 0
+}
+
+func (x *CCommunity_Comment) GetDeleteReason() ECommentDeleteReason {
+	if x != nil && x.DeleteReason != nil {
+		return *x.DeleteReason
+	}
+	return Default_CCommunity_Comment_DeleteReason
 }
 
 type CCommunity_GetCommentThread_Response struct {
@@ -1537,6 +1621,102 @@ func (x *CCommunity_GetCommentThreadRatings_Response) GetUpvoterAccountids() []u
 	return nil
 }
 
+type CCommunity_VerifyClanMembership_Request struct {
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	Steamid                  *uint64                `protobuf:"varint,1,opt,name=steamid" json:"steamid,omitempty"`
+	SteamidsVerifymembership []uint64               `protobuf:"varint,2,rep,name=steamids_verifymembership,json=steamidsVerifymembership" json:"steamids_verifymembership,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
+}
+
+func (x *CCommunity_VerifyClanMembership_Request) Reset() {
+	*x = CCommunity_VerifyClanMembership_Request{}
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CCommunity_VerifyClanMembership_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CCommunity_VerifyClanMembership_Request) ProtoMessage() {}
+
+func (x *CCommunity_VerifyClanMembership_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CCommunity_VerifyClanMembership_Request.ProtoReflect.Descriptor instead.
+func (*CCommunity_VerifyClanMembership_Request) Descriptor() ([]byte, []int) {
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *CCommunity_VerifyClanMembership_Request) GetSteamid() uint64 {
+	if x != nil && x.Steamid != nil {
+		return *x.Steamid
+	}
+	return 0
+}
+
+func (x *CCommunity_VerifyClanMembership_Request) GetSteamidsVerifymembership() []uint64 {
+	if x != nil {
+		return x.SteamidsVerifymembership
+	}
+	return nil
+}
+
+type CCommunity_VerifyClanMembership_Response struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	SteamidsNonmembers []uint64               `protobuf:"varint,1,rep,name=steamids_nonmembers,json=steamidsNonmembers" json:"steamids_nonmembers,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *CCommunity_VerifyClanMembership_Response) Reset() {
+	*x = CCommunity_VerifyClanMembership_Response{}
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CCommunity_VerifyClanMembership_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CCommunity_VerifyClanMembership_Response) ProtoMessage() {}
+
+func (x *CCommunity_VerifyClanMembership_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CCommunity_VerifyClanMembership_Response.ProtoReflect.Descriptor instead.
+func (*CCommunity_VerifyClanMembership_Response) Descriptor() ([]byte, []int) {
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *CCommunity_VerifyClanMembership_Response) GetSteamidsNonmembers() []uint64 {
+	if x != nil {
+		return x.SteamidsNonmembers
+	}
+	return nil
+}
+
 type CCommunity_RateClanAnnouncement_Request struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Announcementid *uint64                `protobuf:"varint,1,opt,name=announcementid" json:"announcementid,omitempty"`
@@ -1548,7 +1728,7 @@ type CCommunity_RateClanAnnouncement_Request struct {
 
 func (x *CCommunity_RateClanAnnouncement_Request) Reset() {
 	*x = CCommunity_RateClanAnnouncement_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[15]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1560,7 +1740,7 @@ func (x *CCommunity_RateClanAnnouncement_Request) String() string {
 func (*CCommunity_RateClanAnnouncement_Request) ProtoMessage() {}
 
 func (x *CCommunity_RateClanAnnouncement_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[15]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1573,7 +1753,7 @@ func (x *CCommunity_RateClanAnnouncement_Request) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CCommunity_RateClanAnnouncement_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_RateClanAnnouncement_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{15}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CCommunity_RateClanAnnouncement_Request) GetAnnouncementid() uint64 {
@@ -1605,7 +1785,7 @@ type CCommunity_RateClanAnnouncement_Response struct {
 
 func (x *CCommunity_RateClanAnnouncement_Response) Reset() {
 	*x = CCommunity_RateClanAnnouncement_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[16]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1617,7 +1797,7 @@ func (x *CCommunity_RateClanAnnouncement_Response) String() string {
 func (*CCommunity_RateClanAnnouncement_Response) ProtoMessage() {}
 
 func (x *CCommunity_RateClanAnnouncement_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[16]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1630,7 +1810,7 @@ func (x *CCommunity_RateClanAnnouncement_Response) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CCommunity_RateClanAnnouncement_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_RateClanAnnouncement_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{16}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{18}
 }
 
 type CCommunity_GetClanAnnouncementVoteForUser_Request struct {
@@ -1642,7 +1822,7 @@ type CCommunity_GetClanAnnouncementVoteForUser_Request struct {
 
 func (x *CCommunity_GetClanAnnouncementVoteForUser_Request) Reset() {
 	*x = CCommunity_GetClanAnnouncementVoteForUser_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[17]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1654,7 +1834,7 @@ func (x *CCommunity_GetClanAnnouncementVoteForUser_Request) String() string {
 func (*CCommunity_GetClanAnnouncementVoteForUser_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetClanAnnouncementVoteForUser_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[17]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1667,7 +1847,7 @@ func (x *CCommunity_GetClanAnnouncementVoteForUser_Request) ProtoReflect() proto
 
 // Deprecated: Use CCommunity_GetClanAnnouncementVoteForUser_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanAnnouncementVoteForUser_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{17}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *CCommunity_GetClanAnnouncementVoteForUser_Request) GetAnnouncementid() uint64 {
@@ -1687,7 +1867,7 @@ type CCommunity_GetClanAnnouncementVoteForUser_Response struct {
 
 func (x *CCommunity_GetClanAnnouncementVoteForUser_Response) Reset() {
 	*x = CCommunity_GetClanAnnouncementVoteForUser_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[18]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1699,7 +1879,7 @@ func (x *CCommunity_GetClanAnnouncementVoteForUser_Response) String() string {
 func (*CCommunity_GetClanAnnouncementVoteForUser_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetClanAnnouncementVoteForUser_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[18]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1712,7 +1892,7 @@ func (x *CCommunity_GetClanAnnouncementVoteForUser_Response) ProtoReflect() prot
 
 // Deprecated: Use CCommunity_GetClanAnnouncementVoteForUser_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanAnnouncementVoteForUser_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{18}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CCommunity_GetClanAnnouncementVoteForUser_Response) GetVotedUp() bool {
@@ -1746,7 +1926,7 @@ const (
 
 func (x *CCommunity_GetClanLocGroupImages_Request) Reset() {
 	*x = CCommunity_GetClanLocGroupImages_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[19]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1758,7 +1938,7 @@ func (x *CCommunity_GetClanLocGroupImages_Request) String() string {
 func (*CCommunity_GetClanLocGroupImages_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetClanLocGroupImages_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[19]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1771,7 +1951,7 @@ func (x *CCommunity_GetClanLocGroupImages_Request) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CCommunity_GetClanLocGroupImages_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanLocGroupImages_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{19}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CCommunity_GetClanLocGroupImages_Request) GetSteamid() uint64 {
@@ -1824,7 +2004,7 @@ const (
 
 func (x *CCommunity_ClanLocGroupImage) Reset() {
 	*x = CCommunity_ClanLocGroupImage{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[20]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1836,7 +2016,7 @@ func (x *CCommunity_ClanLocGroupImage) String() string {
 func (*CCommunity_ClanLocGroupImage) ProtoMessage() {}
 
 func (x *CCommunity_ClanLocGroupImage) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[20]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1849,7 +2029,7 @@ func (x *CCommunity_ClanLocGroupImage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CCommunity_ClanLocGroupImage.ProtoReflect.Descriptor instead.
 func (*CCommunity_ClanLocGroupImage) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{20}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CCommunity_ClanLocGroupImage) GetLocGroupId() uint64 {
@@ -1917,7 +2097,7 @@ type CCommunity_GetClanLocGroupImages_Response struct {
 
 func (x *CCommunity_GetClanLocGroupImages_Response) Reset() {
 	*x = CCommunity_GetClanLocGroupImages_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[21]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1929,7 +2109,7 @@ func (x *CCommunity_GetClanLocGroupImages_Response) String() string {
 func (*CCommunity_GetClanLocGroupImages_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetClanLocGroupImages_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[21]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1942,7 +2122,7 @@ func (x *CCommunity_GetClanLocGroupImages_Response) ProtoReflect() protoreflect.
 
 // Deprecated: Use CCommunity_GetClanLocGroupImages_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanLocGroupImages_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{21}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CCommunity_GetClanLocGroupImages_Response) GetImages() []*CCommunity_ClanLocGroupImage {
@@ -1962,7 +2142,7 @@ type CCommunity_GetAvatarHistory_Request struct {
 
 func (x *CCommunity_GetAvatarHistory_Request) Reset() {
 	*x = CCommunity_GetAvatarHistory_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[22]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1974,7 +2154,7 @@ func (x *CCommunity_GetAvatarHistory_Request) String() string {
 func (*CCommunity_GetAvatarHistory_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetAvatarHistory_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[22]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1987,7 +2167,7 @@ func (x *CCommunity_GetAvatarHistory_Request) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CCommunity_GetAvatarHistory_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetAvatarHistory_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{22}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CCommunity_GetAvatarHistory_Request) GetSteamid() uint64 {
@@ -2013,7 +2193,7 @@ type CCommunity_GetAvatarHistory_Response struct {
 
 func (x *CCommunity_GetAvatarHistory_Response) Reset() {
 	*x = CCommunity_GetAvatarHistory_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[23]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2025,7 +2205,7 @@ func (x *CCommunity_GetAvatarHistory_Response) String() string {
 func (*CCommunity_GetAvatarHistory_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetAvatarHistory_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[23]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2038,7 +2218,7 @@ func (x *CCommunity_GetAvatarHistory_Response) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CCommunity_GetAvatarHistory_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetAvatarHistory_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{23}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CCommunity_GetAvatarHistory_Response) GetAvatars() []*CCommunity_GetAvatarHistory_Response_AvatarData {
@@ -2058,7 +2238,7 @@ type CCommunity_GetClanEventCrowdInMetadata_Request struct {
 
 func (x *CCommunity_GetClanEventCrowdInMetadata_Request) Reset() {
 	*x = CCommunity_GetClanEventCrowdInMetadata_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[24]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2070,7 +2250,7 @@ func (x *CCommunity_GetClanEventCrowdInMetadata_Request) String() string {
 func (*CCommunity_GetClanEventCrowdInMetadata_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetClanEventCrowdInMetadata_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[24]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2083,7 +2263,7 @@ func (x *CCommunity_GetClanEventCrowdInMetadata_Request) ProtoReflect() protoref
 
 // Deprecated: Use CCommunity_GetClanEventCrowdInMetadata_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanEventCrowdInMetadata_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{24}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *CCommunity_GetClanEventCrowdInMetadata_Request) GetSteamid() uint64 {
@@ -2110,7 +2290,7 @@ type CCommunity_GetClanEventCrowdInMetadata_Response struct {
 
 func (x *CCommunity_GetClanEventCrowdInMetadata_Response) Reset() {
 	*x = CCommunity_GetClanEventCrowdInMetadata_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[25]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2122,7 +2302,7 @@ func (x *CCommunity_GetClanEventCrowdInMetadata_Response) String() string {
 func (*CCommunity_GetClanEventCrowdInMetadata_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetClanEventCrowdInMetadata_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[25]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2135,7 +2315,7 @@ func (x *CCommunity_GetClanEventCrowdInMetadata_Response) ProtoReflect() protore
 
 // Deprecated: Use CCommunity_GetClanEventCrowdInMetadata_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanEventCrowdInMetadata_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{25}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CCommunity_GetClanEventCrowdInMetadata_Response) GetCrowdinProjectId() uint64 {
@@ -2161,7 +2341,7 @@ type CCommunity_GetClanCrowdInMetadata_Request struct {
 
 func (x *CCommunity_GetClanCrowdInMetadata_Request) Reset() {
 	*x = CCommunity_GetClanCrowdInMetadata_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[26]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2173,7 +2353,7 @@ func (x *CCommunity_GetClanCrowdInMetadata_Request) String() string {
 func (*CCommunity_GetClanCrowdInMetadata_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetClanCrowdInMetadata_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[26]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2186,7 +2366,7 @@ func (x *CCommunity_GetClanCrowdInMetadata_Request) ProtoReflect() protoreflect.
 
 // Deprecated: Use CCommunity_GetClanCrowdInMetadata_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanCrowdInMetadata_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{26}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CCommunity_GetClanCrowdInMetadata_Request) GetSteamid() uint64 {
@@ -2207,7 +2387,7 @@ type CCommunity_GetClanCrowdInMetadata_Response struct {
 
 func (x *CCommunity_GetClanCrowdInMetadata_Response) Reset() {
 	*x = CCommunity_GetClanCrowdInMetadata_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[27]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2219,7 +2399,7 @@ func (x *CCommunity_GetClanCrowdInMetadata_Response) String() string {
 func (*CCommunity_GetClanCrowdInMetadata_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetClanCrowdInMetadata_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[27]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2232,7 +2412,7 @@ func (x *CCommunity_GetClanCrowdInMetadata_Response) ProtoReflect() protoreflect
 
 // Deprecated: Use CCommunity_GetClanCrowdInMetadata_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetClanCrowdInMetadata_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{27}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CCommunity_GetClanCrowdInMetadata_Response) GetCrowdinProjectId() uint64 {
@@ -2267,7 +2447,7 @@ type CCommunity_FetchTranslationFromCrowdIn_Request struct {
 
 func (x *CCommunity_FetchTranslationFromCrowdIn_Request) Reset() {
 	*x = CCommunity_FetchTranslationFromCrowdIn_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[28]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2279,7 +2459,7 @@ func (x *CCommunity_FetchTranslationFromCrowdIn_Request) String() string {
 func (*CCommunity_FetchTranslationFromCrowdIn_Request) ProtoMessage() {}
 
 func (x *CCommunity_FetchTranslationFromCrowdIn_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[28]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2292,7 +2472,7 @@ func (x *CCommunity_FetchTranslationFromCrowdIn_Request) ProtoReflect() protoref
 
 // Deprecated: Use CCommunity_FetchTranslationFromCrowdIn_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_FetchTranslationFromCrowdIn_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{28}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CCommunity_FetchTranslationFromCrowdIn_Request) GetSteamid() uint64 {
@@ -2324,7 +2504,7 @@ type CCommunity_FetchTranslationFromCrowdIn_Response struct {
 
 func (x *CCommunity_FetchTranslationFromCrowdIn_Response) Reset() {
 	*x = CCommunity_FetchTranslationFromCrowdIn_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[29]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2336,7 +2516,7 @@ func (x *CCommunity_FetchTranslationFromCrowdIn_Response) String() string {
 func (*CCommunity_FetchTranslationFromCrowdIn_Response) ProtoMessage() {}
 
 func (x *CCommunity_FetchTranslationFromCrowdIn_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[29]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2349,7 +2529,7 @@ func (x *CCommunity_FetchTranslationFromCrowdIn_Response) ProtoReflect() protore
 
 // Deprecated: Use CCommunity_FetchTranslationFromCrowdIn_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_FetchTranslationFromCrowdIn_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{29}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{31}
 }
 
 type CCommunity_HideAndReportComment_Request struct {
@@ -2373,7 +2553,7 @@ const (
 
 func (x *CCommunity_HideAndReportComment_Request) Reset() {
 	*x = CCommunity_HideAndReportComment_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[30]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2385,7 +2565,7 @@ func (x *CCommunity_HideAndReportComment_Request) String() string {
 func (*CCommunity_HideAndReportComment_Request) ProtoMessage() {}
 
 func (x *CCommunity_HideAndReportComment_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[30]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2398,7 +2578,7 @@ func (x *CCommunity_HideAndReportComment_Request) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CCommunity_HideAndReportComment_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_HideAndReportComment_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{30}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CCommunity_HideAndReportComment_Request) GetGidfeature() uint64 {
@@ -2465,7 +2645,7 @@ type CCommunity_HideAndReportComment_Response struct {
 
 func (x *CCommunity_HideAndReportComment_Response) Reset() {
 	*x = CCommunity_HideAndReportComment_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[31]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2477,7 +2657,7 @@ func (x *CCommunity_HideAndReportComment_Response) String() string {
 func (*CCommunity_HideAndReportComment_Response) ProtoMessage() {}
 
 func (x *CCommunity_HideAndReportComment_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[31]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2490,7 +2670,7 @@ func (x *CCommunity_HideAndReportComment_Response) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CCommunity_HideAndReportComment_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_HideAndReportComment_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{31}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{33}
 }
 
 type CAppPriority struct {
@@ -2503,7 +2683,7 @@ type CAppPriority struct {
 
 func (x *CAppPriority) Reset() {
 	*x = CAppPriority{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[32]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2515,7 +2695,7 @@ func (x *CAppPriority) String() string {
 func (*CAppPriority) ProtoMessage() {}
 
 func (x *CAppPriority) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[32]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2528,7 +2708,7 @@ func (x *CAppPriority) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CAppPriority.ProtoReflect.Descriptor instead.
 func (*CAppPriority) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{32}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *CAppPriority) GetPriority() uint32 {
@@ -2569,7 +2749,7 @@ const (
 
 func (x *CCommunity_GetUserPartnerEventNews_Request) Reset() {
 	*x = CCommunity_GetUserPartnerEventNews_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[33]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2581,7 +2761,7 @@ func (x *CCommunity_GetUserPartnerEventNews_Request) String() string {
 func (*CCommunity_GetUserPartnerEventNews_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventNews_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[33]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2594,7 +2774,7 @@ func (x *CCommunity_GetUserPartnerEventNews_Request) ProtoReflect() protoreflect
 
 // Deprecated: Use CCommunity_GetUserPartnerEventNews_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventNews_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{33}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *CCommunity_GetUserPartnerEventNews_Request) GetCount() uint32 {
@@ -2676,7 +2856,7 @@ type CCommunity_GetUserPartnerEventNews_Response struct {
 
 func (x *CCommunity_GetUserPartnerEventNews_Response) Reset() {
 	*x = CCommunity_GetUserPartnerEventNews_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[34]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2688,7 +2868,7 @@ func (x *CCommunity_GetUserPartnerEventNews_Response) String() string {
 func (*CCommunity_GetUserPartnerEventNews_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventNews_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[34]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2701,7 +2881,7 @@ func (x *CCommunity_GetUserPartnerEventNews_Response) ProtoReflect() protoreflec
 
 // Deprecated: Use CCommunity_GetUserPartnerEventNews_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventNews_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{34}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *CCommunity_GetUserPartnerEventNews_Response) GetResults() []*CClanMatchEventByRange {
@@ -2722,7 +2902,7 @@ type CCommunity_GetBestEventsForUser_Request struct {
 
 func (x *CCommunity_GetBestEventsForUser_Request) Reset() {
 	*x = CCommunity_GetBestEventsForUser_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[35]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2734,7 +2914,7 @@ func (x *CCommunity_GetBestEventsForUser_Request) String() string {
 func (*CCommunity_GetBestEventsForUser_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetBestEventsForUser_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[35]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2747,7 +2927,7 @@ func (x *CCommunity_GetBestEventsForUser_Request) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CCommunity_GetBestEventsForUser_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetBestEventsForUser_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{35}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *CCommunity_GetBestEventsForUser_Request) GetIncludeSteamBlog() bool {
@@ -2791,7 +2971,7 @@ const (
 
 func (x *CCommunity_PartnerEventResult) Reset() {
 	*x = CCommunity_PartnerEventResult{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[36]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2803,7 +2983,7 @@ func (x *CCommunity_PartnerEventResult) String() string {
 func (*CCommunity_PartnerEventResult) ProtoMessage() {}
 
 func (x *CCommunity_PartnerEventResult) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[36]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2816,7 +2996,7 @@ func (x *CCommunity_PartnerEventResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CCommunity_PartnerEventResult.ProtoReflect.Descriptor instead.
 func (*CCommunity_PartnerEventResult) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{36}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CCommunity_PartnerEventResult) GetClanid() uint32 {
@@ -2877,7 +3057,7 @@ type CCommunity_GetBestEventsForUser_Response struct {
 
 func (x *CCommunity_GetBestEventsForUser_Response) Reset() {
 	*x = CCommunity_GetBestEventsForUser_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[37]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2889,7 +3069,7 @@ func (x *CCommunity_GetBestEventsForUser_Response) String() string {
 func (*CCommunity_GetBestEventsForUser_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetBestEventsForUser_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[37]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2902,7 +3082,7 @@ func (x *CCommunity_GetBestEventsForUser_Response) ProtoReflect() protoreflect.M
 
 // Deprecated: Use CCommunity_GetBestEventsForUser_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetBestEventsForUser_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{37}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CCommunity_GetBestEventsForUser_Response) GetResults() []*CCommunity_PartnerEventResult {
@@ -2921,7 +3101,7 @@ type CCommunity_MarkPartnerEventsForUser_Request struct {
 
 func (x *CCommunity_MarkPartnerEventsForUser_Request) Reset() {
 	*x = CCommunity_MarkPartnerEventsForUser_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[38]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2933,7 +3113,7 @@ func (x *CCommunity_MarkPartnerEventsForUser_Request) String() string {
 func (*CCommunity_MarkPartnerEventsForUser_Request) ProtoMessage() {}
 
 func (x *CCommunity_MarkPartnerEventsForUser_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[38]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2946,7 +3126,7 @@ func (x *CCommunity_MarkPartnerEventsForUser_Request) ProtoReflect() protoreflec
 
 // Deprecated: Use CCommunity_MarkPartnerEventsForUser_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_MarkPartnerEventsForUser_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{38}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *CCommunity_MarkPartnerEventsForUser_Request) GetMarkings() []*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking {
@@ -2964,7 +3144,7 @@ type CCommunity_MarkPartnerEventsForUser_Response struct {
 
 func (x *CCommunity_MarkPartnerEventsForUser_Response) Reset() {
 	*x = CCommunity_MarkPartnerEventsForUser_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[39]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2976,7 +3156,7 @@ func (x *CCommunity_MarkPartnerEventsForUser_Response) String() string {
 func (*CCommunity_MarkPartnerEventsForUser_Response) ProtoMessage() {}
 
 func (x *CCommunity_MarkPartnerEventsForUser_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[39]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2989,7 +3169,7 @@ func (x *CCommunity_MarkPartnerEventsForUser_Response) ProtoReflect() protorefle
 
 // Deprecated: Use CCommunity_MarkPartnerEventsForUser_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_MarkPartnerEventsForUser_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{39}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{41}
 }
 
 type CCommunity_GetUserPartnerEventViewStatus_Request struct {
@@ -3002,7 +3182,7 @@ type CCommunity_GetUserPartnerEventViewStatus_Request struct {
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Request) Reset() {
 	*x = CCommunity_GetUserPartnerEventViewStatus_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[40]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3014,7 +3194,7 @@ func (x *CCommunity_GetUserPartnerEventViewStatus_Request) String() string {
 func (*CCommunity_GetUserPartnerEventViewStatus_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[40]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3027,7 +3207,7 @@ func (x *CCommunity_GetUserPartnerEventViewStatus_Request) ProtoReflect() protor
 
 // Deprecated: Use CCommunity_GetUserPartnerEventViewStatus_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventViewStatus_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{40}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Request) GetEventGids() []uint64 {
@@ -3053,7 +3233,7 @@ type CCommunity_GetUserPartnerEventViewStatus_Response struct {
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Response) Reset() {
 	*x = CCommunity_GetUserPartnerEventViewStatus_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[41]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3065,7 +3245,7 @@ func (x *CCommunity_GetUserPartnerEventViewStatus_Response) String() string {
 func (*CCommunity_GetUserPartnerEventViewStatus_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[41]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3078,7 +3258,7 @@ func (x *CCommunity_GetUserPartnerEventViewStatus_Response) ProtoReflect() proto
 
 // Deprecated: Use CCommunity_GetUserPartnerEventViewStatus_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventViewStatus_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{41}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Response) GetEvents() []*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent {
@@ -3097,7 +3277,7 @@ type CCommunity_PartnerEventsShowMoreForApp_Request struct {
 
 func (x *CCommunity_PartnerEventsShowMoreForApp_Request) Reset() {
 	*x = CCommunity_PartnerEventsShowMoreForApp_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[42]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3109,7 +3289,7 @@ func (x *CCommunity_PartnerEventsShowMoreForApp_Request) String() string {
 func (*CCommunity_PartnerEventsShowMoreForApp_Request) ProtoMessage() {}
 
 func (x *CCommunity_PartnerEventsShowMoreForApp_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[42]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3122,7 +3302,7 @@ func (x *CCommunity_PartnerEventsShowMoreForApp_Request) ProtoReflect() protoref
 
 // Deprecated: Use CCommunity_PartnerEventsShowMoreForApp_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_PartnerEventsShowMoreForApp_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{42}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CCommunity_PartnerEventsShowMoreForApp_Request) GetAppid() uint32 {
@@ -3140,7 +3320,7 @@ type CCommunity_PartnerEventsShowMoreForApp_Response struct {
 
 func (x *CCommunity_PartnerEventsShowMoreForApp_Response) Reset() {
 	*x = CCommunity_PartnerEventsShowMoreForApp_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[43]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3152,7 +3332,7 @@ func (x *CCommunity_PartnerEventsShowMoreForApp_Response) String() string {
 func (*CCommunity_PartnerEventsShowMoreForApp_Response) ProtoMessage() {}
 
 func (x *CCommunity_PartnerEventsShowMoreForApp_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[43]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3165,7 +3345,7 @@ func (x *CCommunity_PartnerEventsShowMoreForApp_Response) ProtoReflect() protore
 
 // Deprecated: Use CCommunity_PartnerEventsShowMoreForApp_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_PartnerEventsShowMoreForApp_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{43}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{45}
 }
 
 type CCommunity_PartnerEventsShowLessForApp_Request struct {
@@ -3177,7 +3357,7 @@ type CCommunity_PartnerEventsShowLessForApp_Request struct {
 
 func (x *CCommunity_PartnerEventsShowLessForApp_Request) Reset() {
 	*x = CCommunity_PartnerEventsShowLessForApp_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[44]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3189,7 +3369,7 @@ func (x *CCommunity_PartnerEventsShowLessForApp_Request) String() string {
 func (*CCommunity_PartnerEventsShowLessForApp_Request) ProtoMessage() {}
 
 func (x *CCommunity_PartnerEventsShowLessForApp_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[44]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3202,7 +3382,7 @@ func (x *CCommunity_PartnerEventsShowLessForApp_Request) ProtoReflect() protoref
 
 // Deprecated: Use CCommunity_PartnerEventsShowLessForApp_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_PartnerEventsShowLessForApp_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{44}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *CCommunity_PartnerEventsShowLessForApp_Request) GetAppid() uint32 {
@@ -3220,7 +3400,7 @@ type CCommunity_PartnerEventsShowLessForApp_Response struct {
 
 func (x *CCommunity_PartnerEventsShowLessForApp_Response) Reset() {
 	*x = CCommunity_PartnerEventsShowLessForApp_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[45]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3232,7 +3412,7 @@ func (x *CCommunity_PartnerEventsShowLessForApp_Response) String() string {
 func (*CCommunity_PartnerEventsShowLessForApp_Response) ProtoMessage() {}
 
 func (x *CCommunity_PartnerEventsShowLessForApp_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[45]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3245,7 +3425,7 @@ func (x *CCommunity_PartnerEventsShowLessForApp_Response) ProtoReflect() protore
 
 // Deprecated: Use CCommunity_PartnerEventsShowLessForApp_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_PartnerEventsShowLessForApp_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{45}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{47}
 }
 
 type CCommunity_ClearUserPartnerEventsAppPriorities_Request struct {
@@ -3256,7 +3436,7 @@ type CCommunity_ClearUserPartnerEventsAppPriorities_Request struct {
 
 func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Request) Reset() {
 	*x = CCommunity_ClearUserPartnerEventsAppPriorities_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[46]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3268,7 +3448,7 @@ func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Request) String() string
 func (*CCommunity_ClearUserPartnerEventsAppPriorities_Request) ProtoMessage() {}
 
 func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[46]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3281,7 +3461,7 @@ func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Request) ProtoReflect() 
 
 // Deprecated: Use CCommunity_ClearUserPartnerEventsAppPriorities_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_ClearUserPartnerEventsAppPriorities_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{46}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{48}
 }
 
 type CCommunity_ClearUserPartnerEventsAppPriorities_Response struct {
@@ -3292,7 +3472,7 @@ type CCommunity_ClearUserPartnerEventsAppPriorities_Response struct {
 
 func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Response) Reset() {
 	*x = CCommunity_ClearUserPartnerEventsAppPriorities_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[47]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3304,7 +3484,7 @@ func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Response) String() strin
 func (*CCommunity_ClearUserPartnerEventsAppPriorities_Response) ProtoMessage() {}
 
 func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[47]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3317,7 +3497,7 @@ func (x *CCommunity_ClearUserPartnerEventsAppPriorities_Response) ProtoReflect()
 
 // Deprecated: Use CCommunity_ClearUserPartnerEventsAppPriorities_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_ClearUserPartnerEventsAppPriorities_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{47}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{49}
 }
 
 type CCommunity_GetUserPartnerEventsAppPriorities_Request struct {
@@ -3328,7 +3508,7 @@ type CCommunity_GetUserPartnerEventsAppPriorities_Request struct {
 
 func (x *CCommunity_GetUserPartnerEventsAppPriorities_Request) Reset() {
 	*x = CCommunity_GetUserPartnerEventsAppPriorities_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[48]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3340,7 +3520,7 @@ func (x *CCommunity_GetUserPartnerEventsAppPriorities_Request) String() string {
 func (*CCommunity_GetUserPartnerEventsAppPriorities_Request) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventsAppPriorities_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[48]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3353,7 +3533,7 @@ func (x *CCommunity_GetUserPartnerEventsAppPriorities_Request) ProtoReflect() pr
 
 // Deprecated: Use CCommunity_GetUserPartnerEventsAppPriorities_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventsAppPriorities_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{48}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{50}
 }
 
 type CCommunity_PartnerEventsAppPriority struct {
@@ -3366,7 +3546,7 @@ type CCommunity_PartnerEventsAppPriority struct {
 
 func (x *CCommunity_PartnerEventsAppPriority) Reset() {
 	*x = CCommunity_PartnerEventsAppPriority{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[49]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3378,7 +3558,7 @@ func (x *CCommunity_PartnerEventsAppPriority) String() string {
 func (*CCommunity_PartnerEventsAppPriority) ProtoMessage() {}
 
 func (x *CCommunity_PartnerEventsAppPriority) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[49]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3391,7 +3571,7 @@ func (x *CCommunity_PartnerEventsAppPriority) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CCommunity_PartnerEventsAppPriority.ProtoReflect.Descriptor instead.
 func (*CCommunity_PartnerEventsAppPriority) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{49}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *CCommunity_PartnerEventsAppPriority) GetAppid() uint32 {
@@ -3417,7 +3597,7 @@ type CCommunity_GetUserPartnerEventsAppPriorities_Response struct {
 
 func (x *CCommunity_GetUserPartnerEventsAppPriorities_Response) Reset() {
 	*x = CCommunity_GetUserPartnerEventsAppPriorities_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[50]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3429,7 +3609,7 @@ func (x *CCommunity_GetUserPartnerEventsAppPriorities_Response) String() string 
 func (*CCommunity_GetUserPartnerEventsAppPriorities_Response) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventsAppPriorities_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[50]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3442,7 +3622,7 @@ func (x *CCommunity_GetUserPartnerEventsAppPriorities_Response) ProtoReflect() p
 
 // Deprecated: Use CCommunity_GetUserPartnerEventsAppPriorities_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventsAppPriorities_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{50}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *CCommunity_GetUserPartnerEventsAppPriorities_Response) GetPriorities() []*CCommunity_PartnerEventsAppPriority {
@@ -3461,7 +3641,7 @@ type CCommunity_ClearSinglePartnerEventsAppPriority_Request struct {
 
 func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Request) Reset() {
 	*x = CCommunity_ClearSinglePartnerEventsAppPriority_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[51]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3473,7 +3653,7 @@ func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Request) String() string
 func (*CCommunity_ClearSinglePartnerEventsAppPriority_Request) ProtoMessage() {}
 
 func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[51]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3486,7 +3666,7 @@ func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Request) ProtoReflect() 
 
 // Deprecated: Use CCommunity_ClearSinglePartnerEventsAppPriority_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_ClearSinglePartnerEventsAppPriority_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{51}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Request) GetAppid() uint32 {
@@ -3504,7 +3684,7 @@ type CCommunity_ClearSinglePartnerEventsAppPriority_Response struct {
 
 func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Response) Reset() {
 	*x = CCommunity_ClearSinglePartnerEventsAppPriority_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[52]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3516,7 +3696,7 @@ func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Response) String() strin
 func (*CCommunity_ClearSinglePartnerEventsAppPriority_Response) ProtoMessage() {}
 
 func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[52]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3529,7 +3709,7 @@ func (x *CCommunity_ClearSinglePartnerEventsAppPriority_Response) ProtoReflect()
 
 // Deprecated: Use CCommunity_ClearSinglePartnerEventsAppPriority_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_ClearSinglePartnerEventsAppPriority_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{52}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{54}
 }
 
 type CCommunity_SetRecommendationBotReviewStatus_Request struct {
@@ -3541,7 +3721,7 @@ type CCommunity_SetRecommendationBotReviewStatus_Request struct {
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Request) Reset() {
 	*x = CCommunity_SetRecommendationBotReviewStatus_Request{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[53]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3553,7 +3733,7 @@ func (x *CCommunity_SetRecommendationBotReviewStatus_Request) String() string {
 func (*CCommunity_SetRecommendationBotReviewStatus_Request) ProtoMessage() {}
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[53]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3566,7 +3746,7 @@ func (x *CCommunity_SetRecommendationBotReviewStatus_Request) ProtoReflect() pro
 
 // Deprecated: Use CCommunity_SetRecommendationBotReviewStatus_Request.ProtoReflect.Descriptor instead.
 func (*CCommunity_SetRecommendationBotReviewStatus_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{53}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{55}
 }
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Request) GetReviewLabels() []*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel {
@@ -3584,7 +3764,7 @@ type CCommunity_SetRecommendationBotReviewStatus_Response struct {
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Response) Reset() {
 	*x = CCommunity_SetRecommendationBotReviewStatus_Response{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[54]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3596,7 +3776,7 @@ func (x *CCommunity_SetRecommendationBotReviewStatus_Response) String() string {
 func (*CCommunity_SetRecommendationBotReviewStatus_Response) ProtoMessage() {}
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[54]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3609,7 +3789,7 @@ func (x *CCommunity_SetRecommendationBotReviewStatus_Response) ProtoReflect() pr
 
 // Deprecated: Use CCommunity_SetRecommendationBotReviewStatus_Response.ProtoReflect.Descriptor instead.
 func (*CCommunity_SetRecommendationBotReviewStatus_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{54}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{56}
 }
 
 type CCommunity_GetAppRichPresenceLocalization_Response_Token struct {
@@ -3622,7 +3802,7 @@ type CCommunity_GetAppRichPresenceLocalization_Response_Token struct {
 
 func (x *CCommunity_GetAppRichPresenceLocalization_Response_Token) Reset() {
 	*x = CCommunity_GetAppRichPresenceLocalization_Response_Token{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[55]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3634,7 +3814,7 @@ func (x *CCommunity_GetAppRichPresenceLocalization_Response_Token) String() stri
 func (*CCommunity_GetAppRichPresenceLocalization_Response_Token) ProtoMessage() {}
 
 func (x *CCommunity_GetAppRichPresenceLocalization_Response_Token) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[55]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3674,7 +3854,7 @@ type CCommunity_GetAppRichPresenceLocalization_Response_TokenList struct {
 
 func (x *CCommunity_GetAppRichPresenceLocalization_Response_TokenList) Reset() {
 	*x = CCommunity_GetAppRichPresenceLocalization_Response_TokenList{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[56]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3686,7 +3866,7 @@ func (x *CCommunity_GetAppRichPresenceLocalization_Response_TokenList) String() 
 func (*CCommunity_GetAppRichPresenceLocalization_Response_TokenList) ProtoMessage() {}
 
 func (x *CCommunity_GetAppRichPresenceLocalization_Response_TokenList) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[56]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3726,7 +3906,7 @@ type CCommunity_Comment_Reaction struct {
 
 func (x *CCommunity_Comment_Reaction) Reset() {
 	*x = CCommunity_Comment_Reaction{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[57]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3738,7 +3918,7 @@ func (x *CCommunity_Comment_Reaction) String() string {
 func (*CCommunity_Comment_Reaction) ProtoMessage() {}
 
 func (x *CCommunity_Comment_Reaction) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[57]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3779,7 +3959,7 @@ type CCommunity_GetAvatarHistory_Response_AvatarData struct {
 
 func (x *CCommunity_GetAvatarHistory_Response_AvatarData) Reset() {
 	*x = CCommunity_GetAvatarHistory_Response_AvatarData{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[58]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3791,7 +3971,7 @@ func (x *CCommunity_GetAvatarHistory_Response_AvatarData) String() string {
 func (*CCommunity_GetAvatarHistory_Response_AvatarData) ProtoMessage() {}
 
 func (x *CCommunity_GetAvatarHistory_Response_AvatarData) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[58]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3804,7 +3984,7 @@ func (x *CCommunity_GetAvatarHistory_Response_AvatarData) ProtoReflect() protore
 
 // Deprecated: Use CCommunity_GetAvatarHistory_Response_AvatarData.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetAvatarHistory_Response_AvatarData) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{23, 0}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{25, 0}
 }
 
 func (x *CCommunity_GetAvatarHistory_Response_AvatarData) GetAvatarSha1() string {
@@ -3846,7 +4026,7 @@ const (
 
 func (x *CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) Reset() {
 	*x = CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[59]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3858,7 +4038,7 @@ func (x *CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) String
 func (*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) ProtoMessage() {}
 
 func (x *CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[59]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3871,7 +4051,7 @@ func (x *CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) ProtoR
 
 // Deprecated: Use CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking.ProtoReflect.Descriptor instead.
 func (*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{38, 0}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{40, 0}
 }
 
 func (x *CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking) GetClanid() uint32 {
@@ -3921,7 +4101,7 @@ type CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent struct {
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) Reset() {
 	*x = CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[60]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3933,7 +4113,7 @@ func (x *CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) String(
 func (*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) ProtoMessage() {}
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[60]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3946,7 +4126,7 @@ func (x *CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) ProtoRe
 
 // Deprecated: Use CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent.ProtoReflect.Descriptor instead.
 func (*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{41, 0}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{43, 0}
 }
 
 func (x *CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent) GetEventGid() uint64 {
@@ -3988,7 +4168,7 @@ type CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel struct {
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) Reset() {
 	*x = CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel{}
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[61]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4000,7 +4180,7 @@ func (x *CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) String
 func (*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) ProtoMessage() {}
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_community_steamclient_proto_msgTypes[61]
+	mi := &file_steammessages_community_steamclient_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4013,7 +4193,7 @@ func (x *CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) ProtoR
 
 // Deprecated: Use CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel.ProtoReflect.Descriptor instead.
 func (*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) Descriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{53, 0}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{55, 0}
 }
 
 func (x *CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel) GetAppid() uint32 {
@@ -4078,7 +4258,7 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	"gidcomment\x12\x1f\n" +
 	"\vtime_oldest\x18\v \x01(\rR\n" +
 	"timeOldest\x12!\n" +
-	"\foldest_first\x18\f \x01(\bR\voldestFirst\"\x95\x04\n" +
+	"\foldest_first\x18\f \x01(\bR\voldestFirst\"\xf1\x04\n" +
 	"\x12CCommunity_Comment\x12\x1e\n" +
 	"\n" +
 	"gidcomment\x18\x01 \x01(\x06R\n" +
@@ -4095,7 +4275,8 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	" \x01(\x05R\vtotalHidden\x12&\n" +
 	"\x0fupvoted_by_user\x18\v \x01(\bR\rupvotedByUser\x12:\n" +
 	"\treactions\x18\f \x03(\v2\x1c.CCommunity_Comment.ReactionR\treactions\x12*\n" +
-	"\x10gidparentcomment\x18\r \x01(\x06R\x10gidparentcomment\x1a@\n" +
+	"\x10gidparentcomment\x18\r \x01(\x06R\x10gidparentcomment\x12Z\n" +
+	"\rdelete_reason\x18\x0e \x01(\x0e2\x15.ECommentDeleteReason:\x1ek_ECommentDeleteReason_InvalidR\fdeleteReason\x1a@\n" +
 	"\bReaction\x12\x1e\n" +
 	"\n" +
 	"reactionid\x18\x01 \x01(\rR\n" +
@@ -4197,7 +4378,12 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	"\aupvotes\x18\x03 \x01(\rR\aupvotes\x12\x1f\n" +
 	"\vhas_upvoted\x18\x04 \x01(\bR\n" +
 	"hasUpvoted\x12-\n" +
-	"\x12upvoter_accountids\x18\x05 \x03(\rR\x11upvoterAccountids\"\x91\x01\n" +
+	"\x12upvoter_accountids\x18\x05 \x03(\rR\x11upvoterAccountids\"\x80\x01\n" +
+	"'CCommunity_VerifyClanMembership_Request\x12\x18\n" +
+	"\asteamid\x18\x01 \x01(\x04R\asteamid\x12;\n" +
+	"\x19steamids_verifymembership\x18\x02 \x03(\x04R\x18steamidsVerifymembership\"[\n" +
+	"(CCommunity_VerifyClanMembership_Response\x12/\n" +
+	"\x13steamids_nonmembers\x18\x01 \x03(\x04R\x12steamidsNonmembers\"\x91\x01\n" +
 	"'CCommunity_RateClanAnnouncement_Request\x12&\n" +
 	"\x0eannouncementid\x18\x01 \x01(\x04R\x0eannouncementid\x12\x17\n" +
 	"\avote_up\x18\x02 \x01(\bR\x06voteUp\x12%\n" +
@@ -4350,7 +4536,15 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12*\n" +
 	"\x10recommendationid\x18\x02 \x01(\x04R\x10recommendationid\x12\"\n" +
 	"\ris_bot_review\x18\x03 \x01(\bR\visBotReview\"6\n" +
-	"4CCommunity_SetRecommendationBotReviewStatus_Response*p\n" +
+	"4CCommunity_SetRecommendationBotReviewStatus_Response*\x9a\x02\n" +
+	"\x14ECommentDeleteReason\x12\"\n" +
+	"\x1ek_ECommentDeleteReason_Invalid\x10\x00\x12\x1f\n" +
+	"\x1bk_ECommentDeleteReason_User\x10\x01\x12&\n" +
+	"\"k_ECommentDeleteReason_ThreadOwner\x10\x02\x12$\n" +
+	" k_ECommentDeleteReason_Moderator\x10\x03\x12\"\n" +
+	"\x1ek_ECommentDeleteReason_Support\x10\x04\x12\x1f\n" +
+	"\x1bk_ECommentDeleteReason_Spam\x10\x05\x12*\n" +
+	"&k_ECommentDeleteReason_AccountDeletion\x10\x06*p\n" +
 	"\x0fEClanImageGroup\x12\x1a\n" +
 	"\x16k_EClanImageGroup_None\x10\x00\x12\"\n" +
 	"\x1ek_EClanImageGroup_Announcement\x10\x01\x12\x1d\n" +
@@ -4380,7 +4574,7 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	"&k_EPartnerEventDisplayLocation_NewsHub\x10\b\x12.\n" +
 	"*k_EPartnerEventDisplayLocation_GamepadHome\x10\t\x12+\n" +
 	"'k_EPartnerEventDisplayLocation_StoreHub\x10\n" +
-	"2\xf0\x17\n" +
+	"2\xdd\x18\n" +
 	"\tCommunity\x12D\n" +
 	"\aGetApps\x12\x1b.CCommunity_GetApps_Request\x1a\x1c.CCommunity_GetApps_Response\x12\x89\x01\n" +
 	"\x1eGetAppRichPresenceLocalization\x122.CCommunity_GetAppRichPresenceLocalization_Request\x1a3.CCommunity_GetAppRichPresenceLocalization_Response\x12_\n" +
@@ -4389,6 +4583,7 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	"\x17DeleteCommentFromThread\x12+.CCommunity_DeleteCommentFromThread_Request\x1a,.CCommunity_DeleteCommentFromThread_Response\x12b\n" +
 	"\x11RateCommentThread\x12%.CCommunity_RateCommentThread_Request\x1a&.CCommunity_RateCommentThread_Response\x12t\n" +
 	"\x17GetCommentThreadRatings\x12+.CCommunity_GetCommentThreadRatings_Request\x1a,.CCommunity_GetCommentThreadRatings_Response\x12k\n" +
+	"\x14VerifyClanMembership\x12(.CCommunity_VerifyClanMembership_Request\x1a).CCommunity_VerifyClanMembership_Response\x12k\n" +
 	"\x14RateClanAnnouncement\x12(.CCommunity_RateClanAnnouncement_Request\x1a).CCommunity_RateClanAnnouncement_Response\x12\x89\x01\n" +
 	"\x1eGetClanAnnouncementVoteForUser\x122.CCommunity_GetClanAnnouncementVoteForUser_Request\x1a3.CCommunity_GetClanAnnouncementVoteForUser_Response\x12n\n" +
 	"\x15GetClanLocGroupImages\x12).CCommunity_GetClanLocGroupImages_Request\x1a*.CCommunity_GetClanLocGroupImages_Response\x12_\n" +
@@ -4420,162 +4615,168 @@ func file_steammessages_community_steamclient_proto_rawDescGZIP() []byte {
 	return file_steammessages_community_steamclient_proto_rawDescData
 }
 
-var file_steammessages_community_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_steammessages_community_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 62)
+var file_steammessages_community_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_steammessages_community_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 64)
 var file_steammessages_community_steamclient_proto_goTypes = []any{
-	(EClanImageGroup)(0),                                                    // 0: EClanImageGroup
-	(EClanImageFileType)(0),                                                 // 1: EClanImageFileType
-	(EPartnerEventDisplayLocation)(0),                                       // 2: EPartnerEventDisplayLocation
-	(*CCommunity_GetApps_Request)(nil),                                      // 3: CCommunity_GetApps_Request
-	(*CCommunity_GetApps_Response)(nil),                                     // 4: CCommunity_GetApps_Response
-	(*CCommunity_GetAppRichPresenceLocalization_Request)(nil),               // 5: CCommunity_GetAppRichPresenceLocalization_Request
-	(*CCommunity_GetAppRichPresenceLocalization_Response)(nil),              // 6: CCommunity_GetAppRichPresenceLocalization_Response
-	(*CCommunity_GetCommentThread_Request)(nil),                             // 7: CCommunity_GetCommentThread_Request
-	(*CCommunity_Comment)(nil),                                              // 8: CCommunity_Comment
-	(*CCommunity_GetCommentThread_Response)(nil),                            // 9: CCommunity_GetCommentThread_Response
-	(*CCommunity_PostCommentToThread_Request)(nil),                          // 10: CCommunity_PostCommentToThread_Request
-	(*CCommunity_PostCommentToThread_Response)(nil),                         // 11: CCommunity_PostCommentToThread_Response
-	(*CCommunity_DeleteCommentFromThread_Request)(nil),                      // 12: CCommunity_DeleteCommentFromThread_Request
-	(*CCommunity_DeleteCommentFromThread_Response)(nil),                     // 13: CCommunity_DeleteCommentFromThread_Response
-	(*CCommunity_RateCommentThread_Request)(nil),                            // 14: CCommunity_RateCommentThread_Request
-	(*CCommunity_RateCommentThread_Response)(nil),                           // 15: CCommunity_RateCommentThread_Response
-	(*CCommunity_GetCommentThreadRatings_Request)(nil),                      // 16: CCommunity_GetCommentThreadRatings_Request
-	(*CCommunity_GetCommentThreadRatings_Response)(nil),                     // 17: CCommunity_GetCommentThreadRatings_Response
-	(*CCommunity_RateClanAnnouncement_Request)(nil),                         // 18: CCommunity_RateClanAnnouncement_Request
-	(*CCommunity_RateClanAnnouncement_Response)(nil),                        // 19: CCommunity_RateClanAnnouncement_Response
-	(*CCommunity_GetClanAnnouncementVoteForUser_Request)(nil),               // 20: CCommunity_GetClanAnnouncementVoteForUser_Request
-	(*CCommunity_GetClanAnnouncementVoteForUser_Response)(nil),              // 21: CCommunity_GetClanAnnouncementVoteForUser_Response
-	(*CCommunity_GetClanLocGroupImages_Request)(nil),                        // 22: CCommunity_GetClanLocGroupImages_Request
-	(*CCommunity_ClanLocGroupImage)(nil),                                    // 23: CCommunity_ClanLocGroupImage
-	(*CCommunity_GetClanLocGroupImages_Response)(nil),                       // 24: CCommunity_GetClanLocGroupImages_Response
-	(*CCommunity_GetAvatarHistory_Request)(nil),                             // 25: CCommunity_GetAvatarHistory_Request
-	(*CCommunity_GetAvatarHistory_Response)(nil),                            // 26: CCommunity_GetAvatarHistory_Response
-	(*CCommunity_GetClanEventCrowdInMetadata_Request)(nil),                  // 27: CCommunity_GetClanEventCrowdInMetadata_Request
-	(*CCommunity_GetClanEventCrowdInMetadata_Response)(nil),                 // 28: CCommunity_GetClanEventCrowdInMetadata_Response
-	(*CCommunity_GetClanCrowdInMetadata_Request)(nil),                       // 29: CCommunity_GetClanCrowdInMetadata_Request
-	(*CCommunity_GetClanCrowdInMetadata_Response)(nil),                      // 30: CCommunity_GetClanCrowdInMetadata_Response
-	(*CCommunity_FetchTranslationFromCrowdIn_Request)(nil),                  // 31: CCommunity_FetchTranslationFromCrowdIn_Request
-	(*CCommunity_FetchTranslationFromCrowdIn_Response)(nil),                 // 32: CCommunity_FetchTranslationFromCrowdIn_Response
-	(*CCommunity_HideAndReportComment_Request)(nil),                         // 33: CCommunity_HideAndReportComment_Request
-	(*CCommunity_HideAndReportComment_Response)(nil),                        // 34: CCommunity_HideAndReportComment_Response
-	(*CAppPriority)(nil),                                                    // 35: CAppPriority
-	(*CCommunity_GetUserPartnerEventNews_Request)(nil),                      // 36: CCommunity_GetUserPartnerEventNews_Request
-	(*CCommunity_GetUserPartnerEventNews_Response)(nil),                     // 37: CCommunity_GetUserPartnerEventNews_Response
-	(*CCommunity_GetBestEventsForUser_Request)(nil),                         // 38: CCommunity_GetBestEventsForUser_Request
-	(*CCommunity_PartnerEventResult)(nil),                                   // 39: CCommunity_PartnerEventResult
-	(*CCommunity_GetBestEventsForUser_Response)(nil),                        // 40: CCommunity_GetBestEventsForUser_Response
-	(*CCommunity_MarkPartnerEventsForUser_Request)(nil),                     // 41: CCommunity_MarkPartnerEventsForUser_Request
-	(*CCommunity_MarkPartnerEventsForUser_Response)(nil),                    // 42: CCommunity_MarkPartnerEventsForUser_Response
-	(*CCommunity_GetUserPartnerEventViewStatus_Request)(nil),                // 43: CCommunity_GetUserPartnerEventViewStatus_Request
-	(*CCommunity_GetUserPartnerEventViewStatus_Response)(nil),               // 44: CCommunity_GetUserPartnerEventViewStatus_Response
-	(*CCommunity_PartnerEventsShowMoreForApp_Request)(nil),                  // 45: CCommunity_PartnerEventsShowMoreForApp_Request
-	(*CCommunity_PartnerEventsShowMoreForApp_Response)(nil),                 // 46: CCommunity_PartnerEventsShowMoreForApp_Response
-	(*CCommunity_PartnerEventsShowLessForApp_Request)(nil),                  // 47: CCommunity_PartnerEventsShowLessForApp_Request
-	(*CCommunity_PartnerEventsShowLessForApp_Response)(nil),                 // 48: CCommunity_PartnerEventsShowLessForApp_Response
-	(*CCommunity_ClearUserPartnerEventsAppPriorities_Request)(nil),          // 49: CCommunity_ClearUserPartnerEventsAppPriorities_Request
-	(*CCommunity_ClearUserPartnerEventsAppPriorities_Response)(nil),         // 50: CCommunity_ClearUserPartnerEventsAppPriorities_Response
-	(*CCommunity_GetUserPartnerEventsAppPriorities_Request)(nil),            // 51: CCommunity_GetUserPartnerEventsAppPriorities_Request
-	(*CCommunity_PartnerEventsAppPriority)(nil),                             // 52: CCommunity_PartnerEventsAppPriority
-	(*CCommunity_GetUserPartnerEventsAppPriorities_Response)(nil),           // 53: CCommunity_GetUserPartnerEventsAppPriorities_Response
-	(*CCommunity_ClearSinglePartnerEventsAppPriority_Request)(nil),          // 54: CCommunity_ClearSinglePartnerEventsAppPriority_Request
-	(*CCommunity_ClearSinglePartnerEventsAppPriority_Response)(nil),         // 55: CCommunity_ClearSinglePartnerEventsAppPriority_Response
-	(*CCommunity_SetRecommendationBotReviewStatus_Request)(nil),             // 56: CCommunity_SetRecommendationBotReviewStatus_Request
-	(*CCommunity_SetRecommendationBotReviewStatus_Response)(nil),            // 57: CCommunity_SetRecommendationBotReviewStatus_Response
-	(*CCommunity_GetAppRichPresenceLocalization_Response_Token)(nil),        // 58: CCommunity_GetAppRichPresenceLocalization_Response.Token
-	(*CCommunity_GetAppRichPresenceLocalization_Response_TokenList)(nil),    // 59: CCommunity_GetAppRichPresenceLocalization_Response.TokenList
-	(*CCommunity_Comment_Reaction)(nil),                                     // 60: CCommunity_Comment.Reaction
-	(*CCommunity_GetAvatarHistory_Response_AvatarData)(nil),                 // 61: CCommunity_GetAvatarHistory_Response.AvatarData
-	(*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking)(nil), // 62: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
-	(*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent)(nil),  // 63: CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
-	(*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel)(nil), // 64: CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
-	(*CCDDBAppDetailCommon)(nil),                                            // 65: CCDDBAppDetailCommon
-	(ECommentThreadType)(0),                                                 // 66: ECommentThreadType
-	(*CMsgIPAddress)(nil),                                                   // 67: CMsgIPAddress
-	(EContentReportReason)(0),                                               // 68: EContentReportReason
-	(EProtoClanEventType)(0),                                                // 69: EProtoClanEventType
-	(*CClanMatchEventByRange)(nil),                                          // 70: CClanMatchEventByRange
+	(ECommentDeleteReason)(0),                                               // 0: ECommentDeleteReason
+	(EClanImageGroup)(0),                                                    // 1: EClanImageGroup
+	(EClanImageFileType)(0),                                                 // 2: EClanImageFileType
+	(EPartnerEventDisplayLocation)(0),                                       // 3: EPartnerEventDisplayLocation
+	(*CCommunity_GetApps_Request)(nil),                                      // 4: CCommunity_GetApps_Request
+	(*CCommunity_GetApps_Response)(nil),                                     // 5: CCommunity_GetApps_Response
+	(*CCommunity_GetAppRichPresenceLocalization_Request)(nil),               // 6: CCommunity_GetAppRichPresenceLocalization_Request
+	(*CCommunity_GetAppRichPresenceLocalization_Response)(nil),              // 7: CCommunity_GetAppRichPresenceLocalization_Response
+	(*CCommunity_GetCommentThread_Request)(nil),                             // 8: CCommunity_GetCommentThread_Request
+	(*CCommunity_Comment)(nil),                                              // 9: CCommunity_Comment
+	(*CCommunity_GetCommentThread_Response)(nil),                            // 10: CCommunity_GetCommentThread_Response
+	(*CCommunity_PostCommentToThread_Request)(nil),                          // 11: CCommunity_PostCommentToThread_Request
+	(*CCommunity_PostCommentToThread_Response)(nil),                         // 12: CCommunity_PostCommentToThread_Response
+	(*CCommunity_DeleteCommentFromThread_Request)(nil),                      // 13: CCommunity_DeleteCommentFromThread_Request
+	(*CCommunity_DeleteCommentFromThread_Response)(nil),                     // 14: CCommunity_DeleteCommentFromThread_Response
+	(*CCommunity_RateCommentThread_Request)(nil),                            // 15: CCommunity_RateCommentThread_Request
+	(*CCommunity_RateCommentThread_Response)(nil),                           // 16: CCommunity_RateCommentThread_Response
+	(*CCommunity_GetCommentThreadRatings_Request)(nil),                      // 17: CCommunity_GetCommentThreadRatings_Request
+	(*CCommunity_GetCommentThreadRatings_Response)(nil),                     // 18: CCommunity_GetCommentThreadRatings_Response
+	(*CCommunity_VerifyClanMembership_Request)(nil),                         // 19: CCommunity_VerifyClanMembership_Request
+	(*CCommunity_VerifyClanMembership_Response)(nil),                        // 20: CCommunity_VerifyClanMembership_Response
+	(*CCommunity_RateClanAnnouncement_Request)(nil),                         // 21: CCommunity_RateClanAnnouncement_Request
+	(*CCommunity_RateClanAnnouncement_Response)(nil),                        // 22: CCommunity_RateClanAnnouncement_Response
+	(*CCommunity_GetClanAnnouncementVoteForUser_Request)(nil),               // 23: CCommunity_GetClanAnnouncementVoteForUser_Request
+	(*CCommunity_GetClanAnnouncementVoteForUser_Response)(nil),              // 24: CCommunity_GetClanAnnouncementVoteForUser_Response
+	(*CCommunity_GetClanLocGroupImages_Request)(nil),                        // 25: CCommunity_GetClanLocGroupImages_Request
+	(*CCommunity_ClanLocGroupImage)(nil),                                    // 26: CCommunity_ClanLocGroupImage
+	(*CCommunity_GetClanLocGroupImages_Response)(nil),                       // 27: CCommunity_GetClanLocGroupImages_Response
+	(*CCommunity_GetAvatarHistory_Request)(nil),                             // 28: CCommunity_GetAvatarHistory_Request
+	(*CCommunity_GetAvatarHistory_Response)(nil),                            // 29: CCommunity_GetAvatarHistory_Response
+	(*CCommunity_GetClanEventCrowdInMetadata_Request)(nil),                  // 30: CCommunity_GetClanEventCrowdInMetadata_Request
+	(*CCommunity_GetClanEventCrowdInMetadata_Response)(nil),                 // 31: CCommunity_GetClanEventCrowdInMetadata_Response
+	(*CCommunity_GetClanCrowdInMetadata_Request)(nil),                       // 32: CCommunity_GetClanCrowdInMetadata_Request
+	(*CCommunity_GetClanCrowdInMetadata_Response)(nil),                      // 33: CCommunity_GetClanCrowdInMetadata_Response
+	(*CCommunity_FetchTranslationFromCrowdIn_Request)(nil),                  // 34: CCommunity_FetchTranslationFromCrowdIn_Request
+	(*CCommunity_FetchTranslationFromCrowdIn_Response)(nil),                 // 35: CCommunity_FetchTranslationFromCrowdIn_Response
+	(*CCommunity_HideAndReportComment_Request)(nil),                         // 36: CCommunity_HideAndReportComment_Request
+	(*CCommunity_HideAndReportComment_Response)(nil),                        // 37: CCommunity_HideAndReportComment_Response
+	(*CAppPriority)(nil),                                                    // 38: CAppPriority
+	(*CCommunity_GetUserPartnerEventNews_Request)(nil),                      // 39: CCommunity_GetUserPartnerEventNews_Request
+	(*CCommunity_GetUserPartnerEventNews_Response)(nil),                     // 40: CCommunity_GetUserPartnerEventNews_Response
+	(*CCommunity_GetBestEventsForUser_Request)(nil),                         // 41: CCommunity_GetBestEventsForUser_Request
+	(*CCommunity_PartnerEventResult)(nil),                                   // 42: CCommunity_PartnerEventResult
+	(*CCommunity_GetBestEventsForUser_Response)(nil),                        // 43: CCommunity_GetBestEventsForUser_Response
+	(*CCommunity_MarkPartnerEventsForUser_Request)(nil),                     // 44: CCommunity_MarkPartnerEventsForUser_Request
+	(*CCommunity_MarkPartnerEventsForUser_Response)(nil),                    // 45: CCommunity_MarkPartnerEventsForUser_Response
+	(*CCommunity_GetUserPartnerEventViewStatus_Request)(nil),                // 46: CCommunity_GetUserPartnerEventViewStatus_Request
+	(*CCommunity_GetUserPartnerEventViewStatus_Response)(nil),               // 47: CCommunity_GetUserPartnerEventViewStatus_Response
+	(*CCommunity_PartnerEventsShowMoreForApp_Request)(nil),                  // 48: CCommunity_PartnerEventsShowMoreForApp_Request
+	(*CCommunity_PartnerEventsShowMoreForApp_Response)(nil),                 // 49: CCommunity_PartnerEventsShowMoreForApp_Response
+	(*CCommunity_PartnerEventsShowLessForApp_Request)(nil),                  // 50: CCommunity_PartnerEventsShowLessForApp_Request
+	(*CCommunity_PartnerEventsShowLessForApp_Response)(nil),                 // 51: CCommunity_PartnerEventsShowLessForApp_Response
+	(*CCommunity_ClearUserPartnerEventsAppPriorities_Request)(nil),          // 52: CCommunity_ClearUserPartnerEventsAppPriorities_Request
+	(*CCommunity_ClearUserPartnerEventsAppPriorities_Response)(nil),         // 53: CCommunity_ClearUserPartnerEventsAppPriorities_Response
+	(*CCommunity_GetUserPartnerEventsAppPriorities_Request)(nil),            // 54: CCommunity_GetUserPartnerEventsAppPriorities_Request
+	(*CCommunity_PartnerEventsAppPriority)(nil),                             // 55: CCommunity_PartnerEventsAppPriority
+	(*CCommunity_GetUserPartnerEventsAppPriorities_Response)(nil),           // 56: CCommunity_GetUserPartnerEventsAppPriorities_Response
+	(*CCommunity_ClearSinglePartnerEventsAppPriority_Request)(nil),          // 57: CCommunity_ClearSinglePartnerEventsAppPriority_Request
+	(*CCommunity_ClearSinglePartnerEventsAppPriority_Response)(nil),         // 58: CCommunity_ClearSinglePartnerEventsAppPriority_Response
+	(*CCommunity_SetRecommendationBotReviewStatus_Request)(nil),             // 59: CCommunity_SetRecommendationBotReviewStatus_Request
+	(*CCommunity_SetRecommendationBotReviewStatus_Response)(nil),            // 60: CCommunity_SetRecommendationBotReviewStatus_Response
+	(*CCommunity_GetAppRichPresenceLocalization_Response_Token)(nil),        // 61: CCommunity_GetAppRichPresenceLocalization_Response.Token
+	(*CCommunity_GetAppRichPresenceLocalization_Response_TokenList)(nil),    // 62: CCommunity_GetAppRichPresenceLocalization_Response.TokenList
+	(*CCommunity_Comment_Reaction)(nil),                                     // 63: CCommunity_Comment.Reaction
+	(*CCommunity_GetAvatarHistory_Response_AvatarData)(nil),                 // 64: CCommunity_GetAvatarHistory_Response.AvatarData
+	(*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking)(nil), // 65: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
+	(*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent)(nil),  // 66: CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
+	(*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel)(nil), // 67: CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
+	(*CCDDBAppDetailCommon)(nil),                                            // 68: CCDDBAppDetailCommon
+	(ECommentThreadType)(0),                                                 // 69: ECommentThreadType
+	(*CMsgIPAddress)(nil),                                                   // 70: CMsgIPAddress
+	(EContentReportReason)(0),                                               // 71: EContentReportReason
+	(EProtoClanEventType)(0),                                                // 72: EProtoClanEventType
+	(*CClanMatchEventByRange)(nil),                                          // 73: CClanMatchEventByRange
 }
 var file_steammessages_community_steamclient_proto_depIdxs = []int32{
-	65, // 0: CCommunity_GetApps_Response.apps:type_name -> CCDDBAppDetailCommon
-	59, // 1: CCommunity_GetAppRichPresenceLocalization_Response.token_lists:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.TokenList
-	66, // 2: CCommunity_GetCommentThread_Request.comment_thread_type:type_name -> ECommentThreadType
-	67, // 3: CCommunity_Comment.ipaddress:type_name -> CMsgIPAddress
-	60, // 4: CCommunity_Comment.reactions:type_name -> CCommunity_Comment.Reaction
-	8,  // 5: CCommunity_GetCommentThread_Response.comments:type_name -> CCommunity_Comment
-	8,  // 6: CCommunity_GetCommentThread_Response.deleted_comments:type_name -> CCommunity_Comment
-	66, // 7: CCommunity_PostCommentToThread_Request.comment_thread_type:type_name -> ECommentThreadType
-	66, // 8: CCommunity_DeleteCommentFromThread_Request.comment_thread_type:type_name -> ECommentThreadType
-	0,  // 9: CCommunity_GetClanLocGroupImages_Request.group:type_name -> EClanImageGroup
-	1,  // 10: CCommunity_ClanLocGroupImage.file_type:type_name -> EClanImageFileType
-	0,  // 11: CCommunity_ClanLocGroupImage.group:type_name -> EClanImageGroup
-	23, // 12: CCommunity_GetClanLocGroupImages_Response.images:type_name -> CCommunity_ClanLocGroupImage
-	61, // 13: CCommunity_GetAvatarHistory_Response.avatars:type_name -> CCommunity_GetAvatarHistory_Response.AvatarData
-	68, // 14: CCommunity_HideAndReportComment_Request.report_reason:type_name -> EContentReportReason
-	69, // 15: CCommunity_GetUserPartnerEventNews_Request.filter_event_type:type_name -> EProtoClanEventType
-	35, // 16: CCommunity_GetUserPartnerEventNews_Request.app_list:type_name -> CAppPriority
-	70, // 17: CCommunity_GetUserPartnerEventNews_Response.results:type_name -> CClanMatchEventByRange
-	39, // 18: CCommunity_GetBestEventsForUser_Response.results:type_name -> CCommunity_PartnerEventResult
-	62, // 19: CCommunity_MarkPartnerEventsForUser_Request.markings:type_name -> CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
-	63, // 20: CCommunity_GetUserPartnerEventViewStatus_Response.events:type_name -> CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
-	52, // 21: CCommunity_GetUserPartnerEventsAppPriorities_Response.priorities:type_name -> CCommunity_PartnerEventsAppPriority
-	64, // 22: CCommunity_SetRecommendationBotReviewStatus_Request.review_labels:type_name -> CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
-	58, // 23: CCommunity_GetAppRichPresenceLocalization_Response.TokenList.tokens:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.Token
-	2,  // 24: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking.display_location:type_name -> EPartnerEventDisplayLocation
-	3,  // 25: Community.GetApps:input_type -> CCommunity_GetApps_Request
-	5,  // 26: Community.GetAppRichPresenceLocalization:input_type -> CCommunity_GetAppRichPresenceLocalization_Request
-	7,  // 27: Community.GetCommentThread:input_type -> CCommunity_GetCommentThread_Request
-	10, // 28: Community.PostCommentToThread:input_type -> CCommunity_PostCommentToThread_Request
-	12, // 29: Community.DeleteCommentFromThread:input_type -> CCommunity_DeleteCommentFromThread_Request
-	14, // 30: Community.RateCommentThread:input_type -> CCommunity_RateCommentThread_Request
-	16, // 31: Community.GetCommentThreadRatings:input_type -> CCommunity_GetCommentThreadRatings_Request
-	18, // 32: Community.RateClanAnnouncement:input_type -> CCommunity_RateClanAnnouncement_Request
-	20, // 33: Community.GetClanAnnouncementVoteForUser:input_type -> CCommunity_GetClanAnnouncementVoteForUser_Request
-	22, // 34: Community.GetClanLocGroupImages:input_type -> CCommunity_GetClanLocGroupImages_Request
-	25, // 35: Community.GetAvatarHistory:input_type -> CCommunity_GetAvatarHistory_Request
-	27, // 36: Community.GetClanEventCrowdInMetadata:input_type -> CCommunity_GetClanEventCrowdInMetadata_Request
-	29, // 37: Community.GetClanCrowdInMetadata:input_type -> CCommunity_GetClanCrowdInMetadata_Request
-	31, // 38: Community.FetchTranslationFromCrowdIn:input_type -> CCommunity_FetchTranslationFromCrowdIn_Request
-	33, // 39: Community.HideAndReportComment:input_type -> CCommunity_HideAndReportComment_Request
-	36, // 40: Community.GetUserPartnerEventNews:input_type -> CCommunity_GetUserPartnerEventNews_Request
-	38, // 41: Community.GetBestEventsForUser:input_type -> CCommunity_GetBestEventsForUser_Request
-	41, // 42: Community.MarkPartnerEventsForUser:input_type -> CCommunity_MarkPartnerEventsForUser_Request
-	43, // 43: Community.GetUserPartnerEventViewStatus:input_type -> CCommunity_GetUserPartnerEventViewStatus_Request
-	45, // 44: Community.PartnerEventsShowMoreForApp:input_type -> CCommunity_PartnerEventsShowMoreForApp_Request
-	47, // 45: Community.PartnerEventsShowLessForApp:input_type -> CCommunity_PartnerEventsShowLessForApp_Request
-	49, // 46: Community.ClearUserPartnerEventsAppPriorities:input_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Request
-	51, // 47: Community.GetUserPartnerEventsAppPriorities:input_type -> CCommunity_GetUserPartnerEventsAppPriorities_Request
-	54, // 48: Community.ClearSinglePartnerEventsAppPriority:input_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Request
-	56, // 49: Community.SetRecommendationBotReviewStatus:input_type -> CCommunity_SetRecommendationBotReviewStatus_Request
-	4,  // 50: Community.GetApps:output_type -> CCommunity_GetApps_Response
-	6,  // 51: Community.GetAppRichPresenceLocalization:output_type -> CCommunity_GetAppRichPresenceLocalization_Response
-	9,  // 52: Community.GetCommentThread:output_type -> CCommunity_GetCommentThread_Response
-	11, // 53: Community.PostCommentToThread:output_type -> CCommunity_PostCommentToThread_Response
-	13, // 54: Community.DeleteCommentFromThread:output_type -> CCommunity_DeleteCommentFromThread_Response
-	15, // 55: Community.RateCommentThread:output_type -> CCommunity_RateCommentThread_Response
-	17, // 56: Community.GetCommentThreadRatings:output_type -> CCommunity_GetCommentThreadRatings_Response
-	19, // 57: Community.RateClanAnnouncement:output_type -> CCommunity_RateClanAnnouncement_Response
-	21, // 58: Community.GetClanAnnouncementVoteForUser:output_type -> CCommunity_GetClanAnnouncementVoteForUser_Response
-	24, // 59: Community.GetClanLocGroupImages:output_type -> CCommunity_GetClanLocGroupImages_Response
-	26, // 60: Community.GetAvatarHistory:output_type -> CCommunity_GetAvatarHistory_Response
-	28, // 61: Community.GetClanEventCrowdInMetadata:output_type -> CCommunity_GetClanEventCrowdInMetadata_Response
-	30, // 62: Community.GetClanCrowdInMetadata:output_type -> CCommunity_GetClanCrowdInMetadata_Response
-	32, // 63: Community.FetchTranslationFromCrowdIn:output_type -> CCommunity_FetchTranslationFromCrowdIn_Response
-	34, // 64: Community.HideAndReportComment:output_type -> CCommunity_HideAndReportComment_Response
-	37, // 65: Community.GetUserPartnerEventNews:output_type -> CCommunity_GetUserPartnerEventNews_Response
-	40, // 66: Community.GetBestEventsForUser:output_type -> CCommunity_GetBestEventsForUser_Response
-	42, // 67: Community.MarkPartnerEventsForUser:output_type -> CCommunity_MarkPartnerEventsForUser_Response
-	44, // 68: Community.GetUserPartnerEventViewStatus:output_type -> CCommunity_GetUserPartnerEventViewStatus_Response
-	46, // 69: Community.PartnerEventsShowMoreForApp:output_type -> CCommunity_PartnerEventsShowMoreForApp_Response
-	48, // 70: Community.PartnerEventsShowLessForApp:output_type -> CCommunity_PartnerEventsShowLessForApp_Response
-	50, // 71: Community.ClearUserPartnerEventsAppPriorities:output_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Response
-	53, // 72: Community.GetUserPartnerEventsAppPriorities:output_type -> CCommunity_GetUserPartnerEventsAppPriorities_Response
-	55, // 73: Community.ClearSinglePartnerEventsAppPriority:output_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Response
-	57, // 74: Community.SetRecommendationBotReviewStatus:output_type -> CCommunity_SetRecommendationBotReviewStatus_Response
-	50, // [50:75] is the sub-list for method output_type
-	25, // [25:50] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	68, // 0: CCommunity_GetApps_Response.apps:type_name -> CCDDBAppDetailCommon
+	62, // 1: CCommunity_GetAppRichPresenceLocalization_Response.token_lists:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.TokenList
+	69, // 2: CCommunity_GetCommentThread_Request.comment_thread_type:type_name -> ECommentThreadType
+	70, // 3: CCommunity_Comment.ipaddress:type_name -> CMsgIPAddress
+	63, // 4: CCommunity_Comment.reactions:type_name -> CCommunity_Comment.Reaction
+	0,  // 5: CCommunity_Comment.delete_reason:type_name -> ECommentDeleteReason
+	9,  // 6: CCommunity_GetCommentThread_Response.comments:type_name -> CCommunity_Comment
+	9,  // 7: CCommunity_GetCommentThread_Response.deleted_comments:type_name -> CCommunity_Comment
+	69, // 8: CCommunity_PostCommentToThread_Request.comment_thread_type:type_name -> ECommentThreadType
+	69, // 9: CCommunity_DeleteCommentFromThread_Request.comment_thread_type:type_name -> ECommentThreadType
+	1,  // 10: CCommunity_GetClanLocGroupImages_Request.group:type_name -> EClanImageGroup
+	2,  // 11: CCommunity_ClanLocGroupImage.file_type:type_name -> EClanImageFileType
+	1,  // 12: CCommunity_ClanLocGroupImage.group:type_name -> EClanImageGroup
+	26, // 13: CCommunity_GetClanLocGroupImages_Response.images:type_name -> CCommunity_ClanLocGroupImage
+	64, // 14: CCommunity_GetAvatarHistory_Response.avatars:type_name -> CCommunity_GetAvatarHistory_Response.AvatarData
+	71, // 15: CCommunity_HideAndReportComment_Request.report_reason:type_name -> EContentReportReason
+	72, // 16: CCommunity_GetUserPartnerEventNews_Request.filter_event_type:type_name -> EProtoClanEventType
+	38, // 17: CCommunity_GetUserPartnerEventNews_Request.app_list:type_name -> CAppPriority
+	73, // 18: CCommunity_GetUserPartnerEventNews_Response.results:type_name -> CClanMatchEventByRange
+	42, // 19: CCommunity_GetBestEventsForUser_Response.results:type_name -> CCommunity_PartnerEventResult
+	65, // 20: CCommunity_MarkPartnerEventsForUser_Request.markings:type_name -> CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
+	66, // 21: CCommunity_GetUserPartnerEventViewStatus_Response.events:type_name -> CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
+	55, // 22: CCommunity_GetUserPartnerEventsAppPriorities_Response.priorities:type_name -> CCommunity_PartnerEventsAppPriority
+	67, // 23: CCommunity_SetRecommendationBotReviewStatus_Request.review_labels:type_name -> CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
+	61, // 24: CCommunity_GetAppRichPresenceLocalization_Response.TokenList.tokens:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.Token
+	3,  // 25: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking.display_location:type_name -> EPartnerEventDisplayLocation
+	4,  // 26: Community.GetApps:input_type -> CCommunity_GetApps_Request
+	6,  // 27: Community.GetAppRichPresenceLocalization:input_type -> CCommunity_GetAppRichPresenceLocalization_Request
+	8,  // 28: Community.GetCommentThread:input_type -> CCommunity_GetCommentThread_Request
+	11, // 29: Community.PostCommentToThread:input_type -> CCommunity_PostCommentToThread_Request
+	13, // 30: Community.DeleteCommentFromThread:input_type -> CCommunity_DeleteCommentFromThread_Request
+	15, // 31: Community.RateCommentThread:input_type -> CCommunity_RateCommentThread_Request
+	17, // 32: Community.GetCommentThreadRatings:input_type -> CCommunity_GetCommentThreadRatings_Request
+	19, // 33: Community.VerifyClanMembership:input_type -> CCommunity_VerifyClanMembership_Request
+	21, // 34: Community.RateClanAnnouncement:input_type -> CCommunity_RateClanAnnouncement_Request
+	23, // 35: Community.GetClanAnnouncementVoteForUser:input_type -> CCommunity_GetClanAnnouncementVoteForUser_Request
+	25, // 36: Community.GetClanLocGroupImages:input_type -> CCommunity_GetClanLocGroupImages_Request
+	28, // 37: Community.GetAvatarHistory:input_type -> CCommunity_GetAvatarHistory_Request
+	30, // 38: Community.GetClanEventCrowdInMetadata:input_type -> CCommunity_GetClanEventCrowdInMetadata_Request
+	32, // 39: Community.GetClanCrowdInMetadata:input_type -> CCommunity_GetClanCrowdInMetadata_Request
+	34, // 40: Community.FetchTranslationFromCrowdIn:input_type -> CCommunity_FetchTranslationFromCrowdIn_Request
+	36, // 41: Community.HideAndReportComment:input_type -> CCommunity_HideAndReportComment_Request
+	39, // 42: Community.GetUserPartnerEventNews:input_type -> CCommunity_GetUserPartnerEventNews_Request
+	41, // 43: Community.GetBestEventsForUser:input_type -> CCommunity_GetBestEventsForUser_Request
+	44, // 44: Community.MarkPartnerEventsForUser:input_type -> CCommunity_MarkPartnerEventsForUser_Request
+	46, // 45: Community.GetUserPartnerEventViewStatus:input_type -> CCommunity_GetUserPartnerEventViewStatus_Request
+	48, // 46: Community.PartnerEventsShowMoreForApp:input_type -> CCommunity_PartnerEventsShowMoreForApp_Request
+	50, // 47: Community.PartnerEventsShowLessForApp:input_type -> CCommunity_PartnerEventsShowLessForApp_Request
+	52, // 48: Community.ClearUserPartnerEventsAppPriorities:input_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Request
+	54, // 49: Community.GetUserPartnerEventsAppPriorities:input_type -> CCommunity_GetUserPartnerEventsAppPriorities_Request
+	57, // 50: Community.ClearSinglePartnerEventsAppPriority:input_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Request
+	59, // 51: Community.SetRecommendationBotReviewStatus:input_type -> CCommunity_SetRecommendationBotReviewStatus_Request
+	5,  // 52: Community.GetApps:output_type -> CCommunity_GetApps_Response
+	7,  // 53: Community.GetAppRichPresenceLocalization:output_type -> CCommunity_GetAppRichPresenceLocalization_Response
+	10, // 54: Community.GetCommentThread:output_type -> CCommunity_GetCommentThread_Response
+	12, // 55: Community.PostCommentToThread:output_type -> CCommunity_PostCommentToThread_Response
+	14, // 56: Community.DeleteCommentFromThread:output_type -> CCommunity_DeleteCommentFromThread_Response
+	16, // 57: Community.RateCommentThread:output_type -> CCommunity_RateCommentThread_Response
+	18, // 58: Community.GetCommentThreadRatings:output_type -> CCommunity_GetCommentThreadRatings_Response
+	20, // 59: Community.VerifyClanMembership:output_type -> CCommunity_VerifyClanMembership_Response
+	22, // 60: Community.RateClanAnnouncement:output_type -> CCommunity_RateClanAnnouncement_Response
+	24, // 61: Community.GetClanAnnouncementVoteForUser:output_type -> CCommunity_GetClanAnnouncementVoteForUser_Response
+	27, // 62: Community.GetClanLocGroupImages:output_type -> CCommunity_GetClanLocGroupImages_Response
+	29, // 63: Community.GetAvatarHistory:output_type -> CCommunity_GetAvatarHistory_Response
+	31, // 64: Community.GetClanEventCrowdInMetadata:output_type -> CCommunity_GetClanEventCrowdInMetadata_Response
+	33, // 65: Community.GetClanCrowdInMetadata:output_type -> CCommunity_GetClanCrowdInMetadata_Response
+	35, // 66: Community.FetchTranslationFromCrowdIn:output_type -> CCommunity_FetchTranslationFromCrowdIn_Response
+	37, // 67: Community.HideAndReportComment:output_type -> CCommunity_HideAndReportComment_Response
+	40, // 68: Community.GetUserPartnerEventNews:output_type -> CCommunity_GetUserPartnerEventNews_Response
+	43, // 69: Community.GetBestEventsForUser:output_type -> CCommunity_GetBestEventsForUser_Response
+	45, // 70: Community.MarkPartnerEventsForUser:output_type -> CCommunity_MarkPartnerEventsForUser_Response
+	47, // 71: Community.GetUserPartnerEventViewStatus:output_type -> CCommunity_GetUserPartnerEventViewStatus_Response
+	49, // 72: Community.PartnerEventsShowMoreForApp:output_type -> CCommunity_PartnerEventsShowMoreForApp_Response
+	51, // 73: Community.PartnerEventsShowLessForApp:output_type -> CCommunity_PartnerEventsShowLessForApp_Response
+	53, // 74: Community.ClearUserPartnerEventsAppPriorities:output_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Response
+	56, // 75: Community.GetUserPartnerEventsAppPriorities:output_type -> CCommunity_GetUserPartnerEventsAppPriorities_Response
+	58, // 76: Community.ClearSinglePartnerEventsAppPriority:output_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Response
+	60, // 77: Community.SetRecommendationBotReviewStatus:output_type -> CCommunity_SetRecommendationBotReviewStatus_Response
+	52, // [52:78] is the sub-list for method output_type
+	26, // [26:52] is the sub-list for method input_type
+	26, // [26:26] is the sub-list for extension type_name
+	26, // [26:26] is the sub-list for extension extendee
+	0,  // [0:26] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_community_steamclient_proto_init() }
@@ -4591,8 +4792,8 @@ func file_steammessages_community_steamclient_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_community_steamclient_proto_rawDesc), len(file_steammessages_community_steamclient_proto_rawDesc)),
-			NumEnums:      3,
-			NumMessages:   62,
+			NumEnums:      4,
+			NumMessages:   64,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

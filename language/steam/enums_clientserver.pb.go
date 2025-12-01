@@ -131,7 +131,6 @@ const (
 	EMsg_k_EMsgAISGetCouponDefinitionResponse                              EMsg = 430
 	EMsg_k_EMsgAISUpdateSubordinateContentDescription                      EMsg = 431
 	EMsg_k_EMsgAISUpdateSubordinateContentDescriptionResponse              EMsg = 432
-	EMsg_k_EMsgAISTestEnableGC                                             EMsg = 433
 	EMsg_k_EMsgAISBroadcastSubordinateContentDescription                   EMsg = 434
 	EMsg_k_EMsgBaseAM                                                      EMsg = 500
 	EMsg_k_EMsgAMUpdateUserBanRequest                                      EMsg = 504
@@ -1408,6 +1407,8 @@ const (
 	EMsg_k_EMsgRemoteClientProofRequest                                    EMsg = 9521
 	EMsg_k_EMsgRemoteClientProofResponse                                   EMsg = 9522
 	EMsg_k_EMsgRemoteClientWifiAPStatus                                    EMsg = 9523
+	EMsg_k_EMsgRemoteClientPairWifiAP                                      EMsg = 9524
+	EMsg_k_EMsgRemoteClientPairWifiAPResponse                              EMsg = 9525
 	EMsg_k_EMsgClientConcurrentSessionsBase                                EMsg = 9600
 	EMsg_k_EMsgClientPlayingSessionState                                   EMsg = 9600
 	EMsg_k_EMsgClientKickPlayingSession                                    EMsg = 9601
@@ -1567,7 +1568,6 @@ var (
 		430: "k_EMsgAISGetCouponDefinitionResponse",
 		431: "k_EMsgAISUpdateSubordinateContentDescription",
 		432: "k_EMsgAISUpdateSubordinateContentDescriptionResponse",
-		433: "k_EMsgAISTestEnableGC",
 		434: "k_EMsgAISBroadcastSubordinateContentDescription",
 		500: "k_EMsgBaseAM",
 		504: "k_EMsgAMUpdateUserBanRequest",
@@ -2844,6 +2844,8 @@ var (
 		9521: "k_EMsgRemoteClientProofRequest",
 		9522: "k_EMsgRemoteClientProofResponse",
 		9523: "k_EMsgRemoteClientWifiAPStatus",
+		9524: "k_EMsgRemoteClientPairWifiAP",
+		9525: "k_EMsgRemoteClientPairWifiAPResponse",
 		9600: "k_EMsgClientConcurrentSessionsBase",
 		// Duplicate value: 9600: "k_EMsgClientPlayingSessionState",
 		9601: "k_EMsgClientKickPlayingSession",
@@ -3000,7 +3002,6 @@ var (
 		"k_EMsgAISGetCouponDefinitionResponse":                              430,
 		"k_EMsgAISUpdateSubordinateContentDescription":                      431,
 		"k_EMsgAISUpdateSubordinateContentDescriptionResponse":              432,
-		"k_EMsgAISTestEnableGC":                                             433,
 		"k_EMsgAISBroadcastSubordinateContentDescription":                   434,
 		"k_EMsgBaseAM":                                                      500,
 		"k_EMsgAMUpdateUserBanRequest":                                      504,
@@ -4277,6 +4278,8 @@ var (
 		"k_EMsgRemoteClientProofRequest":                                    9521,
 		"k_EMsgRemoteClientProofResponse":                                   9522,
 		"k_EMsgRemoteClientWifiAPStatus":                                    9523,
+		"k_EMsgRemoteClientPairWifiAP":                                      9524,
+		"k_EMsgRemoteClientPairWifiAPResponse":                              9525,
 		"k_EMsgClientConcurrentSessionsBase":                                9600,
 		"k_EMsgClientPlayingSessionState":                                   9600,
 		"k_EMsgClientKickPlayingSession":                                    9601,
@@ -4377,7 +4380,6 @@ const (
 	EClientPersonaStateFlag_k_EClientPersonaStateGameExtraInfo    EClientPersonaStateFlag = 256
 	EClientPersonaStateFlag_k_EClientPersonaStateGameDataBlob     EClientPersonaStateFlag = 512
 	EClientPersonaStateFlag_k_EClientPersonaStateFlagClanData     EClientPersonaStateFlag = 1024
-	EClientPersonaStateFlag_k_EClientPersonaStateFlagFacebook     EClientPersonaStateFlag = 2048
 	EClientPersonaStateFlag_k_EClientPersonaStateFlagRichPresence EClientPersonaStateFlag = 4096
 	EClientPersonaStateFlag_k_EClientPersonaStateFlagBroadcast    EClientPersonaStateFlag = 8192
 	EClientPersonaStateFlag_k_EClientPersonaStateFlagWatching     EClientPersonaStateFlag = 16384
@@ -4396,7 +4398,6 @@ var (
 		256:   "k_EClientPersonaStateGameExtraInfo",
 		512:   "k_EClientPersonaStateGameDataBlob",
 		1024:  "k_EClientPersonaStateFlagClanData",
-		2048:  "k_EClientPersonaStateFlagFacebook",
 		4096:  "k_EClientPersonaStateFlagRichPresence",
 		8192:  "k_EClientPersonaStateFlagBroadcast",
 		16384: "k_EClientPersonaStateFlagWatching",
@@ -4412,7 +4413,6 @@ var (
 		"k_EClientPersonaStateGameExtraInfo":    256,
 		"k_EClientPersonaStateGameDataBlob":     512,
 		"k_EClientPersonaStateFlagClanData":     1024,
-		"k_EClientPersonaStateFlagFacebook":     2048,
 		"k_EClientPersonaStateFlagRichPresence": 4096,
 		"k_EClientPersonaStateFlagBroadcast":    8192,
 		"k_EClientPersonaStateFlagWatching":     16384,
@@ -4735,7 +4735,7 @@ var File_enums_clientserver_proto protoreflect.FileDescriptor
 
 const file_enums_clientserver_proto_rawDesc = "" +
 	"\n" +
-	"\x18enums_clientserver.proto*\xae\x90\x03\n" +
+	"\x18enums_clientserver.proto*\xe0\x90\x03\n" +
 	"\x04EMsg\x12\x11\n" +
 	"\rk_EMsgInvalid\x10\x00\x12\x0f\n" +
 	"\vk_EMsgMulti\x10\x01\x12\x19\n" +
@@ -4845,8 +4845,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x1ck_EMsgAISGetCouponDefinition\x10\xad\x03\x12)\n" +
 	"$k_EMsgAISGetCouponDefinitionResponse\x10\xae\x03\x121\n" +
 	",k_EMsgAISUpdateSubordinateContentDescription\x10\xaf\x03\x129\n" +
-	"4k_EMsgAISUpdateSubordinateContentDescriptionResponse\x10\xb0\x03\x12\x1a\n" +
-	"\x15k_EMsgAISTestEnableGC\x10\xb1\x03\x124\n" +
+	"4k_EMsgAISUpdateSubordinateContentDescriptionResponse\x10\xb0\x03\x124\n" +
 	"/k_EMsgAISBroadcastSubordinateContentDescription\x10\xb2\x03\x12\x11\n" +
 	"\fk_EMsgBaseAM\x10\xf4\x03\x12!\n" +
 	"\x1ck_EMsgAMUpdateUserBanRequest\x10\xf8\x03\x12\x17\n" +
@@ -6135,7 +6134,9 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"(k_EMsgRemoteClientAuthorizationConfirmed\x10\xb0J\x12#\n" +
 	"\x1ek_EMsgRemoteClientProofRequest\x10\xb1J\x12$\n" +
 	"\x1fk_EMsgRemoteClientProofResponse\x10\xb2J\x12#\n" +
-	"\x1ek_EMsgRemoteClientWifiAPStatus\x10\xb3J\x12'\n" +
+	"\x1ek_EMsgRemoteClientWifiAPStatus\x10\xb3J\x12!\n" +
+	"\x1ck_EMsgRemoteClientPairWifiAP\x10\xb4J\x12)\n" +
+	"$k_EMsgRemoteClientPairWifiAPResponse\x10\xb5J\x12'\n" +
 	"\"k_EMsgClientConcurrentSessionsBase\x10\x80K\x12$\n" +
 	"\x1fk_EMsgClientPlayingSessionState\x10\x80K\x12#\n" +
 	"\x1ek_EMsgClientKickPlayingSession\x10\x81K\x12\x1e\n" +
@@ -6182,7 +6183,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"!k_EMsgWGConnectionLegacyWGRequest\x10\xab_\x12'\n" +
 	"\"k_EMsgWGConnectionLegacyWGResponse\x10\xac_\x12\"\n" +
 	"\x1dk_EMsgClientPendingGameLaunch\x10\x8c`\x12*\n" +
-	"%k_EMsgClientPendingGameLaunchResponse\x10\x8d`\x1a\x02\x10\x01*\xcf\x04\n" +
+	"%k_EMsgClientPendingGameLaunchResponse\x10\x8d`\x1a\x02\x10\x01*\xa7\x04\n" +
 	"\x17EClientPersonaStateFlag\x12#\n" +
 	"\x1fk_EClientPersonaStateFlagStatus\x10\x01\x12'\n" +
 	"#k_EClientPersonaStateFlagPlayerName\x10\x02\x12&\n" +
@@ -6193,8 +6194,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"%k_EClientPersonaStateFlagUserClanRank\x10\x80\x01\x12'\n" +
 	"\"k_EClientPersonaStateGameExtraInfo\x10\x80\x02\x12&\n" +
 	"!k_EClientPersonaStateGameDataBlob\x10\x80\x04\x12&\n" +
-	"!k_EClientPersonaStateFlagClanData\x10\x80\b\x12&\n" +
-	"!k_EClientPersonaStateFlagFacebook\x10\x80\x10\x12*\n" +
+	"!k_EClientPersonaStateFlagClanData\x10\x80\b\x12*\n" +
 	"%k_EClientPersonaStateFlagRichPresence\x10\x80 \x12'\n" +
 	"\"k_EClientPersonaStateFlagBroadcast\x10\x80@\x12'\n" +
 	"!k_EClientPersonaStateFlagWatching\x10\x80\x80\x01*\xb9\x01\n" +

@@ -2489,19 +2489,21 @@ func (x *CBilling_Address) GetPhone() string {
 }
 
 type CPackageReservationStatus struct {
-	state                      protoimpl.MessageState `protogen:"open.v1"`
-	Packageid                  *uint32                `protobuf:"varint,1,opt,name=packageid" json:"packageid,omitempty"`
-	ReservationState           *int32                 `protobuf:"varint,2,opt,name=reservation_state,json=reservationState" json:"reservation_state,omitempty"`
-	QueuePosition              *int32                 `protobuf:"varint,3,opt,name=queue_position,json=queuePosition" json:"queue_position,omitempty"`
-	TotalQueueSize             *int32                 `protobuf:"varint,4,opt,name=total_queue_size,json=totalQueueSize" json:"total_queue_size,omitempty"`
-	ReservationCountryCode     *string                `protobuf:"bytes,5,opt,name=reservation_country_code,json=reservationCountryCode" json:"reservation_country_code,omitempty"`
-	Expired                    *bool                  `protobuf:"varint,6,opt,name=expired" json:"expired,omitempty"`
-	TimeExpires                *uint32                `protobuf:"varint,7,opt,name=time_expires,json=timeExpires" json:"time_expires,omitempty"`
-	TimeReserved               *uint32                `protobuf:"varint,8,opt,name=time_reserved,json=timeReserved" json:"time_reserved,omitempty"`
-	RtimeEstimatedNotification *uint32                `protobuf:"varint,9,opt,name=rtime_estimated_notification,json=rtimeEstimatedNotification" json:"rtime_estimated_notification,omitempty"`
-	NotificatonToken           *string                `protobuf:"bytes,10,opt,name=notificaton_token,json=notificatonToken" json:"notificaton_token,omitempty"`
-	unknownFields              protoimpl.UnknownFields
-	sizeCache                  protoimpl.SizeCache
+	state                          protoimpl.MessageState `protogen:"open.v1"`
+	Packageid                      *uint32                `protobuf:"varint,1,opt,name=packageid" json:"packageid,omitempty"`
+	ReservationState               *int32                 `protobuf:"varint,2,opt,name=reservation_state,json=reservationState" json:"reservation_state,omitempty"`
+	QueuePosition                  *int32                 `protobuf:"varint,3,opt,name=queue_position,json=queuePosition" json:"queue_position,omitempty"`
+	TotalQueueSize                 *int32                 `protobuf:"varint,4,opt,name=total_queue_size,json=totalQueueSize" json:"total_queue_size,omitempty"`
+	ReservationCountryCode         *string                `protobuf:"bytes,5,opt,name=reservation_country_code,json=reservationCountryCode" json:"reservation_country_code,omitempty"`
+	Expired                        *bool                  `protobuf:"varint,6,opt,name=expired" json:"expired,omitempty"`
+	TimeExpires                    *uint32                `protobuf:"varint,7,opt,name=time_expires,json=timeExpires" json:"time_expires,omitempty"`
+	TimeReserved                   *uint32                `protobuf:"varint,8,opt,name=time_reserved,json=timeReserved" json:"time_reserved,omitempty"`
+	RtimeEstimatedNotification     *uint32                `protobuf:"varint,9,opt,name=rtime_estimated_notification,json=rtimeEstimatedNotification" json:"rtime_estimated_notification,omitempty"`
+	NotificatonToken               *string                `protobuf:"bytes,10,opt,name=notificaton_token,json=notificatonToken" json:"notificaton_token,omitempty"`
+	QueueHeadPositionAtReservation *int32                 `protobuf:"varint,11,opt,name=queue_head_position_at_reservation,json=queueHeadPositionAtReservation" json:"queue_head_position_at_reservation,omitempty"`
+	QueueHeadPositionNow           *int32                 `protobuf:"varint,12,opt,name=queue_head_position_now,json=queueHeadPositionNow" json:"queue_head_position_now,omitempty"`
+	unknownFields                  protoimpl.UnknownFields
+	sizeCache                      protoimpl.SizeCache
 }
 
 func (x *CPackageReservationStatus) Reset() {
@@ -2602,6 +2604,20 @@ func (x *CPackageReservationStatus) GetNotificatonToken() string {
 		return *x.NotificatonToken
 	}
 	return ""
+}
+
+func (x *CPackageReservationStatus) GetQueueHeadPositionAtReservation() int32 {
+	if x != nil && x.QueueHeadPositionAtReservation != nil {
+		return *x.QueueHeadPositionAtReservation
+	}
+	return 0
+}
+
+func (x *CPackageReservationStatus) GetQueueHeadPositionNow() int32 {
+	if x != nil && x.QueueHeadPositionNow != nil {
+		return *x.QueueHeadPositionNow
+	}
+	return 0
 }
 
 type CMsgKeyValuePair struct {
@@ -3174,7 +3190,7 @@ const file_steammessages_base_proto_rawDesc = "" +
 	"\bpostcode\x18\b \x01(\tR\bpostcode\x12\x1b\n" +
 	"\tzip_plus4\x18\t \x01(\x05R\bzipPlus4\x12\x14\n" +
 	"\x05phone\x18\n" +
-	" \x01(\tR\x05phone\"\xc2\x03\n" +
+	" \x01(\tR\x05phone\"\xc5\x04\n" +
 	"\x19CPackageReservationStatus\x12\x1c\n" +
 	"\tpackageid\x18\x01 \x01(\rR\tpackageid\x12+\n" +
 	"\x11reservation_state\x18\x02 \x01(\x05R\x10reservationState\x12%\n" +
@@ -3186,7 +3202,9 @@ const file_steammessages_base_proto_rawDesc = "" +
 	"\rtime_reserved\x18\b \x01(\rR\ftimeReserved\x12@\n" +
 	"\x1crtime_estimated_notification\x18\t \x01(\rR\x1artimeEstimatedNotification\x12+\n" +
 	"\x11notificaton_token\x18\n" +
-	" \x01(\tR\x10notificatonToken\"<\n" +
+	" \x01(\tR\x10notificatonToken\x12J\n" +
+	"\"queue_head_position_at_reservation\x18\v \x01(\x05R\x1equeueHeadPositionAtReservation\x125\n" +
+	"\x17queue_head_position_now\x18\f \x01(\x05R\x14queueHeadPositionNow\"<\n" +
 	"\x10CMsgKeyValuePair\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value\":\n" +

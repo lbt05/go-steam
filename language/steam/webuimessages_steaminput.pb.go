@@ -1397,6 +1397,50 @@ func (x *CSteamInputService_ControllerAccessibilityStrings_Response) GetStrings(
 	return nil
 }
 
+type CSteamInputService_ControllerPowerMenu_Notification struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Idx           *uint32                `protobuf:"varint,1,opt,name=idx" json:"idx,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_ControllerPowerMenu_Notification) Reset() {
+	*x = CSteamInputService_ControllerPowerMenu_Notification{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_ControllerPowerMenu_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_ControllerPowerMenu_Notification) ProtoMessage() {}
+
+func (x *CSteamInputService_ControllerPowerMenu_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_ControllerPowerMenu_Notification.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_ControllerPowerMenu_Notification) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CSteamInputService_ControllerPowerMenu_Notification) GetIdx() uint32 {
+	if x != nil && x.Idx != nil {
+		return *x.Idx
+	}
+	return 0
+}
+
 var File_webuimessages_steaminput_proto protoreflect.FileDescriptor
 
 const file_webuimessages_steaminput_proto_rawDesc = "" +
@@ -1517,15 +1561,17 @@ const file_webuimessages_steaminput_proto_rawDesc = "" +
 	"\x10localized_string\x18\x02 \x01(\tR\x0flocalizedString\";\n" +
 	"9CSteamInputService_ControllerAccessibilityStrings_Request\"w\n" +
 	":CSteamInputService_ControllerAccessibilityStrings_Response\x129\n" +
-	"\astrings\x18\x01 \x03(\v2\x1f.CControllerAccessibilityStringR\astrings2\xd1\n" +
-	"\n" +
+	"\astrings\x18\x01 \x03(\v2\x1f.CControllerAccessibilityStringR\astrings\"G\n" +
+	"3CSteamInputService_ControllerPowerMenu_Notification\x12\x10\n" +
+	"\x03idx\x18\x01 \x01(\rR\x03idx2\xb6\v\n" +
 	"\x11SteamInputManager\x12k\n" +
 	"\x18NotifyButtonStateChanged\x12=.CSteamInputService_ControllerButtonStateChanged_Notification\x1a\x10.WebUINoResponse\x12f\n" +
 	"\x16NotifyAxesStateChanged\x12:.CSteamInputService_ControllerAxesStateChange_Notification\x1a\x10.WebUINoResponse\x12l\n" +
 	" NotifyGyroQuaternionStateChanged\x126.CSteamInputService_GyroQuaternionChanged_Notification\x1a\x10.WebUINoResponse\x12b\n" +
 	"\x1bNotifyGyroSpeedStateChanged\x121.CSteamInputService_GyroSpeedChanged_Notification\x1a\x10.WebUINoResponse\x12r\n" +
 	"#NotifyGyroAccelerometerStateChanged\x129.CSteamInputService_GyroAccelerometerChanged_Notification\x1a\x10.WebUINoResponse\x12g\n" +
-	"!NotifyGyroCalibrationStateChanged\x120.CSteamInputService_GyroCalibration_Notification\x1a\x10.WebUINoResponse\x12}\n" +
+	"!NotifyGyroCalibrationStateChanged\x120.CSteamInputService_GyroCalibration_Notification\x1a\x10.WebUINoResponse\x12c\n" +
+	"\x19NotifyControllerPowerMenu\x124.CSteamInputService_ControllerPowerMenu_Notification\x1a\x10.WebUINoResponse\x12}\n" +
 	"\x18StartControllerStateFlow\x12/.CSteamInputService_ControllerStateFlow_Request\x1a0.CSteamInputService_ControllerStateFlow_Response\x12{\n" +
 	"\x16EndControllerStateFlow\x12/.CSteamInputService_ControllerStateFlow_Request\x1a0.CSteamInputService_ControllerStateFlow_Response\x12\x9c\x01\n" +
 	"!GetControllerAccessibilityStrings\x12:.CSteamInputService_ControllerAccessibilityStrings_Request\x1a;.CSteamInputService_ControllerAccessibilityStrings_Response\x12\x89\x01\n" +
@@ -1544,7 +1590,7 @@ func file_webuimessages_steaminput_proto_rawDescGZIP() []byte {
 	return file_webuimessages_steaminput_proto_rawDescData
 }
 
-var file_webuimessages_steaminput_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_webuimessages_steaminput_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_webuimessages_steaminput_proto_goTypes = []any{
 	(*CSteamInputService_ControllerButtonStateChanged_Notification)(nil), // 0: CSteamInputService_ControllerButtonStateChanged_Notification
 	(*ControllerVector2)(nil),                                          // 1: ControllerVector2
@@ -1564,7 +1610,8 @@ var file_webuimessages_steaminput_proto_goTypes = []any{
 	(*CControllerAccessibilityString)(nil),                             // 15: CControllerAccessibilityString
 	(*CSteamInputService_ControllerAccessibilityStrings_Request)(nil),  // 16: CSteamInputService_ControllerAccessibilityStrings_Request
 	(*CSteamInputService_ControllerAccessibilityStrings_Response)(nil), // 17: CSteamInputService_ControllerAccessibilityStrings_Response
-	(*WebUINoResponse)(nil),                                            // 18: WebUINoResponse
+	(*CSteamInputService_ControllerPowerMenu_Notification)(nil),        // 18: CSteamInputService_ControllerPowerMenu_Notification
+	(*WebUINoResponse)(nil),                                            // 19: WebUINoResponse
 }
 var file_webuimessages_steaminput_proto_depIdxs = []int32{
 	1,  // 0: CSteamInputService_ControllerAxesStateChange_Notification.joystick_left:type_name -> ControllerVector2
@@ -1586,24 +1633,26 @@ var file_webuimessages_steaminput_proto_depIdxs = []int32{
 	7,  // 16: SteamInputManager.NotifyGyroSpeedStateChanged:input_type -> CSteamInputService_GyroSpeedChanged_Notification
 	8,  // 17: SteamInputManager.NotifyGyroAccelerometerStateChanged:input_type -> CSteamInputService_GyroAccelerometerChanged_Notification
 	9,  // 18: SteamInputManager.NotifyGyroCalibrationStateChanged:input_type -> CSteamInputService_GyroCalibration_Notification
-	10, // 19: SteamInputManager.StartControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
-	10, // 20: SteamInputManager.EndControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
-	16, // 21: SteamInputManager.GetControllerAccessibilityStrings:input_type -> CSteamInputService_ControllerAccessibilityStrings_Request
-	12, // 22: SteamInputManager.StartGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
-	12, // 23: SteamInputManager.CancelGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
-	18, // 24: SteamInputManager.NotifyButtonStateChanged:output_type -> WebUINoResponse
-	18, // 25: SteamInputManager.NotifyAxesStateChanged:output_type -> WebUINoResponse
-	18, // 26: SteamInputManager.NotifyGyroQuaternionStateChanged:output_type -> WebUINoResponse
-	18, // 27: SteamInputManager.NotifyGyroSpeedStateChanged:output_type -> WebUINoResponse
-	18, // 28: SteamInputManager.NotifyGyroAccelerometerStateChanged:output_type -> WebUINoResponse
-	18, // 29: SteamInputManager.NotifyGyroCalibrationStateChanged:output_type -> WebUINoResponse
-	11, // 30: SteamInputManager.StartControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
-	11, // 31: SteamInputManager.EndControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
-	17, // 32: SteamInputManager.GetControllerAccessibilityStrings:output_type -> CSteamInputService_ControllerAccessibilityStrings_Response
-	13, // 33: SteamInputManager.StartGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
-	13, // 34: SteamInputManager.CancelGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
-	24, // [24:35] is the sub-list for method output_type
-	13, // [13:24] is the sub-list for method input_type
+	18, // 19: SteamInputManager.NotifyControllerPowerMenu:input_type -> CSteamInputService_ControllerPowerMenu_Notification
+	10, // 20: SteamInputManager.StartControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
+	10, // 21: SteamInputManager.EndControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
+	16, // 22: SteamInputManager.GetControllerAccessibilityStrings:input_type -> CSteamInputService_ControllerAccessibilityStrings_Request
+	12, // 23: SteamInputManager.StartGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
+	12, // 24: SteamInputManager.CancelGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
+	19, // 25: SteamInputManager.NotifyButtonStateChanged:output_type -> WebUINoResponse
+	19, // 26: SteamInputManager.NotifyAxesStateChanged:output_type -> WebUINoResponse
+	19, // 27: SteamInputManager.NotifyGyroQuaternionStateChanged:output_type -> WebUINoResponse
+	19, // 28: SteamInputManager.NotifyGyroSpeedStateChanged:output_type -> WebUINoResponse
+	19, // 29: SteamInputManager.NotifyGyroAccelerometerStateChanged:output_type -> WebUINoResponse
+	19, // 30: SteamInputManager.NotifyGyroCalibrationStateChanged:output_type -> WebUINoResponse
+	19, // 31: SteamInputManager.NotifyControllerPowerMenu:output_type -> WebUINoResponse
+	11, // 32: SteamInputManager.StartControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
+	11, // 33: SteamInputManager.EndControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
+	17, // 34: SteamInputManager.GetControllerAccessibilityStrings:output_type -> CSteamInputService_ControllerAccessibilityStrings_Response
+	13, // 35: SteamInputManager.StartGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
+	13, // 36: SteamInputManager.CancelGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
+	25, // [25:37] is the sub-list for method output_type
+	13, // [13:25] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name
@@ -1622,7 +1671,7 @@ func file_webuimessages_steaminput_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_webuimessages_steaminput_proto_rawDesc), len(file_webuimessages_steaminput_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   18,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

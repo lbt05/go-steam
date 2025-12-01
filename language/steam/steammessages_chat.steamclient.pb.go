@@ -1395,6 +1395,7 @@ type CUserChatRoomGroupState struct {
 	MobileNotificationLevel  *EChatRoomNotificationLevel `protobuf:"varint,5,opt,name=mobile_notification_level,json=mobileNotificationLevel,enum=EChatRoomNotificationLevel,def=0" json:"mobile_notification_level,omitempty"`
 	TimeLastGroupAck         *uint32                     `protobuf:"varint,6,opt,name=time_last_group_ack,json=timeLastGroupAck" json:"time_last_group_ack,omitempty"`
 	UnreadIndicatorMuted     *bool                       `protobuf:"varint,7,opt,name=unread_indicator_muted,json=unreadIndicatorMuted,def=0" json:"unread_indicator_muted,omitempty"`
+	DirectMessagesAllowed    *bool                       `protobuf:"varint,8,opt,name=direct_messages_allowed,json=directMessagesAllowed" json:"direct_messages_allowed,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -1483,6 +1484,13 @@ func (x *CUserChatRoomGroupState) GetUnreadIndicatorMuted() bool {
 		return *x.UnreadIndicatorMuted
 	}
 	return Default_CUserChatRoomGroupState_UnreadIndicatorMuted
+}
+
+func (x *CUserChatRoomGroupState) GetDirectMessagesAllowed() bool {
+	if x != nil && x.DirectMessagesAllowed != nil {
+		return *x.DirectMessagesAllowed
+	}
+	return false
 }
 
 type CChatRoom_CreateChatRoomGroup_Response struct {
@@ -8807,6 +8815,7 @@ type CChatRoom_SetUserChatGroupPreferences_Request_ChatGroupPreferences struct {
 	DesktopNotificationLevel *EChatRoomNotificationLevel `protobuf:"varint,1,opt,name=desktop_notification_level,json=desktopNotificationLevel,enum=EChatRoomNotificationLevel,def=0" json:"desktop_notification_level,omitempty"`
 	MobileNotificationLevel  *EChatRoomNotificationLevel `protobuf:"varint,2,opt,name=mobile_notification_level,json=mobileNotificationLevel,enum=EChatRoomNotificationLevel,def=0" json:"mobile_notification_level,omitempty"`
 	UnreadIndicatorMuted     *bool                       `protobuf:"varint,3,opt,name=unread_indicator_muted,json=unreadIndicatorMuted" json:"unread_indicator_muted,omitempty"`
+	DirectMessagesAllowed    *bool                       `protobuf:"varint,4,opt,name=direct_messages_allowed,json=directMessagesAllowed" json:"direct_messages_allowed,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -8864,6 +8873,13 @@ func (x *CChatRoom_SetUserChatGroupPreferences_Request_ChatGroupPreferences) Get
 func (x *CChatRoom_SetUserChatGroupPreferences_Request_ChatGroupPreferences) GetUnreadIndicatorMuted() bool {
 	if x != nil && x.UnreadIndicatorMuted != nil {
 		return *x.UnreadIndicatorMuted
+	}
+	return false
+}
+
+func (x *CChatRoom_SetUserChatGroupPreferences_Request_ChatGroupPreferences) GetDirectMessagesAllowed() bool {
+	if x != nil && x.DirectMessagesAllowed != nil {
+		return *x.DirectMessagesAllowed
 	}
 	return false
 }
@@ -9972,7 +9988,7 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"\x19mobile_notification_level\x18\x05 \x01(\x0e2\x1b.EChatRoomNotificationLevel:$k_EChatroomNotificationLevel_InvalidR\x17mobileNotificationLevel\x12*\n" +
 	"\x11time_last_mention\x18\x06 \x01(\rR\x0ftimeLastMention\x12;\n" +
 	"\x16unread_indicator_muted\x18\a \x01(\b:\x05falseR\x14unreadIndicatorMuted\x12*\n" +
-	"\x11time_first_unread\x18\b \x01(\rR\x0ftimeFirstUnread\"\x90\x04\n" +
+	"\x11time_first_unread\x18\b \x01(\rR\x0ftimeFirstUnread\"\xc8\x04\n" +
 	"\x17CUserChatRoomGroupState\x12\"\n" +
 	"\rchat_group_id\x18\x01 \x01(\x04R\vchatGroupId\x12\x1f\n" +
 	"\vtime_joined\x18\x02 \x01(\rR\n" +
@@ -9981,7 +9997,8 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"\x1adesktop_notification_level\x18\x04 \x01(\x0e2\x1b.EChatRoomNotificationLevel:$k_EChatroomNotificationLevel_InvalidR\x18desktopNotificationLevel\x12}\n" +
 	"\x19mobile_notification_level\x18\x05 \x01(\x0e2\x1b.EChatRoomNotificationLevel:$k_EChatroomNotificationLevel_InvalidR\x17mobileNotificationLevel\x12-\n" +
 	"\x13time_last_group_ack\x18\x06 \x01(\rR\x10timeLastGroupAck\x12;\n" +
-	"\x16unread_indicator_muted\x18\a \x01(\b:\x05falseR\x14unreadIndicatorMuted\"\xba\x01\n" +
+	"\x16unread_indicator_muted\x18\a \x01(\b:\x05falseR\x14unreadIndicatorMuted\x126\n" +
+	"\x17direct_messages_allowed\x18\b \x01(\bR\x15directMessagesAllowed\"\xba\x01\n" +
 	"&CChatRoom_CreateChatRoomGroup_Response\x12\"\n" +
 	"\rchat_group_id\x18\x01 \x01(\x04R\vchatGroupId\x12*\n" +
 	"\x05state\x18\x02 \x01(\v2\x14.CChatRoomGroupStateR\x05state\x12@\n" +
@@ -10303,15 +10320,16 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"1CChatRoom_SetSessionActiveChatRoomGroups_Response\x125\n" +
 	"\vchat_states\x18\x01 \x03(\v2\x14.CChatRoomGroupStateR\n" +
 	"chatStates\x12H\n" +
-	"!virtualize_members_chat_group_ids\x18\x02 \x03(\x04R\x1dvirtualizeMembersChatGroupIds\"\xfc\a\n" +
+	"!virtualize_members_chat_group_ids\x18\x02 \x03(\x04R\x1dvirtualizeMembersChatGroupIds\"\xb4\b\n" +
 	"-CChatRoom_SetUserChatGroupPreferences_Request\x12\"\n" +
 	"\rchat_group_id\x18\x01 \x01(\x04R\vchatGroupId\x12y\n" +
 	"\x16chat_group_preferences\x18\x02 \x01(\v2C.CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferencesR\x14chatGroupPreferences\x12v\n" +
-	"\x15chat_room_preferences\x18\x03 \x03(\v2B.CChatRoom_SetUserChatGroupPreferences_Request.ChatRoomPreferencesR\x13chatRoomPreferences\x1a\xcc\x02\n" +
+	"\x15chat_room_preferences\x18\x03 \x03(\v2B.CChatRoom_SetUserChatGroupPreferences_Request.ChatRoomPreferencesR\x13chatRoomPreferences\x1a\x84\x03\n" +
 	"\x14ChatGroupPreferences\x12\x7f\n" +
 	"\x1adesktop_notification_level\x18\x01 \x01(\x0e2\x1b.EChatRoomNotificationLevel:$k_EChatroomNotificationLevel_InvalidR\x18desktopNotificationLevel\x12}\n" +
 	"\x19mobile_notification_level\x18\x02 \x01(\x0e2\x1b.EChatRoomNotificationLevel:$k_EChatroomNotificationLevel_InvalidR\x17mobileNotificationLevel\x124\n" +
-	"\x16unread_indicator_muted\x18\x03 \x01(\bR\x14unreadIndicatorMuted\x1a\xe4\x02\n" +
+	"\x16unread_indicator_muted\x18\x03 \x01(\bR\x14unreadIndicatorMuted\x126\n" +
+	"\x17direct_messages_allowed\x18\x04 \x01(\bR\x15directMessagesAllowed\x1a\xe4\x02\n" +
 	"\x13ChatRoomPreferences\x12\x17\n" +
 	"\achat_id\x18\x01 \x01(\x04R\x06chatId\x12\x7f\n" +
 	"\x1adesktop_notification_level\x18\x02 \x01(\x0e2\x1b.EChatRoomNotificationLevel:$k_EChatroomNotificationLevel_InvalidR\x18desktopNotificationLevel\x12}\n" +
