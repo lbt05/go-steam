@@ -665,6 +665,7 @@ type CMsgNetworkDeviceConnect struct {
 	Credentials *CMsgNetworkDeviceConnect_Credentials `protobuf:"bytes,4,opt,name=credentials" json:"credentials,omitempty"`
 	Ip4         *CMsgNetworkDeviceIP4Config           `protobuf:"bytes,5,opt,name=ip4" json:"ip4,omitempty"`
 	Ip6         *CMsgNetworkDeviceIP6Config           `protobuf:"bytes,6,opt,name=ip6" json:"ip6,omitempty"`
+	Wireless    *CMsgNetworkDeviceConnect_Wireless    `protobuf:"bytes,7,opt,name=wireless" json:"wireless,omitempty"`
 	// Types that are valid to be assigned to ApInfo:
 	//
 	//	*CMsgNetworkDeviceConnect_ApKnown
@@ -733,6 +734,13 @@ func (x *CMsgNetworkDeviceConnect) GetIp4() *CMsgNetworkDeviceIP4Config {
 func (x *CMsgNetworkDeviceConnect) GetIp6() *CMsgNetworkDeviceIP6Config {
 	if x != nil {
 		return x.Ip6
+	}
+	return nil
+}
+
+func (x *CMsgNetworkDeviceConnect) GetWireless() *CMsgNetworkDeviceConnect_Wireless {
+	if x != nil {
+		return x.Wireless
 	}
 	return nil
 }
@@ -5230,19 +5238,21 @@ func (x *CMsgNetworkDevicesData_Device_Wireless) GetEsecuritySupported() int32 {
 }
 
 type CMsgNetworkDevicesData_Device_Wireless_AP struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            *uint32                `protobuf:"varint,1,opt,name=id,def=0" json:"id,omitempty"`
-	Estrength     *int32                 `protobuf:"varint,2,opt,name=estrength" json:"estrength,omitempty"`
-	Ssid          *string                `protobuf:"bytes,3,opt,name=ssid" json:"ssid,omitempty"`
-	IsActive      *bool                  `protobuf:"varint,4,opt,name=is_active,json=isActive" json:"is_active,omitempty"`
-	IsAutoconnect *bool                  `protobuf:"varint,5,opt,name=is_autoconnect,json=isAutoconnect" json:"is_autoconnect,omitempty"`
-	Esecurity     *int32                 `protobuf:"varint,6,opt,name=esecurity" json:"esecurity,omitempty"`
-	UserName      *string                `protobuf:"bytes,7,opt,name=user_name,json=userName" json:"user_name,omitempty"`
-	Password      *string                `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
-	StrengthRaw   *int32                 `protobuf:"varint,9,opt,name=strength_raw,json=strengthRaw" json:"strength_raw,omitempty"`
-	BandFilter    *string                `protobuf:"bytes,10,opt,name=band_filter,json=bandFilter" json:"band_filter,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Id                 *uint32                `protobuf:"varint,1,opt,name=id,def=0" json:"id,omitempty"`
+	Estrength          *int32                 `protobuf:"varint,2,opt,name=estrength" json:"estrength,omitempty"`
+	Ssid               *string                `protobuf:"bytes,3,opt,name=ssid" json:"ssid,omitempty"`
+	IsActive           *bool                  `protobuf:"varint,4,opt,name=is_active,json=isActive" json:"is_active,omitempty"`
+	IsAutoconnect      *bool                  `protobuf:"varint,5,opt,name=is_autoconnect,json=isAutoconnect" json:"is_autoconnect,omitempty"`
+	Esecurity          *int32                 `protobuf:"varint,6,opt,name=esecurity" json:"esecurity,omitempty"`
+	UserName           *string                `protobuf:"bytes,7,opt,name=user_name,json=userName" json:"user_name,omitempty"`
+	Password           *string                `protobuf:"bytes,8,opt,name=password" json:"password,omitempty"`
+	StrengthRaw        *int32                 `protobuf:"varint,9,opt,name=strength_raw,json=strengthRaw" json:"strength_raw,omitempty"`
+	BandFilter         *string                `protobuf:"bytes,10,opt,name=band_filter,json=bandFilter" json:"band_filter,omitempty"`
+	HasNon_6GhzChannel *bool                  `protobuf:"varint,11,opt,name=has_non_6ghz_channel,json=hasNon6ghzChannel" json:"has_non_6ghz_channel,omitempty"`
+	IsSaved            *bool                  `protobuf:"varint,12,opt,name=is_saved,json=isSaved" json:"is_saved,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 // Default values for CMsgNetworkDevicesData_Device_Wireless_AP fields.
@@ -5348,6 +5358,20 @@ func (x *CMsgNetworkDevicesData_Device_Wireless_AP) GetBandFilter() string {
 		return *x.BandFilter
 	}
 	return ""
+}
+
+func (x *CMsgNetworkDevicesData_Device_Wireless_AP) GetHasNon_6GhzChannel() bool {
+	if x != nil && x.HasNon_6GhzChannel != nil {
+		return *x.HasNon_6GhzChannel
+	}
+	return false
+}
+
+func (x *CMsgNetworkDevicesData_Device_Wireless_AP) GetIsSaved() bool {
+	if x != nil && x.IsSaved != nil {
+		return *x.IsSaved
+	}
+	return false
 }
 
 type CMsgNetworkDeviceConnect_KnownAP struct {
@@ -5498,6 +5522,50 @@ func (x *CMsgNetworkDeviceConnect_Credentials) GetPassword() string {
 	return ""
 }
 
+type CMsgNetworkDeviceConnect_Wireless struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BandFilter    *string                `protobuf:"bytes,1,opt,name=band_filter,json=bandFilter" json:"band_filter,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CMsgNetworkDeviceConnect_Wireless) Reset() {
+	*x = CMsgNetworkDeviceConnect_Wireless{}
+	mi := &file_steammessages_client_objects_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CMsgNetworkDeviceConnect_Wireless) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CMsgNetworkDeviceConnect_Wireless) ProtoMessage() {}
+
+func (x *CMsgNetworkDeviceConnect_Wireless) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_client_objects_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CMsgNetworkDeviceConnect_Wireless.ProtoReflect.Descriptor instead.
+func (*CMsgNetworkDeviceConnect_Wireless) Descriptor() ([]byte, []int) {
+	return file_steammessages_client_objects_proto_rawDescGZIP(), []int{6, 3}
+}
+
+func (x *CMsgNetworkDeviceConnect_Wireless) GetBandFilter() string {
+	if x != nil && x.BandFilter != nil {
+		return *x.BandFilter
+	}
+	return ""
+}
+
 type CMsgNetworkDeviceSetOptions_Wireless struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ApId          *uint32                `protobuf:"varint,1,req,name=ap_id,json=apId" json:"ap_id,omitempty"`
@@ -5509,7 +5577,7 @@ type CMsgNetworkDeviceSetOptions_Wireless struct {
 
 func (x *CMsgNetworkDeviceSetOptions_Wireless) Reset() {
 	*x = CMsgNetworkDeviceSetOptions_Wireless{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[65]
+	mi := &file_steammessages_client_objects_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5521,7 +5589,7 @@ func (x *CMsgNetworkDeviceSetOptions_Wireless) String() string {
 func (*CMsgNetworkDeviceSetOptions_Wireless) ProtoMessage() {}
 
 func (x *CMsgNetworkDeviceSetOptions_Wireless) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[65]
+	mi := &file_steammessages_client_objects_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5579,7 +5647,7 @@ const (
 
 func (x *CMsgStorageDevicesData_Drive) Reset() {
 	*x = CMsgStorageDevicesData_Drive{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[66]
+	mi := &file_steammessages_client_objects_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5591,7 +5659,7 @@ func (x *CMsgStorageDevicesData_Drive) String() string {
 func (*CMsgStorageDevicesData_Drive) ProtoMessage() {}
 
 func (x *CMsgStorageDevicesData_Drive) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[66]
+	mi := &file_steammessages_client_objects_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5684,7 +5752,7 @@ const (
 
 func (x *CMsgStorageDevicesData_BlockDevice) Reset() {
 	*x = CMsgStorageDevicesData_BlockDevice{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[67]
+	mi := &file_steammessages_client_objects_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5696,7 +5764,7 @@ func (x *CMsgStorageDevicesData_BlockDevice) String() string {
 func (*CMsgStorageDevicesData_BlockDevice) ProtoMessage() {}
 
 func (x *CMsgStorageDevicesData_BlockDevice) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[67]
+	mi := &file_steammessages_client_objects_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5814,7 +5882,7 @@ const (
 
 func (x *CMsgBluetoothDevicesData_Adapter) Reset() {
 	*x = CMsgBluetoothDevicesData_Adapter{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[68]
+	mi := &file_steammessages_client_objects_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5826,7 +5894,7 @@ func (x *CMsgBluetoothDevicesData_Adapter) String() string {
 func (*CMsgBluetoothDevicesData_Adapter) ProtoMessage() {}
 
 func (x *CMsgBluetoothDevicesData_Adapter) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[68]
+	mi := &file_steammessages_client_objects_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5903,7 +5971,7 @@ const (
 
 func (x *CMsgBluetoothDevicesData_Device) Reset() {
 	*x = CMsgBluetoothDevicesData_Device{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[69]
+	mi := &file_steammessages_client_objects_proto_msgTypes[70]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5915,7 +5983,7 @@ func (x *CMsgBluetoothDevicesData_Device) String() string {
 func (*CMsgBluetoothDevicesData_Device) ProtoMessage() {}
 
 func (x *CMsgBluetoothDevicesData_Device) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[69]
+	mi := &file_steammessages_client_objects_proto_msgTypes[70]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6017,7 +6085,7 @@ type CMsgBluetoothDevicesData_Manager struct {
 
 func (x *CMsgBluetoothDevicesData_Manager) Reset() {
 	*x = CMsgBluetoothDevicesData_Manager{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[70]
+	mi := &file_steammessages_client_objects_proto_msgTypes[71]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6029,7 +6097,7 @@ func (x *CMsgBluetoothDevicesData_Manager) String() string {
 func (*CMsgBluetoothDevicesData_Manager) ProtoMessage() {}
 
 func (x *CMsgBluetoothDevicesData_Manager) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[70]
+	mi := &file_steammessages_client_objects_proto_msgTypes[71]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6067,7 +6135,7 @@ const (
 
 func (x *CMsgSystemAudioVolume_ChannelEntry) Reset() {
 	*x = CMsgSystemAudioVolume_ChannelEntry{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[71]
+	mi := &file_steammessages_client_objects_proto_msgTypes[72]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6079,7 +6147,7 @@ func (x *CMsgSystemAudioVolume_ChannelEntry) String() string {
 func (*CMsgSystemAudioVolume_ChannelEntry) ProtoMessage() {}
 
 func (x *CMsgSystemAudioVolume_ChannelEntry) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[71]
+	mi := &file_steammessages_client_objects_proto_msgTypes[72]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6119,7 +6187,7 @@ type CMsgCellList_Cell struct {
 
 func (x *CMsgCellList_Cell) Reset() {
 	*x = CMsgCellList_Cell{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[72]
+	mi := &file_steammessages_client_objects_proto_msgTypes[73]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6131,7 +6199,7 @@ func (x *CMsgCellList_Cell) String() string {
 func (*CMsgCellList_Cell) ProtoMessage() {}
 
 func (x *CMsgCellList_Cell) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[72]
+	mi := &file_steammessages_client_objects_proto_msgTypes[73]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6171,7 +6239,7 @@ type CMsgMonitorInfo_MonitorInfo struct {
 
 func (x *CMsgMonitorInfo_MonitorInfo) Reset() {
 	*x = CMsgMonitorInfo_MonitorInfo{}
-	mi := &file_steammessages_client_objects_proto_msgTypes[73]
+	mi := &file_steammessages_client_objects_proto_msgTypes[74]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6183,7 +6251,7 @@ func (x *CMsgMonitorInfo_MonitorInfo) String() string {
 func (*CMsgMonitorInfo_MonitorInfo) ProtoMessage() {}
 
 func (x *CMsgMonitorInfo_MonitorInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_client_objects_proto_msgTypes[73]
+	mi := &file_steammessages_client_objects_proto_msgTypes[74]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6245,11 +6313,11 @@ const file_steammessages_client_objects_proto_rawDesc = "" +
 	"\x0fis_dhcp_enabled\x18\x04 \x01(\bR\risDhcpEnabled\x12(\n" +
 	"\x10is_default_route\x18\x05 \x01(\bR\x0eisDefaultRoute\x12$\n" +
 	"\n" +
-	"is_enabled\x18\x06 \x01(\b:\x05falseR\tisEnabled\"\xc7\b\n" +
+	"is_enabled\x18\x06 \x01(\b:\x05falseR\tisEnabled\"\x93\t\n" +
 	"\x16CMsgNetworkDevicesData\x128\n" +
 	"\adevices\x18\x01 \x03(\v2\x1e.CMsgNetworkDevicesData.DeviceR\adevices\x12&\n" +
 	"\x0fis_wifi_enabled\x18\x02 \x01(\bR\risWifiEnabled\x127\n" +
-	"\x18is_wifi_scanning_enabled\x18\x03 \x01(\bR\x15isWifiScanningEnabled\x1a\x91\a\n" +
+	"\x18is_wifi_scanning_enabled\x18\x03 \x01(\bR\x15isWifiScanningEnabled\x1a\xdd\a\n" +
 	"\x06Device\x12\x11\n" +
 	"\x02id\x18\x01 \x01(\r:\x010R\x02id\x12\x14\n" +
 	"\x05etype\x18\x02 \x01(\x05R\x05etype\x12\x16\n" +
@@ -6266,10 +6334,10 @@ const file_steammessages_client_objects_proto_rawDesc = "" +
 	"\x10is_cable_present\x18\x01 \x01(\b:\x05falseR\x0eisCablePresent\x12\x1d\n" +
 	"\n" +
 	"speed_mbit\x18\x02 \x01(\rR\tspeedMbit\x12#\n" +
-	"\rfriendly_name\x18\x03 \x01(\tR\ffriendlyName\x1a\xa4\x03\n" +
+	"\rfriendly_name\x18\x03 \x01(\tR\ffriendlyName\x1a\xf0\x03\n" +
 	"\bWireless\x12<\n" +
 	"\x03aps\x18\x01 \x03(\v2*.CMsgNetworkDevicesData.Device.Wireless.APR\x03aps\x12/\n" +
-	"\x13esecurity_supported\x18\x02 \x01(\x05R\x12esecuritySupported\x1a\xa8\x02\n" +
+	"\x13esecurity_supported\x18\x02 \x01(\x05R\x12esecuritySupported\x1a\xf4\x02\n" +
 	"\x02AP\x12\x11\n" +
 	"\x02id\x18\x01 \x01(\r:\x010R\x02id\x12\x1c\n" +
 	"\testrength\x18\x02 \x01(\x05R\testrength\x12\x12\n" +
@@ -6282,12 +6350,15 @@ const file_steammessages_client_objects_proto_rawDesc = "" +
 	"\fstrength_raw\x18\t \x01(\x05R\vstrengthRaw\x12\x1f\n" +
 	"\vband_filter\x18\n" +
 	" \x01(\tR\n" +
-	"bandFilter\"\x94\x04\n" +
+	"bandFilter\x12/\n" +
+	"\x14has_non_6ghz_channel\x18\v \x01(\bR\x11hasNon6ghzChannel\x12\x19\n" +
+	"\bis_saved\x18\f \x01(\bR\aisSaved\"\x81\x05\n" +
 	"\x18CMsgNetworkDeviceConnect\x12\x1e\n" +
 	"\tdevice_id\x18\x01 \x01(\r:\x010R\bdeviceId\x12G\n" +
 	"\vcredentials\x18\x04 \x01(\v2%.CMsgNetworkDeviceConnect.CredentialsR\vcredentials\x12-\n" +
 	"\x03ip4\x18\x05 \x01(\v2\x1b.CMsgNetworkDeviceIP4ConfigR\x03ip4\x12-\n" +
 	"\x03ip6\x18\x06 \x01(\v2\x1b.CMsgNetworkDeviceIP6ConfigR\x03ip6\x12>\n" +
+	"\bwireless\x18\a \x01(\v2\".CMsgNetworkDeviceConnect.WirelessR\bwireless\x12>\n" +
 	"\bap_known\x18\x02 \x01(\v2!.CMsgNetworkDeviceConnect.KnownAPH\x00R\aapKnown\x12A\n" +
 	"\tap_custom\x18\x03 \x01(\v2\".CMsgNetworkDeviceConnect.CustomAPH\x00R\bapCustom\x1a\x1e\n" +
 	"\aKnownAP\x12\x13\n" +
@@ -6297,7 +6368,10 @@ const file_steammessages_client_objects_proto_rawDesc = "" +
 	"\tesecurity\x18\x02 \x01(\x05R\tesecurity\x1aE\n" +
 	"\vCredentials\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpasswordB\t\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x1a+\n" +
+	"\bWireless\x12\x1f\n" +
+	"\vband_filter\x18\x01 \x01(\tR\n" +
+	"bandFilterB\t\n" +
 	"\aap_info\"\xc9\x01\n" +
 	"\x1bCMsgNetworkDeviceSetOptions\x12A\n" +
 	"\bwireless\x18\x02 \x01(\v2%.CMsgNetworkDeviceSetOptions.WirelessR\bwireless\x1ag\n" +
@@ -6785,7 +6859,7 @@ func file_steammessages_client_objects_proto_rawDescGZIP() []byte {
 }
 
 var file_steammessages_client_objects_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_steammessages_client_objects_proto_msgTypes = make([]protoimpl.MessageInfo, 74)
+var file_steammessages_client_objects_proto_msgTypes = make([]protoimpl.MessageInfo, 75)
 var file_steammessages_client_objects_proto_goTypes = []any{
 	(ECloudPendingRemoteOperation)(0),                        // 0: ECloudPendingRemoteOperation
 	(ESteamDeckKeyboardLayout)(0),                            // 1: ESteamDeckKeyboardLayout
@@ -6854,134 +6928,136 @@ var file_steammessages_client_objects_proto_goTypes = []any{
 	(*CMsgNetworkDeviceConnect_KnownAP)(nil),                 // 64: CMsgNetworkDeviceConnect.KnownAP
 	(*CMsgNetworkDeviceConnect_CustomAP)(nil),                // 65: CMsgNetworkDeviceConnect.CustomAP
 	(*CMsgNetworkDeviceConnect_Credentials)(nil),             // 66: CMsgNetworkDeviceConnect.Credentials
-	(*CMsgNetworkDeviceSetOptions_Wireless)(nil),             // 67: CMsgNetworkDeviceSetOptions.Wireless
-	(*CMsgStorageDevicesData_Drive)(nil),                     // 68: CMsgStorageDevicesData.Drive
-	(*CMsgStorageDevicesData_BlockDevice)(nil),               // 69: CMsgStorageDevicesData.BlockDevice
-	(*CMsgBluetoothDevicesData_Adapter)(nil),                 // 70: CMsgBluetoothDevicesData.Adapter
-	(*CMsgBluetoothDevicesData_Device)(nil),                  // 71: CMsgBluetoothDevicesData.Device
-	(*CMsgBluetoothDevicesData_Manager)(nil),                 // 72: CMsgBluetoothDevicesData.Manager
-	(*CMsgSystemAudioVolume_ChannelEntry)(nil),               // 73: CMsgSystemAudioVolume.ChannelEntry
-	(*CMsgCellList_Cell)(nil),                                // 74: CMsgCellList.Cell
-	(*CMsgMonitorInfo_MonitorInfo)(nil),                      // 75: CMsgMonitorInfo.MonitorInfo
-	(EBluetoothDeviceType)(0),                                // 76: EBluetoothDeviceType
-	(EStorageBlockContentType)(0),                            // 77: EStorageBlockContentType
-	(EStorageBlockFileSystemType)(0),                         // 78: EStorageBlockFileSystemType
-	(ESDCardFormatStage)(0),                                  // 79: ESDCardFormatStage
-	(EGPUPerformanceLevel)(0),                                // 80: EGPUPerformanceLevel
-	(ESplitScalingFilter)(0),                                 // 81: ESplitScalingFilter
-	(ESplitScalingScaler)(0),                                 // 82: ESplitScalingScaler
-	(ESystemServiceState)(0),                                 // 83: ESystemServiceState
-	(EGraphicsPerfOverlayLevel)(0),                           // 84: EGraphicsPerfOverlayLevel
-	(EHDRToneMapOperator)(0),                                 // 85: EHDRToneMapOperator
-	(ECPUGovernor)(0),                                        // 86: ECPUGovernor
-	(EUpdaterState)(0),                                       // 87: EUpdaterState
-	(ESystemAudioDirection)(0),                               // 88: ESystemAudioDirection
-	(ESystemAudioPortType)(0),                                // 89: ESystemAudioPortType
-	(ESystemAudioPortDirection)(0),                           // 90: ESystemAudioPortDirection
-	(ESystemDisplayCompatibilityMode)(0),                     // 91: ESystemDisplayCompatibilityMode
-	(ESystemFanControlMode)(0),                               // 92: ESystemFanControlMode
-	(EColorGamutLabelSet)(0),                                 // 93: EColorGamutLabelSet
-	(EOSBranch)(0),                                           // 94: EOSBranch
-	(EUpdaterType)(0),                                        // 95: EUpdaterType
-	(EStorageDriveMediaType)(0),                              // 96: EStorageDriveMediaType
-	(ESystemAudioChannel)(0),                                 // 97: ESystemAudioChannel
+	(*CMsgNetworkDeviceConnect_Wireless)(nil),                // 67: CMsgNetworkDeviceConnect.Wireless
+	(*CMsgNetworkDeviceSetOptions_Wireless)(nil),             // 68: CMsgNetworkDeviceSetOptions.Wireless
+	(*CMsgStorageDevicesData_Drive)(nil),                     // 69: CMsgStorageDevicesData.Drive
+	(*CMsgStorageDevicesData_BlockDevice)(nil),               // 70: CMsgStorageDevicesData.BlockDevice
+	(*CMsgBluetoothDevicesData_Adapter)(nil),                 // 71: CMsgBluetoothDevicesData.Adapter
+	(*CMsgBluetoothDevicesData_Device)(nil),                  // 72: CMsgBluetoothDevicesData.Device
+	(*CMsgBluetoothDevicesData_Manager)(nil),                 // 73: CMsgBluetoothDevicesData.Manager
+	(*CMsgSystemAudioVolume_ChannelEntry)(nil),               // 74: CMsgSystemAudioVolume.ChannelEntry
+	(*CMsgCellList_Cell)(nil),                                // 75: CMsgCellList.Cell
+	(*CMsgMonitorInfo_MonitorInfo)(nil),                      // 76: CMsgMonitorInfo.MonitorInfo
+	(EBluetoothDeviceType)(0),                                // 77: EBluetoothDeviceType
+	(EStorageBlockContentType)(0),                            // 78: EStorageBlockContentType
+	(EStorageBlockFileSystemType)(0),                         // 79: EStorageBlockFileSystemType
+	(ESDCardFormatStage)(0),                                  // 80: ESDCardFormatStage
+	(EGPUPerformanceLevel)(0),                                // 81: EGPUPerformanceLevel
+	(ESplitScalingFilter)(0),                                 // 82: ESplitScalingFilter
+	(ESplitScalingScaler)(0),                                 // 83: ESplitScalingScaler
+	(ESystemServiceState)(0),                                 // 84: ESystemServiceState
+	(EGraphicsPerfOverlayLevel)(0),                           // 85: EGraphicsPerfOverlayLevel
+	(EHDRToneMapOperator)(0),                                 // 86: EHDRToneMapOperator
+	(ECPUGovernor)(0),                                        // 87: ECPUGovernor
+	(EUpdaterState)(0),                                       // 88: EUpdaterState
+	(ESystemAudioDirection)(0),                               // 89: ESystemAudioDirection
+	(ESystemAudioPortType)(0),                                // 90: ESystemAudioPortType
+	(ESystemAudioPortDirection)(0),                           // 91: ESystemAudioPortDirection
+	(ESystemDisplayCompatibilityMode)(0),                     // 92: ESystemDisplayCompatibilityMode
+	(ESystemFanControlMode)(0),                               // 93: ESystemFanControlMode
+	(EColorGamutLabelSet)(0),                                 // 94: EColorGamutLabelSet
+	(EOSBranch)(0),                                           // 95: EOSBranch
+	(EUpdaterType)(0),                                        // 96: EUpdaterType
+	(EStorageDriveMediaType)(0),                              // 97: EStorageDriveMediaType
+	(ESystemAudioChannel)(0),                                 // 98: ESystemAudioChannel
 }
 var file_steammessages_client_objects_proto_depIdxs = []int32{
-	76, // 0: SteamMessagesClientIClientForcedEnumDependencies.a:type_name -> EBluetoothDeviceType
-	77, // 1: SteamMessagesClientIClientForcedEnumDependencies.b:type_name -> EStorageBlockContentType
-	78, // 2: SteamMessagesClientIClientForcedEnumDependencies.c:type_name -> EStorageBlockFileSystemType
-	79, // 3: SteamMessagesClientIClientForcedEnumDependencies.d:type_name -> ESDCardFormatStage
+	77, // 0: SteamMessagesClientIClientForcedEnumDependencies.a:type_name -> EBluetoothDeviceType
+	78, // 1: SteamMessagesClientIClientForcedEnumDependencies.b:type_name -> EStorageBlockContentType
+	79, // 2: SteamMessagesClientIClientForcedEnumDependencies.c:type_name -> EStorageBlockFileSystemType
+	80, // 3: SteamMessagesClientIClientForcedEnumDependencies.d:type_name -> ESDCardFormatStage
 	3,  // 4: CMsgNetworkDeviceIP4Config.addresses:type_name -> CMsgNetworkDeviceIP4Address
 	5,  // 5: CMsgNetworkDeviceIP6Config.addresses:type_name -> CMsgNetworkDeviceIP6Address
 	60, // 6: CMsgNetworkDevicesData.devices:type_name -> CMsgNetworkDevicesData.Device
 	66, // 7: CMsgNetworkDeviceConnect.credentials:type_name -> CMsgNetworkDeviceConnect.Credentials
 	4,  // 8: CMsgNetworkDeviceConnect.ip4:type_name -> CMsgNetworkDeviceIP4Config
 	6,  // 9: CMsgNetworkDeviceConnect.ip6:type_name -> CMsgNetworkDeviceIP6Config
-	64, // 10: CMsgNetworkDeviceConnect.ap_known:type_name -> CMsgNetworkDeviceConnect.KnownAP
-	65, // 11: CMsgNetworkDeviceConnect.ap_custom:type_name -> CMsgNetworkDeviceConnect.CustomAP
-	67, // 12: CMsgNetworkDeviceSetOptions.wireless:type_name -> CMsgNetworkDeviceSetOptions.Wireless
-	68, // 13: CMsgStorageDevicesData.drives:type_name -> CMsgStorageDevicesData.Drive
-	69, // 14: CMsgStorageDevicesData.block_devices:type_name -> CMsgStorageDevicesData.BlockDevice
-	0,  // 15: CCloud_PendingRemoteOperation.operation:type_name -> ECloudPendingRemoteOperation
-	11, // 16: CMsgCloudPendingRemoteOperations.operations:type_name -> CCloud_PendingRemoteOperation
-	70, // 17: CMsgBluetoothDevicesData.adapters:type_name -> CMsgBluetoothDevicesData.Adapter
-	71, // 18: CMsgBluetoothDevicesData.devices:type_name -> CMsgBluetoothDevicesData.Device
-	72, // 19: CMsgBluetoothDevicesData.manager:type_name -> CMsgBluetoothDevicesData.Manager
-	14, // 20: CMsgSystemPerfDiagnosticInfo.entries:type_name -> CMsgSystemPerfDiagnosticEntry
-	15, // 21: CMsgSystemPerfDiagnosticInfo.interfaces:type_name -> CMsgSystemPerfNetworkInterface
-	80, // 22: CMsgSystemPerfLimits.gpu_performance_levels_available:type_name -> EGPUPerformanceLevel
-	81, // 23: CMsgSystemPerfLimits.split_scaling_filters_available:type_name -> ESplitScalingFilter
-	82, // 24: CMsgSystemPerfLimits.split_scaling_scalers_available:type_name -> ESplitScalingScaler
-	83, // 25: CMsgSystemPerfSettingsGlobal.graphics_profiling_service_state:type_name -> ESystemServiceState
-	83, // 26: CMsgSystemPerfSettingsGlobal.perf_overlay_service_state:type_name -> ESystemServiceState
-	84, // 27: CMsgSystemPerfSettingsGlobal.perf_overlay_level:type_name -> EGraphicsPerfOverlayLevel
-	85, // 28: CMsgSystemPerfSettingsGlobal.hdr_on_sdr_tonemap_operator:type_name -> EHDRToneMapOperator
-	86, // 29: CMsgSystemPerfSettingsPerApp.cpu_governor:type_name -> ECPUGovernor
-	80, // 30: CMsgSystemPerfSettingsPerApp.gpu_performance_level:type_name -> EGPUPerformanceLevel
-	81, // 31: CMsgSystemPerfSettingsPerApp.split_scaling_filter:type_name -> ESplitScalingFilter
-	82, // 32: CMsgSystemPerfSettingsPerApp.split_scaling_scaler:type_name -> ESplitScalingScaler
-	18, // 33: CMsgSystemPerfSettings.global:type_name -> CMsgSystemPerfSettingsGlobal
-	19, // 34: CMsgSystemPerfSettings.per_app:type_name -> CMsgSystemPerfSettingsPerApp
-	83, // 35: CMsgSystemPerfSettingsV1.system_trace_service_state:type_name -> ESystemServiceState
-	83, // 36: CMsgSystemPerfSettingsV1.graphics_profiling_service_state:type_name -> ESystemServiceState
-	83, // 37: CMsgSystemPerfSettingsV1.perf_overlay_service_state:type_name -> ESystemServiceState
-	84, // 38: CMsgSystemPerfSettingsV1.perf_overlay_level:type_name -> EGraphicsPerfOverlayLevel
-	80, // 39: CMsgSystemPerfSettingsV1.gpu_performance_level:type_name -> EGPUPerformanceLevel
-	86, // 40: CMsgSystemPerfSettingsV1.cpu_governor:type_name -> ECPUGovernor
-	17, // 41: CMsgSystemPerfState.limits:type_name -> CMsgSystemPerfLimits
-	20, // 42: CMsgSystemPerfState.settings:type_name -> CMsgSystemPerfSettings
-	20, // 43: CMsgSystemPerfUpdateSettings.settings_delta:type_name -> CMsgSystemPerfSettings
-	19, // 44: CMsgSystemPerfLegacySettingEntry.settings:type_name -> CMsgSystemPerfSettingsPerApp
-	18, // 45: CMsgSystemPerfLegacySettings.global:type_name -> CMsgSystemPerfSettingsGlobal
-	24, // 46: CMsgSystemPerfLegacySettings.per_app_settings:type_name -> CMsgSystemPerfLegacySettingEntry
-	87, // 47: CMsgSystemDockUpdateState.state:type_name -> EUpdaterState
-	26, // 48: CMsgSystemDockState.update_state:type_name -> CMsgSystemDockUpdateState
-	73, // 49: CMsgSystemAudioVolume.entries:type_name -> CMsgSystemAudioVolume.ChannelEntry
-	30, // 50: CMsgSystemAudioManagerDevice.base:type_name -> CMsgSystemAudioManagerObject
-	30, // 51: CMsgSystemAudioManagerNode.base:type_name -> CMsgSystemAudioManagerObject
-	88, // 52: CMsgSystemAudioManagerNode.edirection:type_name -> ESystemAudioDirection
-	29, // 53: CMsgSystemAudioManagerNode.volume:type_name -> CMsgSystemAudioVolume
-	30, // 54: CMsgSystemAudioManagerPort.base:type_name -> CMsgSystemAudioManagerObject
-	89, // 55: CMsgSystemAudioManagerPort.etype:type_name -> ESystemAudioPortType
-	90, // 56: CMsgSystemAudioManagerPort.edirection:type_name -> ESystemAudioPortDirection
-	30, // 57: CMsgSystemAudioManagerLink.base:type_name -> CMsgSystemAudioManagerObject
-	31, // 58: CMsgSystemAudioManagerStateHW.devices:type_name -> CMsgSystemAudioManagerDevice
-	32, // 59: CMsgSystemAudioManagerStateHW.nodes:type_name -> CMsgSystemAudioManagerNode
-	33, // 60: CMsgSystemAudioManagerStateHW.ports:type_name -> CMsgSystemAudioManagerPort
-	34, // 61: CMsgSystemAudioManagerStateHW.links:type_name -> CMsgSystemAudioManagerLink
-	35, // 62: CMsgSystemAudioManagerState.hw:type_name -> CMsgSystemAudioManagerStateHW
-	38, // 63: CMsgSystemDisplay.modes:type_name -> CMsgSystemDisplayMode
-	39, // 64: CMsgSystemDisplayManagerState.displays:type_name -> CMsgSystemDisplay
-	91, // 65: CMsgSystemDisplayManagerState.compatibility_mode:type_name -> ESystemDisplayCompatibilityMode
-	92, // 66: CMsgSystemManagerSettings.fan_control_mode:type_name -> ESystemFanControlMode
-	93, // 67: CMsgSystemManagerSettings.display_colorgamut_labelset:type_name -> EColorGamutLabelSet
-	94, // 68: CMsgSelectOSBranchParams.branch:type_name -> EOSBranch
-	95, // 69: CMsgSystemUpdateCheckResult.type:type_name -> EUpdaterType
-	95, // 70: CMsgSystemUpdateApplyParams.apply_types:type_name -> EUpdaterType
-	95, // 71: CMsgSystemUpdateApplyResult.type:type_name -> EUpdaterType
-	87, // 72: CMsgSystemUpdateState.state:type_name -> EUpdaterState
-	44, // 73: CMsgSystemUpdateState.progress:type_name -> CMsgSystemUpdateProgress
-	45, // 74: CMsgSystemUpdateState.update_check_results:type_name -> CMsgSystemUpdateCheckResult
-	47, // 75: CMsgSystemUpdateState.update_apply_results:type_name -> CMsgSystemUpdateApplyResult
-	74, // 76: CMsgCellList.cells:type_name -> CMsgCellList.Cell
-	51, // 77: CMsgShortcutInfos.shorcuts:type_name -> CMsgShortcutInfo
-	75, // 78: CMsgMonitorInfo.monitors:type_name -> CMsgMonitorInfo.MonitorInfo
-	58, // 79: CMsgClientShaderHitCache.entries:type_name -> CMsgClientShaderHitCacheEntry
-	4,  // 80: CMsgNetworkDevicesData.Device.ip4:type_name -> CMsgNetworkDeviceIP4Config
-	6,  // 81: CMsgNetworkDevicesData.Device.ip6:type_name -> CMsgNetworkDeviceIP6Config
-	61, // 82: CMsgNetworkDevicesData.Device.wired:type_name -> CMsgNetworkDevicesData.Device.Wired
-	62, // 83: CMsgNetworkDevicesData.Device.wireless:type_name -> CMsgNetworkDevicesData.Device.Wireless
-	63, // 84: CMsgNetworkDevicesData.Device.Wireless.aps:type_name -> CMsgNetworkDevicesData.Device.Wireless.AP
-	96, // 85: CMsgStorageDevicesData.Drive.media_type:type_name -> EStorageDriveMediaType
-	77, // 86: CMsgStorageDevicesData.BlockDevice.content_type:type_name -> EStorageBlockContentType
-	78, // 87: CMsgStorageDevicesData.BlockDevice.filesystem_type:type_name -> EStorageBlockFileSystemType
-	76, // 88: CMsgBluetoothDevicesData.Device.etype:type_name -> EBluetoothDeviceType
-	97, // 89: CMsgSystemAudioVolume.ChannelEntry.echannel:type_name -> ESystemAudioChannel
-	90, // [90:90] is the sub-list for method output_type
-	90, // [90:90] is the sub-list for method input_type
-	90, // [90:90] is the sub-list for extension type_name
-	90, // [90:90] is the sub-list for extension extendee
-	0,  // [0:90] is the sub-list for field type_name
+	67, // 10: CMsgNetworkDeviceConnect.wireless:type_name -> CMsgNetworkDeviceConnect.Wireless
+	64, // 11: CMsgNetworkDeviceConnect.ap_known:type_name -> CMsgNetworkDeviceConnect.KnownAP
+	65, // 12: CMsgNetworkDeviceConnect.ap_custom:type_name -> CMsgNetworkDeviceConnect.CustomAP
+	68, // 13: CMsgNetworkDeviceSetOptions.wireless:type_name -> CMsgNetworkDeviceSetOptions.Wireless
+	69, // 14: CMsgStorageDevicesData.drives:type_name -> CMsgStorageDevicesData.Drive
+	70, // 15: CMsgStorageDevicesData.block_devices:type_name -> CMsgStorageDevicesData.BlockDevice
+	0,  // 16: CCloud_PendingRemoteOperation.operation:type_name -> ECloudPendingRemoteOperation
+	11, // 17: CMsgCloudPendingRemoteOperations.operations:type_name -> CCloud_PendingRemoteOperation
+	71, // 18: CMsgBluetoothDevicesData.adapters:type_name -> CMsgBluetoothDevicesData.Adapter
+	72, // 19: CMsgBluetoothDevicesData.devices:type_name -> CMsgBluetoothDevicesData.Device
+	73, // 20: CMsgBluetoothDevicesData.manager:type_name -> CMsgBluetoothDevicesData.Manager
+	14, // 21: CMsgSystemPerfDiagnosticInfo.entries:type_name -> CMsgSystemPerfDiagnosticEntry
+	15, // 22: CMsgSystemPerfDiagnosticInfo.interfaces:type_name -> CMsgSystemPerfNetworkInterface
+	81, // 23: CMsgSystemPerfLimits.gpu_performance_levels_available:type_name -> EGPUPerformanceLevel
+	82, // 24: CMsgSystemPerfLimits.split_scaling_filters_available:type_name -> ESplitScalingFilter
+	83, // 25: CMsgSystemPerfLimits.split_scaling_scalers_available:type_name -> ESplitScalingScaler
+	84, // 26: CMsgSystemPerfSettingsGlobal.graphics_profiling_service_state:type_name -> ESystemServiceState
+	84, // 27: CMsgSystemPerfSettingsGlobal.perf_overlay_service_state:type_name -> ESystemServiceState
+	85, // 28: CMsgSystemPerfSettingsGlobal.perf_overlay_level:type_name -> EGraphicsPerfOverlayLevel
+	86, // 29: CMsgSystemPerfSettingsGlobal.hdr_on_sdr_tonemap_operator:type_name -> EHDRToneMapOperator
+	87, // 30: CMsgSystemPerfSettingsPerApp.cpu_governor:type_name -> ECPUGovernor
+	81, // 31: CMsgSystemPerfSettingsPerApp.gpu_performance_level:type_name -> EGPUPerformanceLevel
+	82, // 32: CMsgSystemPerfSettingsPerApp.split_scaling_filter:type_name -> ESplitScalingFilter
+	83, // 33: CMsgSystemPerfSettingsPerApp.split_scaling_scaler:type_name -> ESplitScalingScaler
+	18, // 34: CMsgSystemPerfSettings.global:type_name -> CMsgSystemPerfSettingsGlobal
+	19, // 35: CMsgSystemPerfSettings.per_app:type_name -> CMsgSystemPerfSettingsPerApp
+	84, // 36: CMsgSystemPerfSettingsV1.system_trace_service_state:type_name -> ESystemServiceState
+	84, // 37: CMsgSystemPerfSettingsV1.graphics_profiling_service_state:type_name -> ESystemServiceState
+	84, // 38: CMsgSystemPerfSettingsV1.perf_overlay_service_state:type_name -> ESystemServiceState
+	85, // 39: CMsgSystemPerfSettingsV1.perf_overlay_level:type_name -> EGraphicsPerfOverlayLevel
+	81, // 40: CMsgSystemPerfSettingsV1.gpu_performance_level:type_name -> EGPUPerformanceLevel
+	87, // 41: CMsgSystemPerfSettingsV1.cpu_governor:type_name -> ECPUGovernor
+	17, // 42: CMsgSystemPerfState.limits:type_name -> CMsgSystemPerfLimits
+	20, // 43: CMsgSystemPerfState.settings:type_name -> CMsgSystemPerfSettings
+	20, // 44: CMsgSystemPerfUpdateSettings.settings_delta:type_name -> CMsgSystemPerfSettings
+	19, // 45: CMsgSystemPerfLegacySettingEntry.settings:type_name -> CMsgSystemPerfSettingsPerApp
+	18, // 46: CMsgSystemPerfLegacySettings.global:type_name -> CMsgSystemPerfSettingsGlobal
+	24, // 47: CMsgSystemPerfLegacySettings.per_app_settings:type_name -> CMsgSystemPerfLegacySettingEntry
+	88, // 48: CMsgSystemDockUpdateState.state:type_name -> EUpdaterState
+	26, // 49: CMsgSystemDockState.update_state:type_name -> CMsgSystemDockUpdateState
+	74, // 50: CMsgSystemAudioVolume.entries:type_name -> CMsgSystemAudioVolume.ChannelEntry
+	30, // 51: CMsgSystemAudioManagerDevice.base:type_name -> CMsgSystemAudioManagerObject
+	30, // 52: CMsgSystemAudioManagerNode.base:type_name -> CMsgSystemAudioManagerObject
+	89, // 53: CMsgSystemAudioManagerNode.edirection:type_name -> ESystemAudioDirection
+	29, // 54: CMsgSystemAudioManagerNode.volume:type_name -> CMsgSystemAudioVolume
+	30, // 55: CMsgSystemAudioManagerPort.base:type_name -> CMsgSystemAudioManagerObject
+	90, // 56: CMsgSystemAudioManagerPort.etype:type_name -> ESystemAudioPortType
+	91, // 57: CMsgSystemAudioManagerPort.edirection:type_name -> ESystemAudioPortDirection
+	30, // 58: CMsgSystemAudioManagerLink.base:type_name -> CMsgSystemAudioManagerObject
+	31, // 59: CMsgSystemAudioManagerStateHW.devices:type_name -> CMsgSystemAudioManagerDevice
+	32, // 60: CMsgSystemAudioManagerStateHW.nodes:type_name -> CMsgSystemAudioManagerNode
+	33, // 61: CMsgSystemAudioManagerStateHW.ports:type_name -> CMsgSystemAudioManagerPort
+	34, // 62: CMsgSystemAudioManagerStateHW.links:type_name -> CMsgSystemAudioManagerLink
+	35, // 63: CMsgSystemAudioManagerState.hw:type_name -> CMsgSystemAudioManagerStateHW
+	38, // 64: CMsgSystemDisplay.modes:type_name -> CMsgSystemDisplayMode
+	39, // 65: CMsgSystemDisplayManagerState.displays:type_name -> CMsgSystemDisplay
+	92, // 66: CMsgSystemDisplayManagerState.compatibility_mode:type_name -> ESystemDisplayCompatibilityMode
+	93, // 67: CMsgSystemManagerSettings.fan_control_mode:type_name -> ESystemFanControlMode
+	94, // 68: CMsgSystemManagerSettings.display_colorgamut_labelset:type_name -> EColorGamutLabelSet
+	95, // 69: CMsgSelectOSBranchParams.branch:type_name -> EOSBranch
+	96, // 70: CMsgSystemUpdateCheckResult.type:type_name -> EUpdaterType
+	96, // 71: CMsgSystemUpdateApplyParams.apply_types:type_name -> EUpdaterType
+	96, // 72: CMsgSystemUpdateApplyResult.type:type_name -> EUpdaterType
+	88, // 73: CMsgSystemUpdateState.state:type_name -> EUpdaterState
+	44, // 74: CMsgSystemUpdateState.progress:type_name -> CMsgSystemUpdateProgress
+	45, // 75: CMsgSystemUpdateState.update_check_results:type_name -> CMsgSystemUpdateCheckResult
+	47, // 76: CMsgSystemUpdateState.update_apply_results:type_name -> CMsgSystemUpdateApplyResult
+	75, // 77: CMsgCellList.cells:type_name -> CMsgCellList.Cell
+	51, // 78: CMsgShortcutInfos.shorcuts:type_name -> CMsgShortcutInfo
+	76, // 79: CMsgMonitorInfo.monitors:type_name -> CMsgMonitorInfo.MonitorInfo
+	58, // 80: CMsgClientShaderHitCache.entries:type_name -> CMsgClientShaderHitCacheEntry
+	4,  // 81: CMsgNetworkDevicesData.Device.ip4:type_name -> CMsgNetworkDeviceIP4Config
+	6,  // 82: CMsgNetworkDevicesData.Device.ip6:type_name -> CMsgNetworkDeviceIP6Config
+	61, // 83: CMsgNetworkDevicesData.Device.wired:type_name -> CMsgNetworkDevicesData.Device.Wired
+	62, // 84: CMsgNetworkDevicesData.Device.wireless:type_name -> CMsgNetworkDevicesData.Device.Wireless
+	63, // 85: CMsgNetworkDevicesData.Device.Wireless.aps:type_name -> CMsgNetworkDevicesData.Device.Wireless.AP
+	97, // 86: CMsgStorageDevicesData.Drive.media_type:type_name -> EStorageDriveMediaType
+	78, // 87: CMsgStorageDevicesData.BlockDevice.content_type:type_name -> EStorageBlockContentType
+	79, // 88: CMsgStorageDevicesData.BlockDevice.filesystem_type:type_name -> EStorageBlockFileSystemType
+	77, // 89: CMsgBluetoothDevicesData.Device.etype:type_name -> EBluetoothDeviceType
+	98, // 90: CMsgSystemAudioVolume.ChannelEntry.echannel:type_name -> ESystemAudioChannel
+	91, // [91:91] is the sub-list for method output_type
+	91, // [91:91] is the sub-list for method input_type
+	91, // [91:91] is the sub-list for extension type_name
+	91, // [91:91] is the sub-list for extension extendee
+	0,  // [0:91] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_client_objects_proto_init() }
@@ -7004,7 +7080,7 @@ func file_steammessages_client_objects_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_client_objects_proto_rawDesc), len(file_steammessages_client_objects_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   74,
+			NumMessages:   75,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
