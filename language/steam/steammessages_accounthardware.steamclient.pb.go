@@ -24,13 +24,13 @@ const (
 type EValveIndexComponent int32
 
 const (
-	EValveIndexComponent_k_EValveIndexComponentUnknown      EValveIndexComponent = 0
-	EValveIndexComponent_k_EValveIndexComponentHMD          EValveIndexComponent = 1
-	EValveIndexComponent_k_EValveIndexComponentLeftKnuckle  EValveIndexComponent = 2
-	EValveIndexComponent_k_EValveIndexComponentRightKnuckle EValveIndexComponent = 3
-	EValveIndexComponent_k_ETempDTst1                       EValveIndexComponent = 4
-	EValveIndexComponent_k_ETempDTst2                       EValveIndexComponent = 5
-	EValveIndexComponent_k_ETempDTst3                       EValveIndexComponent = 6
+	EValveIndexComponent_k_EValveIndexComponentUnknown                   EValveIndexComponent = 0
+	EValveIndexComponent_k_EValveIndexComponentHMD                       EValveIndexComponent = 1
+	EValveIndexComponent_k_EValveIndexComponentLeftKnuckle               EValveIndexComponent = 2
+	EValveIndexComponent_k_EValveIndexComponentRightKnuckle              EValveIndexComponent = 3
+	EValveIndexComponent_k_EValveIndexComponentSteamFrameHMD             EValveIndexComponent = 4
+	EValveIndexComponent_k_EValveIndexComponentSteamFrameLeftController  EValveIndexComponent = 5
+	EValveIndexComponent_k_EValveIndexComponentSteamFrameRightController EValveIndexComponent = 6
 )
 
 // Enum value maps for EValveIndexComponent.
@@ -40,18 +40,18 @@ var (
 		1: "k_EValveIndexComponentHMD",
 		2: "k_EValveIndexComponentLeftKnuckle",
 		3: "k_EValveIndexComponentRightKnuckle",
-		4: "k_ETempDTst1",
-		5: "k_ETempDTst2",
-		6: "k_ETempDTst3",
+		4: "k_EValveIndexComponentSteamFrameHMD",
+		5: "k_EValveIndexComponentSteamFrameLeftController",
+		6: "k_EValveIndexComponentSteamFrameRightController",
 	}
 	EValveIndexComponent_value = map[string]int32{
-		"k_EValveIndexComponentUnknown":      0,
-		"k_EValveIndexComponentHMD":          1,
-		"k_EValveIndexComponentLeftKnuckle":  2,
-		"k_EValveIndexComponentRightKnuckle": 3,
-		"k_ETempDTst1":                       4,
-		"k_ETempDTst2":                       5,
-		"k_ETempDTst3":                       6,
+		"k_EValveIndexComponentUnknown":                   0,
+		"k_EValveIndexComponentHMD":                       1,
+		"k_EValveIndexComponentLeftKnuckle":               2,
+		"k_EValveIndexComponentRightKnuckle":              3,
+		"k_EValveIndexComponentSteamFrameHMD":             4,
+		"k_EValveIndexComponentSteamFrameLeftController":  5,
+		"k_EValveIndexComponentSteamFrameRightController": 6,
 	}
 )
 
@@ -1817,15 +1817,15 @@ const file_steammessages_accounthardware_steamclient_proto_rawDesc = "" +
 	"\rserial_number\x18\x01 \x01(\tR\fserialNumber\x12'\n" +
 	"\x0fcontroller_code\x18\x02 \x01(\tR\x0econtrollerCode\"[\n" +
 	"0CAccountHardware_GetSteamDeckComponents_Response\x12'\n" +
-	"\x0fjson_components\x18\x01 \x01(\tR\x0ejsonComponents*\xdd\x01\n" +
+	"\x0fjson_components\x18\x01 \x01(\tR\x0ejsonComponents*\xb9\x02\n" +
 	"\x14EValveIndexComponent\x12!\n" +
 	"\x1dk_EValveIndexComponentUnknown\x10\x00\x12\x1d\n" +
 	"\x19k_EValveIndexComponentHMD\x10\x01\x12%\n" +
 	"!k_EValveIndexComponentLeftKnuckle\x10\x02\x12&\n" +
-	"\"k_EValveIndexComponentRightKnuckle\x10\x03\x12\x10\n" +
-	"\fk_ETempDTst1\x10\x04\x12\x10\n" +
-	"\fk_ETempDTst2\x10\x05\x12\x10\n" +
-	"\fk_ETempDTst3\x10\x062\xa9\r\n" +
+	"\"k_EValveIndexComponentRightKnuckle\x10\x03\x12'\n" +
+	"#k_EValveIndexComponentSteamFrameHMD\x10\x04\x122\n" +
+	".k_EValveIndexComponentSteamFrameLeftController\x10\x05\x123\n" +
+	"/k_EValveIndexComponentSteamFrameRightController\x10\x062\xa9\r\n" +
 	"\x0fAccountHardware\x12\x80\x01\n" +
 	"\x17RegisterSteamController\x121.CAccountHardware_RegisterSteamController_Request\x1a2.CAccountHardware_RegisterSteamController_Response\x12\xa4\x01\n" +
 	"#CompleteSteamControllerRegistration\x12=.CAccountHardware_CompleteSteamControllerRegistration_Request\x1a>.CAccountHardware_CompleteSteamControllerRegistration_Response\x12\x9c\x01\n" +

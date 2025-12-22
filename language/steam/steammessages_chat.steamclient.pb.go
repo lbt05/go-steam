@@ -7144,19 +7144,23 @@ func (*CChatRoom_ReportMessage_Response) Descriptor() ([]byte, []int) {
 }
 
 type CChatRoom_ResolveReport_Request struct {
-	state          protoimpl.MessageState    `protogen:"open.v1"`
-	SubjectGroupId *uint64                   `protobuf:"varint,1,opt,name=subject_group_id,json=subjectGroupId" json:"subject_group_id,omitempty"`
-	SubjectId      *uint64                   `protobuf:"varint,2,opt,name=subject_id,json=subjectId" json:"subject_id,omitempty"`
-	Resolution     *EContentReportResolution `protobuf:"varint,3,opt,name=resolution,enum=EContentReportResolution,def=0" json:"resolution,omitempty"`
-	Reason         *EContentReportReason     `protobuf:"varint,4,opt,name=reason,enum=EContentReportReason,def=0" json:"reason,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state              protoimpl.MessageState     `protogen:"open.v1"`
+	SubjectGroupId     *uint64                    `protobuf:"varint,1,opt,name=subject_group_id,json=subjectGroupId" json:"subject_group_id,omitempty"`
+	SubjectId          *uint64                    `protobuf:"varint,2,opt,name=subject_id,json=subjectId" json:"subject_id,omitempty"`
+	Resolution         *EContentReportResolution  `protobuf:"varint,3,opt,name=resolution,enum=EContentReportResolution,def=0" json:"resolution,omitempty"`
+	Reason             *EContentReportReason      `protobuf:"varint,4,opt,name=reason,enum=EContentReportReason,def=0" json:"reason,omitempty"`
+	SubjectType        *EContentReportSubjectType `protobuf:"varint,5,opt,name=subject_type,json=subjectType,enum=EContentReportSubjectType,def=0" json:"subject_type,omitempty"`
+	ChatGroupId        *uint64                    `protobuf:"varint,6,opt,name=chat_group_id,json=chatGroupId" json:"chat_group_id,omitempty"`
+	KickExpirationTime *uint32                    `protobuf:"varint,7,opt,name=kick_expiration_time,json=kickExpirationTime" json:"kick_expiration_time,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 // Default values for CChatRoom_ResolveReport_Request fields.
 const (
-	Default_CChatRoom_ResolveReport_Request_Resolution = EContentReportResolution_k_EContentReportResolution_Unresolved
-	Default_CChatRoom_ResolveReport_Request_Reason     = EContentReportReason_k_EContentReportReason_Invalid
+	Default_CChatRoom_ResolveReport_Request_Resolution  = EContentReportResolution_k_EContentReportResolution_Unresolved
+	Default_CChatRoom_ResolveReport_Request_Reason      = EContentReportReason_k_EContentReportReason_Invalid
+	Default_CChatRoom_ResolveReport_Request_SubjectType = EContentReportSubjectType_k_EContentReportSubjectType_Invalid
 )
 
 func (x *CChatRoom_ResolveReport_Request) Reset() {
@@ -7215,6 +7219,27 @@ func (x *CChatRoom_ResolveReport_Request) GetReason() EContentReportReason {
 		return *x.Reason
 	}
 	return Default_CChatRoom_ResolveReport_Request_Reason
+}
+
+func (x *CChatRoom_ResolveReport_Request) GetSubjectType() EContentReportSubjectType {
+	if x != nil && x.SubjectType != nil {
+		return *x.SubjectType
+	}
+	return Default_CChatRoom_ResolveReport_Request_SubjectType
+}
+
+func (x *CChatRoom_ResolveReport_Request) GetChatGroupId() uint64 {
+	if x != nil && x.ChatGroupId != nil {
+		return *x.ChatGroupId
+	}
+	return 0
+}
+
+func (x *CChatRoom_ResolveReport_Request) GetKickExpirationTime() uint32 {
+	if x != nil && x.KickExpirationTime != nil {
+		return *x.KickExpirationTime
+	}
+	return 0
 }
 
 type CChatRoom_ResolveReport_Response struct {
@@ -10398,7 +10423,7 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"reportText\x12\x1a\n" +
 	"\blanguage\x18\b \x01(\tR\blanguage\x12b\n" +
 	"\fsubject_type\x18\t \x01(\x0e2\x1a.EContentReportSubjectType:#k_EContentReportSubjectType_InvalidR\vsubjectType\"\"\n" +
-	" CChatRoom_ReportMessage_Response\"\x9b\x02\n" +
+	" CChatRoom_ReportMessage_Response\"\xd5\x03\n" +
 	"\x1fCChatRoom_ResolveReport_Request\x12(\n" +
 	"\x10subject_group_id\x18\x01 \x01(\x04R\x0esubjectGroupId\x12\x1d\n" +
 	"\n" +
@@ -10406,7 +10431,10 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"\n" +
 	"resolution\x18\x03 \x01(\x0e2\x19.EContentReportResolution:%k_EContentReportResolution_UnresolvedR\n" +
 	"resolution\x12M\n" +
-	"\x06reason\x18\x04 \x01(\x0e2\x15.EContentReportReason:\x1ek_EContentReportReason_InvalidR\x06reason\"\"\n" +
+	"\x06reason\x18\x04 \x01(\x0e2\x15.EContentReportReason:\x1ek_EContentReportReason_InvalidR\x06reason\x12b\n" +
+	"\fsubject_type\x18\x05 \x01(\x0e2\x1a.EContentReportSubjectType:#k_EContentReportSubjectType_InvalidR\vsubjectType\x12\"\n" +
+	"\rchat_group_id\x18\x06 \x01(\x04R\vchatGroupId\x120\n" +
+	"\x14kick_expiration_time\x18\a \x01(\rR\x12kickExpirationTime\"\"\n" +
 	" CChatRoom_ResolveReport_Response\"l\n" +
 	"*CClanChatRooms_GetClanChatRoomInfo_Request\x12\x18\n" +
 	"\asteamid\x18\x01 \x01(\x06R\asteamid\x12$\n" +
@@ -10950,181 +10978,182 @@ var file_steammessages_chat_steamclient_proto_depIdxs = []int32{
 	161, // 47: CChatRoom_ReportMessage_Request.subject_type:type_name -> EContentReportSubjectType
 	162, // 48: CChatRoom_ResolveReport_Request.resolution:type_name -> EContentReportResolution
 	160, // 49: CChatRoom_ResolveReport_Request.reason:type_name -> EContentReportReason
-	85,  // 50: CClanChatRooms_GetClanChatRoomInfo_Response.chat_group_summary:type_name -> CChatRoom_GetChatRoomGroupSummary_Response
-	130, // 51: CChatRoom_IncomingChatMessage_Notification.mentions:type_name -> CChatMentions
-	82,  // 52: CChatRoom_IncomingChatMessage_Notification.server_message:type_name -> ServerMessage
-	153, // 53: CChatRoom_ChatMessageModified_Notification.messages:type_name -> CChatRoom_ChatMessageModified_Notification.ChatMessage
-	13,  // 54: CChatRoom_MemberStateChange_Notification.member:type_name -> CChatRoomMember
-	5,   // 55: CChatRoom_MemberStateChange_Notification.change:type_name -> EChatRoomMemberStateChange
-	12,  // 56: CChatRoom_ChatRoomHeaderState_Notification.header_state:type_name -> CChatRoomGroupHeaderState
-	14,  // 57: CChatRoom_ChatRoomGroupRoomsChange_Notification.chat_rooms:type_name -> CChatRoomState
-	17,  // 58: ChatRoomClient_NotifyChatGroupUserStateChanged_Notification.user_chat_group_state:type_name -> CUserChatRoomGroupState
-	85,  // 59: ChatRoomClient_NotifyChatGroupUserStateChanged_Notification.group_summary:type_name -> CChatRoom_GetChatRoomGroupSummary_Response
-	5,   // 60: ChatRoomClient_NotifyChatGroupUserStateChanged_Notification.user_action:type_name -> EChatRoomMemberStateChange
-	139, // 61: CChatRoomClient_MemberListViewUpdated_Notification.view:type_name -> CChatRoomMemberListView
-	154, // 62: CChatRoomClient_MemberListViewUpdated_Notification.members:type_name -> CChatRoomClient_MemberListViewUpdated_Notification.MemberListViewEntry
-	140, // 63: CChatRoomClient_MemberListViewUpdated_Notification.member_summary:type_name -> CChatRoomMemberSummaryCounts
-	163, // 64: CChatRoomClient_MemberListViewUpdated_Notification.subscribed_personas:type_name -> CMsgClientPersonaState.Friend
-	4,   // 65: CChatRoom_MessageReaction_Notification.reaction_type:type_name -> EChatRoomMessageReactionType
-	155, // 66: CChatUsability_ClientUsabilityMetrics_Notification.settings:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.Settings
-	156, // 67: CChatUsability_ClientUsabilityMetrics_Notification.voice_settings:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.VoiceSettings
-	157, // 68: CChatUsability_ClientUsabilityMetrics_Notification.ui_state:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.UIState
-	158, // 69: CChatUsability_ClientUsabilityMetrics_Notification.metrics:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.Metrics
-	82,  // 70: CChatRoom_GetMessageHistory_Response.ChatMessage.server_message:type_name -> ServerMessage
-	146, // 71: CChatRoom_GetMessageHistory_Response.ChatMessage.reactions:type_name -> CChatRoom_GetMessageHistory_Response.ChatMessage.MessageReaction
-	4,   // 72: CChatRoom_GetMessageHistory_Response.ChatMessage.MessageReaction.reaction_type:type_name -> EChatRoomMessageReactionType
-	2,   // 73: CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.desktop_notification_level:type_name -> EChatRoomNotificationLevel
-	2,   // 74: CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.mobile_notification_level:type_name -> EChatRoomNotificationLevel
-	2,   // 75: CChatRoom_SetUserChatGroupPreferences_Request.ChatRoomPreferences.desktop_notification_level:type_name -> EChatRoomNotificationLevel
-	2,   // 76: CChatRoom_SetUserChatGroupPreferences_Request.ChatRoomPreferences.mobile_notification_level:type_name -> EChatRoomNotificationLevel
-	163, // 77: CChatRoom_SearchMembers_Response.MemberMatch.persona:type_name -> CMsgClientPersonaState.Friend
-	163, // 78: CChatRoomClient_MemberListViewUpdated_Notification.MemberListViewEntry.persona:type_name -> CMsgClientPersonaState.Friend
-	159, // 79: CChatUsability_ClientUsabilityMetrics_Notification.UIState.category_collapse:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.UIState.CategoryCollapseState
-	6,   // 80: Chat.RequestFriendPersonaStates:input_type -> CChat_RequestFriendPersonaStates_Request
-	8,   // 81: ChatRoom.CreateChatRoomGroup:input_type -> CChatRoom_CreateChatRoomGroup_Request
-	19,  // 82: ChatRoom.SaveChatRoomGroup:input_type -> CChatRoom_SaveChatRoomGroup_Request
-	21,  // 83: ChatRoom.RenameChatRoomGroup:input_type -> CChatRoom_RenameChatRoomGroup_Request
-	23,  // 84: ChatRoom.SetChatRoomGroupTagline:input_type -> CChatRoom_SetChatRoomGroupTagline_Request
-	25,  // 85: ChatRoom.SetChatRoomGroupAvatar:input_type -> CChatRoom_SetChatRoomGroupAvatar_Request
-	27,  // 86: ChatRoom.SetChatRoomGroupWatchingBroadcast:input_type -> CChatRoom_SetChatRoomGroupWatchingBroadcast_Request
-	29,  // 87: ChatRoom.JoinMiniGameForChatRoomGroup:input_type -> CChatRoom_JoinMiniGameForChatRoomGroup_Request
-	31,  // 88: ChatRoom.EndMiniGameForChatRoomGroup:input_type -> CChatRoom_EndMiniGameForChatRoomGroup_Request
-	33,  // 89: ChatRoom.MuteUserInGroup:input_type -> CChatRoom_MuteUser_Request
-	35,  // 90: ChatRoom.KickUserFromGroup:input_type -> CChatRoom_KickUser_Request
-	37,  // 91: ChatRoom.SetUserBanState:input_type -> CChatRoom_SetUserBanState_Request
-	39,  // 92: ChatRoom.RevokeInviteToGroup:input_type -> CChatRoom_RevokeInvite_Request
-	41,  // 93: ChatRoom.CreateRole:input_type -> CChatRoom_CreateRole_Request
-	43,  // 94: ChatRoom.GetRoles:input_type -> CChatRoom_GetRoles_Request
-	45,  // 95: ChatRoom.RenameRole:input_type -> CChatRoom_RenameRole_Request
-	47,  // 96: ChatRoom.ReorderRole:input_type -> CChatRoom_ReorderRole_Request
-	49,  // 97: ChatRoom.DeleteRole:input_type -> CChatRoom_DeleteRole_Request
-	51,  // 98: ChatRoom.GetRoleActions:input_type -> CChatRoom_GetRoleActions_Request
-	53,  // 99: ChatRoom.ReplaceRoleActions:input_type -> CChatRoom_ReplaceRoleActions_Request
-	55,  // 100: ChatRoom.AddRoleToUser:input_type -> CChatRoom_AddRoleToUser_Request
-	57,  // 101: ChatRoom.GetRolesForUser:input_type -> CChatRoom_GetRolesForUser_Request
-	59,  // 102: ChatRoom.DeleteRoleFromUser:input_type -> CChatRoom_DeleteRoleFromUser_Request
-	61,  // 103: ChatRoom.JoinChatRoomGroup:input_type -> CChatRoom_JoinChatRoomGroup_Request
-	63,  // 104: ChatRoom.InviteFriendToChatRoomGroup:input_type -> CChatRoom_InviteFriendToChatRoomGroup_Request
-	65,  // 105: ChatRoom.LeaveChatRoomGroup:input_type -> CChatRoom_LeaveChatRoomGroup_Request
-	67,  // 106: ChatRoom.CreateChatRoom:input_type -> CChatRoom_CreateChatRoom_Request
-	69,  // 107: ChatRoom.DeleteChatRoom:input_type -> CChatRoom_DeleteChatRoom_Request
-	71,  // 108: ChatRoom.RenameChatRoom:input_type -> CChatRoom_RenameChatRoom_Request
-	73,  // 109: ChatRoom.ReorderChatRoom:input_type -> CChatRoom_ReorderChatRoom_Request
-	75,  // 110: ChatRoom.SendChatMessage:input_type -> CChatRoom_SendChatMessage_Request
-	77,  // 111: ChatRoom.JoinVoiceChat:input_type -> CChatRoom_JoinVoiceChat_Request
-	79,  // 112: ChatRoom.LeaveVoiceChat:input_type -> CChatRoom_LeaveVoiceChat_Request
-	81,  // 113: ChatRoom.GetMessageHistory:input_type -> CChatRoom_GetMessageHistory_Request
-	84,  // 114: ChatRoom.GetMyChatRoomGroups:input_type -> CChatRoom_GetMyChatRoomGroups_Request
-	88,  // 115: ChatRoom.GetChatRoomGroupState:input_type -> CChatRoom_GetChatRoomGroupState_Request
-	90,  // 116: ChatRoom.SetAppChatRoomGroupForceActive:input_type -> CChatRoom_SetAppChatRoomGroupForceActive_Request
-	92,  // 117: ChatRoom.SetAppChatRoomGroupStopForceActive:input_type -> CChatRoom_SetAppChatRoomGroupStopForceActive_Notification
-	93,  // 118: ChatRoom.AckChatMessage:input_type -> CChatRoom_AckChatMessage_Notification
-	94,  // 119: ChatRoom.CreateInviteLink:input_type -> CChatRoom_CreateInviteLink_Request
-	96,  // 120: ChatRoom.GetInviteLinkInfo:input_type -> CChatRoom_GetInviteLinkInfo_Request
-	98,  // 121: ChatRoom.GetInviteInfo:input_type -> CChatRoom_GetInviteInfo_Request
-	100, // 122: ChatRoom.GetInviteLinksForGroup:input_type -> CChatRoom_GetInviteLinksForGroup_Request
-	102, // 123: ChatRoom.GetBanList:input_type -> CChatRoom_GetBanList_Request
-	104, // 124: ChatRoom.GetInviteList:input_type -> CChatRoom_GetInviteList_Request
-	107, // 125: ChatRoom.DeleteInviteLink:input_type -> CChatRoom_DeleteInviteLink_Request
-	109, // 126: ChatRoom.SetSessionActiveChatRoomGroups:input_type -> CChatRoom_SetSessionActiveChatRoomGroups_Request
-	111, // 127: ChatRoom.SetUserChatGroupPreferences:input_type -> CChatRoom_SetUserChatGroupPreferences_Request
-	113, // 128: ChatRoom.DeleteChatMessages:input_type -> CChatRoom_DeleteChatMessages_Request
-	115, // 129: ChatRoom.UpdateMemberListView:input_type -> CChatRoom_UpdateMemberListView_Notification
-	116, // 130: ChatRoom.SearchMembers:input_type -> CChatRoom_SearchMembers_Request
-	118, // 131: ChatRoom.UpdateMessageReaction:input_type -> CChatRoom_UpdateMessageReaction_Request
-	120, // 132: ChatRoom.GetMessageReactionReactors:input_type -> CChatRoom_GetMessageReactionReactors_Request
-	122, // 133: ChatRoom.ReportMessage:input_type -> CChatRoom_ReportMessage_Request
-	124, // 134: ChatRoom.ResolveReport:input_type -> CChatRoom_ResolveReport_Request
-	126, // 135: ClanChatRooms.GetClanChatRoomInfo:input_type -> CClanChatRooms_GetClanChatRoomInfo_Request
-	128, // 136: ClanChatRooms.SetClanChatRoomPrivate:input_type -> CClanChatRooms_SetClanChatRoomPrivate_Request
-	131, // 137: ChatRoomClient.NotifyIncomingChatMessage:input_type -> CChatRoom_IncomingChatMessage_Notification
-	132, // 138: ChatRoomClient.NotifyChatMessageModified:input_type -> CChatRoom_ChatMessageModified_Notification
-	133, // 139: ChatRoomClient.NotifyMemberStateChange:input_type -> CChatRoom_MemberStateChange_Notification
-	134, // 140: ChatRoomClient.NotifyChatRoomHeaderStateChange:input_type -> CChatRoom_ChatRoomHeaderState_Notification
-	135, // 141: ChatRoomClient.NotifyChatRoomGroupRoomsChange:input_type -> CChatRoom_ChatRoomGroupRoomsChange_Notification
-	136, // 142: ChatRoomClient.NotifyShouldRejoinChatRoomVoiceChat:input_type -> CChatRoom_NotifyShouldRejoinChatRoomVoiceChat_Notification
-	137, // 143: ChatRoomClient.NotifyChatGroupUserStateChanged:input_type -> ChatRoomClient_NotifyChatGroupUserStateChanged_Notification
-	93,  // 144: ChatRoomClient.NotifyAckChatMessageEcho:input_type -> CChatRoom_AckChatMessage_Notification
-	138, // 145: ChatRoomClient.NotifyChatRoomDisconnect:input_type -> ChatRoomClient_NotifyChatRoomDisconnect_Notification
-	141, // 146: ChatRoomClient.NotifyMemberListViewUpdated:input_type -> CChatRoomClient_MemberListViewUpdated_Notification
-	142, // 147: ChatRoomClient.NotifyMessageReaction:input_type -> CChatRoom_MessageReaction_Notification
-	143, // 148: ChatUsability.NotifyClientUsabilityMetrics:input_type -> CChatUsability_ClientUsabilityMetrics_Notification
-	144, // 149: ChatUsabilityClient.NotifyRequestClientUsabilityMetrics:input_type -> CChatUsability_RequestClientUsabilityMetrics_Notification
-	7,   // 150: Chat.RequestFriendPersonaStates:output_type -> CChat_RequestFriendPersonaStates_Response
-	18,  // 151: ChatRoom.CreateChatRoomGroup:output_type -> CChatRoom_CreateChatRoomGroup_Response
-	20,  // 152: ChatRoom.SaveChatRoomGroup:output_type -> CChatRoom_SaveChatRoomGroup_Response
-	22,  // 153: ChatRoom.RenameChatRoomGroup:output_type -> CChatRoom_RenameChatRoomGroup_Response
-	24,  // 154: ChatRoom.SetChatRoomGroupTagline:output_type -> CChatRoom_SetChatRoomGroupTagline_Response
-	26,  // 155: ChatRoom.SetChatRoomGroupAvatar:output_type -> CChatRoom_SetChatRoomGroupAvatar_Response
-	28,  // 156: ChatRoom.SetChatRoomGroupWatchingBroadcast:output_type -> CChatRoom_SetChatRoomGroupWatchingBroadcast_Response
-	30,  // 157: ChatRoom.JoinMiniGameForChatRoomGroup:output_type -> CChatRoom_JoinMiniGameForChatRoomGroup_Response
-	32,  // 158: ChatRoom.EndMiniGameForChatRoomGroup:output_type -> CChatRoom_EndMiniGameForChatRoomGroup_Response
-	34,  // 159: ChatRoom.MuteUserInGroup:output_type -> CChatRoom_MuteUser_Response
-	36,  // 160: ChatRoom.KickUserFromGroup:output_type -> CChatRoom_KickUser_Response
-	38,  // 161: ChatRoom.SetUserBanState:output_type -> CChatRoom_SetUserBanState_Response
-	40,  // 162: ChatRoom.RevokeInviteToGroup:output_type -> CChatRoom_RevokeInvite_Response
-	42,  // 163: ChatRoom.CreateRole:output_type -> CChatRoom_CreateRole_Response
-	44,  // 164: ChatRoom.GetRoles:output_type -> CChatRoom_GetRoles_Response
-	46,  // 165: ChatRoom.RenameRole:output_type -> CChatRoom_RenameRole_Response
-	48,  // 166: ChatRoom.ReorderRole:output_type -> CChatRoom_ReorderRole_Response
-	50,  // 167: ChatRoom.DeleteRole:output_type -> CChatRoom_DeleteRole_Response
-	52,  // 168: ChatRoom.GetRoleActions:output_type -> CChatRoom_GetRoleActions_Response
-	54,  // 169: ChatRoom.ReplaceRoleActions:output_type -> CChatRoom_ReplaceRoleActions_Response
-	56,  // 170: ChatRoom.AddRoleToUser:output_type -> CChatRoom_AddRoleToUser_Response
-	58,  // 171: ChatRoom.GetRolesForUser:output_type -> CChatRoom_GetRolesForUser_Response
-	60,  // 172: ChatRoom.DeleteRoleFromUser:output_type -> CChatRoom_DeleteRoleFromUser_Response
-	62,  // 173: ChatRoom.JoinChatRoomGroup:output_type -> CChatRoom_JoinChatRoomGroup_Response
-	64,  // 174: ChatRoom.InviteFriendToChatRoomGroup:output_type -> CChatRoom_InviteFriendToChatRoomGroup_Response
-	66,  // 175: ChatRoom.LeaveChatRoomGroup:output_type -> CChatRoom_LeaveChatRoomGroup_Response
-	68,  // 176: ChatRoom.CreateChatRoom:output_type -> CChatRoom_CreateChatRoom_Response
-	70,  // 177: ChatRoom.DeleteChatRoom:output_type -> CChatRoom_DeleteChatRoom_Response
-	72,  // 178: ChatRoom.RenameChatRoom:output_type -> CChatRoom_RenameChatRoom_Response
-	74,  // 179: ChatRoom.ReorderChatRoom:output_type -> CChatRoom_ReorderChatRoom_Response
-	76,  // 180: ChatRoom.SendChatMessage:output_type -> CChatRoom_SendChatMessage_Response
-	78,  // 181: ChatRoom.JoinVoiceChat:output_type -> CChatRoom_JoinVoiceChat_Response
-	80,  // 182: ChatRoom.LeaveVoiceChat:output_type -> CChatRoom_LeaveVoiceChat_Response
-	83,  // 183: ChatRoom.GetMessageHistory:output_type -> CChatRoom_GetMessageHistory_Response
-	87,  // 184: ChatRoom.GetMyChatRoomGroups:output_type -> CChatRoom_GetMyChatRoomGroups_Response
-	89,  // 185: ChatRoom.GetChatRoomGroupState:output_type -> CChatRoom_GetChatRoomGroupState_Response
-	91,  // 186: ChatRoom.SetAppChatRoomGroupForceActive:output_type -> CChatRoom_SetAppChatRoomGroupForceActive_Response
-	164, // 187: ChatRoom.SetAppChatRoomGroupStopForceActive:output_type -> NoResponse
-	164, // 188: ChatRoom.AckChatMessage:output_type -> NoResponse
-	95,  // 189: ChatRoom.CreateInviteLink:output_type -> CChatRoom_CreateInviteLink_Response
-	97,  // 190: ChatRoom.GetInviteLinkInfo:output_type -> CChatRoom_GetInviteLinkInfo_Response
-	99,  // 191: ChatRoom.GetInviteInfo:output_type -> CChatRoom_GetInviteInfo_Response
-	101, // 192: ChatRoom.GetInviteLinksForGroup:output_type -> CChatRoom_GetInviteLinksForGroup_Response
-	103, // 193: ChatRoom.GetBanList:output_type -> CChatRoom_GetBanList_Response
-	106, // 194: ChatRoom.GetInviteList:output_type -> CChatRoom_GetInviteList_Response
-	108, // 195: ChatRoom.DeleteInviteLink:output_type -> CChatRoom_DeleteInviteLink_Response
-	110, // 196: ChatRoom.SetSessionActiveChatRoomGroups:output_type -> CChatRoom_SetSessionActiveChatRoomGroups_Response
-	112, // 197: ChatRoom.SetUserChatGroupPreferences:output_type -> CChatRoom_SetUserChatGroupPreferences_Response
-	114, // 198: ChatRoom.DeleteChatMessages:output_type -> CChatRoom_DeleteChatMessages_Response
-	164, // 199: ChatRoom.UpdateMemberListView:output_type -> NoResponse
-	117, // 200: ChatRoom.SearchMembers:output_type -> CChatRoom_SearchMembers_Response
-	119, // 201: ChatRoom.UpdateMessageReaction:output_type -> CChatRoom_UpdateMessageReaction_Response
-	121, // 202: ChatRoom.GetMessageReactionReactors:output_type -> CChatRoom_GetMessageReactionReactors_Response
-	123, // 203: ChatRoom.ReportMessage:output_type -> CChatRoom_ReportMessage_Response
-	125, // 204: ChatRoom.ResolveReport:output_type -> CChatRoom_ResolveReport_Response
-	127, // 205: ClanChatRooms.GetClanChatRoomInfo:output_type -> CClanChatRooms_GetClanChatRoomInfo_Response
-	129, // 206: ClanChatRooms.SetClanChatRoomPrivate:output_type -> CClanChatRooms_SetClanChatRoomPrivate_Response
-	164, // 207: ChatRoomClient.NotifyIncomingChatMessage:output_type -> NoResponse
-	164, // 208: ChatRoomClient.NotifyChatMessageModified:output_type -> NoResponse
-	164, // 209: ChatRoomClient.NotifyMemberStateChange:output_type -> NoResponse
-	164, // 210: ChatRoomClient.NotifyChatRoomHeaderStateChange:output_type -> NoResponse
-	164, // 211: ChatRoomClient.NotifyChatRoomGroupRoomsChange:output_type -> NoResponse
-	164, // 212: ChatRoomClient.NotifyShouldRejoinChatRoomVoiceChat:output_type -> NoResponse
-	164, // 213: ChatRoomClient.NotifyChatGroupUserStateChanged:output_type -> NoResponse
-	164, // 214: ChatRoomClient.NotifyAckChatMessageEcho:output_type -> NoResponse
-	164, // 215: ChatRoomClient.NotifyChatRoomDisconnect:output_type -> NoResponse
-	164, // 216: ChatRoomClient.NotifyMemberListViewUpdated:output_type -> NoResponse
-	164, // 217: ChatRoomClient.NotifyMessageReaction:output_type -> NoResponse
-	164, // 218: ChatUsability.NotifyClientUsabilityMetrics:output_type -> NoResponse
-	164, // 219: ChatUsabilityClient.NotifyRequestClientUsabilityMetrics:output_type -> NoResponse
-	150, // [150:220] is the sub-list for method output_type
-	80,  // [80:150] is the sub-list for method input_type
-	80,  // [80:80] is the sub-list for extension type_name
-	80,  // [80:80] is the sub-list for extension extendee
-	0,   // [0:80] is the sub-list for field type_name
+	161, // 50: CChatRoom_ResolveReport_Request.subject_type:type_name -> EContentReportSubjectType
+	85,  // 51: CClanChatRooms_GetClanChatRoomInfo_Response.chat_group_summary:type_name -> CChatRoom_GetChatRoomGroupSummary_Response
+	130, // 52: CChatRoom_IncomingChatMessage_Notification.mentions:type_name -> CChatMentions
+	82,  // 53: CChatRoom_IncomingChatMessage_Notification.server_message:type_name -> ServerMessage
+	153, // 54: CChatRoom_ChatMessageModified_Notification.messages:type_name -> CChatRoom_ChatMessageModified_Notification.ChatMessage
+	13,  // 55: CChatRoom_MemberStateChange_Notification.member:type_name -> CChatRoomMember
+	5,   // 56: CChatRoom_MemberStateChange_Notification.change:type_name -> EChatRoomMemberStateChange
+	12,  // 57: CChatRoom_ChatRoomHeaderState_Notification.header_state:type_name -> CChatRoomGroupHeaderState
+	14,  // 58: CChatRoom_ChatRoomGroupRoomsChange_Notification.chat_rooms:type_name -> CChatRoomState
+	17,  // 59: ChatRoomClient_NotifyChatGroupUserStateChanged_Notification.user_chat_group_state:type_name -> CUserChatRoomGroupState
+	85,  // 60: ChatRoomClient_NotifyChatGroupUserStateChanged_Notification.group_summary:type_name -> CChatRoom_GetChatRoomGroupSummary_Response
+	5,   // 61: ChatRoomClient_NotifyChatGroupUserStateChanged_Notification.user_action:type_name -> EChatRoomMemberStateChange
+	139, // 62: CChatRoomClient_MemberListViewUpdated_Notification.view:type_name -> CChatRoomMemberListView
+	154, // 63: CChatRoomClient_MemberListViewUpdated_Notification.members:type_name -> CChatRoomClient_MemberListViewUpdated_Notification.MemberListViewEntry
+	140, // 64: CChatRoomClient_MemberListViewUpdated_Notification.member_summary:type_name -> CChatRoomMemberSummaryCounts
+	163, // 65: CChatRoomClient_MemberListViewUpdated_Notification.subscribed_personas:type_name -> CMsgClientPersonaState.Friend
+	4,   // 66: CChatRoom_MessageReaction_Notification.reaction_type:type_name -> EChatRoomMessageReactionType
+	155, // 67: CChatUsability_ClientUsabilityMetrics_Notification.settings:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.Settings
+	156, // 68: CChatUsability_ClientUsabilityMetrics_Notification.voice_settings:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.VoiceSettings
+	157, // 69: CChatUsability_ClientUsabilityMetrics_Notification.ui_state:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.UIState
+	158, // 70: CChatUsability_ClientUsabilityMetrics_Notification.metrics:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.Metrics
+	82,  // 71: CChatRoom_GetMessageHistory_Response.ChatMessage.server_message:type_name -> ServerMessage
+	146, // 72: CChatRoom_GetMessageHistory_Response.ChatMessage.reactions:type_name -> CChatRoom_GetMessageHistory_Response.ChatMessage.MessageReaction
+	4,   // 73: CChatRoom_GetMessageHistory_Response.ChatMessage.MessageReaction.reaction_type:type_name -> EChatRoomMessageReactionType
+	2,   // 74: CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.desktop_notification_level:type_name -> EChatRoomNotificationLevel
+	2,   // 75: CChatRoom_SetUserChatGroupPreferences_Request.ChatGroupPreferences.mobile_notification_level:type_name -> EChatRoomNotificationLevel
+	2,   // 76: CChatRoom_SetUserChatGroupPreferences_Request.ChatRoomPreferences.desktop_notification_level:type_name -> EChatRoomNotificationLevel
+	2,   // 77: CChatRoom_SetUserChatGroupPreferences_Request.ChatRoomPreferences.mobile_notification_level:type_name -> EChatRoomNotificationLevel
+	163, // 78: CChatRoom_SearchMembers_Response.MemberMatch.persona:type_name -> CMsgClientPersonaState.Friend
+	163, // 79: CChatRoomClient_MemberListViewUpdated_Notification.MemberListViewEntry.persona:type_name -> CMsgClientPersonaState.Friend
+	159, // 80: CChatUsability_ClientUsabilityMetrics_Notification.UIState.category_collapse:type_name -> CChatUsability_ClientUsabilityMetrics_Notification.UIState.CategoryCollapseState
+	6,   // 81: Chat.RequestFriendPersonaStates:input_type -> CChat_RequestFriendPersonaStates_Request
+	8,   // 82: ChatRoom.CreateChatRoomGroup:input_type -> CChatRoom_CreateChatRoomGroup_Request
+	19,  // 83: ChatRoom.SaveChatRoomGroup:input_type -> CChatRoom_SaveChatRoomGroup_Request
+	21,  // 84: ChatRoom.RenameChatRoomGroup:input_type -> CChatRoom_RenameChatRoomGroup_Request
+	23,  // 85: ChatRoom.SetChatRoomGroupTagline:input_type -> CChatRoom_SetChatRoomGroupTagline_Request
+	25,  // 86: ChatRoom.SetChatRoomGroupAvatar:input_type -> CChatRoom_SetChatRoomGroupAvatar_Request
+	27,  // 87: ChatRoom.SetChatRoomGroupWatchingBroadcast:input_type -> CChatRoom_SetChatRoomGroupWatchingBroadcast_Request
+	29,  // 88: ChatRoom.JoinMiniGameForChatRoomGroup:input_type -> CChatRoom_JoinMiniGameForChatRoomGroup_Request
+	31,  // 89: ChatRoom.EndMiniGameForChatRoomGroup:input_type -> CChatRoom_EndMiniGameForChatRoomGroup_Request
+	33,  // 90: ChatRoom.MuteUserInGroup:input_type -> CChatRoom_MuteUser_Request
+	35,  // 91: ChatRoom.KickUserFromGroup:input_type -> CChatRoom_KickUser_Request
+	37,  // 92: ChatRoom.SetUserBanState:input_type -> CChatRoom_SetUserBanState_Request
+	39,  // 93: ChatRoom.RevokeInviteToGroup:input_type -> CChatRoom_RevokeInvite_Request
+	41,  // 94: ChatRoom.CreateRole:input_type -> CChatRoom_CreateRole_Request
+	43,  // 95: ChatRoom.GetRoles:input_type -> CChatRoom_GetRoles_Request
+	45,  // 96: ChatRoom.RenameRole:input_type -> CChatRoom_RenameRole_Request
+	47,  // 97: ChatRoom.ReorderRole:input_type -> CChatRoom_ReorderRole_Request
+	49,  // 98: ChatRoom.DeleteRole:input_type -> CChatRoom_DeleteRole_Request
+	51,  // 99: ChatRoom.GetRoleActions:input_type -> CChatRoom_GetRoleActions_Request
+	53,  // 100: ChatRoom.ReplaceRoleActions:input_type -> CChatRoom_ReplaceRoleActions_Request
+	55,  // 101: ChatRoom.AddRoleToUser:input_type -> CChatRoom_AddRoleToUser_Request
+	57,  // 102: ChatRoom.GetRolesForUser:input_type -> CChatRoom_GetRolesForUser_Request
+	59,  // 103: ChatRoom.DeleteRoleFromUser:input_type -> CChatRoom_DeleteRoleFromUser_Request
+	61,  // 104: ChatRoom.JoinChatRoomGroup:input_type -> CChatRoom_JoinChatRoomGroup_Request
+	63,  // 105: ChatRoom.InviteFriendToChatRoomGroup:input_type -> CChatRoom_InviteFriendToChatRoomGroup_Request
+	65,  // 106: ChatRoom.LeaveChatRoomGroup:input_type -> CChatRoom_LeaveChatRoomGroup_Request
+	67,  // 107: ChatRoom.CreateChatRoom:input_type -> CChatRoom_CreateChatRoom_Request
+	69,  // 108: ChatRoom.DeleteChatRoom:input_type -> CChatRoom_DeleteChatRoom_Request
+	71,  // 109: ChatRoom.RenameChatRoom:input_type -> CChatRoom_RenameChatRoom_Request
+	73,  // 110: ChatRoom.ReorderChatRoom:input_type -> CChatRoom_ReorderChatRoom_Request
+	75,  // 111: ChatRoom.SendChatMessage:input_type -> CChatRoom_SendChatMessage_Request
+	77,  // 112: ChatRoom.JoinVoiceChat:input_type -> CChatRoom_JoinVoiceChat_Request
+	79,  // 113: ChatRoom.LeaveVoiceChat:input_type -> CChatRoom_LeaveVoiceChat_Request
+	81,  // 114: ChatRoom.GetMessageHistory:input_type -> CChatRoom_GetMessageHistory_Request
+	84,  // 115: ChatRoom.GetMyChatRoomGroups:input_type -> CChatRoom_GetMyChatRoomGroups_Request
+	88,  // 116: ChatRoom.GetChatRoomGroupState:input_type -> CChatRoom_GetChatRoomGroupState_Request
+	90,  // 117: ChatRoom.SetAppChatRoomGroupForceActive:input_type -> CChatRoom_SetAppChatRoomGroupForceActive_Request
+	92,  // 118: ChatRoom.SetAppChatRoomGroupStopForceActive:input_type -> CChatRoom_SetAppChatRoomGroupStopForceActive_Notification
+	93,  // 119: ChatRoom.AckChatMessage:input_type -> CChatRoom_AckChatMessage_Notification
+	94,  // 120: ChatRoom.CreateInviteLink:input_type -> CChatRoom_CreateInviteLink_Request
+	96,  // 121: ChatRoom.GetInviteLinkInfo:input_type -> CChatRoom_GetInviteLinkInfo_Request
+	98,  // 122: ChatRoom.GetInviteInfo:input_type -> CChatRoom_GetInviteInfo_Request
+	100, // 123: ChatRoom.GetInviteLinksForGroup:input_type -> CChatRoom_GetInviteLinksForGroup_Request
+	102, // 124: ChatRoom.GetBanList:input_type -> CChatRoom_GetBanList_Request
+	104, // 125: ChatRoom.GetInviteList:input_type -> CChatRoom_GetInviteList_Request
+	107, // 126: ChatRoom.DeleteInviteLink:input_type -> CChatRoom_DeleteInviteLink_Request
+	109, // 127: ChatRoom.SetSessionActiveChatRoomGroups:input_type -> CChatRoom_SetSessionActiveChatRoomGroups_Request
+	111, // 128: ChatRoom.SetUserChatGroupPreferences:input_type -> CChatRoom_SetUserChatGroupPreferences_Request
+	113, // 129: ChatRoom.DeleteChatMessages:input_type -> CChatRoom_DeleteChatMessages_Request
+	115, // 130: ChatRoom.UpdateMemberListView:input_type -> CChatRoom_UpdateMemberListView_Notification
+	116, // 131: ChatRoom.SearchMembers:input_type -> CChatRoom_SearchMembers_Request
+	118, // 132: ChatRoom.UpdateMessageReaction:input_type -> CChatRoom_UpdateMessageReaction_Request
+	120, // 133: ChatRoom.GetMessageReactionReactors:input_type -> CChatRoom_GetMessageReactionReactors_Request
+	122, // 134: ChatRoom.ReportMessage:input_type -> CChatRoom_ReportMessage_Request
+	124, // 135: ChatRoom.ResolveReport:input_type -> CChatRoom_ResolveReport_Request
+	126, // 136: ClanChatRooms.GetClanChatRoomInfo:input_type -> CClanChatRooms_GetClanChatRoomInfo_Request
+	128, // 137: ClanChatRooms.SetClanChatRoomPrivate:input_type -> CClanChatRooms_SetClanChatRoomPrivate_Request
+	131, // 138: ChatRoomClient.NotifyIncomingChatMessage:input_type -> CChatRoom_IncomingChatMessage_Notification
+	132, // 139: ChatRoomClient.NotifyChatMessageModified:input_type -> CChatRoom_ChatMessageModified_Notification
+	133, // 140: ChatRoomClient.NotifyMemberStateChange:input_type -> CChatRoom_MemberStateChange_Notification
+	134, // 141: ChatRoomClient.NotifyChatRoomHeaderStateChange:input_type -> CChatRoom_ChatRoomHeaderState_Notification
+	135, // 142: ChatRoomClient.NotifyChatRoomGroupRoomsChange:input_type -> CChatRoom_ChatRoomGroupRoomsChange_Notification
+	136, // 143: ChatRoomClient.NotifyShouldRejoinChatRoomVoiceChat:input_type -> CChatRoom_NotifyShouldRejoinChatRoomVoiceChat_Notification
+	137, // 144: ChatRoomClient.NotifyChatGroupUserStateChanged:input_type -> ChatRoomClient_NotifyChatGroupUserStateChanged_Notification
+	93,  // 145: ChatRoomClient.NotifyAckChatMessageEcho:input_type -> CChatRoom_AckChatMessage_Notification
+	138, // 146: ChatRoomClient.NotifyChatRoomDisconnect:input_type -> ChatRoomClient_NotifyChatRoomDisconnect_Notification
+	141, // 147: ChatRoomClient.NotifyMemberListViewUpdated:input_type -> CChatRoomClient_MemberListViewUpdated_Notification
+	142, // 148: ChatRoomClient.NotifyMessageReaction:input_type -> CChatRoom_MessageReaction_Notification
+	143, // 149: ChatUsability.NotifyClientUsabilityMetrics:input_type -> CChatUsability_ClientUsabilityMetrics_Notification
+	144, // 150: ChatUsabilityClient.NotifyRequestClientUsabilityMetrics:input_type -> CChatUsability_RequestClientUsabilityMetrics_Notification
+	7,   // 151: Chat.RequestFriendPersonaStates:output_type -> CChat_RequestFriendPersonaStates_Response
+	18,  // 152: ChatRoom.CreateChatRoomGroup:output_type -> CChatRoom_CreateChatRoomGroup_Response
+	20,  // 153: ChatRoom.SaveChatRoomGroup:output_type -> CChatRoom_SaveChatRoomGroup_Response
+	22,  // 154: ChatRoom.RenameChatRoomGroup:output_type -> CChatRoom_RenameChatRoomGroup_Response
+	24,  // 155: ChatRoom.SetChatRoomGroupTagline:output_type -> CChatRoom_SetChatRoomGroupTagline_Response
+	26,  // 156: ChatRoom.SetChatRoomGroupAvatar:output_type -> CChatRoom_SetChatRoomGroupAvatar_Response
+	28,  // 157: ChatRoom.SetChatRoomGroupWatchingBroadcast:output_type -> CChatRoom_SetChatRoomGroupWatchingBroadcast_Response
+	30,  // 158: ChatRoom.JoinMiniGameForChatRoomGroup:output_type -> CChatRoom_JoinMiniGameForChatRoomGroup_Response
+	32,  // 159: ChatRoom.EndMiniGameForChatRoomGroup:output_type -> CChatRoom_EndMiniGameForChatRoomGroup_Response
+	34,  // 160: ChatRoom.MuteUserInGroup:output_type -> CChatRoom_MuteUser_Response
+	36,  // 161: ChatRoom.KickUserFromGroup:output_type -> CChatRoom_KickUser_Response
+	38,  // 162: ChatRoom.SetUserBanState:output_type -> CChatRoom_SetUserBanState_Response
+	40,  // 163: ChatRoom.RevokeInviteToGroup:output_type -> CChatRoom_RevokeInvite_Response
+	42,  // 164: ChatRoom.CreateRole:output_type -> CChatRoom_CreateRole_Response
+	44,  // 165: ChatRoom.GetRoles:output_type -> CChatRoom_GetRoles_Response
+	46,  // 166: ChatRoom.RenameRole:output_type -> CChatRoom_RenameRole_Response
+	48,  // 167: ChatRoom.ReorderRole:output_type -> CChatRoom_ReorderRole_Response
+	50,  // 168: ChatRoom.DeleteRole:output_type -> CChatRoom_DeleteRole_Response
+	52,  // 169: ChatRoom.GetRoleActions:output_type -> CChatRoom_GetRoleActions_Response
+	54,  // 170: ChatRoom.ReplaceRoleActions:output_type -> CChatRoom_ReplaceRoleActions_Response
+	56,  // 171: ChatRoom.AddRoleToUser:output_type -> CChatRoom_AddRoleToUser_Response
+	58,  // 172: ChatRoom.GetRolesForUser:output_type -> CChatRoom_GetRolesForUser_Response
+	60,  // 173: ChatRoom.DeleteRoleFromUser:output_type -> CChatRoom_DeleteRoleFromUser_Response
+	62,  // 174: ChatRoom.JoinChatRoomGroup:output_type -> CChatRoom_JoinChatRoomGroup_Response
+	64,  // 175: ChatRoom.InviteFriendToChatRoomGroup:output_type -> CChatRoom_InviteFriendToChatRoomGroup_Response
+	66,  // 176: ChatRoom.LeaveChatRoomGroup:output_type -> CChatRoom_LeaveChatRoomGroup_Response
+	68,  // 177: ChatRoom.CreateChatRoom:output_type -> CChatRoom_CreateChatRoom_Response
+	70,  // 178: ChatRoom.DeleteChatRoom:output_type -> CChatRoom_DeleteChatRoom_Response
+	72,  // 179: ChatRoom.RenameChatRoom:output_type -> CChatRoom_RenameChatRoom_Response
+	74,  // 180: ChatRoom.ReorderChatRoom:output_type -> CChatRoom_ReorderChatRoom_Response
+	76,  // 181: ChatRoom.SendChatMessage:output_type -> CChatRoom_SendChatMessage_Response
+	78,  // 182: ChatRoom.JoinVoiceChat:output_type -> CChatRoom_JoinVoiceChat_Response
+	80,  // 183: ChatRoom.LeaveVoiceChat:output_type -> CChatRoom_LeaveVoiceChat_Response
+	83,  // 184: ChatRoom.GetMessageHistory:output_type -> CChatRoom_GetMessageHistory_Response
+	87,  // 185: ChatRoom.GetMyChatRoomGroups:output_type -> CChatRoom_GetMyChatRoomGroups_Response
+	89,  // 186: ChatRoom.GetChatRoomGroupState:output_type -> CChatRoom_GetChatRoomGroupState_Response
+	91,  // 187: ChatRoom.SetAppChatRoomGroupForceActive:output_type -> CChatRoom_SetAppChatRoomGroupForceActive_Response
+	164, // 188: ChatRoom.SetAppChatRoomGroupStopForceActive:output_type -> NoResponse
+	164, // 189: ChatRoom.AckChatMessage:output_type -> NoResponse
+	95,  // 190: ChatRoom.CreateInviteLink:output_type -> CChatRoom_CreateInviteLink_Response
+	97,  // 191: ChatRoom.GetInviteLinkInfo:output_type -> CChatRoom_GetInviteLinkInfo_Response
+	99,  // 192: ChatRoom.GetInviteInfo:output_type -> CChatRoom_GetInviteInfo_Response
+	101, // 193: ChatRoom.GetInviteLinksForGroup:output_type -> CChatRoom_GetInviteLinksForGroup_Response
+	103, // 194: ChatRoom.GetBanList:output_type -> CChatRoom_GetBanList_Response
+	106, // 195: ChatRoom.GetInviteList:output_type -> CChatRoom_GetInviteList_Response
+	108, // 196: ChatRoom.DeleteInviteLink:output_type -> CChatRoom_DeleteInviteLink_Response
+	110, // 197: ChatRoom.SetSessionActiveChatRoomGroups:output_type -> CChatRoom_SetSessionActiveChatRoomGroups_Response
+	112, // 198: ChatRoom.SetUserChatGroupPreferences:output_type -> CChatRoom_SetUserChatGroupPreferences_Response
+	114, // 199: ChatRoom.DeleteChatMessages:output_type -> CChatRoom_DeleteChatMessages_Response
+	164, // 200: ChatRoom.UpdateMemberListView:output_type -> NoResponse
+	117, // 201: ChatRoom.SearchMembers:output_type -> CChatRoom_SearchMembers_Response
+	119, // 202: ChatRoom.UpdateMessageReaction:output_type -> CChatRoom_UpdateMessageReaction_Response
+	121, // 203: ChatRoom.GetMessageReactionReactors:output_type -> CChatRoom_GetMessageReactionReactors_Response
+	123, // 204: ChatRoom.ReportMessage:output_type -> CChatRoom_ReportMessage_Response
+	125, // 205: ChatRoom.ResolveReport:output_type -> CChatRoom_ResolveReport_Response
+	127, // 206: ClanChatRooms.GetClanChatRoomInfo:output_type -> CClanChatRooms_GetClanChatRoomInfo_Response
+	129, // 207: ClanChatRooms.SetClanChatRoomPrivate:output_type -> CClanChatRooms_SetClanChatRoomPrivate_Response
+	164, // 208: ChatRoomClient.NotifyIncomingChatMessage:output_type -> NoResponse
+	164, // 209: ChatRoomClient.NotifyChatMessageModified:output_type -> NoResponse
+	164, // 210: ChatRoomClient.NotifyMemberStateChange:output_type -> NoResponse
+	164, // 211: ChatRoomClient.NotifyChatRoomHeaderStateChange:output_type -> NoResponse
+	164, // 212: ChatRoomClient.NotifyChatRoomGroupRoomsChange:output_type -> NoResponse
+	164, // 213: ChatRoomClient.NotifyShouldRejoinChatRoomVoiceChat:output_type -> NoResponse
+	164, // 214: ChatRoomClient.NotifyChatGroupUserStateChanged:output_type -> NoResponse
+	164, // 215: ChatRoomClient.NotifyAckChatMessageEcho:output_type -> NoResponse
+	164, // 216: ChatRoomClient.NotifyChatRoomDisconnect:output_type -> NoResponse
+	164, // 217: ChatRoomClient.NotifyMemberListViewUpdated:output_type -> NoResponse
+	164, // 218: ChatRoomClient.NotifyMessageReaction:output_type -> NoResponse
+	164, // 219: ChatUsability.NotifyClientUsabilityMetrics:output_type -> NoResponse
+	164, // 220: ChatUsabilityClient.NotifyRequestClientUsabilityMetrics:output_type -> NoResponse
+	151, // [151:221] is the sub-list for method output_type
+	81,  // [81:151] is the sub-list for method input_type
+	81,  // [81:81] is the sub-list for extension type_name
+	81,  // [81:81] is the sub-list for extension extendee
+	0,   // [0:81] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_chat_steamclient_proto_init() }

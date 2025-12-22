@@ -866,6 +866,7 @@ const (
 	EStartupMovieVariant_k_EStartupMovieVariant_Generic    EStartupMovieVariant = 1
 	EStartupMovieVariant_k_EStartupMovieVariant_DeckBlue   EStartupMovieVariant = 2
 	EStartupMovieVariant_k_EStartupMovieVariant_DeckOrange EStartupMovieVariant = 3
+	EStartupMovieVariant_k_EStartupMovieVariant_Machine    EStartupMovieVariant = 4
 )
 
 // Enum value maps for EStartupMovieVariant.
@@ -875,12 +876,14 @@ var (
 		1: "k_EStartupMovieVariant_Generic",
 		2: "k_EStartupMovieVariant_DeckBlue",
 		3: "k_EStartupMovieVariant_DeckOrange",
+		4: "k_EStartupMovieVariant_Machine",
 	}
 	EStartupMovieVariant_value = map[string]int32{
 		"k_EStartupMovieVariant_Invalid":    0,
 		"k_EStartupMovieVariant_Generic":    1,
 		"k_EStartupMovieVariant_DeckBlue":   2,
 		"k_EStartupMovieVariant_DeckOrange": 3,
+		"k_EStartupMovieVariant_Machine":    4,
 	}
 )
 
@@ -5118,7 +5121,8 @@ const (
 	EContentReportResolution_k_EContentReportResolution_CountryRestrictionsChanged  EContentReportResolution = 10
 	EContentReportResolution_k_EContentReportResolution_RemoveAndWarn               EContentReportResolution = 11
 	EContentReportResolution_k_EContentReportResolution_RemoveAndBan                EContentReportResolution = 12
-	EContentReportResolution_k_EContentReportResolution_MAX                         EContentReportResolution = 13
+	EContentReportResolution_k_EContentReportResolution_RemoveAndKick               EContentReportResolution = 13
+	EContentReportResolution_k_EContentReportResolution_MAX                         EContentReportResolution = 14
 )
 
 // Enum value maps for EContentReportResolution.
@@ -5137,7 +5141,8 @@ var (
 		10: "k_EContentReportResolution_CountryRestrictionsChanged",
 		11: "k_EContentReportResolution_RemoveAndWarn",
 		12: "k_EContentReportResolution_RemoveAndBan",
-		13: "k_EContentReportResolution_MAX",
+		13: "k_EContentReportResolution_RemoveAndKick",
+		14: "k_EContentReportResolution_MAX",
 	}
 	EContentReportResolution_value = map[string]int32{
 		"k_EContentReportResolution_Unresolved":                  0,
@@ -5153,7 +5158,8 @@ var (
 		"k_EContentReportResolution_CountryRestrictionsChanged":  10,
 		"k_EContentReportResolution_RemoveAndWarn":               11,
 		"k_EContentReportResolution_RemoveAndBan":                12,
-		"k_EContentReportResolution_MAX":                         13,
+		"k_EContentReportResolution_RemoveAndKick":               13,
+		"k_EContentReportResolution_MAX":                         14,
 	}
 )
 
@@ -5219,6 +5225,7 @@ const (
 	EContentReportSubjectAction_k_EContentReportSubjectAction_EscalatedForTerrorism EContentReportSubjectAction = 19
 	EContentReportSubjectAction_k_EContentReportSubjectAction_Claimed               EContentReportSubjectAction = 20
 	EContentReportSubjectAction_k_EContentReportSubjectAction_Released              EContentReportSubjectAction = 21
+	EContentReportSubjectAction_k_EContentReportSubjectAction_PrivateMessaged       EContentReportSubjectAction = 22
 )
 
 // Enum value maps for EContentReportSubjectAction.
@@ -5246,6 +5253,7 @@ var (
 		19: "k_EContentReportSubjectAction_EscalatedForTerrorism",
 		20: "k_EContentReportSubjectAction_Claimed",
 		21: "k_EContentReportSubjectAction_Released",
+		22: "k_EContentReportSubjectAction_PrivateMessaged",
 	}
 	EContentReportSubjectAction_value = map[string]int32{
 		"k_EContentReportSubjectAction_Invalid":               0,
@@ -5270,6 +5278,7 @@ var (
 		"k_EContentReportSubjectAction_EscalatedForTerrorism": 19,
 		"k_EContentReportSubjectAction_Claimed":               20,
 		"k_EContentReportSubjectAction_Released":              21,
+		"k_EContentReportSubjectAction_PrivateMessaged":       22,
 	}
 )
 
@@ -5376,7 +5385,8 @@ const (
 	EContentReportReason_k_EContentReportReason_FakedNonConsensualMaterial                   EContentReportReason = 60
 	EContentReportReason_k_EContentReportReason_NegativeEffectonDiscourseOrElections         EContentReportReason = 61
 	EContentReportReason_k_EContentReportReason_QuotesModeratedContent                       EContentReportReason = 62
-	EContentReportReason_k_EContentReportReason_MAX                                          EContentReportReason = 63
+	EContentReportReason_k_EContentReportReason_CredibleThreatOfViolence                     EContentReportReason = 63
+	EContentReportReason_k_EContentReportReason_MAX                                          EContentReportReason = 64
 )
 
 // Enum value maps for EContentReportReason.
@@ -5445,7 +5455,8 @@ var (
 		60: "k_EContentReportReason_FakedNonConsensualMaterial",
 		61: "k_EContentReportReason_NegativeEffectonDiscourseOrElections",
 		62: "k_EContentReportReason_QuotesModeratedContent",
-		63: "k_EContentReportReason_MAX",
+		63: "k_EContentReportReason_CredibleThreatOfViolence",
+		64: "k_EContentReportReason_MAX",
 	}
 	EContentReportReason_value = map[string]int32{
 		"k_EContentReportReason_Invalid":                                      0,
@@ -5511,7 +5522,8 @@ var (
 		"k_EContentReportReason_FakedNonConsensualMaterial":                   60,
 		"k_EContentReportReason_NegativeEffectonDiscourseOrElections":         61,
 		"k_EContentReportReason_QuotesModeratedContent":                       62,
-		"k_EContentReportReason_MAX":                                          63,
+		"k_EContentReportReason_CredibleThreatOfViolence":                     63,
+		"k_EContentReportReason_MAX":                                          64,
 	}
 )
 
@@ -5802,12 +5814,13 @@ const file_enums_proto_rawDesc = "" +
 	"\x15ESystemFanControlMode\x12\"\n" +
 	"\x1ek_SystemFanControlMode_Invalid\x10\x00\x12#\n" +
 	"\x1fk_SystemFanControlMode_Disabled\x10\x01\x12\"\n" +
-	"\x1ek_SystemFanControlMode_Default\x10\x02*\xaa\x01\n" +
+	"\x1ek_SystemFanControlMode_Default\x10\x02*\xce\x01\n" +
 	"\x14EStartupMovieVariant\x12\"\n" +
 	"\x1ek_EStartupMovieVariant_Invalid\x10\x00\x12\"\n" +
 	"\x1ek_EStartupMovieVariant_Generic\x10\x01\x12#\n" +
 	"\x1fk_EStartupMovieVariant_DeckBlue\x10\x02\x12%\n" +
-	"!k_EStartupMovieVariant_DeckOrange\x10\x03*\x8b\x01\n" +
+	"!k_EStartupMovieVariant_DeckOrange\x10\x03\x12\"\n" +
+	"\x1ek_EStartupMovieVariant_Machine\x10\x04*\x8b\x01\n" +
 	"\x13EColorGamutLabelSet\x12 \n" +
 	"\x1ck_ColorGamutLabelSet_Default\x10\x00\x12$\n" +
 	" k_ColorGamutLabelSet_sRGB_Native\x10\x01\x12,\n" +
@@ -6255,7 +6268,7 @@ const file_enums_proto_rawDesc = "" +
 	"#k_EContentModeratorLevel_Supervisor\x10\x01\x12\"\n" +
 	"\x1ek_EContentModeratorLevel_Valve\x10\n" +
 	"\x12 \n" +
-	"\x1ck_EContentModeratorLevel_MAX\x10\v*\xa1\x05\n" +
+	"\x1ck_EContentModeratorLevel_MAX\x10\v*\xcf\x05\n" +
 	"\x18EContentReportResolution\x12)\n" +
 	"%k_EContentReportResolution_Unresolved\x10\x00\x12(\n" +
 	"$k_EContentReportResolution_Acquitted\x10\x01\x12&\n" +
@@ -6270,8 +6283,9 @@ const file_enums_proto_rawDesc = "" +
 	"5k_EContentReportResolution_CountryRestrictionsChanged\x10\n" +
 	"\x12,\n" +
 	"(k_EContentReportResolution_RemoveAndWarn\x10\v\x12+\n" +
-	"'k_EContentReportResolution_RemoveAndBan\x10\f\x12\"\n" +
-	"\x1ek_EContentReportResolution_MAX\x10\r*\xa4\b\n" +
+	"'k_EContentReportResolution_RemoveAndBan\x10\f\x12,\n" +
+	"(k_EContentReportResolution_RemoveAndKick\x10\r\x12\"\n" +
+	"\x1ek_EContentReportResolution_MAX\x10\x0e*\xd7\b\n" +
 	"\x1bEContentReportSubjectAction\x12)\n" +
 	"%k_EContentReportSubjectAction_Invalid\x10\x00\x12,\n" +
 	"(k_EContentReportSubjectAction_Unresolved\x10\x01\x12,\n" +
@@ -6295,7 +6309,8 @@ const file_enums_proto_rawDesc = "" +
 	".k_EContentReportSubjectAction_EscalatedForCSAM\x10\x12\x127\n" +
 	"3k_EContentReportSubjectAction_EscalatedForTerrorism\x10\x13\x12)\n" +
 	"%k_EContentReportSubjectAction_Claimed\x10\x14\x12*\n" +
-	"&k_EContentReportSubjectAction_Released\x10\x15*\xf4\x17\n" +
+	"&k_EContentReportSubjectAction_Released\x10\x15\x121\n" +
+	"-k_EContentReportSubjectAction_PrivateMessaged\x10\x16*\xa9\x18\n" +
 	"\x14EContentReportReason\x12\"\n" +
 	"\x1ek_EContentReportReason_Invalid\x10\x00\x12\x1f\n" +
 	"\x1bk_EContentReportReason_None\x10\x01\x12\"\n" +
@@ -6360,8 +6375,9 @@ const file_enums_proto_rawDesc = "" +
 	"9k_EContentReportReason_FakedGenderedNonConsensualMaterial\x10;\x125\n" +
 	"1k_EContentReportReason_FakedNonConsensualMaterial\x10<\x12?\n" +
 	";k_EContentReportReason_NegativeEffectonDiscourseOrElections\x10=\x121\n" +
-	"-k_EContentReportReason_QuotesModeratedContent\x10>\x12\x1e\n" +
-	"\x1ak_EContentReportReason_MAX\x10?*\xb8\x01\n" +
+	"-k_EContentReportReason_QuotesModeratedContent\x10>\x123\n" +
+	"/k_EContentReportReason_CredibleThreatOfViolence\x10?\x12\x1e\n" +
+	"\x1ak_EContentReportReason_MAX\x10@*\xb8\x01\n" +
 	"\x15EResolutionAutomation\x12\"\n" +
 	"\x1ek_EResolutionAutomation_Manual\x10\x00\x12.\n" +
 	"*k_EResolutionAutomation_PartiallyAutomated\x10\x01\x12*\n" +

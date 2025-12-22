@@ -640,7 +640,6 @@ func (*CMsgSettingVariant_ValueHotkey) isCMsgSettingVariant_Value() {}
 type CMsgClientSettings struct {
 	state                                 protoimpl.MessageState    `protogen:"open.v1"`
 	NoSavePersonalInfo                    *bool                     `protobuf:"varint,1,opt,name=no_save_personal_info,json=noSavePersonalInfo" json:"no_save_personal_info,omitempty"`
-	OobeTestModeEnabled                   *bool                     `protobuf:"varint,2,opt,name=oobe_test_mode_enabled,json=oobeTestModeEnabled" json:"oobe_test_mode_enabled,omitempty"`
 	InClientBeta                          *bool                     `protobuf:"varint,3,opt,name=in_client_beta,json=inClientBeta" json:"in_client_beta,omitempty"`
 	IsSteamSideloaded                     *bool                     `protobuf:"varint,4,opt,name=is_steam_sideloaded,json=isSteamSideloaded" json:"is_steam_sideloaded,omitempty"`
 	PreferredMonitor                      *string                   `protobuf:"bytes,5,opt,name=preferred_monitor,json=preferredMonitor" json:"preferred_monitor,omitempty"`
@@ -791,7 +790,6 @@ type CMsgClientSettings struct {
 	GamerecordingForceMicMono             *bool                     `protobuf:"varint,18226,opt,name=gamerecording_force_mic_mono,json=gamerecordingForceMicMono" json:"gamerecording_force_mic_mono,omitempty"`
 	GamerecordingAutomaticGainControl     *bool                     `protobuf:"varint,18227,opt,name=gamerecording_automatic_gain_control,json=gamerecordingAutomaticGainControl" json:"gamerecording_automatic_gain_control,omitempty"`
 	ShowTimestampsInConsole               *bool                     `protobuf:"varint,20000,opt,name=show_timestamps_in_console,json=showTimestampsInConsole" json:"show_timestamps_in_console,omitempty"`
-	ForceOobe                             *bool                     `protobuf:"varint,20001,opt,name=force_oobe,json=forceOobe" json:"force_oobe,omitempty"`
 	OverrideBrowserComposerMode           *int32                    `protobuf:"varint,20002,opt,name=override_browser_composer_mode,json=overrideBrowserComposerMode" json:"override_browser_composer_mode,omitempty"`
 	CefRemoteDebuggingEnabled             *bool                     `protobuf:"varint,20003,opt,name=cef_remote_debugging_enabled,json=cefRemoteDebuggingEnabled" json:"cef_remote_debugging_enabled,omitempty"`
 	ForceDeckPerfTab                      *bool                     `protobuf:"varint,20004,opt,name=force_deck_perf_tab,json=forceDeckPerfTab" json:"force_deck_perf_tab,omitempty"`
@@ -869,6 +867,14 @@ type CMsgClientSettings struct {
 	RemotePlayWifiApHotspotPassword       *string                   `protobuf:"bytes,27006,opt,name=remote_play_wifi_ap_hotspot_password,json=remotePlayWifiApHotspotPassword" json:"remote_play_wifi_ap_hotspot_password,omitempty"`
 	RemotePlayWifiApHotspotRouting        *string                   `protobuf:"bytes,27007,opt,name=remote_play_wifi_ap_hotspot_routing,json=remotePlayWifiApHotspotRouting" json:"remote_play_wifi_ap_hotspot_routing,omitempty"`
 	RemotePlayWifiApShowAdvanced          *bool                     `protobuf:"varint,27008,opt,name=remote_play_wifi_ap_show_advanced,json=remotePlayWifiApShowAdvanced" json:"remote_play_wifi_ap_show_advanced,omitempty"`
+	RemotePlayWifiApPairedSsid            *string                   `protobuf:"bytes,27009,opt,name=remote_play_wifi_ap_paired_ssid,json=remotePlayWifiApPairedSsid" json:"remote_play_wifi_ap_paired_ssid,omitempty"`
+	SkipSteamframePairingDialog           *bool                     `protobuf:"varint,27010,opt,name=skip_steamframe_pairing_dialog,json=skipSteamframePairingDialog" json:"skip_steamframe_pairing_dialog,omitempty"`
+	OobeCompleted                         *bool                     `protobuf:"varint,28001,opt,name=oobe_completed,json=oobeCompleted" json:"oobe_completed,omitempty"`
+	OobeTestModeEnabled                   *bool                     `protobuf:"varint,28002,opt,name=oobe_test_mode_enabled,json=oobeTestModeEnabled" json:"oobe_test_mode_enabled,omitempty"`
+	ForceOobe                             *bool                     `protobuf:"varint,28003,opt,name=force_oobe,json=forceOobe" json:"force_oobe,omitempty"`
+	OobeStage_2Completed                  *bool                     `protobuf:"varint,28004,opt,name=oobe_stage_2_completed,json=oobeStage2Completed" json:"oobe_stage_2_completed,omitempty"`
+	OobeStage_2TestModeEnabled            *bool                     `protobuf:"varint,28005,opt,name=oobe_stage_2_test_mode_enabled,json=oobeStage2TestModeEnabled" json:"oobe_stage_2_test_mode_enabled,omitempty"`
+	ForceStage_2Oobe                      *bool                     `protobuf:"varint,28006,opt,name=force_stage_2_oobe,json=forceStage2Oobe" json:"force_stage_2_oobe,omitempty"`
 	unknownFields                         protoimpl.UnknownFields
 	sizeCache                             protoimpl.SizeCache
 }
@@ -919,13 +925,6 @@ func (*CMsgClientSettings) Descriptor() ([]byte, []int) {
 func (x *CMsgClientSettings) GetNoSavePersonalInfo() bool {
 	if x != nil && x.NoSavePersonalInfo != nil {
 		return *x.NoSavePersonalInfo
-	}
-	return false
-}
-
-func (x *CMsgClientSettings) GetOobeTestModeEnabled() bool {
-	if x != nil && x.OobeTestModeEnabled != nil {
-		return *x.OobeTestModeEnabled
 	}
 	return false
 }
@@ -1980,13 +1979,6 @@ func (x *CMsgClientSettings) GetShowTimestampsInConsole() bool {
 	return false
 }
 
-func (x *CMsgClientSettings) GetForceOobe() bool {
-	if x != nil && x.ForceOobe != nil {
-		return *x.ForceOobe
-	}
-	return false
-}
-
 func (x *CMsgClientSettings) GetOverrideBrowserComposerMode() int32 {
 	if x != nil && x.OverrideBrowserComposerMode != nil {
 		return *x.OverrideBrowserComposerMode
@@ -2526,6 +2518,62 @@ func (x *CMsgClientSettings) GetRemotePlayWifiApShowAdvanced() bool {
 	return false
 }
 
+func (x *CMsgClientSettings) GetRemotePlayWifiApPairedSsid() string {
+	if x != nil && x.RemotePlayWifiApPairedSsid != nil {
+		return *x.RemotePlayWifiApPairedSsid
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetSkipSteamframePairingDialog() bool {
+	if x != nil && x.SkipSteamframePairingDialog != nil {
+		return *x.SkipSteamframePairingDialog
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetOobeCompleted() bool {
+	if x != nil && x.OobeCompleted != nil {
+		return *x.OobeCompleted
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetOobeTestModeEnabled() bool {
+	if x != nil && x.OobeTestModeEnabled != nil {
+		return *x.OobeTestModeEnabled
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetForceOobe() bool {
+	if x != nil && x.ForceOobe != nil {
+		return *x.ForceOobe
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetOobeStage_2Completed() bool {
+	if x != nil && x.OobeStage_2Completed != nil {
+		return *x.OobeStage_2Completed
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetOobeStage_2TestModeEnabled() bool {
+	if x != nil && x.OobeStage_2TestModeEnabled != nil {
+		return *x.OobeStage_2TestModeEnabled
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetForceStage_2Oobe() bool {
+	if x != nil && x.ForceStage_2Oobe != nil {
+		return *x.ForceStage_2Oobe
+	}
+	return false
+}
+
 var file_steammessages_clientsettings_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
@@ -2687,10 +2735,9 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"valueFloat\x12#\n" +
 	"\fvalue_string\x18\a \x01(\tH\x00R\vvalueString\x120\n" +
 	"\fvalue_hotkey\x18\b \x01(\v2\v.CMsgHotkeyH\x00R\vvalueHotkeyB\a\n" +
-	"\x05value\"\xbd\xb9\x01\n" +
+	"\x05value\"\xf7\xc0\x01\n" +
 	"\x12CMsgClientSettings\x12b\n" +
-	"\x15no_save_personal_info\x18\x01 \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'Software\\Valve\\Steam\\NoSavePersonalInfoR\x12noSavePersonalInfo\x12e\n" +
-	"\x16oobe_test_mode_enabled\x18\x02 \x01(\bB0\x80\xa6\x1d\x01\x8a\xa6\x1d(Software\\Valve\\Steam\\OOBETestModeEnabledR\x13oobeTestModeEnabled\x12.\n" +
+	"\x15no_save_personal_info\x18\x01 \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'Software\\Valve\\Steam\\NoSavePersonalInfoR\x12noSavePersonalInfo\x12.\n" +
 	"\x0ein_client_beta\x18\x03 \x01(\bB\b\x80\xa6\x1d\x05\x90\xa6\x1d\x01R\finClientBeta\x128\n" +
 	"\x13is_steam_sideloaded\x18\x04 \x01(\bB\b\x80\xa6\x1d\x05\x90\xa6\x1d\x01R\x11isSteamSideloaded\x12G\n" +
 	"\x11preferred_monitor\x18\x05 \x01(\tB\x1a\x80\xa6\x1d\x01\x8a\xa6\x1d\x12BigPicture/MonitorR\x10preferredMonitor\x12\x8e\x01\n" +
@@ -2844,9 +2891,7 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x1dgamerecording_video_maxheight\x18\xb1\x8e\x01 \x01(\x05B1\x80\xa6\x1d\x03\x8a\xa6\x1d\x1cGameRecording\\VideoMaxHeight\xa0\xa6\x1d\x00ئ\x1d\x00\xe0\xa6\x1d\xf0\x10R\x1bgamerecordingVideoMaxheight\x12i\n" +
 	"\x1cgamerecording_force_mic_mono\x18\xb2\x8e\x01 \x01(\bB&\x80\xa6\x1d\x03\x8a\xa6\x1d\x1aGameRecording\\ForceMicMono\x98\xa6\x1d\x00R\x19gamerecordingForceMicMono\x12\x81\x01\n" +
 	"$gamerecording_automatic_gain_control\x18\xb3\x8e\x01 \x01(\bB.\x80\xa6\x1d\x03\x8a\xa6\x1d\"GameRecording\\AutomaticGainControl\x98\xa6\x1d\x01R!gamerecordingAutomaticGainControl\x12h\n" +
-	"\x1ashow_timestamps_in_console\x18\xa0\x9c\x01 \x01(\bB)\x80\xa6\x1d\x03\x8a\xa6\x1d!Developer\\ShowTimestampsInConsoleR\x17showTimestampsInConsole\x12Y\n" +
-	"\n" +
-	"force_oobe\x18\xa1\x9c\x01 \x01(\bB8\x80\xa6\x1d\x04\x8a\xa6\x1d0HKEY_CURRENT_USER\\Software\\Valve\\Steam\\ForceOOBER\tforceOobe\x12K\n" +
+	"\x1ashow_timestamps_in_console\x18\xa0\x9c\x01 \x01(\bB)\x80\xa6\x1d\x03\x8a\xa6\x1d!Developer\\ShowTimestampsInConsoleR\x17showTimestampsInConsole\x12K\n" +
 	"\x1eoverride_browser_composer_mode\x18\xa2\x9c\x01 \x01(\x05B\x04\x80\xa6\x1d\x05R\x1boverrideBrowserComposerMode\x12G\n" +
 	"\x1ccef_remote_debugging_enabled\x18\xa3\x9c\x01 \x01(\bB\x04\x80\xa6\x1d\x05R\x19cefRemoteDebuggingEnabled\x12S\n" +
 	"\x13force_deck_perf_tab\x18\xa4\x9c\x01 \x01(\bB\"\x80\xa6\x1d\x01\x8a\xa6\x1d\x1aDeveloper/ForceDeckPerfTabR\x10forceDeckPerfTab\x12f\n" +
@@ -2923,7 +2968,16 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	" remote_play_wifi_ap_hotspot_ssid\x18\xfd\xd2\x01 \x01(\tB*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPHotspotSSID\xba\xa6\x1d\x00R\x1bremotePlayWifiApHotspotSsid\x12\x7f\n" +
 	"$remote_play_wifi_ap_hotspot_password\x18\xfe\xd2\x01 \x01(\tB.\x80\xa6\x1d\x01\x8a\xa6\x1d\"streaming_v2\\WifiAPHotspotPassword\xba\xa6\x1d\x00R\x1fremotePlayWifiApHotspotPassword\x12\x83\x01\n" +
 	"#remote_play_wifi_ap_hotspot_routing\x18\xff\xd2\x01 \x01(\tB4\x80\xa6\x1d\x01\x8a\xa6\x1d!streaming_v2\\WifiAPHotspotRouting\xba\xa6\x1d\anorouteR\x1eremotePlayWifiApHotspotRouting\x12v\n" +
-	"!remote_play_wifi_ap_show_advanced\x18\x80\xd3\x01 \x01(\bB+\x80\xa6\x1d\x03\x8a\xa6\x1d\x1fstreaming_v2/WifiAPShowAdvanced\x98\xa6\x1d\x00R\x1cremotePlayWifiApShowAdvanced*\x95\x02\n" +
+	"!remote_play_wifi_ap_show_advanced\x18\x80\xd3\x01 \x01(\bB+\x80\xa6\x1d\x03\x8a\xa6\x1d\x1fstreaming_v2/WifiAPShowAdvanced\x98\xa6\x1d\x00R\x1cremotePlayWifiApShowAdvanced\x12p\n" +
+	"\x1fremote_play_wifi_ap_paired_ssid\x18\x81\xd3\x01 \x01(\tB)\x80\xa6\x1d\x01\x8a\xa6\x1d\x1dstreaming_v2\\WifiAPPairedSSID\xba\xa6\x1d\x00R\x1aremotePlayWifiApPairedSsid\x12|\n" +
+	"\x1eskip_steamframe_pairing_dialog\x18\x82\xd3\x01 \x01(\bB5\x80\xa6\x1d\x03\x8a\xa6\x1d-system\\SteamFrameWirelessAdapterPairingDialogR\x1bskipSteamframePairingDialog\x12\x85\x01\n" +
+	"\x0eoobe_completed\x18\xe1\xda\x01 \x01(\bB\\\x80\xa6\x1d\x05\x90\xa6\x1d\x01ʦ\x1dPTrue if OOBE stage 1 has completed or we're on a platform where we don't do OOBER\roobeCompleted\x12\xba\x01\n" +
+	"\x16oobe_test_mode_enabled\x18\xe2\xda\x01 \x01(\bB\x82\x01\x80\xa6\x1d\x05\x90\xa6\x1d\x01\xc0\xa6\x1d\x01ʦ\x1drOOBE test mode is enabled either by passing -testoobe on the command line or setting the force_oobe client settingR\x13oobeTestModeEnabled\x12]\n" +
+	"\n" +
+	"force_oobe\x18\xe3\xda\x01 \x01(\bB<\x80\xa6\x1d\x04\x8a\xa6\x1d0HKEY_CURRENT_USER\\Software\\Valve\\Steam\\ForceOOBE\x90\xa6\x1d\x01R\tforceOobe\x12\x93\x01\n" +
+	"\x16oobe_stage_2_completed\x18\xe4\xda\x01 \x01(\bB\\\x80\xa6\x1d\x05\x90\xa6\x1d\x01ʦ\x1dPTrue if OOBE stage 2 has completed or we're on a platform where we don't do OOBER\x13oobeStage2Completed\x12\xdc\x01\n" +
+	"\x1eoobe_stage_2_test_mode_enabled\x18\xe5\xda\x01 \x01(\bB\x96\x01\x80\xa6\x1d\x05\x90\xa6\x1d\x01\xc0\xa6\x1d\x01ʦ\x1d\x85\x01OOBE test mode is enabled for stage 2 either by passing -testoobe on the command line or setting the force_stage2_oobe client settingR\x19oobeStage2TestModeEnabled\x12q\n" +
+	"\x12force_stage_2_oobe\x18\xe6\xda\x01 \x01(\bBB\x80\xa6\x1d\x04\x8a\xa6\x1d6HKEY_CURRENT_USER\\Software\\Valve\\Steam\\ForceOOBEStage2\x90\xa6\x1d\x01R\x0fforceStage2Oobe*\x95\x02\n" +
 	"\x13EClientSettingStore\x12!\n" +
 	"\x1dk_EClientSettingStore_Invalid\x10\x00\x12-\n" +
 	")k_EClientSettingStore_ConfigStore_Install\x10\x01\x121\n" +

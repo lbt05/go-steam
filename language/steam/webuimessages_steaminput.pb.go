@@ -21,6 +21,77 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ETritonPairType int32
+
+const (
+	ETritonPairType_k_ETritonPairType_Unknown                      ETritonPairType = 0
+	ETritonPairType_k_ETritonPairType_None                         ETritonPairType = 1
+	ETritonPairType_k_ETritonPairType_RePairToSteamMachineWired    ETritonPairType = 2
+	ETritonPairType_k_ETritonPairType_RePairToSteamMachineDocked   ETritonPairType = 3
+	ETritonPairType_k_ETritonPairType_RePairToSteamMachineWireless ETritonPairType = 4
+	ETritonPairType_k_ETritonPairType_PairToPuckWired              ETritonPairType = 5
+	ETritonPairType_k_ETritonPairType_PairToPuckDocked             ETritonPairType = 6
+)
+
+// Enum value maps for ETritonPairType.
+var (
+	ETritonPairType_name = map[int32]string{
+		0: "k_ETritonPairType_Unknown",
+		1: "k_ETritonPairType_None",
+		2: "k_ETritonPairType_RePairToSteamMachineWired",
+		3: "k_ETritonPairType_RePairToSteamMachineDocked",
+		4: "k_ETritonPairType_RePairToSteamMachineWireless",
+		5: "k_ETritonPairType_PairToPuckWired",
+		6: "k_ETritonPairType_PairToPuckDocked",
+	}
+	ETritonPairType_value = map[string]int32{
+		"k_ETritonPairType_Unknown":                      0,
+		"k_ETritonPairType_None":                         1,
+		"k_ETritonPairType_RePairToSteamMachineWired":    2,
+		"k_ETritonPairType_RePairToSteamMachineDocked":   3,
+		"k_ETritonPairType_RePairToSteamMachineWireless": 4,
+		"k_ETritonPairType_PairToPuckWired":              5,
+		"k_ETritonPairType_PairToPuckDocked":             6,
+	}
+)
+
+func (x ETritonPairType) Enum() *ETritonPairType {
+	p := new(ETritonPairType)
+	*p = x
+	return p
+}
+
+func (x ETritonPairType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ETritonPairType) Descriptor() protoreflect.EnumDescriptor {
+	return file_webuimessages_steaminput_proto_enumTypes[0].Descriptor()
+}
+
+func (ETritonPairType) Type() protoreflect.EnumType {
+	return &file_webuimessages_steaminput_proto_enumTypes[0]
+}
+
+func (x ETritonPairType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Do not use.
+func (x *ETritonPairType) UnmarshalJSON(b []byte) error {
+	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
+	if err != nil {
+		return err
+	}
+	*x = ETritonPairType(num)
+	return nil
+}
+
+// Deprecated: Use ETritonPairType.Descriptor instead.
+func (ETritonPairType) EnumDescriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{0}
+}
+
 type CSteamInputService_ControllerButtonStateChanged_Notification struct {
 	state               protoimpl.MessageState `protogen:"open.v1"`
 	ControllerIndex     *uint32                `protobuf:"varint,1,opt,name=controller_index,json=controllerIndex" json:"controller_index,omitempty"`
@@ -1197,6 +1268,635 @@ func (*CSteamInputService_GyroSoftwareCalibration_Response) Descriptor() ([]byte
 	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{13}
 }
 
+type CSteamInputService_PairDongleTritonUSB_Request struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ControllerIndex *uint32                `protobuf:"varint,1,opt,name=controller_index,json=controllerIndex" json:"controller_index,omitempty"`
+	DongleIndex     *uint32                `protobuf:"varint,2,opt,name=dongle_index,json=dongleIndex" json:"dongle_index,omitempty"`
+	Slot            *uint32                `protobuf:"varint,3,opt,name=slot" json:"slot,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Request) Reset() {
+	*x = CSteamInputService_PairDongleTritonUSB_Request{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_PairDongleTritonUSB_Request) ProtoMessage() {}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_PairDongleTritonUSB_Request.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_PairDongleTritonUSB_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Request) GetControllerIndex() uint32 {
+	if x != nil && x.ControllerIndex != nil {
+		return *x.ControllerIndex
+	}
+	return 0
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Request) GetDongleIndex() uint32 {
+	if x != nil && x.DongleIndex != nil {
+		return *x.DongleIndex
+	}
+	return 0
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Request) GetSlot() uint32 {
+	if x != nil && x.Slot != nil {
+		return *x.Slot
+	}
+	return 0
+}
+
+type CSteamInputService_PairDongleTritonUSB_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Response) Reset() {
+	*x = CSteamInputService_PairDongleTritonUSB_Response{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_PairDongleTritonUSB_Response) ProtoMessage() {}
+
+func (x *CSteamInputService_PairDongleTritonUSB_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_PairDongleTritonUSB_Response.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_PairDongleTritonUSB_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{15}
+}
+
+type CSteamInputService_TritonDonglesChanged_Notification struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_TritonDonglesChanged_Notification) Reset() {
+	*x = CSteamInputService_TritonDonglesChanged_Notification{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_TritonDonglesChanged_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_TritonDonglesChanged_Notification) ProtoMessage() {}
+
+func (x *CSteamInputService_TritonDonglesChanged_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_TritonDonglesChanged_Notification.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_TritonDonglesChanged_Notification) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{16}
+}
+
+type CSteamInputService_UnpairedTritonPluggedIn_Notification struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	ControllerIndex *uint32                `protobuf:"varint,1,opt,name=controller_index,json=controllerIndex" json:"controller_index,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_UnpairedTritonPluggedIn_Notification) Reset() {
+	*x = CSteamInputService_UnpairedTritonPluggedIn_Notification{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_UnpairedTritonPluggedIn_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_UnpairedTritonPluggedIn_Notification) ProtoMessage() {}
+
+func (x *CSteamInputService_UnpairedTritonPluggedIn_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_UnpairedTritonPluggedIn_Notification.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_UnpairedTritonPluggedIn_Notification) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *CSteamInputService_UnpairedTritonPluggedIn_Notification) GetControllerIndex() uint32 {
+	if x != nil && x.ControllerIndex != nil {
+		return *x.ControllerIndex
+	}
+	return 0
+}
+
+type CSteamInputService_UnpairedTritonDocked_Notification struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	DockedPuckIndex *uint32                `protobuf:"varint,1,opt,name=docked_puck_index,json=dockedPuckIndex" json:"docked_puck_index,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_UnpairedTritonDocked_Notification) Reset() {
+	*x = CSteamInputService_UnpairedTritonDocked_Notification{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_UnpairedTritonDocked_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_UnpairedTritonDocked_Notification) ProtoMessage() {}
+
+func (x *CSteamInputService_UnpairedTritonDocked_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_UnpairedTritonDocked_Notification.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_UnpairedTritonDocked_Notification) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CSteamInputService_UnpairedTritonDocked_Notification) GetDockedPuckIndex() uint32 {
+	if x != nil && x.DockedPuckIndex != nil {
+		return *x.DockedPuckIndex
+	}
+	return 0
+}
+
+type CSteamInputService_TritonUndocked_Notification struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	DockedPuckIndex *uint32                `protobuf:"varint,1,opt,name=docked_puck_index,json=dockedPuckIndex" json:"docked_puck_index,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_TritonUndocked_Notification) Reset() {
+	*x = CSteamInputService_TritonUndocked_Notification{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_TritonUndocked_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_TritonUndocked_Notification) ProtoMessage() {}
+
+func (x *CSteamInputService_TritonUndocked_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_TritonUndocked_Notification.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_TritonUndocked_Notification) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *CSteamInputService_TritonUndocked_Notification) GetDockedPuckIndex() uint32 {
+	if x != nil && x.DockedPuckIndex != nil {
+		return *x.DockedPuckIndex
+	}
+	return 0
+}
+
+type CSteamInputService_PairDongleTritonDocked_Request struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	DockedPuckIndex   *uint32                `protobuf:"varint,1,opt,name=docked_puck_index,json=dockedPuckIndex" json:"docked_puck_index,omitempty"`
+	TargetDongleIndex *uint32                `protobuf:"varint,2,opt,name=target_dongle_index,json=targetDongleIndex" json:"target_dongle_index,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Request) Reset() {
+	*x = CSteamInputService_PairDongleTritonDocked_Request{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_PairDongleTritonDocked_Request) ProtoMessage() {}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_PairDongleTritonDocked_Request.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_PairDongleTritonDocked_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Request) GetDockedPuckIndex() uint32 {
+	if x != nil && x.DockedPuckIndex != nil {
+		return *x.DockedPuckIndex
+	}
+	return 0
+}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Request) GetTargetDongleIndex() uint32 {
+	if x != nil && x.TargetDongleIndex != nil {
+		return *x.TargetDongleIndex
+	}
+	return 0
+}
+
+type CSteamInputService_PairDongleTritonDocked_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Response) Reset() {
+	*x = CSteamInputService_PairDongleTritonDocked_Response{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_PairDongleTritonDocked_Response) ProtoMessage() {}
+
+func (x *CSteamInputService_PairDongleTritonDocked_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_PairDongleTritonDocked_Response.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_PairDongleTritonDocked_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{21}
+}
+
+type CSteamInputService_GetDongles_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_GetDongles_Request) Reset() {
+	*x = CSteamInputService_GetDongles_Request{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_GetDongles_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_GetDongles_Request) ProtoMessage() {}
+
+func (x *CSteamInputService_GetDongles_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_GetDongles_Request.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_GetDongles_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{22}
+}
+
+type CSteamInputService_GetDongles_Response struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	SteamControllerV1 *bool                  `protobuf:"varint,1,opt,name=steam_controller_v1,json=steamControllerV1" json:"steam_controller_v1,omitempty"`
+	IbexInternal      []uint32               `protobuf:"varint,2,rep,name=ibex_internal,json=ibexInternal" json:"ibex_internal,omitempty"`
+	IbexExternal      []uint32               `protobuf:"varint,3,rep,name=ibex_external,json=ibexExternal" json:"ibex_external,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_GetDongles_Response) Reset() {
+	*x = CSteamInputService_GetDongles_Response{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_GetDongles_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_GetDongles_Response) ProtoMessage() {}
+
+func (x *CSteamInputService_GetDongles_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_GetDongles_Response.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_GetDongles_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *CSteamInputService_GetDongles_Response) GetSteamControllerV1() bool {
+	if x != nil && x.SteamControllerV1 != nil {
+		return *x.SteamControllerV1
+	}
+	return false
+}
+
+func (x *CSteamInputService_GetDongles_Response) GetIbexInternal() []uint32 {
+	if x != nil {
+		return x.IbexInternal
+	}
+	return nil
+}
+
+func (x *CSteamInputService_GetDongles_Response) GetIbexExternal() []uint32 {
+	if x != nil {
+		return x.IbexExternal
+	}
+	return nil
+}
+
+type CSteamInputService_ShouldTritonPairInOobe_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Request) Reset() {
+	*x = CSteamInputService_ShouldTritonPairInOobe_Request{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_ShouldTritonPairInOobe_Request) ProtoMessage() {}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_ShouldTritonPairInOobe_Request.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_ShouldTritonPairInOobe_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{24}
+}
+
+type CSteamInputService_WaitInitialControllerStateEnumerated_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Request) Reset() {
+	*x = CSteamInputService_WaitInitialControllerStateEnumerated_Request{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_WaitInitialControllerStateEnumerated_Request) ProtoMessage() {}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_WaitInitialControllerStateEnumerated_Request.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_WaitInitialControllerStateEnumerated_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{25}
+}
+
+type CSteamInputService_WaitInitialControllerStateEnumerated_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Controller    []uint32               `protobuf:"varint,1,rep,name=controller" json:"controller,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Response) Reset() {
+	*x = CSteamInputService_WaitInitialControllerStateEnumerated_Response{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_WaitInitialControllerStateEnumerated_Response) ProtoMessage() {}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_WaitInitialControllerStateEnumerated_Response.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_WaitInitialControllerStateEnumerated_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Response) GetController() []uint32 {
+	if x != nil {
+		return x.Controller
+	}
+	return nil
+}
+
+type CSteamInputService_ShouldTritonPairInOobe_Response struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	PairType        *ETritonPairType       `protobuf:"varint,1,opt,name=pair_type,json=pairType,enum=ETritonPairType,def=0" json:"pair_type,omitempty"`
+	ControllerIndex *uint32                `protobuf:"varint,2,opt,name=controller_index,json=controllerIndex" json:"controller_index,omitempty"`
+	DongleIndex     *uint32                `protobuf:"varint,3,opt,name=dongle_index,json=dongleIndex" json:"dongle_index,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+// Default values for CSteamInputService_ShouldTritonPairInOobe_Response fields.
+const (
+	Default_CSteamInputService_ShouldTritonPairInOobe_Response_PairType = ETritonPairType_k_ETritonPairType_Unknown
+)
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Response) Reset() {
+	*x = CSteamInputService_ShouldTritonPairInOobe_Response{}
+	mi := &file_webuimessages_steaminput_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamInputService_ShouldTritonPairInOobe_Response) ProtoMessage() {}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steaminput_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamInputService_ShouldTritonPairInOobe_Response.ProtoReflect.Descriptor instead.
+func (*CSteamInputService_ShouldTritonPairInOobe_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Response) GetPairType() ETritonPairType {
+	if x != nil && x.PairType != nil {
+		return *x.PairType
+	}
+	return Default_CSteamInputService_ShouldTritonPairInOobe_Response_PairType
+}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Response) GetControllerIndex() uint32 {
+	if x != nil && x.ControllerIndex != nil {
+		return *x.ControllerIndex
+	}
+	return 0
+}
+
+func (x *CSteamInputService_ShouldTritonPairInOobe_Response) GetDongleIndex() uint32 {
+	if x != nil && x.DongleIndex != nil {
+		return *x.DongleIndex
+	}
+	return 0
+}
+
 type CControllerOriginKey struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	ControllerType  *int32                 `protobuf:"varint,1,opt,name=controller_type,json=controllerType" json:"controller_type,omitempty"`
@@ -1209,7 +1909,7 @@ type CControllerOriginKey struct {
 
 func (x *CControllerOriginKey) Reset() {
 	*x = CControllerOriginKey{}
-	mi := &file_webuimessages_steaminput_proto_msgTypes[14]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1221,7 +1921,7 @@ func (x *CControllerOriginKey) String() string {
 func (*CControllerOriginKey) ProtoMessage() {}
 
 func (x *CControllerOriginKey) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steaminput_proto_msgTypes[14]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1234,7 +1934,7 @@ func (x *CControllerOriginKey) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CControllerOriginKey.ProtoReflect.Descriptor instead.
 func (*CControllerOriginKey) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{14}
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CControllerOriginKey) GetControllerType() int32 {
@@ -1275,7 +1975,7 @@ type CControllerAccessibilityString struct {
 
 func (x *CControllerAccessibilityString) Reset() {
 	*x = CControllerAccessibilityString{}
-	mi := &file_webuimessages_steaminput_proto_msgTypes[15]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1287,7 +1987,7 @@ func (x *CControllerAccessibilityString) String() string {
 func (*CControllerAccessibilityString) ProtoMessage() {}
 
 func (x *CControllerAccessibilityString) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steaminput_proto_msgTypes[15]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1300,7 +2000,7 @@ func (x *CControllerAccessibilityString) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CControllerAccessibilityString.ProtoReflect.Descriptor instead.
 func (*CControllerAccessibilityString) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{15}
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CControllerAccessibilityString) GetKey() *CControllerOriginKey {
@@ -1325,7 +2025,7 @@ type CSteamInputService_ControllerAccessibilityStrings_Request struct {
 
 func (x *CSteamInputService_ControllerAccessibilityStrings_Request) Reset() {
 	*x = CSteamInputService_ControllerAccessibilityStrings_Request{}
-	mi := &file_webuimessages_steaminput_proto_msgTypes[16]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1337,7 +2037,7 @@ func (x *CSteamInputService_ControllerAccessibilityStrings_Request) String() str
 func (*CSteamInputService_ControllerAccessibilityStrings_Request) ProtoMessage() {}
 
 func (x *CSteamInputService_ControllerAccessibilityStrings_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steaminput_proto_msgTypes[16]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1350,7 +2050,7 @@ func (x *CSteamInputService_ControllerAccessibilityStrings_Request) ProtoReflect
 
 // Deprecated: Use CSteamInputService_ControllerAccessibilityStrings_Request.ProtoReflect.Descriptor instead.
 func (*CSteamInputService_ControllerAccessibilityStrings_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{16}
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{30}
 }
 
 type CSteamInputService_ControllerAccessibilityStrings_Response struct {
@@ -1362,7 +2062,7 @@ type CSteamInputService_ControllerAccessibilityStrings_Response struct {
 
 func (x *CSteamInputService_ControllerAccessibilityStrings_Response) Reset() {
 	*x = CSteamInputService_ControllerAccessibilityStrings_Response{}
-	mi := &file_webuimessages_steaminput_proto_msgTypes[17]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1374,7 +2074,7 @@ func (x *CSteamInputService_ControllerAccessibilityStrings_Response) String() st
 func (*CSteamInputService_ControllerAccessibilityStrings_Response) ProtoMessage() {}
 
 func (x *CSteamInputService_ControllerAccessibilityStrings_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steaminput_proto_msgTypes[17]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1387,7 +2087,7 @@ func (x *CSteamInputService_ControllerAccessibilityStrings_Response) ProtoReflec
 
 // Deprecated: Use CSteamInputService_ControllerAccessibilityStrings_Response.ProtoReflect.Descriptor instead.
 func (*CSteamInputService_ControllerAccessibilityStrings_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{17}
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CSteamInputService_ControllerAccessibilityStrings_Response) GetStrings() []*CControllerAccessibilityString {
@@ -1406,7 +2106,7 @@ type CSteamInputService_ControllerPowerMenu_Notification struct {
 
 func (x *CSteamInputService_ControllerPowerMenu_Notification) Reset() {
 	*x = CSteamInputService_ControllerPowerMenu_Notification{}
-	mi := &file_webuimessages_steaminput_proto_msgTypes[18]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1418,7 +2118,7 @@ func (x *CSteamInputService_ControllerPowerMenu_Notification) String() string {
 func (*CSteamInputService_ControllerPowerMenu_Notification) ProtoMessage() {}
 
 func (x *CSteamInputService_ControllerPowerMenu_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steaminput_proto_msgTypes[18]
+	mi := &file_webuimessages_steaminput_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1431,7 +2131,7 @@ func (x *CSteamInputService_ControllerPowerMenu_Notification) ProtoReflect() pro
 
 // Deprecated: Use CSteamInputService_ControllerPowerMenu_Notification.ProtoReflect.Descriptor instead.
 func (*CSteamInputService_ControllerPowerMenu_Notification) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{18}
+	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CSteamInputService_ControllerPowerMenu_Notification) GetIdx() uint32 {
@@ -1550,7 +2250,38 @@ const file_webuimessages_steaminput_proto_rawDesc = "" +
 	"2CSteamInputService_GyroSoftwareCalibration_Request\x12)\n" +
 	"\x10controller_index\x18\x01 \x01(\rR\x0fcontrollerIndex\x12\x12\n" +
 	"\x04side\x18\x02 \x01(\x05R\x04side\"5\n" +
-	"3CSteamInputService_GyroSoftwareCalibration_Response\"\x98\x01\n" +
+	"3CSteamInputService_GyroSoftwareCalibration_Response\"\x92\x01\n" +
+	".CSteamInputService_PairDongleTritonUSB_Request\x12)\n" +
+	"\x10controller_index\x18\x01 \x01(\rR\x0fcontrollerIndex\x12!\n" +
+	"\fdongle_index\x18\x02 \x01(\rR\vdongleIndex\x12\x12\n" +
+	"\x04slot\x18\x03 \x01(\rR\x04slot\"1\n" +
+	"/CSteamInputService_PairDongleTritonUSB_Response\"6\n" +
+	"4CSteamInputService_TritonDonglesChanged_Notification\"d\n" +
+	"7CSteamInputService_UnpairedTritonPluggedIn_Notification\x12)\n" +
+	"\x10controller_index\x18\x01 \x01(\rR\x0fcontrollerIndex\"b\n" +
+	"4CSteamInputService_UnpairedTritonDocked_Notification\x12*\n" +
+	"\x11docked_puck_index\x18\x01 \x01(\rR\x0fdockedPuckIndex\"\\\n" +
+	".CSteamInputService_TritonUndocked_Notification\x12*\n" +
+	"\x11docked_puck_index\x18\x01 \x01(\rR\x0fdockedPuckIndex\"\x8f\x01\n" +
+	"1CSteamInputService_PairDongleTritonDocked_Request\x12*\n" +
+	"\x11docked_puck_index\x18\x01 \x01(\rR\x0fdockedPuckIndex\x12.\n" +
+	"\x13target_dongle_index\x18\x02 \x01(\rR\x11targetDongleIndex\"4\n" +
+	"2CSteamInputService_PairDongleTritonDocked_Response\"'\n" +
+	"%CSteamInputService_GetDongles_Request\"\xa2\x01\n" +
+	"&CSteamInputService_GetDongles_Response\x12.\n" +
+	"\x13steam_controller_v1\x18\x01 \x01(\bR\x11steamControllerV1\x12#\n" +
+	"\ribex_internal\x18\x02 \x03(\rR\fibexInternal\x12#\n" +
+	"\ribex_external\x18\x03 \x03(\rR\fibexExternal\"3\n" +
+	"1CSteamInputService_ShouldTritonPairInOobe_Request\"A\n" +
+	"?CSteamInputService_WaitInitialControllerStateEnumerated_Request\"b\n" +
+	"@CSteamInputService_WaitInitialControllerStateEnumerated_Response\x12\x1e\n" +
+	"\n" +
+	"controller\x18\x01 \x03(\rR\n" +
+	"controller\"\xcc\x01\n" +
+	"2CSteamInputService_ShouldTritonPairInOobe_Response\x12H\n" +
+	"\tpair_type\x18\x01 \x01(\x0e2\x10.ETritonPairType:\x19k_ETritonPairType_UnknownR\bpairType\x12)\n" +
+	"\x10controller_index\x18\x02 \x01(\rR\x0fcontrollerIndex\x12!\n" +
+	"\fdongle_index\x18\x03 \x01(\rR\vdongleIndex\"\x98\x01\n" +
 	"\x14CControllerOriginKey\x12'\n" +
 	"\x0fcontroller_type\x18\x01 \x01(\x05R\x0econtrollerType\x12)\n" +
 	"\x10controller_style\x18\x02 \x01(\x05R\x0fcontrollerStyle\x12\x16\n" +
@@ -1563,7 +2294,15 @@ const file_webuimessages_steaminput_proto_rawDesc = "" +
 	":CSteamInputService_ControllerAccessibilityStrings_Response\x129\n" +
 	"\astrings\x18\x01 \x03(\v2\x1f.CControllerAccessibilityStringR\astrings\"G\n" +
 	"3CSteamInputService_ControllerPowerMenu_Notification\x12\x10\n" +
-	"\x03idx\x18\x01 \x01(\rR\x03idx2\xb6\v\n" +
+	"\x03idx\x18\x01 \x01(\rR\x03idx*\xb2\x02\n" +
+	"\x0fETritonPairType\x12\x1d\n" +
+	"\x19k_ETritonPairType_Unknown\x10\x00\x12\x1a\n" +
+	"\x16k_ETritonPairType_None\x10\x01\x12/\n" +
+	"+k_ETritonPairType_RePairToSteamMachineWired\x10\x02\x120\n" +
+	",k_ETritonPairType_RePairToSteamMachineDocked\x10\x03\x122\n" +
+	".k_ETritonPairType_RePairToSteamMachineWireless\x10\x04\x12%\n" +
+	"!k_ETritonPairType_PairToPuckWired\x10\x05\x12&\n" +
+	"\"k_ETritonPairType_PairToPuckDocked\x10\x062\xdb\x13\n" +
 	"\x11SteamInputManager\x12k\n" +
 	"\x18NotifyButtonStateChanged\x12=.CSteamInputService_ControllerButtonStateChanged_Notification\x1a\x10.WebUINoResponse\x12f\n" +
 	"\x16NotifyAxesStateChanged\x12:.CSteamInputService_ControllerAxesStateChange_Notification\x1a\x10.WebUINoResponse\x12l\n" +
@@ -1571,12 +2310,22 @@ const file_webuimessages_steaminput_proto_rawDesc = "" +
 	"\x1bNotifyGyroSpeedStateChanged\x121.CSteamInputService_GyroSpeedChanged_Notification\x1a\x10.WebUINoResponse\x12r\n" +
 	"#NotifyGyroAccelerometerStateChanged\x129.CSteamInputService_GyroAccelerometerChanged_Notification\x1a\x10.WebUINoResponse\x12g\n" +
 	"!NotifyGyroCalibrationStateChanged\x120.CSteamInputService_GyroCalibration_Notification\x1a\x10.WebUINoResponse\x12c\n" +
-	"\x19NotifyControllerPowerMenu\x124.CSteamInputService_ControllerPowerMenu_Notification\x1a\x10.WebUINoResponse\x12}\n" +
+	"\x19NotifyControllerPowerMenu\x124.CSteamInputService_ControllerPowerMenu_Notification\x1a\x10.WebUINoResponse\x12k\n" +
+	"\x1dNotifyUnpairedTritonPluggedIn\x128.CSteamInputService_UnpairedTritonPluggedIn_Notification\x1a\x10.WebUINoResponse\x12e\n" +
+	"\x1aNotifyUnpairedTritonDocked\x125.CSteamInputService_UnpairedTritonDocked_Notification\x1a\x10.WebUINoResponse\x12Y\n" +
+	"\x14NotifyTritonUndocked\x12/.CSteamInputService_TritonUndocked_Notification\x1a\x10.WebUINoResponse\x12e\n" +
+	"\x1aNotifyTritonDonglesChanged\x125.CSteamInputService_TritonDonglesChanged_Notification\x1a\x10.WebUINoResponse\x12}\n" +
 	"\x18StartControllerStateFlow\x12/.CSteamInputService_ControllerStateFlow_Request\x1a0.CSteamInputService_ControllerStateFlow_Response\x12{\n" +
 	"\x16EndControllerStateFlow\x12/.CSteamInputService_ControllerStateFlow_Request\x1a0.CSteamInputService_ControllerStateFlow_Response\x12\x9c\x01\n" +
 	"!GetControllerAccessibilityStrings\x12:.CSteamInputService_ControllerAccessibilityStrings_Request\x1a;.CSteamInputService_ControllerAccessibilityStrings_Response\x12\x89\x01\n" +
 	"\x1cStartGyroSoftwareCalibration\x123.CSteamInputService_GyroSoftwareCalibration_Request\x1a4.CSteamInputService_GyroSoftwareCalibration_Response\x12\x8a\x01\n" +
-	"\x1dCancelGyroSoftwareCalibration\x123.CSteamInputService_GyroSoftwareCalibration_Request\x1a4.CSteamInputService_GyroSoftwareCalibration_Response\x1a\x04\x80\x97\"\x02B\x05H\x01\x80\x01\x01"
+	"\x1dCancelGyroSoftwareCalibration\x123.CSteamInputService_GyroSoftwareCalibration_Request\x1a4.CSteamInputService_GyroSoftwareCalibration_Response\x12x\n" +
+	"\x13PairDongleTritonUSB\x12/.CSteamInputService_PairDongleTritonUSB_Request\x1a0.CSteamInputService_PairDongleTritonUSB_Response\x12\x81\x01\n" +
+	"\x16PairDongleTritonDocked\x122.CSteamInputService_PairDongleTritonDocked_Request\x1a3.CSteamInputService_PairDongleTritonDocked_Response\x12]\n" +
+	"\n" +
+	"GetDongles\x12&.CSteamInputService_GetDongles_Request\x1a'.CSteamInputService_GetDongles_Response\x12\x81\x01\n" +
+	"\x16ShouldTritonPairInOobe\x122.CSteamInputService_ShouldTritonPairInOobe_Request\x1a3.CSteamInputService_ShouldTritonPairInOobe_Response\x12\xab\x01\n" +
+	"$WaitInitialControllerStateEnumerated\x12@.CSteamInputService_WaitInitialControllerStateEnumerated_Request\x1aA.CSteamInputService_WaitInitialControllerStateEnumerated_Response\x1a\x04\x80\x97\"\x02B\x05H\x01\x80\x01\x01"
 
 var (
 	file_webuimessages_steaminput_proto_rawDescOnce sync.Once
@@ -1590,72 +2339,107 @@ func file_webuimessages_steaminput_proto_rawDescGZIP() []byte {
 	return file_webuimessages_steaminput_proto_rawDescData
 }
 
-var file_webuimessages_steaminput_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_webuimessages_steaminput_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_webuimessages_steaminput_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_webuimessages_steaminput_proto_goTypes = []any{
-	(*CSteamInputService_ControllerButtonStateChanged_Notification)(nil), // 0: CSteamInputService_ControllerButtonStateChanged_Notification
-	(*ControllerVector2)(nil),                                          // 1: ControllerVector2
-	(*ControllerVector3)(nil),                                          // 2: ControllerVector3
-	(*ControllerQuaternion)(nil),                                       // 3: ControllerQuaternion
-	(*ControllerGyroEulerAngles)(nil),                                  // 4: ControllerGyroEulerAngles
-	(*CSteamInputService_ControllerAxesStateChange_Notification)(nil),  // 5: CSteamInputService_ControllerAxesStateChange_Notification
-	(*CSteamInputService_GyroQuaternionChanged_Notification)(nil),      // 6: CSteamInputService_GyroQuaternionChanged_Notification
-	(*CSteamInputService_GyroSpeedChanged_Notification)(nil),           // 7: CSteamInputService_GyroSpeedChanged_Notification
-	(*CSteamInputService_GyroAccelerometerChanged_Notification)(nil),   // 8: CSteamInputService_GyroAccelerometerChanged_Notification
-	(*CSteamInputService_GyroCalibration_Notification)(nil),            // 9: CSteamInputService_GyroCalibration_Notification
-	(*CSteamInputService_ControllerStateFlow_Request)(nil),             // 10: CSteamInputService_ControllerStateFlow_Request
-	(*CSteamInputService_ControllerStateFlow_Response)(nil),            // 11: CSteamInputService_ControllerStateFlow_Response
-	(*CSteamInputService_GyroSoftwareCalibration_Request)(nil),         // 12: CSteamInputService_GyroSoftwareCalibration_Request
-	(*CSteamInputService_GyroSoftwareCalibration_Response)(nil),        // 13: CSteamInputService_GyroSoftwareCalibration_Response
-	(*CControllerOriginKey)(nil),                                       // 14: CControllerOriginKey
-	(*CControllerAccessibilityString)(nil),                             // 15: CControllerAccessibilityString
-	(*CSteamInputService_ControllerAccessibilityStrings_Request)(nil),  // 16: CSteamInputService_ControllerAccessibilityStrings_Request
-	(*CSteamInputService_ControllerAccessibilityStrings_Response)(nil), // 17: CSteamInputService_ControllerAccessibilityStrings_Response
-	(*CSteamInputService_ControllerPowerMenu_Notification)(nil),        // 18: CSteamInputService_ControllerPowerMenu_Notification
-	(*WebUINoResponse)(nil),                                            // 19: WebUINoResponse
+	(ETritonPairType)(0), // 0: ETritonPairType
+	(*CSteamInputService_ControllerButtonStateChanged_Notification)(nil), // 1: CSteamInputService_ControllerButtonStateChanged_Notification
+	(*ControllerVector2)(nil),                                                // 2: ControllerVector2
+	(*ControllerVector3)(nil),                                                // 3: ControllerVector3
+	(*ControllerQuaternion)(nil),                                             // 4: ControllerQuaternion
+	(*ControllerGyroEulerAngles)(nil),                                        // 5: ControllerGyroEulerAngles
+	(*CSteamInputService_ControllerAxesStateChange_Notification)(nil),        // 6: CSteamInputService_ControllerAxesStateChange_Notification
+	(*CSteamInputService_GyroQuaternionChanged_Notification)(nil),            // 7: CSteamInputService_GyroQuaternionChanged_Notification
+	(*CSteamInputService_GyroSpeedChanged_Notification)(nil),                 // 8: CSteamInputService_GyroSpeedChanged_Notification
+	(*CSteamInputService_GyroAccelerometerChanged_Notification)(nil),         // 9: CSteamInputService_GyroAccelerometerChanged_Notification
+	(*CSteamInputService_GyroCalibration_Notification)(nil),                  // 10: CSteamInputService_GyroCalibration_Notification
+	(*CSteamInputService_ControllerStateFlow_Request)(nil),                   // 11: CSteamInputService_ControllerStateFlow_Request
+	(*CSteamInputService_ControllerStateFlow_Response)(nil),                  // 12: CSteamInputService_ControllerStateFlow_Response
+	(*CSteamInputService_GyroSoftwareCalibration_Request)(nil),               // 13: CSteamInputService_GyroSoftwareCalibration_Request
+	(*CSteamInputService_GyroSoftwareCalibration_Response)(nil),              // 14: CSteamInputService_GyroSoftwareCalibration_Response
+	(*CSteamInputService_PairDongleTritonUSB_Request)(nil),                   // 15: CSteamInputService_PairDongleTritonUSB_Request
+	(*CSteamInputService_PairDongleTritonUSB_Response)(nil),                  // 16: CSteamInputService_PairDongleTritonUSB_Response
+	(*CSteamInputService_TritonDonglesChanged_Notification)(nil),             // 17: CSteamInputService_TritonDonglesChanged_Notification
+	(*CSteamInputService_UnpairedTritonPluggedIn_Notification)(nil),          // 18: CSteamInputService_UnpairedTritonPluggedIn_Notification
+	(*CSteamInputService_UnpairedTritonDocked_Notification)(nil),             // 19: CSteamInputService_UnpairedTritonDocked_Notification
+	(*CSteamInputService_TritonUndocked_Notification)(nil),                   // 20: CSteamInputService_TritonUndocked_Notification
+	(*CSteamInputService_PairDongleTritonDocked_Request)(nil),                // 21: CSteamInputService_PairDongleTritonDocked_Request
+	(*CSteamInputService_PairDongleTritonDocked_Response)(nil),               // 22: CSteamInputService_PairDongleTritonDocked_Response
+	(*CSteamInputService_GetDongles_Request)(nil),                            // 23: CSteamInputService_GetDongles_Request
+	(*CSteamInputService_GetDongles_Response)(nil),                           // 24: CSteamInputService_GetDongles_Response
+	(*CSteamInputService_ShouldTritonPairInOobe_Request)(nil),                // 25: CSteamInputService_ShouldTritonPairInOobe_Request
+	(*CSteamInputService_WaitInitialControllerStateEnumerated_Request)(nil),  // 26: CSteamInputService_WaitInitialControllerStateEnumerated_Request
+	(*CSteamInputService_WaitInitialControllerStateEnumerated_Response)(nil), // 27: CSteamInputService_WaitInitialControllerStateEnumerated_Response
+	(*CSteamInputService_ShouldTritonPairInOobe_Response)(nil),               // 28: CSteamInputService_ShouldTritonPairInOobe_Response
+	(*CControllerOriginKey)(nil),                                             // 29: CControllerOriginKey
+	(*CControllerAccessibilityString)(nil),                                   // 30: CControllerAccessibilityString
+	(*CSteamInputService_ControllerAccessibilityStrings_Request)(nil),        // 31: CSteamInputService_ControllerAccessibilityStrings_Request
+	(*CSteamInputService_ControllerAccessibilityStrings_Response)(nil),       // 32: CSteamInputService_ControllerAccessibilityStrings_Response
+	(*CSteamInputService_ControllerPowerMenu_Notification)(nil),              // 33: CSteamInputService_ControllerPowerMenu_Notification
+	(*WebUINoResponse)(nil),                                                  // 34: WebUINoResponse
 }
 var file_webuimessages_steaminput_proto_depIdxs = []int32{
-	1,  // 0: CSteamInputService_ControllerAxesStateChange_Notification.joystick_left:type_name -> ControllerVector2
-	1,  // 1: CSteamInputService_ControllerAxesStateChange_Notification.joystick_right:type_name -> ControllerVector2
-	1,  // 2: CSteamInputService_ControllerAxesStateChange_Notification.trackpad_left:type_name -> ControllerVector2
-	1,  // 3: CSteamInputService_ControllerAxesStateChange_Notification.trackpad_right:type_name -> ControllerVector2
-	1,  // 4: CSteamInputService_ControllerAxesStateChange_Notification.trackpad_center:type_name -> ControllerVector2
-	3,  // 5: CSteamInputService_GyroQuaternionChanged_Notification.gyro_raw_quaternion:type_name -> ControllerQuaternion
-	3,  // 6: CSteamInputService_GyroQuaternionChanged_Notification.gyro_filtered_quaternion:type_name -> ControllerQuaternion
-	4,  // 7: CSteamInputService_GyroSpeedChanged_Notification.gyro_raw_speed:type_name -> ControllerGyroEulerAngles
-	4,  // 8: CSteamInputService_GyroSpeedChanged_Notification.gyro_filtered_speed:type_name -> ControllerGyroEulerAngles
-	2,  // 9: CSteamInputService_GyroAccelerometerChanged_Notification.acceleromter_1g:type_name -> ControllerVector3
-	2,  // 10: CSteamInputService_GyroAccelerometerChanged_Notification.trusted_gravity_1g:type_name -> ControllerVector3
-	14, // 11: CControllerAccessibilityString.key:type_name -> CControllerOriginKey
-	15, // 12: CSteamInputService_ControllerAccessibilityStrings_Response.strings:type_name -> CControllerAccessibilityString
-	0,  // 13: SteamInputManager.NotifyButtonStateChanged:input_type -> CSteamInputService_ControllerButtonStateChanged_Notification
-	5,  // 14: SteamInputManager.NotifyAxesStateChanged:input_type -> CSteamInputService_ControllerAxesStateChange_Notification
-	6,  // 15: SteamInputManager.NotifyGyroQuaternionStateChanged:input_type -> CSteamInputService_GyroQuaternionChanged_Notification
-	7,  // 16: SteamInputManager.NotifyGyroSpeedStateChanged:input_type -> CSteamInputService_GyroSpeedChanged_Notification
-	8,  // 17: SteamInputManager.NotifyGyroAccelerometerStateChanged:input_type -> CSteamInputService_GyroAccelerometerChanged_Notification
-	9,  // 18: SteamInputManager.NotifyGyroCalibrationStateChanged:input_type -> CSteamInputService_GyroCalibration_Notification
-	18, // 19: SteamInputManager.NotifyControllerPowerMenu:input_type -> CSteamInputService_ControllerPowerMenu_Notification
-	10, // 20: SteamInputManager.StartControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
-	10, // 21: SteamInputManager.EndControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
-	16, // 22: SteamInputManager.GetControllerAccessibilityStrings:input_type -> CSteamInputService_ControllerAccessibilityStrings_Request
-	12, // 23: SteamInputManager.StartGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
-	12, // 24: SteamInputManager.CancelGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
-	19, // 25: SteamInputManager.NotifyButtonStateChanged:output_type -> WebUINoResponse
-	19, // 26: SteamInputManager.NotifyAxesStateChanged:output_type -> WebUINoResponse
-	19, // 27: SteamInputManager.NotifyGyroQuaternionStateChanged:output_type -> WebUINoResponse
-	19, // 28: SteamInputManager.NotifyGyroSpeedStateChanged:output_type -> WebUINoResponse
-	19, // 29: SteamInputManager.NotifyGyroAccelerometerStateChanged:output_type -> WebUINoResponse
-	19, // 30: SteamInputManager.NotifyGyroCalibrationStateChanged:output_type -> WebUINoResponse
-	19, // 31: SteamInputManager.NotifyControllerPowerMenu:output_type -> WebUINoResponse
-	11, // 32: SteamInputManager.StartControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
-	11, // 33: SteamInputManager.EndControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
-	17, // 34: SteamInputManager.GetControllerAccessibilityStrings:output_type -> CSteamInputService_ControllerAccessibilityStrings_Response
-	13, // 35: SteamInputManager.StartGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
-	13, // 36: SteamInputManager.CancelGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
-	25, // [25:37] is the sub-list for method output_type
-	13, // [13:25] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	2,  // 0: CSteamInputService_ControllerAxesStateChange_Notification.joystick_left:type_name -> ControllerVector2
+	2,  // 1: CSteamInputService_ControllerAxesStateChange_Notification.joystick_right:type_name -> ControllerVector2
+	2,  // 2: CSteamInputService_ControllerAxesStateChange_Notification.trackpad_left:type_name -> ControllerVector2
+	2,  // 3: CSteamInputService_ControllerAxesStateChange_Notification.trackpad_right:type_name -> ControllerVector2
+	2,  // 4: CSteamInputService_ControllerAxesStateChange_Notification.trackpad_center:type_name -> ControllerVector2
+	4,  // 5: CSteamInputService_GyroQuaternionChanged_Notification.gyro_raw_quaternion:type_name -> ControllerQuaternion
+	4,  // 6: CSteamInputService_GyroQuaternionChanged_Notification.gyro_filtered_quaternion:type_name -> ControllerQuaternion
+	5,  // 7: CSteamInputService_GyroSpeedChanged_Notification.gyro_raw_speed:type_name -> ControllerGyroEulerAngles
+	5,  // 8: CSteamInputService_GyroSpeedChanged_Notification.gyro_filtered_speed:type_name -> ControllerGyroEulerAngles
+	3,  // 9: CSteamInputService_GyroAccelerometerChanged_Notification.acceleromter_1g:type_name -> ControllerVector3
+	3,  // 10: CSteamInputService_GyroAccelerometerChanged_Notification.trusted_gravity_1g:type_name -> ControllerVector3
+	0,  // 11: CSteamInputService_ShouldTritonPairInOobe_Response.pair_type:type_name -> ETritonPairType
+	29, // 12: CControllerAccessibilityString.key:type_name -> CControllerOriginKey
+	30, // 13: CSteamInputService_ControllerAccessibilityStrings_Response.strings:type_name -> CControllerAccessibilityString
+	1,  // 14: SteamInputManager.NotifyButtonStateChanged:input_type -> CSteamInputService_ControllerButtonStateChanged_Notification
+	6,  // 15: SteamInputManager.NotifyAxesStateChanged:input_type -> CSteamInputService_ControllerAxesStateChange_Notification
+	7,  // 16: SteamInputManager.NotifyGyroQuaternionStateChanged:input_type -> CSteamInputService_GyroQuaternionChanged_Notification
+	8,  // 17: SteamInputManager.NotifyGyroSpeedStateChanged:input_type -> CSteamInputService_GyroSpeedChanged_Notification
+	9,  // 18: SteamInputManager.NotifyGyroAccelerometerStateChanged:input_type -> CSteamInputService_GyroAccelerometerChanged_Notification
+	10, // 19: SteamInputManager.NotifyGyroCalibrationStateChanged:input_type -> CSteamInputService_GyroCalibration_Notification
+	33, // 20: SteamInputManager.NotifyControllerPowerMenu:input_type -> CSteamInputService_ControllerPowerMenu_Notification
+	18, // 21: SteamInputManager.NotifyUnpairedTritonPluggedIn:input_type -> CSteamInputService_UnpairedTritonPluggedIn_Notification
+	19, // 22: SteamInputManager.NotifyUnpairedTritonDocked:input_type -> CSteamInputService_UnpairedTritonDocked_Notification
+	20, // 23: SteamInputManager.NotifyTritonUndocked:input_type -> CSteamInputService_TritonUndocked_Notification
+	17, // 24: SteamInputManager.NotifyTritonDonglesChanged:input_type -> CSteamInputService_TritonDonglesChanged_Notification
+	11, // 25: SteamInputManager.StartControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
+	11, // 26: SteamInputManager.EndControllerStateFlow:input_type -> CSteamInputService_ControllerStateFlow_Request
+	31, // 27: SteamInputManager.GetControllerAccessibilityStrings:input_type -> CSteamInputService_ControllerAccessibilityStrings_Request
+	13, // 28: SteamInputManager.StartGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
+	13, // 29: SteamInputManager.CancelGyroSoftwareCalibration:input_type -> CSteamInputService_GyroSoftwareCalibration_Request
+	15, // 30: SteamInputManager.PairDongleTritonUSB:input_type -> CSteamInputService_PairDongleTritonUSB_Request
+	21, // 31: SteamInputManager.PairDongleTritonDocked:input_type -> CSteamInputService_PairDongleTritonDocked_Request
+	23, // 32: SteamInputManager.GetDongles:input_type -> CSteamInputService_GetDongles_Request
+	25, // 33: SteamInputManager.ShouldTritonPairInOobe:input_type -> CSteamInputService_ShouldTritonPairInOobe_Request
+	26, // 34: SteamInputManager.WaitInitialControllerStateEnumerated:input_type -> CSteamInputService_WaitInitialControllerStateEnumerated_Request
+	34, // 35: SteamInputManager.NotifyButtonStateChanged:output_type -> WebUINoResponse
+	34, // 36: SteamInputManager.NotifyAxesStateChanged:output_type -> WebUINoResponse
+	34, // 37: SteamInputManager.NotifyGyroQuaternionStateChanged:output_type -> WebUINoResponse
+	34, // 38: SteamInputManager.NotifyGyroSpeedStateChanged:output_type -> WebUINoResponse
+	34, // 39: SteamInputManager.NotifyGyroAccelerometerStateChanged:output_type -> WebUINoResponse
+	34, // 40: SteamInputManager.NotifyGyroCalibrationStateChanged:output_type -> WebUINoResponse
+	34, // 41: SteamInputManager.NotifyControllerPowerMenu:output_type -> WebUINoResponse
+	34, // 42: SteamInputManager.NotifyUnpairedTritonPluggedIn:output_type -> WebUINoResponse
+	34, // 43: SteamInputManager.NotifyUnpairedTritonDocked:output_type -> WebUINoResponse
+	34, // 44: SteamInputManager.NotifyTritonUndocked:output_type -> WebUINoResponse
+	34, // 45: SteamInputManager.NotifyTritonDonglesChanged:output_type -> WebUINoResponse
+	12, // 46: SteamInputManager.StartControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
+	12, // 47: SteamInputManager.EndControllerStateFlow:output_type -> CSteamInputService_ControllerStateFlow_Response
+	32, // 48: SteamInputManager.GetControllerAccessibilityStrings:output_type -> CSteamInputService_ControllerAccessibilityStrings_Response
+	14, // 49: SteamInputManager.StartGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
+	14, // 50: SteamInputManager.CancelGyroSoftwareCalibration:output_type -> CSteamInputService_GyroSoftwareCalibration_Response
+	16, // 51: SteamInputManager.PairDongleTritonUSB:output_type -> CSteamInputService_PairDongleTritonUSB_Response
+	22, // 52: SteamInputManager.PairDongleTritonDocked:output_type -> CSteamInputService_PairDongleTritonDocked_Response
+	24, // 53: SteamInputManager.GetDongles:output_type -> CSteamInputService_GetDongles_Response
+	28, // 54: SteamInputManager.ShouldTritonPairInOobe:output_type -> CSteamInputService_ShouldTritonPairInOobe_Response
+	27, // 55: SteamInputManager.WaitInitialControllerStateEnumerated:output_type -> CSteamInputService_WaitInitialControllerStateEnumerated_Response
+	35, // [35:56] is the sub-list for method output_type
+	14, // [14:35] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_webuimessages_steaminput_proto_init() }
@@ -1670,13 +2454,14 @@ func file_webuimessages_steaminput_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_webuimessages_steaminput_proto_rawDesc), len(file_webuimessages_steaminput_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   19,
+			NumEnums:      1,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_webuimessages_steaminput_proto_goTypes,
 		DependencyIndexes: file_webuimessages_steaminput_proto_depIdxs,
+		EnumInfos:         file_webuimessages_steaminput_proto_enumTypes,
 		MessageInfos:      file_webuimessages_steaminput_proto_msgTypes,
 	}.Build()
 	File_webuimessages_steaminput_proto = out.File

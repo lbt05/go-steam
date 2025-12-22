@@ -119,7 +119,7 @@ type CContentBuilder_InitDepotBuild_Response struct {
 	ChunkSize                      *uint32                `protobuf:"varint,2,opt,name=chunk_size,json=chunkSize" json:"chunk_size,omitempty"`
 	AesKey                         []byte                 `protobuf:"bytes,3,opt,name=aes_key,json=aesKey" json:"aes_key,omitempty"`
 	RsaKey                         []byte                 `protobuf:"bytes,4,opt,name=rsa_key,json=rsaKey" json:"rsa_key,omitempty"`
-	UrlHost                        *string                `protobuf:"bytes,5,opt,name=url_host,json=urlHost" json:"url_host,omitempty"`
+	DeprecatedUrlHost              *string                `protobuf:"bytes,5,opt,name=deprecated_url_host,json=deprecatedUrlHost" json:"deprecated_url_host,omitempty"`
 	OffsetDetectionEnabled         *bool                  `protobuf:"varint,6,opt,name=offset_detection_enabled,json=offsetDetectionEnabled" json:"offset_detection_enabled,omitempty"`
 	OffsetDetectionMinCleanChunk   *uint32                `protobuf:"varint,7,opt,name=offset_detection_min_clean_chunk,json=offsetDetectionMinCleanChunk" json:"offset_detection_min_clean_chunk,omitempty"`
 	OffsetDetectionBlastRadiusPre  *uint32                `protobuf:"varint,8,opt,name=offset_detection_blast_radius_pre,json=offsetDetectionBlastRadiusPre" json:"offset_detection_blast_radius_pre,omitempty"`
@@ -193,9 +193,9 @@ func (x *CContentBuilder_InitDepotBuild_Response) GetRsaKey() []byte {
 	return nil
 }
 
-func (x *CContentBuilder_InitDepotBuild_Response) GetUrlHost() string {
-	if x != nil && x.UrlHost != nil {
-		return *x.UrlHost
+func (x *CContentBuilder_InitDepotBuild_Response) GetDeprecatedUrlHost() string {
+	if x != nil && x.DeprecatedUrlHost != nil {
+		return *x.DeprecatedUrlHost
 	}
 	return ""
 }
@@ -970,14 +970,14 @@ const file_steammessages_depotbuilder_steamclient_proto_rawDesc = "" +
 	"forLocalCs\x12#\n" +
 	"\rtarget_branch\x18\x05 \x01(\tR\ftargetBranch\x12!\n" +
 	"\fshader_depot\x18\x06 \x01(\bR\vshaderDepot\x120\n" +
-	"\x14baseline_manifest_id\x18\a \x01(\x04R\x12baselineManifestId\"\xda\x06\n" +
+	"\x14baseline_manifest_id\x18\a \x01(\x04R\x12baselineManifestId\"\xef\x06\n" +
 	"'CContentBuilder_InitDepotBuild_Response\x12/\n" +
 	"\x13baseline_manifestid\x18\x01 \x01(\x04R\x12baselineManifestid\x12\x1d\n" +
 	"\n" +
 	"chunk_size\x18\x02 \x01(\rR\tchunkSize\x12\x17\n" +
 	"\aaes_key\x18\x03 \x01(\fR\x06aesKey\x12\x17\n" +
-	"\arsa_key\x18\x04 \x01(\fR\x06rsaKey\x12\x19\n" +
-	"\burl_host\x18\x05 \x01(\tR\aurlHost\x128\n" +
+	"\arsa_key\x18\x04 \x01(\fR\x06rsaKey\x12.\n" +
+	"\x13deprecated_url_host\x18\x05 \x01(\tR\x11deprecatedUrlHost\x128\n" +
 	"\x18offset_detection_enabled\x18\x06 \x01(\bR\x16offsetDetectionEnabled\x12F\n" +
 	" offset_detection_min_clean_chunk\x18\a \x01(\rR\x1coffsetDetectionMinCleanChunk\x12H\n" +
 	"!offset_detection_blast_radius_pre\x18\b \x01(\rR\x1doffsetDetectionBlastRadiusPre\x12J\n" +
