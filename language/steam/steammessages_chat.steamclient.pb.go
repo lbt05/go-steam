@@ -7152,6 +7152,7 @@ type CChatRoom_ResolveReport_Request struct {
 	SubjectType        *EContentReportSubjectType `protobuf:"varint,5,opt,name=subject_type,json=subjectType,enum=EContentReportSubjectType,def=0" json:"subject_type,omitempty"`
 	ChatGroupId        *uint64                    `protobuf:"varint,6,opt,name=chat_group_id,json=chatGroupId" json:"chat_group_id,omitempty"`
 	KickExpirationTime *uint32                    `protobuf:"varint,7,opt,name=kick_expiration_time,json=kickExpirationTime" json:"kick_expiration_time,omitempty"`
+	SkipLock           *bool                      `protobuf:"varint,8,opt,name=skip_lock,json=skipLock" json:"skip_lock,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -7240,6 +7241,13 @@ func (x *CChatRoom_ResolveReport_Request) GetKickExpirationTime() uint32 {
 		return *x.KickExpirationTime
 	}
 	return 0
+}
+
+func (x *CChatRoom_ResolveReport_Request) GetSkipLock() bool {
+	if x != nil && x.SkipLock != nil {
+		return *x.SkipLock
+	}
+	return false
 }
 
 type CChatRoom_ResolveReport_Response struct {
@@ -10423,7 +10431,7 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"reportText\x12\x1a\n" +
 	"\blanguage\x18\b \x01(\tR\blanguage\x12b\n" +
 	"\fsubject_type\x18\t \x01(\x0e2\x1a.EContentReportSubjectType:#k_EContentReportSubjectType_InvalidR\vsubjectType\"\"\n" +
-	" CChatRoom_ReportMessage_Response\"\xd5\x03\n" +
+	" CChatRoom_ReportMessage_Response\"\xf2\x03\n" +
 	"\x1fCChatRoom_ResolveReport_Request\x12(\n" +
 	"\x10subject_group_id\x18\x01 \x01(\x04R\x0esubjectGroupId\x12\x1d\n" +
 	"\n" +
@@ -10434,7 +10442,8 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"\x06reason\x18\x04 \x01(\x0e2\x15.EContentReportReason:\x1ek_EContentReportReason_InvalidR\x06reason\x12b\n" +
 	"\fsubject_type\x18\x05 \x01(\x0e2\x1a.EContentReportSubjectType:#k_EContentReportSubjectType_InvalidR\vsubjectType\x12\"\n" +
 	"\rchat_group_id\x18\x06 \x01(\x04R\vchatGroupId\x120\n" +
-	"\x14kick_expiration_time\x18\a \x01(\rR\x12kickExpirationTime\"\"\n" +
+	"\x14kick_expiration_time\x18\a \x01(\rR\x12kickExpirationTime\x12\x1b\n" +
+	"\tskip_lock\x18\b \x01(\bR\bskipLock\"\"\n" +
 	" CChatRoom_ResolveReport_Response\"l\n" +
 	"*CClanChatRooms_GetClanChatRoomInfo_Request\x12\x18\n" +
 	"\asteamid\x18\x01 \x01(\x06R\asteamid\x12$\n" +

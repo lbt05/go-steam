@@ -3337,6 +3337,8 @@ type CNegotiationInitMsg struct {
 	SupportedVideoCodecs []EStreamVideoCodec    `protobuf:"varint,3,rep,name=supported_video_codecs,json=supportedVideoCodecs,enum=EStreamVideoCodec" json:"supported_video_codecs,omitempty"`
 	SupportsRemoteHid    *bool                  `protobuf:"varint,4,opt,name=supports_remote_hid,json=supportsRemoteHid" json:"supports_remote_hid,omitempty"`
 	SupportsTouchInput   *bool                  `protobuf:"varint,5,opt,name=supports_touch_input,json=supportsTouchInput" json:"supports_touch_input,omitempty"`
+	OsType               *int32                 `protobuf:"varint,6,opt,name=os_type,json=osType" json:"os_type,omitempty"`
+	GamingDeviceType     *int32                 `protobuf:"varint,7,opt,name=gaming_device_type,json=gamingDeviceType" json:"gaming_device_type,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
@@ -3404,6 +3406,20 @@ func (x *CNegotiationInitMsg) GetSupportsTouchInput() bool {
 		return *x.SupportsTouchInput
 	}
 	return false
+}
+
+func (x *CNegotiationInitMsg) GetOsType() int32 {
+	if x != nil && x.OsType != nil {
+		return *x.OsType
+	}
+	return 0
+}
+
+func (x *CNegotiationInitMsg) GetGamingDeviceType() int32 {
+	if x != nil && x.GamingDeviceType != nil {
+		return *x.GamingDeviceType
+	}
+	return 0
 }
 
 type CNegotiationSetConfigMsg struct {
@@ -8967,13 +8983,15 @@ const file_steammessages_remoteplay_proto_rawDesc = "" +
 	"\x1eavailable_video_modes_OBSOLETE\x18\x04 \x03(\v2\x11.CStreamVideoModeR\x1bavailableVideoModesOBSOLETE\x12*\n" +
 	"\x11enable_remote_hid\x18\x05 \x01(\bR\x0fenableRemoteHid\x12,\n" +
 	"\x12enable_touch_input\x18\x06 \x01(\bR\x10enableTouchInput\x122\n" +
-	"\x15disable_client_cursor\x18\a \x01(\bR\x13disableClientCursor\"\xb0\x02\n" +
+	"\x15disable_client_cursor\x18\a \x01(\bR\x13disableClientCursor\"\xf7\x02\n" +
 	"\x13CNegotiationInitMsg\x12#\n" +
 	"\rreliable_data\x18\x01 \x01(\bR\freliableData\x12H\n" +
 	"\x16supported_audio_codecs\x18\x02 \x03(\x0e2\x12.EStreamAudioCodecR\x14supportedAudioCodecs\x12H\n" +
 	"\x16supported_video_codecs\x18\x03 \x03(\x0e2\x12.EStreamVideoCodecR\x14supportedVideoCodecs\x12.\n" +
 	"\x13supports_remote_hid\x18\x04 \x01(\bR\x11supportsRemoteHid\x120\n" +
-	"\x14supports_touch_input\x18\x05 \x01(\bR\x12supportsTouchInput\"\xe2\x01\n" +
+	"\x14supports_touch_input\x18\x05 \x01(\bR\x12supportsTouchInput\x12\x17\n" +
+	"\aos_type\x18\x06 \x01(\x05R\x06osType\x12,\n" +
+	"\x12gaming_device_type\x18\a \x01(\x05R\x10gamingDeviceType\"\xe2\x01\n" +
 	"\x18CNegotiationSetConfigMsg\x12*\n" +
 	"\x06config\x18\x01 \x02(\v2\x12.CNegotiatedConfigR\x06config\x12O\n" +
 	"\x17streaming_client_config\x18\x02 \x01(\v2\x17.CStreamingClientConfigR\x15streamingClientConfig\x12I\n" +
