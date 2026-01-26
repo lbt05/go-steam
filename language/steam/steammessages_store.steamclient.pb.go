@@ -2307,26 +2307,28 @@ func (x *CStore_GetStorePreferences_Request) GetCountryCode() string {
 }
 
 type CStore_UserPreferences struct {
-	state                                        protoimpl.MessageState          `protogen:"open.v1"`
-	PrimaryLanguage                              *int32                          `protobuf:"varint,1,opt,name=primary_language,json=primaryLanguage" json:"primary_language,omitempty"`
-	SecondaryLanguages                           *uint32                         `protobuf:"varint,2,opt,name=secondary_languages,json=secondaryLanguages" json:"secondary_languages,omitempty"`
-	PlatformWindows                              *bool                           `protobuf:"varint,3,opt,name=platform_windows,json=platformWindows" json:"platform_windows,omitempty"`
-	PlatformMac                                  *bool                           `protobuf:"varint,4,opt,name=platform_mac,json=platformMac" json:"platform_mac,omitempty"`
-	PlatformLinux                                *bool                           `protobuf:"varint,5,opt,name=platform_linux,json=platformLinux" json:"platform_linux,omitempty"`
-	TimestampUpdated                             *uint32                         `protobuf:"varint,8,opt,name=timestamp_updated,json=timestampUpdated" json:"timestamp_updated,omitempty"`
-	HideStoreBroadcast                           *bool                           `protobuf:"varint,9,opt,name=hide_store_broadcast,json=hideStoreBroadcast" json:"hide_store_broadcast,omitempty"`
-	ReviewScorePreference                        *EUserReviewScorePreference     `protobuf:"varint,10,opt,name=review_score_preference,json=reviewScorePreference,enum=EUserReviewScorePreference,def=0" json:"review_score_preference,omitempty"`
-	TimestampContentDescriptorPreferencesUpdated *int32                          `protobuf:"varint,11,opt,name=timestamp_content_descriptor_preferences_updated,json=timestampContentDescriptorPreferencesUpdated" json:"timestamp_content_descriptor_preferences_updated,omitempty"`
-	ProvideDeckFeedback                          *EProvideDeckFeedbackPreference `protobuf:"varint,12,opt,name=provide_deck_feedback,json=provideDeckFeedback,enum=EProvideDeckFeedbackPreference,def=0" json:"provide_deck_feedback,omitempty"`
-	AdditionalLanguages                          *string                         `protobuf:"bytes,13,opt,name=additional_languages,json=additionalLanguages" json:"additional_languages,omitempty"`
+	state                                        protoimpl.MessageState             `protogen:"open.v1"`
+	PrimaryLanguage                              *int32                             `protobuf:"varint,1,opt,name=primary_language,json=primaryLanguage" json:"primary_language,omitempty"`
+	SecondaryLanguages                           *uint32                            `protobuf:"varint,2,opt,name=secondary_languages,json=secondaryLanguages" json:"secondary_languages,omitempty"`
+	PlatformWindows                              *bool                              `protobuf:"varint,3,opt,name=platform_windows,json=platformWindows" json:"platform_windows,omitempty"`
+	PlatformMac                                  *bool                              `protobuf:"varint,4,opt,name=platform_mac,json=platformMac" json:"platform_mac,omitempty"`
+	PlatformLinux                                *bool                              `protobuf:"varint,5,opt,name=platform_linux,json=platformLinux" json:"platform_linux,omitempty"`
+	TimestampUpdated                             *uint32                            `protobuf:"varint,8,opt,name=timestamp_updated,json=timestampUpdated" json:"timestamp_updated,omitempty"`
+	HideStoreBroadcast                           *bool                              `protobuf:"varint,9,opt,name=hide_store_broadcast,json=hideStoreBroadcast" json:"hide_store_broadcast,omitempty"`
+	ReviewScorePreference                        *EUserReviewScorePreference        `protobuf:"varint,10,opt,name=review_score_preference,json=reviewScorePreference,enum=EUserReviewScorePreference,def=0" json:"review_score_preference,omitempty"`
+	TimestampContentDescriptorPreferencesUpdated *int32                             `protobuf:"varint,11,opt,name=timestamp_content_descriptor_preferences_updated,json=timestampContentDescriptorPreferencesUpdated" json:"timestamp_content_descriptor_preferences_updated,omitempty"`
+	ProvideDeckFeedback                          *EProvideDeckFeedbackPreference    `protobuf:"varint,12,opt,name=provide_deck_feedback,json=provideDeckFeedback,enum=EProvideDeckFeedbackPreference,def=0" json:"provide_deck_feedback,omitempty"`
+	AdditionalLanguages                          *string                            `protobuf:"bytes,13,opt,name=additional_languages,json=additionalLanguages" json:"additional_languages,omitempty"`
+	GameFrameRateReporting                       *EGameFrameRateReportingPreference `protobuf:"varint,14,opt,name=game_frame_rate_reporting,json=gameFrameRateReporting,enum=EGameFrameRateReportingPreference,def=0" json:"game_frame_rate_reporting,omitempty"`
 	unknownFields                                protoimpl.UnknownFields
 	sizeCache                                    protoimpl.SizeCache
 }
 
 // Default values for CStore_UserPreferences fields.
 const (
-	Default_CStore_UserPreferences_ReviewScorePreference = EUserReviewScorePreference_k_EUserReviewScorePreference_Unset
-	Default_CStore_UserPreferences_ProvideDeckFeedback   = EProvideDeckFeedbackPreference_k_EProvideDeckFeedbackPreference_Unset
+	Default_CStore_UserPreferences_ReviewScorePreference  = EUserReviewScorePreference_k_EUserReviewScorePreference_Unset
+	Default_CStore_UserPreferences_ProvideDeckFeedback    = EProvideDeckFeedbackPreference_k_EProvideDeckFeedbackPreference_Unset
+	Default_CStore_UserPreferences_GameFrameRateReporting = EGameFrameRateReportingPreference_k_EGameFrameRateReportingPreference_Unset
 )
 
 func (x *CStore_UserPreferences) Reset() {
@@ -2434,6 +2436,13 @@ func (x *CStore_UserPreferences) GetAdditionalLanguages() string {
 		return *x.AdditionalLanguages
 	}
 	return ""
+}
+
+func (x *CStore_UserPreferences) GetGameFrameRateReporting() EGameFrameRateReportingPreference {
+	if x != nil && x.GameFrameRateReporting != nil {
+		return *x.GameFrameRateReporting
+	}
+	return Default_CStore_UserPreferences_GameFrameRateReporting
 }
 
 type CStore_UserTagPreferences struct {
@@ -4346,7 +4355,7 @@ const file_steammessages_store_steamclient_proto_rawDesc = "" +
 	"\x06report\x18\x03 \x01(\tR\x06report\"\x1b\n" +
 	"\x19CStore_ReportApp_Response\"G\n" +
 	"\"CStore_GetStorePreferences_Request\x12!\n" +
-	"\fcountry_code\x18\x01 \x01(\tR\vcountryCode\"\xd9\x05\n" +
+	"\fcountry_code\x18\x01 \x01(\tR\vcountryCode\"\xe4\x06\n" +
 	"\x16CStore_UserPreferences\x12)\n" +
 	"\x10primary_language\x18\x01 \x01(\x05R\x0fprimaryLanguage\x12/\n" +
 	"\x13secondary_languages\x18\x02 \x01(\rR\x12secondaryLanguages\x12)\n" +
@@ -4359,7 +4368,8 @@ const file_steammessages_store_steamclient_proto_rawDesc = "" +
 	" \x01(\x0e2\x1b.EUserReviewScorePreference:\"k_EUserReviewScorePreference_UnsetR\x15reviewScorePreference\x12f\n" +
 	"0timestamp_content_descriptor_preferences_updated\x18\v \x01(\x05R,timestampContentDescriptorPreferencesUpdated\x12{\n" +
 	"\x15provide_deck_feedback\x18\f \x01(\x0e2\x1f.EProvideDeckFeedbackPreference:&k_EProvideDeckFeedbackPreference_UnsetR\x13provideDeckFeedback\x121\n" +
-	"\x14additional_languages\x18\r \x01(\tR\x13additionalLanguages\"\xbd\x01\n" +
+	"\x14additional_languages\x18\r \x01(\tR\x13additionalLanguages\x12\x88\x01\n" +
+	"\x19game_frame_rate_reporting\x18\x0e \x01(\x0e2\".EGameFrameRateReportingPreference:)k_EGameFrameRateReportingPreference_UnsetR\x16gameFrameRateReporting\"\xbd\x01\n" +
 	"\x19CStore_UserTagPreferences\x12F\n" +
 	"\x0ftags_to_exclude\x18\x01 \x03(\v2\x1e.CStore_UserTagPreferences.TagR\rtagsToExclude\x1aX\n" +
 	"\x03Tag\x12\x14\n" +
@@ -4606,10 +4616,11 @@ var file_steammessages_store_steamclient_proto_goTypes = []any{
 	(*StoreBrowseItemDataRequest)(nil),                                  // 69: StoreBrowseItemDataRequest
 	(*StoreItem)(nil),                                                   // 70: StoreItem
 	(EProvideDeckFeedbackPreference)(0),                                 // 71: EProvideDeckFeedbackPreference
-	(*UserContentDescriptorPreferences)(nil),                            // 72: UserContentDescriptorPreferences
-	(*CPackageReservationStatus)(nil),                                   // 73: CPackageReservationStatus
-	(ESteamDeckCompatibilityFeedback)(0),                                // 74: ESteamDeckCompatibilityFeedback
-	(*NoResponse)(nil),                                                  // 75: NoResponse
+	(EGameFrameRateReportingPreference)(0),                              // 72: EGameFrameRateReportingPreference
+	(*UserContentDescriptorPreferences)(nil),                            // 73: UserContentDescriptorPreferences
+	(*CPackageReservationStatus)(nil),                                   // 74: CPackageReservationStatus
+	(ESteamDeckCompatibilityFeedback)(0),                                // 75: ESteamDeckCompatibilityFeedback
+	(*NoResponse)(nil),                                                  // 76: NoResponse
 }
 var file_steammessages_store_steamclient_proto_depIdxs = []int32{
 	59, // 0: CStore_PurchaseReceiptInfo.line_items:type_name -> CStore_PurchaseReceiptInfo.LineItem
@@ -4639,78 +4650,79 @@ var file_steammessages_store_steamclient_proto_depIdxs = []int32{
 	2,  // 24: CStore_ReportApp_Request.report_type:type_name -> EAppReportType
 	3,  // 25: CStore_UserPreferences.review_score_preference:type_name -> EUserReviewScorePreference
 	71, // 26: CStore_UserPreferences.provide_deck_feedback:type_name -> EProvideDeckFeedbackPreference
-	65, // 27: CStore_UserTagPreferences.tags_to_exclude:type_name -> CStore_UserTagPreferences.Tag
-	34, // 28: CStore_GetStorePreferences_Response.preferences:type_name -> CStore_UserPreferences
-	35, // 29: CStore_GetStorePreferences_Response.tag_preferences:type_name -> CStore_UserTagPreferences
-	72, // 30: CStore_GetStorePreferences_Response.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
-	66, // 31: CStore_GetTrendingAppsAmongFriends_Response.trending_apps:type_name -> CStore_GetTrendingAppsAmongFriends_Response.TrendingAppData
-	4,  // 32: CStore_MigratePartnerLinkTracking_Notification.backfill_source:type_name -> EPartnerLinkTrackingBackfillSource
-	73, // 33: CStore_UpdatePackageReservations_Response.reservation_status:type_name -> CPackageReservationStatus
-	46, // 34: CStore_SetReservationPositionMessage_Request.settings:type_name -> CReservationPositionMessage
-	46, // 35: CStore_GetAllReservationPositionMessages_Response.settings:type_name -> CReservationPositionMessage
-	74, // 36: CSteamDeckCompatibility_SetFeedback_Request.feedback:type_name -> ESteamDeckCompatibilityFeedback
-	74, // 37: CSteamDeckCompatibility_ShouldPrompt_Response.existing_feedback:type_name -> ESteamDeckCompatibilityFeedback
-	34, // 38: CStore_StorePreferencesChanged_Notification.preferences:type_name -> CStore_UserPreferences
-	35, // 39: CStore_StorePreferencesChanged_Notification.tag_preferences:type_name -> CStore_UserTagPreferences
-	72, // 40: CStore_StorePreferencesChanged_Notification.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
-	0,  // 41: CStore_GetUserGameInterestState_Response.InQueue.type:type_name -> EStoreDiscoveryQueueType
-	5,  // 42: Store.RegisterCDKey:input_type -> CStore_RegisterCDKey_Request
-	8,  // 43: Store.GetRecommendedTagsForUser:input_type -> CStore_GetRecommendedTagsForUser_Request
-	10, // 44: Store.GetMostPopularTags:input_type -> CStore_GetMostPopularTags_Request
-	12, // 45: Store.GetLocalizedNameForTags:input_type -> CStore_GetLocalizedNameForTags_Request
-	14, // 46: Store.GetTagList:input_type -> CStore_GetTagList_Request
-	17, // 47: Store.GetDiscoveryQueue:input_type -> CStore_GetDiscoveryQueue_Request
-	19, // 48: Store.GetDiscoveryQueueSettings:input_type -> CStore_GetDiscoveryQueueSettings_Request
-	21, // 49: Store.SkipDiscoveryQueueItem:input_type -> CStore_SkipDiscoveryQueueItem_Request
-	23, // 50: Store.GetUserGameInterestState:input_type -> CStore_GetUserGameInterestState_Request
-	25, // 51: Store.GetGamesFollowed:input_type -> CStore_GetGamesFollowed_Request
-	27, // 52: Store.GetGamesFollowedCount:input_type -> CStore_GetGamesFollowedCount_Request
-	29, // 53: Store.GetDiscoveryQueueSkippedApps:input_type -> CStore_GetDiscoveryQueueSkippedApps_Request
-	31, // 54: Store.ReportApp:input_type -> CStore_ReportApp_Request
-	33, // 55: Store.GetStorePreferences:input_type -> CStore_GetStorePreferences_Request
-	37, // 56: Store.GetTrendingAppsAmongFriends:input_type -> CStore_GetTrendingAppsAmongFriends_Request
-	39, // 57: Store.MigratePartnerLinkTracking:input_type -> CStore_MigratePartnerLinkTracking_Notification
-	40, // 58: Store.UpdatePackageReservations:input_type -> CStore_UpdatePackageReservations_Request
-	42, // 59: Store.GetWishlistDemoEmailStatus:input_type -> CStore_GetWishlistDemoEmailStatus_Request
-	44, // 60: Store.QueueWishlistDemoEmailToFire:input_type -> CStore_QueueWishlistDemoEmailToFire_Request
-	47, // 61: Store.SetReservationPositionMessage:input_type -> CStore_SetReservationPositionMessage_Request
-	49, // 62: Store.DeleteReservationPositionMessage:input_type -> CStore_DeleteReservationPositionMessage_Request
-	51, // 63: Store.GetAllReservationPositionMessages:input_type -> CStore_GetAllReservationPositionMessages_Request
-	53, // 64: Store.ReloadAllReservationPositionMessages:input_type -> CStore_ReloadAllReservationPositionMessages_Notification
-	54, // 65: Store.SetCompatibilityFeedback:input_type -> CSteamDeckCompatibility_SetFeedback_Request
-	56, // 66: Store.ShouldPromptForCompatibilityFeedback:input_type -> CSteamDeckCompatibility_ShouldPrompt_Request
-	58, // 67: StoreClient.NotifyStorePreferencesChanged:input_type -> CStore_StorePreferencesChanged_Notification
-	7,  // 68: Store.RegisterCDKey:output_type -> CStore_RegisterCDKey_Response
-	9,  // 69: Store.GetRecommendedTagsForUser:output_type -> CStore_GetRecommendedTagsForUser_Response
-	11, // 70: Store.GetMostPopularTags:output_type -> CStore_GetMostPopularTags_Response
-	13, // 71: Store.GetLocalizedNameForTags:output_type -> CStore_GetLocalizedNameForTags_Response
-	15, // 72: Store.GetTagList:output_type -> CStore_GetTagList_Response
-	18, // 73: Store.GetDiscoveryQueue:output_type -> CStore_GetDiscoveryQueue_Response
-	20, // 74: Store.GetDiscoveryQueueSettings:output_type -> CStore_GetDiscoveryQueueSettings_Response
-	22, // 75: Store.SkipDiscoveryQueueItem:output_type -> CStore_SkipDiscoveryQueueItem_Response
-	24, // 76: Store.GetUserGameInterestState:output_type -> CStore_GetUserGameInterestState_Response
-	26, // 77: Store.GetGamesFollowed:output_type -> CStore_GetGamesFollowed_Response
-	28, // 78: Store.GetGamesFollowedCount:output_type -> CStore_GetGamesFollowedCount_Response
-	30, // 79: Store.GetDiscoveryQueueSkippedApps:output_type -> CStore_GetDiscoveryQueueSkippedApps_Response
-	32, // 80: Store.ReportApp:output_type -> CStore_ReportApp_Response
-	36, // 81: Store.GetStorePreferences:output_type -> CStore_GetStorePreferences_Response
-	38, // 82: Store.GetTrendingAppsAmongFriends:output_type -> CStore_GetTrendingAppsAmongFriends_Response
-	75, // 83: Store.MigratePartnerLinkTracking:output_type -> NoResponse
-	41, // 84: Store.UpdatePackageReservations:output_type -> CStore_UpdatePackageReservations_Response
-	43, // 85: Store.GetWishlistDemoEmailStatus:output_type -> CStore_GetWishlistDemoEmailStatus_Response
-	45, // 86: Store.QueueWishlistDemoEmailToFire:output_type -> CStore_QueueWishlistDemoEmailToFire_Response
-	48, // 87: Store.SetReservationPositionMessage:output_type -> CStore_SetReservationPositionMessage_Response
-	50, // 88: Store.DeleteReservationPositionMessage:output_type -> CStore_DeleteReservationPositionMessage_Response
-	52, // 89: Store.GetAllReservationPositionMessages:output_type -> CStore_GetAllReservationPositionMessages_Response
-	75, // 90: Store.ReloadAllReservationPositionMessages:output_type -> NoResponse
-	55, // 91: Store.SetCompatibilityFeedback:output_type -> CSteamDeckCompatibility_SetFeedback_Response
-	57, // 92: Store.ShouldPromptForCompatibilityFeedback:output_type -> CSteamDeckCompatibility_ShouldPrompt_Response
-	75, // 93: StoreClient.NotifyStorePreferencesChanged:output_type -> NoResponse
-	68, // [68:94] is the sub-list for method output_type
-	42, // [42:68] is the sub-list for method input_type
-	42, // [42:42] is the sub-list for extension type_name
-	42, // [42:42] is the sub-list for extension extendee
-	0,  // [0:42] is the sub-list for field type_name
+	72, // 27: CStore_UserPreferences.game_frame_rate_reporting:type_name -> EGameFrameRateReportingPreference
+	65, // 28: CStore_UserTagPreferences.tags_to_exclude:type_name -> CStore_UserTagPreferences.Tag
+	34, // 29: CStore_GetStorePreferences_Response.preferences:type_name -> CStore_UserPreferences
+	35, // 30: CStore_GetStorePreferences_Response.tag_preferences:type_name -> CStore_UserTagPreferences
+	73, // 31: CStore_GetStorePreferences_Response.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
+	66, // 32: CStore_GetTrendingAppsAmongFriends_Response.trending_apps:type_name -> CStore_GetTrendingAppsAmongFriends_Response.TrendingAppData
+	4,  // 33: CStore_MigratePartnerLinkTracking_Notification.backfill_source:type_name -> EPartnerLinkTrackingBackfillSource
+	74, // 34: CStore_UpdatePackageReservations_Response.reservation_status:type_name -> CPackageReservationStatus
+	46, // 35: CStore_SetReservationPositionMessage_Request.settings:type_name -> CReservationPositionMessage
+	46, // 36: CStore_GetAllReservationPositionMessages_Response.settings:type_name -> CReservationPositionMessage
+	75, // 37: CSteamDeckCompatibility_SetFeedback_Request.feedback:type_name -> ESteamDeckCompatibilityFeedback
+	75, // 38: CSteamDeckCompatibility_ShouldPrompt_Response.existing_feedback:type_name -> ESteamDeckCompatibilityFeedback
+	34, // 39: CStore_StorePreferencesChanged_Notification.preferences:type_name -> CStore_UserPreferences
+	35, // 40: CStore_StorePreferencesChanged_Notification.tag_preferences:type_name -> CStore_UserTagPreferences
+	73, // 41: CStore_StorePreferencesChanged_Notification.content_descriptor_preferences:type_name -> UserContentDescriptorPreferences
+	0,  // 42: CStore_GetUserGameInterestState_Response.InQueue.type:type_name -> EStoreDiscoveryQueueType
+	5,  // 43: Store.RegisterCDKey:input_type -> CStore_RegisterCDKey_Request
+	8,  // 44: Store.GetRecommendedTagsForUser:input_type -> CStore_GetRecommendedTagsForUser_Request
+	10, // 45: Store.GetMostPopularTags:input_type -> CStore_GetMostPopularTags_Request
+	12, // 46: Store.GetLocalizedNameForTags:input_type -> CStore_GetLocalizedNameForTags_Request
+	14, // 47: Store.GetTagList:input_type -> CStore_GetTagList_Request
+	17, // 48: Store.GetDiscoveryQueue:input_type -> CStore_GetDiscoveryQueue_Request
+	19, // 49: Store.GetDiscoveryQueueSettings:input_type -> CStore_GetDiscoveryQueueSettings_Request
+	21, // 50: Store.SkipDiscoveryQueueItem:input_type -> CStore_SkipDiscoveryQueueItem_Request
+	23, // 51: Store.GetUserGameInterestState:input_type -> CStore_GetUserGameInterestState_Request
+	25, // 52: Store.GetGamesFollowed:input_type -> CStore_GetGamesFollowed_Request
+	27, // 53: Store.GetGamesFollowedCount:input_type -> CStore_GetGamesFollowedCount_Request
+	29, // 54: Store.GetDiscoveryQueueSkippedApps:input_type -> CStore_GetDiscoveryQueueSkippedApps_Request
+	31, // 55: Store.ReportApp:input_type -> CStore_ReportApp_Request
+	33, // 56: Store.GetStorePreferences:input_type -> CStore_GetStorePreferences_Request
+	37, // 57: Store.GetTrendingAppsAmongFriends:input_type -> CStore_GetTrendingAppsAmongFriends_Request
+	39, // 58: Store.MigratePartnerLinkTracking:input_type -> CStore_MigratePartnerLinkTracking_Notification
+	40, // 59: Store.UpdatePackageReservations:input_type -> CStore_UpdatePackageReservations_Request
+	42, // 60: Store.GetWishlistDemoEmailStatus:input_type -> CStore_GetWishlistDemoEmailStatus_Request
+	44, // 61: Store.QueueWishlistDemoEmailToFire:input_type -> CStore_QueueWishlistDemoEmailToFire_Request
+	47, // 62: Store.SetReservationPositionMessage:input_type -> CStore_SetReservationPositionMessage_Request
+	49, // 63: Store.DeleteReservationPositionMessage:input_type -> CStore_DeleteReservationPositionMessage_Request
+	51, // 64: Store.GetAllReservationPositionMessages:input_type -> CStore_GetAllReservationPositionMessages_Request
+	53, // 65: Store.ReloadAllReservationPositionMessages:input_type -> CStore_ReloadAllReservationPositionMessages_Notification
+	54, // 66: Store.SetCompatibilityFeedback:input_type -> CSteamDeckCompatibility_SetFeedback_Request
+	56, // 67: Store.ShouldPromptForCompatibilityFeedback:input_type -> CSteamDeckCompatibility_ShouldPrompt_Request
+	58, // 68: StoreClient.NotifyStorePreferencesChanged:input_type -> CStore_StorePreferencesChanged_Notification
+	7,  // 69: Store.RegisterCDKey:output_type -> CStore_RegisterCDKey_Response
+	9,  // 70: Store.GetRecommendedTagsForUser:output_type -> CStore_GetRecommendedTagsForUser_Response
+	11, // 71: Store.GetMostPopularTags:output_type -> CStore_GetMostPopularTags_Response
+	13, // 72: Store.GetLocalizedNameForTags:output_type -> CStore_GetLocalizedNameForTags_Response
+	15, // 73: Store.GetTagList:output_type -> CStore_GetTagList_Response
+	18, // 74: Store.GetDiscoveryQueue:output_type -> CStore_GetDiscoveryQueue_Response
+	20, // 75: Store.GetDiscoveryQueueSettings:output_type -> CStore_GetDiscoveryQueueSettings_Response
+	22, // 76: Store.SkipDiscoveryQueueItem:output_type -> CStore_SkipDiscoveryQueueItem_Response
+	24, // 77: Store.GetUserGameInterestState:output_type -> CStore_GetUserGameInterestState_Response
+	26, // 78: Store.GetGamesFollowed:output_type -> CStore_GetGamesFollowed_Response
+	28, // 79: Store.GetGamesFollowedCount:output_type -> CStore_GetGamesFollowedCount_Response
+	30, // 80: Store.GetDiscoveryQueueSkippedApps:output_type -> CStore_GetDiscoveryQueueSkippedApps_Response
+	32, // 81: Store.ReportApp:output_type -> CStore_ReportApp_Response
+	36, // 82: Store.GetStorePreferences:output_type -> CStore_GetStorePreferences_Response
+	38, // 83: Store.GetTrendingAppsAmongFriends:output_type -> CStore_GetTrendingAppsAmongFriends_Response
+	76, // 84: Store.MigratePartnerLinkTracking:output_type -> NoResponse
+	41, // 85: Store.UpdatePackageReservations:output_type -> CStore_UpdatePackageReservations_Response
+	43, // 86: Store.GetWishlistDemoEmailStatus:output_type -> CStore_GetWishlistDemoEmailStatus_Response
+	45, // 87: Store.QueueWishlistDemoEmailToFire:output_type -> CStore_QueueWishlistDemoEmailToFire_Response
+	48, // 88: Store.SetReservationPositionMessage:output_type -> CStore_SetReservationPositionMessage_Response
+	50, // 89: Store.DeleteReservationPositionMessage:output_type -> CStore_DeleteReservationPositionMessage_Response
+	52, // 90: Store.GetAllReservationPositionMessages:output_type -> CStore_GetAllReservationPositionMessages_Response
+	76, // 91: Store.ReloadAllReservationPositionMessages:output_type -> NoResponse
+	55, // 92: Store.SetCompatibilityFeedback:output_type -> CSteamDeckCompatibility_SetFeedback_Response
+	57, // 93: Store.ShouldPromptForCompatibilityFeedback:output_type -> CSteamDeckCompatibility_ShouldPrompt_Response
+	76, // 94: StoreClient.NotifyStorePreferencesChanged:output_type -> NoResponse
+	69, // [69:95] is the sub-list for method output_type
+	43, // [43:69] is the sub-list for method input_type
+	43, // [43:43] is the sub-list for extension type_name
+	43, // [43:43] is the sub-list for extension extendee
+	0,  // [0:43] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_store_steamclient_proto_init() }

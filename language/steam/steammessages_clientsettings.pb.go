@@ -845,7 +845,6 @@ type CMsgClientSettings struct {
 	SystemIdleSuspendAcSec                *int32                    `protobuf:"varint,24004,opt,name=system_idle_suspend_ac_sec,json=systemIdleSuspendAcSec" json:"system_idle_suspend_ac_sec,omitempty"`
 	SystemEnableLowPowerDownloads         *bool                     `protobuf:"varint,24005,opt,name=system_enable_low_power_downloads,json=systemEnableLowPowerDownloads" json:"system_enable_low_power_downloads,omitempty"`
 	SystemAllowBatteryLowPowerDownloads   *bool                     `protobuf:"varint,24006,opt,name=system_allow_battery_low_power_downloads,json=systemAllowBatteryLowPowerDownloads" json:"system_allow_battery_low_power_downloads,omitempty"`
-	GameFramerateReportEnabled            *EFrameRateReportEnabled  `protobuf:"varint,24007,opt,name=game_framerate_report_enabled,json=gameFramerateReportEnabled,enum=EFrameRateReportEnabled,def=0" json:"game_framerate_report_enabled,omitempty"`
 	VrShowPerfGraphInHmd                  *bool                     `protobuf:"varint,25000,opt,name=vr_show_perf_graph_in_hmd,json=vrShowPerfGraphInHmd" json:"vr_show_perf_graph_in_hmd,omitempty"`
 	AccessibilityDebugVisualizer          *bool                     `protobuf:"varint,26000,opt,name=accessibility_debug_visualizer,json=accessibilityDebugVisualizer" json:"accessibility_debug_visualizer,omitempty"`
 	AccessibilityScreenReaderEnabled      *bool                     `protobuf:"varint,26001,opt,name=accessibility_screen_reader_enabled,json=accessibilityScreenReaderEnabled" json:"accessibility_screen_reader_enabled,omitempty"`
@@ -889,7 +888,6 @@ const (
 	Default_CMsgClientSettings_GamerecordingExportCodec     = EExportCodec_k_EExportCodec_Default
 	Default_CMsgClientSettings_GamescopeHdrVisualization    = EHDRVisualization_k_EHDRVisualization_None
 	Default_CMsgClientSettings_SettingValidationEnum        = EHDRVisualization_k_EHDRVisualization_None
-	Default_CMsgClientSettings_GameFramerateReportEnabled   = EFrameRateReportEnabled_k_EFrameRateReportEnabled_Unset
 )
 
 func (x *CMsgClientSettings) Reset() {
@@ -2364,13 +2362,6 @@ func (x *CMsgClientSettings) GetSystemAllowBatteryLowPowerDownloads() bool {
 	return false
 }
 
-func (x *CMsgClientSettings) GetGameFramerateReportEnabled() EFrameRateReportEnabled {
-	if x != nil && x.GameFramerateReportEnabled != nil {
-		return *x.GameFramerateReportEnabled
-	}
-	return Default_CMsgClientSettings_GameFramerateReportEnabled
-}
-
 func (x *CMsgClientSettings) GetVrShowPerfGraphInHmd() bool {
 	if x != nil && x.VrShowPerfGraphInHmd != nil {
 		return *x.VrShowPerfGraphInHmd
@@ -2735,7 +2726,7 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"valueFloat\x12#\n" +
 	"\fvalue_string\x18\a \x01(\tH\x00R\vvalueString\x120\n" +
 	"\fvalue_hotkey\x18\b \x01(\v2\v.CMsgHotkeyH\x00R\vvalueHotkeyB\a\n" +
-	"\x05value\"\xf7\xc0\x01\n" +
+	"\x05value\"ǿ\x01\n" +
 	"\x12CMsgClientSettings\x12b\n" +
 	"\x15no_save_personal_info\x18\x01 \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'Software\\Valve\\Steam\\NoSavePersonalInfoR\x12noSavePersonalInfo\x12.\n" +
 	"\x0ein_client_beta\x18\x03 \x01(\bB\b\x80\xa6\x1d\x05\x90\xa6\x1d\x01R\finClientBeta\x128\n" +
@@ -2946,8 +2937,7 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x1fsystem_idle_suspend_battery_sec\x18û\x01 \x01(\x05BB\x80\xa6\x1d\x01\x8a\xa6\x1d5Software\\Valve\\Steam\\System\\IdleSuspendBatterySeconds\xa0\xa6\x1d\x84\aR\x1bsystemIdleSuspendBatterySec\x12{\n" +
 	"\x1asystem_idle_suspend_ac_sec\x18Ļ\x01 \x01(\x05B=\x80\xa6\x1d\x01\x8a\xa6\x1d0Software\\Valve\\Steam\\System\\IdleSuspendACSeconds\xa0\xa6\x1d\x90\x1cR\x16systemIdleSuspendAcSec\x12\x8b\x01\n" +
 	"!system_enable_low_power_downloads\x18Ż\x01 \x01(\bB?\x80\xa6\x1d\x01\x8a\xa6\x1d3Software\\Valve\\Steam\\System\\EnableLowPowerDownloads\x98\xa6\x1d\x01R\x1dsystemEnableLowPowerDownloads\x12\x9e\x01\n" +
-	"(system_allow_battery_low_power_downloads\x18ƻ\x01 \x01(\bBE\x80\xa6\x1d\x01\x8a\xa6\x1d9Software\\Valve\\Steam\\System\\AllowBatteryLowPowerDownloads\x98\xa6\x1d\x00R#systemAllowBatteryLowPowerDownloads\x12\xad\x01\n" +
-	"\x1dgame_framerate_report_enabled\x18ǻ\x01 \x01(\x0e2\x18.EFrameRateReportEnabled:\x1fk_EFrameRateReportEnabled_UnsetB-\x80\xa6\x1d\x03\x8a\xa6\x1d!System/GameFrameRateReportEnabled\xa0\xa6\x1d\x00R\x1agameFramerateReportEnabled\x12\\\n" +
+	"(system_allow_battery_low_power_downloads\x18ƻ\x01 \x01(\bBE\x80\xa6\x1d\x01\x8a\xa6\x1d9Software\\Valve\\Steam\\System\\AllowBatteryLowPowerDownloads\x98\xa6\x1d\x00R#systemAllowBatteryLowPowerDownloads\x12\\\n" +
 	"\x19vr_show_perf_graph_in_hmd\x18\xa8\xc3\x01 \x01(\bB!\x80\xa6\x1d\x03\x8a\xa6\x1d\x15VR/ShowPerfGraphInHMD\x98\xa6\x1d\x00R\x14vrShowPerfGraphInHmd\x12q\n" +
 	"\x1eaccessibility_debug_visualizer\x18\x90\xcb\x01 \x01(\bB)\x80\xa6\x1d\x03\x8a\xa6\x1d\x1dAccessibility/DebugVisualizer\x98\xa6\x1d\x00R\x1caccessibilityDebugVisualizer\x12~\n" +
 	"#accessibility_screen_reader_enabled\x18\x91\xcb\x01 \x01(\bB-\x80\xa6\x1d\x01\x8a\xa6\x1d!Accessibility/ScreenReaderEnabled\x98\xa6\x1d\x00R accessibilityScreenReaderEnabled\x12y\n" +
@@ -3072,27 +3062,26 @@ var file_steammessages_clientsettings_proto_depIdxs = []int32{
 	6,  // 16: CMsgClientSettings.gamescope_qam_hotkey:type_name -> CMsgHotkey
 	13, // 17: CMsgClientSettings.setting_validation_enum:type_name -> EHDRVisualization
 	6,  // 18: CMsgClientSettings.setting_validation_hotkey:type_name -> CMsgHotkey
-	5,  // 19: CMsgClientSettings.game_framerate_report_enabled:type_name -> EFrameRateReportEnabled
-	14, // 20: setting_store:extendee -> google.protobuf.FieldOptions
-	14, // 21: setting_name:extendee -> google.protobuf.FieldOptions
-	14, // 22: setting_pre_login:extendee -> google.protobuf.FieldOptions
-	14, // 23: setting_default_bool:extendee -> google.protobuf.FieldOptions
-	14, // 24: setting_default_int:extendee -> google.protobuf.FieldOptions
-	14, // 25: setting_default_uint:extendee -> google.protobuf.FieldOptions
-	14, // 26: setting_default_float:extendee -> google.protobuf.FieldOptions
-	14, // 27: setting_default_string:extendee -> google.protobuf.FieldOptions
-	14, // 28: setting_readonly:extendee -> google.protobuf.FieldOptions
-	14, // 29: setting_description:extendee -> google.protobuf.FieldOptions
-	14, // 30: setting_profile_mode:extendee -> google.protobuf.FieldOptions
-	14, // 31: setting_clamp_min:extendee -> google.protobuf.FieldOptions
-	14, // 32: setting_clamp_max:extendee -> google.protobuf.FieldOptions
-	0,  // 33: setting_store:type_name -> EClientSettingStore
-	2,  // 34: setting_profile_mode:type_name -> ESettingProfileMode
-	35, // [35:35] is the sub-list for method output_type
-	35, // [35:35] is the sub-list for method input_type
-	33, // [33:35] is the sub-list for extension type_name
-	20, // [20:33] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	14, // 19: setting_store:extendee -> google.protobuf.FieldOptions
+	14, // 20: setting_name:extendee -> google.protobuf.FieldOptions
+	14, // 21: setting_pre_login:extendee -> google.protobuf.FieldOptions
+	14, // 22: setting_default_bool:extendee -> google.protobuf.FieldOptions
+	14, // 23: setting_default_int:extendee -> google.protobuf.FieldOptions
+	14, // 24: setting_default_uint:extendee -> google.protobuf.FieldOptions
+	14, // 25: setting_default_float:extendee -> google.protobuf.FieldOptions
+	14, // 26: setting_default_string:extendee -> google.protobuf.FieldOptions
+	14, // 27: setting_readonly:extendee -> google.protobuf.FieldOptions
+	14, // 28: setting_description:extendee -> google.protobuf.FieldOptions
+	14, // 29: setting_profile_mode:extendee -> google.protobuf.FieldOptions
+	14, // 30: setting_clamp_min:extendee -> google.protobuf.FieldOptions
+	14, // 31: setting_clamp_max:extendee -> google.protobuf.FieldOptions
+	0,  // 32: setting_store:type_name -> EClientSettingStore
+	2,  // 33: setting_profile_mode:type_name -> ESettingProfileMode
+	34, // [34:34] is the sub-list for method output_type
+	34, // [34:34] is the sub-list for method input_type
+	32, // [32:34] is the sub-list for extension type_name
+	19, // [19:32] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_clientsettings_proto_init() }

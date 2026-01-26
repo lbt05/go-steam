@@ -350,6 +350,13 @@ func (x EProvideDeckFeedbackPreference) EncodeValues(key string, v *url.Values) 
 	return nil
 }
 
+// EncodeValues implements the query.Encoder interface for EGameFrameRateReportingPreference.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EGameFrameRateReportingPreference) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
 // EncodeValues implements the query.Encoder interface for ETouchGesture.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x ETouchGesture) EncodeValues(key string, v *url.Values) error {

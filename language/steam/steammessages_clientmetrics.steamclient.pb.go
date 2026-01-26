@@ -1910,9 +1910,9 @@ func (x *CClientMetrics_EndGameRecording_Notification) GetInstantClip() bool {
 }
 
 type CClientMetrics_GamePerformance_Notification struct {
-	state         protoimpl.MessageState                                         `protogen:"open.v1"`
-	FrameRates    []*CClientMetrics_GamePerformance_Notification_FrameRate       `protobuf:"bytes,2,rep,name=frame_rates,json=frameRates" json:"frame_rates,omitempty"`
-	SystemInfo    *CClientMetrics_GamePerformance_Notification_SystemInformation `protobuf:"bytes,3,opt,name=system_info,json=systemInfo" json:"system_info,omitempty"`
+	state         protoimpl.MessageState                                   `protogen:"open.v1"`
+	FrameRates    []*CClientMetrics_GamePerformance_Notification_FrameRate `protobuf:"bytes,2,rep,name=frame_rates,json=frameRates" json:"frame_rates,omitempty"`
+	SystemInfo    *UserSystemInformation                                   `protobuf:"bytes,3,opt,name=system_info,json=systemInfo" json:"system_info,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1954,7 +1954,7 @@ func (x *CClientMetrics_GamePerformance_Notification) GetFrameRates() []*CClient
 	return nil
 }
 
-func (x *CClientMetrics_GamePerformance_Notification) GetSystemInfo() *CClientMetrics_GamePerformance_Notification_SystemInformation {
+func (x *CClientMetrics_GamePerformance_Notification) GetSystemInfo() *UserSystemInformation {
 	if x != nil {
 		return x.SystemInfo
 	}
@@ -2383,122 +2383,6 @@ func (x *CClientMetrics_ClipRange_Notification_RelativeRangeEdge) GetDeltaMs() i
 	return 0
 }
 
-type CClientMetrics_GamePerformance_Notification_SystemInformation struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Manufacturer  *string                `protobuf:"bytes,1,opt,name=manufacturer" json:"manufacturer,omitempty"`
-	Model         *string                `protobuf:"bytes,2,opt,name=model" json:"model,omitempty"`
-	DxVideoCard   *string                `protobuf:"bytes,3,opt,name=dx_video_card,json=dxVideoCard" json:"dx_video_card,omitempty"`
-	DxVendorid    *int32                 `protobuf:"varint,4,opt,name=dx_vendorid,json=dxVendorid" json:"dx_vendorid,omitempty"`
-	DxDeviceid    *int32                 `protobuf:"varint,5,opt,name=dx_deviceid,json=dxDeviceid" json:"dx_deviceid,omitempty"`
-	NumGpu        *uint32                `protobuf:"varint,6,opt,name=num_gpu,json=numGpu" json:"num_gpu,omitempty"`
-	SystemRam     *uint64                `protobuf:"varint,7,opt,name=system_ram,json=systemRam" json:"system_ram,omitempty"`
-	Os            *string                `protobuf:"bytes,8,opt,name=os" json:"os,omitempty"`
-	CpuVendor     *string                `protobuf:"bytes,9,opt,name=cpu_vendor,json=cpuVendor" json:"cpu_vendor,omitempty"`
-	CpuName       *string                `protobuf:"bytes,10,opt,name=cpu_name,json=cpuName" json:"cpu_name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) Reset() {
-	*x = CClientMetrics_GamePerformance_Notification_SystemInformation{}
-	mi := &file_steammessages_clientmetrics_steamclient_proto_msgTypes[27]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CClientMetrics_GamePerformance_Notification_SystemInformation) ProtoMessage() {}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientmetrics_steamclient_proto_msgTypes[27]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CClientMetrics_GamePerformance_Notification_SystemInformation.ProtoReflect.Descriptor instead.
-func (*CClientMetrics_GamePerformance_Notification_SystemInformation) Descriptor() ([]byte, []int) {
-	return file_steammessages_clientmetrics_steamclient_proto_rawDescGZIP(), []int{20, 0}
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetManufacturer() string {
-	if x != nil && x.Manufacturer != nil {
-		return *x.Manufacturer
-	}
-	return ""
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetModel() string {
-	if x != nil && x.Model != nil {
-		return *x.Model
-	}
-	return ""
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetDxVideoCard() string {
-	if x != nil && x.DxVideoCard != nil {
-		return *x.DxVideoCard
-	}
-	return ""
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetDxVendorid() int32 {
-	if x != nil && x.DxVendorid != nil {
-		return *x.DxVendorid
-	}
-	return 0
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetDxDeviceid() int32 {
-	if x != nil && x.DxDeviceid != nil {
-		return *x.DxDeviceid
-	}
-	return 0
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetNumGpu() uint32 {
-	if x != nil && x.NumGpu != nil {
-		return *x.NumGpu
-	}
-	return 0
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetSystemRam() uint64 {
-	if x != nil && x.SystemRam != nil {
-		return *x.SystemRam
-	}
-	return 0
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetOs() string {
-	if x != nil && x.Os != nil {
-		return *x.Os
-	}
-	return ""
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetCpuVendor() string {
-	if x != nil && x.CpuVendor != nil {
-		return *x.CpuVendor
-	}
-	return ""
-}
-
-func (x *CClientMetrics_GamePerformance_Notification_SystemInformation) GetCpuName() string {
-	if x != nil && x.CpuName != nil {
-		return *x.CpuName
-	}
-	return ""
-}
-
 type CClientMetrics_GamePerformance_Notification_FrameRate struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Gameid         *uint64                `protobuf:"fixed64,1,opt,name=gameid" json:"gameid,omitempty"`
@@ -2510,7 +2394,7 @@ type CClientMetrics_GamePerformance_Notification_FrameRate struct {
 
 func (x *CClientMetrics_GamePerformance_Notification_FrameRate) Reset() {
 	*x = CClientMetrics_GamePerformance_Notification_FrameRate{}
-	mi := &file_steammessages_clientmetrics_steamclient_proto_msgTypes[28]
+	mi := &file_steammessages_clientmetrics_steamclient_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2522,7 +2406,7 @@ func (x *CClientMetrics_GamePerformance_Notification_FrameRate) String() string 
 func (*CClientMetrics_GamePerformance_Notification_FrameRate) ProtoMessage() {}
 
 func (x *CClientMetrics_GamePerformance_Notification_FrameRate) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_clientmetrics_steamclient_proto_msgTypes[28]
+	mi := &file_steammessages_clientmetrics_steamclient_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2535,7 +2419,7 @@ func (x *CClientMetrics_GamePerformance_Notification_FrameRate) ProtoReflect() p
 
 // Deprecated: Use CClientMetrics_GamePerformance_Notification_FrameRate.ProtoReflect.Descriptor instead.
 func (*CClientMetrics_GamePerformance_Notification_FrameRate) Descriptor() ([]byte, []int) {
-	return file_steammessages_clientmetrics_steamclient_proto_rawDescGZIP(), []int{20, 1}
+	return file_steammessages_clientmetrics_steamclient_proto_rawDescGZIP(), []int{20, 0}
 }
 
 func (x *CClientMetrics_GamePerformance_Notification_FrameRate) GetGameid() uint64 {
@@ -2746,28 +2630,12 @@ const file_steammessages_clientmetrics_steamclient_proto_rawDesc = "" +
 	"\aseconds\x18\x02 \x01(\x02R\aseconds\x12\x14\n" +
 	"\x05bytes\x18\x03 \x01(\x04R\x05bytes\x12\x16\n" +
 	"\x06gameid\x18\x04 \x01(\x06R\x06gameid\x12!\n" +
-	"\finstant_clip\x18\x05 \x01(\bR\vinstantClip\"\x8c\x05\n" +
+	"\finstant_clip\x18\x05 \x01(\bR\vinstantClip\"\xac\x02\n" +
 	"+CClientMetrics_GamePerformance_Notification\x12W\n" +
 	"\vframe_rates\x18\x02 \x03(\v26.CClientMetrics_GamePerformance_Notification.FrameRateR\n" +
-	"frameRates\x12_\n" +
-	"\vsystem_info\x18\x03 \x01(\v2>.CClientMetrics_GamePerformance_Notification.SystemInformationR\n" +
-	"systemInfo\x1a\xb5\x02\n" +
-	"\x11SystemInformation\x12\"\n" +
-	"\fmanufacturer\x18\x01 \x01(\tR\fmanufacturer\x12\x14\n" +
-	"\x05model\x18\x02 \x01(\tR\x05model\x12\"\n" +
-	"\rdx_video_card\x18\x03 \x01(\tR\vdxVideoCard\x12\x1f\n" +
-	"\vdx_vendorid\x18\x04 \x01(\x05R\n" +
-	"dxVendorid\x12\x1f\n" +
-	"\vdx_deviceid\x18\x05 \x01(\x05R\n" +
-	"dxDeviceid\x12\x17\n" +
-	"\anum_gpu\x18\x06 \x01(\rR\x06numGpu\x12\x1d\n" +
-	"\n" +
-	"system_ram\x18\a \x01(\x04R\tsystemRam\x12\x0e\n" +
-	"\x02os\x18\b \x01(\tR\x02os\x12\x1d\n" +
-	"\n" +
-	"cpu_vendor\x18\t \x01(\tR\tcpuVendor\x12\x19\n" +
-	"\bcpu_name\x18\n" +
-	" \x01(\tR\acpuName\x1ak\n" +
+	"frameRates\x127\n" +
+	"\vsystem_info\x18\x03 \x01(\v2\x16.UserSystemInformationR\n" +
+	"systemInfo\x1ak\n" +
 	"\tFrameRate\x12\x16\n" +
 	"\x06gameid\x18\x01 \x01(\x06R\x06gameid\x12\x1d\n" +
 	"\n" +
@@ -2828,46 +2696,46 @@ func file_steammessages_clientmetrics_steamclient_proto_rawDescGZIP() []byte {
 }
 
 var file_steammessages_clientmetrics_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_steammessages_clientmetrics_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_steammessages_clientmetrics_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_steammessages_clientmetrics_steamclient_proto_goTypes = []any{
-	(ESteamPipeWorkType)(0),                                               // 0: ESteamPipeWorkType
-	(ESteamPipeOperationType)(0),                                          // 1: ESteamPipeOperationType
-	(EClipShareMethod)(0),                                                 // 2: EClipShareMethod
-	(EClipRangeMethod)(0),                                                 // 3: EClipRangeMethod
-	(*CClientMetrics_AppInterfaceCreation)(nil),                           // 4: CClientMetrics_AppInterfaceCreation
-	(*CClientMetrics_AppInterfaceMethodCounts)(nil),                       // 5: CClientMetrics_AppInterfaceMethodCounts
-	(*CClientMetrics_AppInterfaceStats_Notification)(nil),                 // 6: CClientMetrics_AppInterfaceStats_Notification
-	(*CClientMetrics_IPv6Connectivity_Result)(nil),                        // 7: CClientMetrics_IPv6Connectivity_Result
-	(*CClientMetrics_IPv6Connectivity_Notification)(nil),                  // 8: CClientMetrics_IPv6Connectivity_Notification
-	(*CClientMetrics_SteamPipeWorkStats_Operation)(nil),                   // 9: CClientMetrics_SteamPipeWorkStats_Operation
-	(*CClientMetrics_SteamPipeWorkStats_Notification)(nil),                // 10: CClientMetrics_SteamPipeWorkStats_Notification
-	(*CClientMetrics_ReportReactUsage_Notification)(nil),                  // 11: CClientMetrics_ReportReactUsage_Notification
-	(*CClientMetrics_ReportClientError_Notification)(nil),                 // 12: CClientMetrics_ReportClientError_Notification
-	(*CClientMetrics_ClientBootstrap_Notification)(nil),                   // 13: CClientMetrics_ClientBootstrap_Notification
-	(*CClientMetrics_DownloadRates_Notification)(nil),                     // 14: CClientMetrics_DownloadRates_Notification
-	(*CClientMetrics_ContentValidation_Notification)(nil),                 // 15: CClientMetrics_ContentValidation_Notification
-	(*CClientMetrics_CloudAppSyncStats_Notification)(nil),                 // 16: CClientMetrics_CloudAppSyncStats_Notification
-	(*CClientMetrics_ContentDownloadResponse_Counts_Notification)(nil),    // 17: CClientMetrics_ContentDownloadResponse_Counts_Notification
-	(*CClientMetrics_ReportClientArgs_Notification)(nil),                  // 18: CClientMetrics_ReportClientArgs_Notification
-	(*CClientMetrics_ReportLinuxStats_Notification)(nil),                  // 19: CClientMetrics_ReportLinuxStats_Notification
-	(*CClientMetrics_ReportAccessibilitySettings_Notification)(nil),       // 20: CClientMetrics_ReportAccessibilitySettings_Notification
-	(*CClientMetrics_ClipShare_Notification)(nil),                         // 21: CClientMetrics_ClipShare_Notification
-	(*CClientMetrics_ClipRange_Notification)(nil),                         // 22: CClientMetrics_ClipRange_Notification
-	(*CClientMetrics_EndGameRecording_Notification)(nil),                  // 23: CClientMetrics_EndGameRecording_Notification
-	(*CClientMetrics_GamePerformance_Notification)(nil),                   // 24: CClientMetrics_GamePerformance_Notification
-	(*CClientMetrics_ReportReactUsage_Notification_RouteData)(nil),        // 25: CClientMetrics_ReportReactUsage_Notification.RouteData
-	(*CClientMetrics_ReportReactUsage_Notification_ComponentData)(nil),    // 26: CClientMetrics_ReportReactUsage_Notification.ComponentData
-	(*CClientMetrics_ReportReactUsage_Notification_ActionData)(nil),       // 27: CClientMetrics_ReportReactUsage_Notification.ActionData
-	(*CClientMetrics_ReportClientError_Notification_Error)(nil),           // 28: CClientMetrics_ReportClientError_Notification.Error
-	(*CClientMetrics_DownloadRates_Notification_StatsInfo)(nil),           // 29: CClientMetrics_DownloadRates_Notification.StatsInfo
-	(*CClientMetrics_ClipRange_Notification_RelativeRangeEdge)(nil),       // 30: CClientMetrics_ClipRange_Notification.RelativeRangeEdge
-	(*CClientMetrics_GamePerformance_Notification_SystemInformation)(nil), // 31: CClientMetrics_GamePerformance_Notification.SystemInformation
-	(*CClientMetrics_GamePerformance_Notification_FrameRate)(nil),         // 32: CClientMetrics_GamePerformance_Notification.FrameRate
-	(*CClientMetrics_ClientBootstrap_Summary)(nil),                        // 33: CClientMetrics_ClientBootstrap_Summary
-	(*CClientMetrics_ContentDownloadResponse_Hosts)(nil),                  // 34: CClientMetrics_ContentDownloadResponse_Hosts
-	(EGRMode)(0),            // 35: EGRMode
-	(EGameRecordingType)(0), // 36: EGameRecordingType
-	(*NoResponse)(nil),      // 37: NoResponse
+	(ESteamPipeWorkType)(0),                                            // 0: ESteamPipeWorkType
+	(ESteamPipeOperationType)(0),                                       // 1: ESteamPipeOperationType
+	(EClipShareMethod)(0),                                              // 2: EClipShareMethod
+	(EClipRangeMethod)(0),                                              // 3: EClipRangeMethod
+	(*CClientMetrics_AppInterfaceCreation)(nil),                        // 4: CClientMetrics_AppInterfaceCreation
+	(*CClientMetrics_AppInterfaceMethodCounts)(nil),                    // 5: CClientMetrics_AppInterfaceMethodCounts
+	(*CClientMetrics_AppInterfaceStats_Notification)(nil),              // 6: CClientMetrics_AppInterfaceStats_Notification
+	(*CClientMetrics_IPv6Connectivity_Result)(nil),                     // 7: CClientMetrics_IPv6Connectivity_Result
+	(*CClientMetrics_IPv6Connectivity_Notification)(nil),               // 8: CClientMetrics_IPv6Connectivity_Notification
+	(*CClientMetrics_SteamPipeWorkStats_Operation)(nil),                // 9: CClientMetrics_SteamPipeWorkStats_Operation
+	(*CClientMetrics_SteamPipeWorkStats_Notification)(nil),             // 10: CClientMetrics_SteamPipeWorkStats_Notification
+	(*CClientMetrics_ReportReactUsage_Notification)(nil),               // 11: CClientMetrics_ReportReactUsage_Notification
+	(*CClientMetrics_ReportClientError_Notification)(nil),              // 12: CClientMetrics_ReportClientError_Notification
+	(*CClientMetrics_ClientBootstrap_Notification)(nil),                // 13: CClientMetrics_ClientBootstrap_Notification
+	(*CClientMetrics_DownloadRates_Notification)(nil),                  // 14: CClientMetrics_DownloadRates_Notification
+	(*CClientMetrics_ContentValidation_Notification)(nil),              // 15: CClientMetrics_ContentValidation_Notification
+	(*CClientMetrics_CloudAppSyncStats_Notification)(nil),              // 16: CClientMetrics_CloudAppSyncStats_Notification
+	(*CClientMetrics_ContentDownloadResponse_Counts_Notification)(nil), // 17: CClientMetrics_ContentDownloadResponse_Counts_Notification
+	(*CClientMetrics_ReportClientArgs_Notification)(nil),               // 18: CClientMetrics_ReportClientArgs_Notification
+	(*CClientMetrics_ReportLinuxStats_Notification)(nil),               // 19: CClientMetrics_ReportLinuxStats_Notification
+	(*CClientMetrics_ReportAccessibilitySettings_Notification)(nil),    // 20: CClientMetrics_ReportAccessibilitySettings_Notification
+	(*CClientMetrics_ClipShare_Notification)(nil),                      // 21: CClientMetrics_ClipShare_Notification
+	(*CClientMetrics_ClipRange_Notification)(nil),                      // 22: CClientMetrics_ClipRange_Notification
+	(*CClientMetrics_EndGameRecording_Notification)(nil),               // 23: CClientMetrics_EndGameRecording_Notification
+	(*CClientMetrics_GamePerformance_Notification)(nil),                // 24: CClientMetrics_GamePerformance_Notification
+	(*CClientMetrics_ReportReactUsage_Notification_RouteData)(nil),     // 25: CClientMetrics_ReportReactUsage_Notification.RouteData
+	(*CClientMetrics_ReportReactUsage_Notification_ComponentData)(nil), // 26: CClientMetrics_ReportReactUsage_Notification.ComponentData
+	(*CClientMetrics_ReportReactUsage_Notification_ActionData)(nil),    // 27: CClientMetrics_ReportReactUsage_Notification.ActionData
+	(*CClientMetrics_ReportClientError_Notification_Error)(nil),        // 28: CClientMetrics_ReportClientError_Notification.Error
+	(*CClientMetrics_DownloadRates_Notification_StatsInfo)(nil),        // 29: CClientMetrics_DownloadRates_Notification.StatsInfo
+	(*CClientMetrics_ClipRange_Notification_RelativeRangeEdge)(nil),    // 30: CClientMetrics_ClipRange_Notification.RelativeRangeEdge
+	(*CClientMetrics_GamePerformance_Notification_FrameRate)(nil),      // 31: CClientMetrics_GamePerformance_Notification.FrameRate
+	(*CClientMetrics_ClientBootstrap_Summary)(nil),                     // 32: CClientMetrics_ClientBootstrap_Summary
+	(*CClientMetrics_ContentDownloadResponse_Hosts)(nil),               // 33: CClientMetrics_ContentDownloadResponse_Hosts
+	(EGRMode)(0),                  // 34: EGRMode
+	(EGameRecordingType)(0),       // 35: EGameRecordingType
+	(*UserSystemInformation)(nil), // 36: UserSystemInformation
+	(*NoResponse)(nil),            // 37: NoResponse
 }
 var file_steammessages_clientmetrics_steamclient_proto_depIdxs = []int32{
 	4,  // 0: CClientMetrics_AppInterfaceStats_Notification.interfaces_created:type_name -> CClientMetrics_AppInterfaceCreation
@@ -2880,17 +2748,17 @@ var file_steammessages_clientmetrics_steamclient_proto_depIdxs = []int32{
 	26, // 7: CClientMetrics_ReportReactUsage_Notification.components:type_name -> CClientMetrics_ReportReactUsage_Notification.ComponentData
 	27, // 8: CClientMetrics_ReportReactUsage_Notification.actions:type_name -> CClientMetrics_ReportReactUsage_Notification.ActionData
 	28, // 9: CClientMetrics_ReportClientError_Notification.errors:type_name -> CClientMetrics_ReportClientError_Notification.Error
-	33, // 10: CClientMetrics_ClientBootstrap_Notification.summary:type_name -> CClientMetrics_ClientBootstrap_Summary
+	32, // 10: CClientMetrics_ClientBootstrap_Notification.summary:type_name -> CClientMetrics_ClientBootstrap_Summary
 	29, // 11: CClientMetrics_DownloadRates_Notification.stats:type_name -> CClientMetrics_DownloadRates_Notification.StatsInfo
-	34, // 12: CClientMetrics_ContentDownloadResponse_Counts_Notification.data:type_name -> CClientMetrics_ContentDownloadResponse_Hosts
-	35, // 13: CClientMetrics_ReportClientArgs_Notification.gr_mode:type_name -> EGRMode
+	33, // 12: CClientMetrics_ContentDownloadResponse_Counts_Notification.data:type_name -> CClientMetrics_ContentDownloadResponse_Hosts
+	34, // 13: CClientMetrics_ReportClientArgs_Notification.gr_mode:type_name -> EGRMode
 	2,  // 14: CClientMetrics_ClipShare_Notification.share_method:type_name -> EClipShareMethod
 	3,  // 15: CClientMetrics_ClipRange_Notification.original_range_method:type_name -> EClipRangeMethod
 	30, // 16: CClientMetrics_ClipRange_Notification.start:type_name -> CClientMetrics_ClipRange_Notification.RelativeRangeEdge
 	30, // 17: CClientMetrics_ClipRange_Notification.end:type_name -> CClientMetrics_ClipRange_Notification.RelativeRangeEdge
-	36, // 18: CClientMetrics_EndGameRecording_Notification.recording_type:type_name -> EGameRecordingType
-	32, // 19: CClientMetrics_GamePerformance_Notification.frame_rates:type_name -> CClientMetrics_GamePerformance_Notification.FrameRate
-	31, // 20: CClientMetrics_GamePerformance_Notification.system_info:type_name -> CClientMetrics_GamePerformance_Notification.SystemInformation
+	35, // 18: CClientMetrics_EndGameRecording_Notification.recording_type:type_name -> EGameRecordingType
+	31, // 19: CClientMetrics_GamePerformance_Notification.frame_rates:type_name -> CClientMetrics_GamePerformance_Notification.FrameRate
+	36, // 20: CClientMetrics_GamePerformance_Notification.system_info:type_name -> UserSystemInformation
 	3,  // 21: CClientMetrics_ClipRange_Notification.RelativeRangeEdge.original_range_method:type_name -> EClipRangeMethod
 	3,  // 22: CClientMetrics_ClipRange_Notification.RelativeRangeEdge.latest_range_method:type_name -> EClipRangeMethod
 	6,  // 23: ClientMetrics.ClientAppInterfaceStatsReport:input_type -> CClientMetrics_AppInterfaceStats_Notification
@@ -2949,7 +2817,7 @@ func file_steammessages_clientmetrics_steamclient_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_clientmetrics_steamclient_proto_rawDesc), len(file_steammessages_clientmetrics_steamclient_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   29,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -2760,6 +2760,178 @@ func (x *UserContentDescriptorPreferences) GetContentDescriptorsToExclude() []*U
 	return nil
 }
 
+type UserSystemInformation struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	Manufacturer       *string                `protobuf:"bytes,1,opt,name=manufacturer" json:"manufacturer,omitempty"`
+	Model              *string                `protobuf:"bytes,2,opt,name=model" json:"model,omitempty"`
+	DxVideoCard        *string                `protobuf:"bytes,3,opt,name=dx_video_card,json=dxVideoCard" json:"dx_video_card,omitempty"`
+	DxVendorid         *int32                 `protobuf:"varint,4,opt,name=dx_vendorid,json=dxVendorid" json:"dx_vendorid,omitempty"`
+	DxDeviceid         *int32                 `protobuf:"varint,5,opt,name=dx_deviceid,json=dxDeviceid" json:"dx_deviceid,omitempty"`
+	NumGpu             *uint32                `protobuf:"varint,6,opt,name=num_gpu,json=numGpu" json:"num_gpu,omitempty"`
+	SystemRam          *uint64                `protobuf:"varint,7,opt,name=system_ram,json=systemRam" json:"system_ram,omitempty"`
+	Os                 *string                `protobuf:"bytes,8,opt,name=os" json:"os,omitempty"`
+	CpuVendor          *string                `protobuf:"bytes,9,opt,name=cpu_vendor,json=cpuVendor" json:"cpu_vendor,omitempty"`
+	CpuName            *string                `protobuf:"bytes,10,opt,name=cpu_name,json=cpuName" json:"cpu_name,omitempty"`
+	GamingDeviceType   *uint32                `protobuf:"varint,11,opt,name=gaming_device_type,json=gamingDeviceType" json:"gaming_device_type,omitempty"`
+	DxDriverVersion    *string                `protobuf:"bytes,12,opt,name=dx_driver_version,json=dxDriverVersion" json:"dx_driver_version,omitempty"`
+	DxDriverName       *string                `protobuf:"bytes,13,opt,name=dx_driver_name,json=dxDriverName" json:"dx_driver_name,omitempty"`
+	AdapterDescription *string                `protobuf:"bytes,14,opt,name=adapter_description,json=adapterDescription" json:"adapter_description,omitempty"`
+	DriverVersion      *string                `protobuf:"bytes,15,opt,name=driver_version,json=driverVersion" json:"driver_version,omitempty"`
+	DriverDate         *string                `protobuf:"bytes,16,opt,name=driver_date,json=driverDate" json:"driver_date,omitempty"`
+	VramSize           *uint32                `protobuf:"varint,17,opt,name=vram_size,json=vramSize" json:"vram_size,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *UserSystemInformation) Reset() {
+	*x = UserSystemInformation{}
+	mi := &file_steammessages_base_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserSystemInformation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserSystemInformation) ProtoMessage() {}
+
+func (x *UserSystemInformation) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_base_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserSystemInformation.ProtoReflect.Descriptor instead.
+func (*UserSystemInformation) Descriptor() ([]byte, []int) {
+	return file_steammessages_base_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *UserSystemInformation) GetManufacturer() string {
+	if x != nil && x.Manufacturer != nil {
+		return *x.Manufacturer
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetModel() string {
+	if x != nil && x.Model != nil {
+		return *x.Model
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetDxVideoCard() string {
+	if x != nil && x.DxVideoCard != nil {
+		return *x.DxVideoCard
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetDxVendorid() int32 {
+	if x != nil && x.DxVendorid != nil {
+		return *x.DxVendorid
+	}
+	return 0
+}
+
+func (x *UserSystemInformation) GetDxDeviceid() int32 {
+	if x != nil && x.DxDeviceid != nil {
+		return *x.DxDeviceid
+	}
+	return 0
+}
+
+func (x *UserSystemInformation) GetNumGpu() uint32 {
+	if x != nil && x.NumGpu != nil {
+		return *x.NumGpu
+	}
+	return 0
+}
+
+func (x *UserSystemInformation) GetSystemRam() uint64 {
+	if x != nil && x.SystemRam != nil {
+		return *x.SystemRam
+	}
+	return 0
+}
+
+func (x *UserSystemInformation) GetOs() string {
+	if x != nil && x.Os != nil {
+		return *x.Os
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetCpuVendor() string {
+	if x != nil && x.CpuVendor != nil {
+		return *x.CpuVendor
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetCpuName() string {
+	if x != nil && x.CpuName != nil {
+		return *x.CpuName
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetGamingDeviceType() uint32 {
+	if x != nil && x.GamingDeviceType != nil {
+		return *x.GamingDeviceType
+	}
+	return 0
+}
+
+func (x *UserSystemInformation) GetDxDriverVersion() string {
+	if x != nil && x.DxDriverVersion != nil {
+		return *x.DxDriverVersion
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetDxDriverName() string {
+	if x != nil && x.DxDriverName != nil {
+		return *x.DxDriverName
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetAdapterDescription() string {
+	if x != nil && x.AdapterDescription != nil {
+		return *x.AdapterDescription
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetDriverVersion() string {
+	if x != nil && x.DriverVersion != nil {
+		return *x.DriverVersion
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetDriverDate() string {
+	if x != nil && x.DriverDate != nil {
+		return *x.DriverDate
+	}
+	return ""
+}
+
+func (x *UserSystemInformation) GetVramSize() uint32 {
+	if x != nil && x.VramSize != nil {
+		return *x.VramSize
+	}
+	return 0
+}
+
 type CMsgKubeRPCPacket_Hdr struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	JobidSource   *uint64                `protobuf:"fixed64,10,opt,name=jobid_source,json=jobidSource,def=18446744073709551615" json:"jobid_source,omitempty"`
@@ -2781,7 +2953,7 @@ const (
 
 func (x *CMsgKubeRPCPacket_Hdr) Reset() {
 	*x = CMsgKubeRPCPacket_Hdr{}
-	mi := &file_steammessages_base_proto_msgTypes[21]
+	mi := &file_steammessages_base_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2793,7 +2965,7 @@ func (x *CMsgKubeRPCPacket_Hdr) String() string {
 func (*CMsgKubeRPCPacket_Hdr) ProtoMessage() {}
 
 func (x *CMsgKubeRPCPacket_Hdr) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_base_proto_msgTypes[21]
+	mi := &file_steammessages_base_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2861,7 +3033,7 @@ type UserContentDescriptorPreferences_ContentDescriptor struct {
 
 func (x *UserContentDescriptorPreferences_ContentDescriptor) Reset() {
 	*x = UserContentDescriptorPreferences_ContentDescriptor{}
-	mi := &file_steammessages_base_proto_msgTypes[22]
+	mi := &file_steammessages_base_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2873,7 +3045,7 @@ func (x *UserContentDescriptorPreferences_ContentDescriptor) String() string {
 func (*UserContentDescriptorPreferences_ContentDescriptor) ProtoMessage() {}
 
 func (x *UserContentDescriptorPreferences_ContentDescriptor) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_base_proto_msgTypes[22]
+	mi := &file_steammessages_base_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3214,7 +3386,31 @@ const file_steammessages_base_proto_rawDesc = "" +
 	"\x1econtent_descriptors_to_exclude\x18\x01 \x03(\v23.UserContentDescriptorPreferences.ContentDescriptorR\x1bcontentDescriptorsToExclude\x1ao\n" +
 	"\x11ContentDescriptor\x121\n" +
 	"\x14content_descriptorid\x18\x01 \x01(\rR\x13contentDescriptorid\x12'\n" +
-	"\x0ftimestamp_added\x18\x02 \x01(\rR\x0etimestampAdded*\xd8\x02\n" +
+	"\x0ftimestamp_added\x18\x02 \x01(\rR\x0etimestampAdded\"\xcf\x04\n" +
+	"\x15UserSystemInformation\x12\"\n" +
+	"\fmanufacturer\x18\x01 \x01(\tR\fmanufacturer\x12\x14\n" +
+	"\x05model\x18\x02 \x01(\tR\x05model\x12\"\n" +
+	"\rdx_video_card\x18\x03 \x01(\tR\vdxVideoCard\x12\x1f\n" +
+	"\vdx_vendorid\x18\x04 \x01(\x05R\n" +
+	"dxVendorid\x12\x1f\n" +
+	"\vdx_deviceid\x18\x05 \x01(\x05R\n" +
+	"dxDeviceid\x12\x17\n" +
+	"\anum_gpu\x18\x06 \x01(\rR\x06numGpu\x12\x1d\n" +
+	"\n" +
+	"system_ram\x18\a \x01(\x04R\tsystemRam\x12\x0e\n" +
+	"\x02os\x18\b \x01(\tR\x02os\x12\x1d\n" +
+	"\n" +
+	"cpu_vendor\x18\t \x01(\tR\tcpuVendor\x12\x19\n" +
+	"\bcpu_name\x18\n" +
+	" \x01(\tR\acpuName\x12,\n" +
+	"\x12gaming_device_type\x18\v \x01(\rR\x10gamingDeviceType\x12*\n" +
+	"\x11dx_driver_version\x18\f \x01(\tR\x0fdxDriverVersion\x12$\n" +
+	"\x0edx_driver_name\x18\r \x01(\tR\fdxDriverName\x12/\n" +
+	"\x13adapter_description\x18\x0e \x01(\tR\x12adapterDescription\x12%\n" +
+	"\x0edriver_version\x18\x0f \x01(\tR\rdriverVersion\x12\x1f\n" +
+	"\vdriver_date\x18\x10 \x01(\tR\n" +
+	"driverDate\x12\x1b\n" +
+	"\tvram_size\x18\x11 \x01(\rR\bvramSize*\xd8\x02\n" +
 	"\x16EBanContentCheckResult\x12'\n" +
 	"#k_EBanContentCheckResult_NotScanned\x10\x00\x12\"\n" +
 	"\x1ek_EBanContentCheckResult_Reset\x10\x01\x12*\n" +
@@ -3285,7 +3481,7 @@ func file_steammessages_base_proto_rawDescGZIP() []byte {
 }
 
 var file_steammessages_base_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_steammessages_base_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_steammessages_base_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_steammessages_base_proto_goTypes = []any{
 	(EBanContentCheckResult)(0),                                // 0: EBanContentCheckResult
 	(EProtoClanEventType)(0),                                   // 1: EProtoClanEventType
@@ -3312,26 +3508,27 @@ var file_steammessages_base_proto_goTypes = []any{
 	(*CMsgKeyValuePair)(nil),                                   // 22: CMsgKeyValuePair
 	(*CMsgKeyValueSet)(nil),                                    // 23: CMsgKeyValueSet
 	(*UserContentDescriptorPreferences)(nil),                   // 24: UserContentDescriptorPreferences
-	(*CMsgKubeRPCPacket_Hdr)(nil),                              // 25: CMsgKubeRPCPacket.Hdr
-	(*UserContentDescriptorPreferences_ContentDescriptor)(nil), // 26: UserContentDescriptorPreferences.ContentDescriptor
-	(*descriptorpb.MessageOptions)(nil),                        // 27: google.protobuf.MessageOptions
-	(*descriptorpb.FieldOptions)(nil),                          // 28: google.protobuf.FieldOptions
+	(*UserSystemInformation)(nil),                              // 25: UserSystemInformation
+	(*CMsgKubeRPCPacket_Hdr)(nil),                              // 26: CMsgKubeRPCPacket.Hdr
+	(*UserContentDescriptorPreferences_ContentDescriptor)(nil), // 27: UserContentDescriptorPreferences.ContentDescriptor
+	(*descriptorpb.MessageOptions)(nil),                        // 28: google.protobuf.MessageOptions
+	(*descriptorpb.FieldOptions)(nil),                          // 29: google.protobuf.FieldOptions
 }
 var file_steammessages_base_proto_depIdxs = []int32{
 	4,  // 0: CMsgIPAddressBucket.original_ip_address:type_name -> CMsgIPAddress
 	6,  // 1: CMsgProtoBufHeader.routing_gc:type_name -> CMsgGCRoutingProtoBufHeader
 	3,  // 2: CMsgProtoBufHeader.session_disposition:type_name -> CMsgProtoBufHeader.ESessionDisposition
-	25, // 3: CMsgKubeRPCPacket.hdr:type_name -> CMsgKubeRPCPacket.Hdr
+	26, // 3: CMsgKubeRPCPacket.hdr:type_name -> CMsgKubeRPCPacket.Hdr
 	16, // 4: CClanMatchEventByRange.events:type_name -> CClanEventUserNewsTuple
 	0,  // 5: CCommunity_ClanAnnouncementInfo.ban_check_result:type_name -> EBanContentCheckResult
 	1,  // 6: CClanEventData.event_type:type_name -> EProtoClanEventType
 	18, // 7: CClanEventData.announcement_body:type_name -> CCommunity_ClanAnnouncementInfo
 	22, // 8: CMsgKeyValueSet.pairs:type_name -> CMsgKeyValuePair
-	26, // 9: UserContentDescriptorPreferences.content_descriptors_to_exclude:type_name -> UserContentDescriptorPreferences.ContentDescriptor
-	27, // 10: msgpool_soft_limit:extendee -> google.protobuf.MessageOptions
-	27, // 11: msgpool_hard_limit:extendee -> google.protobuf.MessageOptions
-	28, // 12: php_output_always_number:extendee -> google.protobuf.FieldOptions
-	28, // 13: allow_field_named_steam_id:extendee -> google.protobuf.FieldOptions
+	27, // 9: UserContentDescriptorPreferences.content_descriptors_to_exclude:type_name -> UserContentDescriptorPreferences.ContentDescriptor
+	28, // 10: msgpool_soft_limit:extendee -> google.protobuf.MessageOptions
+	28, // 11: msgpool_hard_limit:extendee -> google.protobuf.MessageOptions
+	29, // 12: php_output_always_number:extendee -> google.protobuf.FieldOptions
+	29, // 13: allow_field_named_steam_id:extendee -> google.protobuf.FieldOptions
 	14, // [14:14] is the sub-list for method output_type
 	14, // [14:14] is the sub-list for method input_type
 	14, // [14:14] is the sub-list for extension type_name
@@ -3358,7 +3555,7 @@ func file_steammessages_base_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_base_proto_rawDesc), len(file_steammessages_base_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   23,
+			NumMessages:   24,
 			NumExtensions: 4,
 			NumServices:   0,
 		},
