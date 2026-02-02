@@ -472,6 +472,8 @@ type CEconItem_Description struct {
 	MarketSellCountryRestriction *string                        `protobuf:"bytes,31,opt,name=market_sell_country_restriction,json=marketSellCountryRestriction" json:"market_sell_country_restriction,omitempty"`
 	Sealed                       *bool                          `protobuf:"varint,32,opt,name=sealed" json:"sealed,omitempty"`
 	ContainerProperties          *CEconItem_ContainerProperties `protobuf:"bytes,33,opt,name=container_properties,json=containerProperties" json:"container_properties,omitempty"`
+	MarketBucketGroupName        *string                        `protobuf:"bytes,34,opt,name=market_bucket_group_name,json=marketBucketGroupName" json:"market_bucket_group_name,omitempty"`
+	MarketBucketGroupId          *string                        `protobuf:"bytes,35,opt,name=market_bucket_group_id,json=marketBucketGroupId" json:"market_bucket_group_id,omitempty"`
 	unknownFields                protoimpl.UnknownFields
 	sizeCache                    protoimpl.SizeCache
 }
@@ -728,6 +730,20 @@ func (x *CEconItem_Description) GetContainerProperties() *CEconItem_ContainerPro
 		return x.ContainerProperties
 	}
 	return nil
+}
+
+func (x *CEconItem_Description) GetMarketBucketGroupName() string {
+	if x != nil && x.MarketBucketGroupName != nil {
+		return *x.MarketBucketGroupName
+	}
+	return ""
+}
+
+func (x *CEconItem_Description) GetMarketBucketGroupId() string {
+	if x != nil && x.MarketBucketGroupId != nil {
+		return *x.MarketBucketGroupId
+	}
+	return ""
 }
 
 type CEconItem_Tag struct {
@@ -1839,8 +1855,7 @@ const file_steammessages_econ_steamclient_proto_rawDesc = "" +
 	"\x04name\x18\x05 \x01(\tR\x04name\":\n" +
 	"\x10CEconItem_Action\x12\x12\n" +
 	"\x04link\x18\x01 \x01(\tR\x04link\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"\xf7\n" +
-	"\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"\xe5\v\n" +
 	"\x15CEconItem_Description\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\x05R\x05appid\x12\x18\n" +
 	"\aclassid\x18\x02 \x01(\x04R\aclassid\x12\x1e\n" +
@@ -1881,7 +1896,9 @@ const file_steammessages_econ_steamclient_proto_rawDesc = "" +
 	"\x1emarket_buy_country_restriction\x18\x1e \x01(\tR\x1bmarketBuyCountryRestriction\x12E\n" +
 	"\x1fmarket_sell_country_restriction\x18\x1f \x01(\tR\x1cmarketSellCountryRestriction\x12\x16\n" +
 	"\x06sealed\x18  \x01(\bR\x06sealed\x12Q\n" +
-	"\x14container_properties\x18! \x01(\v2\x1e.CEconItem_ContainerPropertiesR\x13containerProperties\"\xe2\x01\n" +
+	"\x14container_properties\x18! \x01(\v2\x1e.CEconItem_ContainerPropertiesR\x13containerProperties\x127\n" +
+	"\x18market_bucket_group_name\x18\" \x01(\tR\x15marketBucketGroupName\x123\n" +
+	"\x16market_bucket_group_id\x18# \x01(\tR\x13marketBucketGroupId\"\xe2\x01\n" +
 	"\rCEconItem_Tag\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12\x1a\n" +
 	"\bcategory\x18\x02 \x01(\tR\bcategory\x12#\n" +

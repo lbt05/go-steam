@@ -690,6 +690,8 @@ type CMsgClientSettings struct {
 	OverlayFpsCounterFpsGraph             *bool                     `protobuf:"varint,4030,opt,name=overlay_fps_counter_fps_graph,json=overlayFpsCounterFpsGraph" json:"overlay_fps_counter_fps_graph,omitempty"`
 	OverlayFpsCounterCpuGraph             *bool                     `protobuf:"varint,4031,opt,name=overlay_fps_counter_cpu_graph,json=overlayFpsCounterCpuGraph" json:"overlay_fps_counter_cpu_graph,omitempty"`
 	OverlayFpsCounterAllowKmDriver        *bool                     `protobuf:"varint,4032,opt,name=overlay_fps_counter_allow_km_driver,json=overlayFpsCounterAllowKmDriver" json:"overlay_fps_counter_allow_km_driver,omitempty"`
+	AchievementNotificationToast          *bool                     `protobuf:"varint,4033,opt,name=achievement_notification_toast,json=achievementNotificationToast" json:"achievement_notification_toast,omitempty"`
+	AchievementNotificationSound          *bool                     `protobuf:"varint,4034,opt,name=achievement_notification_sound,json=achievementNotificationSound" json:"achievement_notification_sound,omitempty"`
 	SmoothScrollWebviews                  *bool                     `protobuf:"varint,5000,opt,name=smooth_scroll_webviews,json=smoothScrollWebviews" json:"smooth_scroll_webviews,omitempty"`
 	EnableGpuAcceleratedWebviews          *bool                     `protobuf:"varint,5001,opt,name=enable_gpu_accelerated_webviews,json=enableGpuAcceleratedWebviews" json:"enable_gpu_accelerated_webviews,omitempty"`
 	EnableHardwareVideoDecoding           *bool                     `protobuf:"varint,5003,opt,name=enable_hardware_video_decoding,json=enableHardwareVideoDecoding" json:"enable_hardware_video_decoding,omitempty"`
@@ -701,6 +703,7 @@ type CMsgClientSettings struct {
 	EnableUiSounds                        *bool                     `protobuf:"varint,5009,opt,name=enable_ui_sounds,json=enableUiSounds" json:"enable_ui_sounds,omitempty"`
 	EnableGamescopeComposer               *bool                     `protobuf:"varint,5010,opt,name=enable_gamescope_composer,json=enableGamescopeComposer" json:"enable_gamescope_composer,omitempty"`
 	EnableGamescopeComposerVr             *bool                     `protobuf:"varint,5011,opt,name=enable_gamescope_composer_vr,json=enableGamescopeComposerVr" json:"enable_gamescope_composer_vr,omitempty"`
+	ShowSwitchToDesktopAtLogin            *bool                     `protobuf:"varint,5012,opt,name=show_switch_to_desktop_at_login,json=showSwitchToDesktopAtLogin" json:"show_switch_to_desktop_at_login,omitempty"`
 	DisableAllToasts                      *bool                     `protobuf:"varint,6000,opt,name=disable_all_toasts,json=disableAllToasts" json:"disable_all_toasts,omitempty"`
 	DisableToastsInGame                   *bool                     `protobuf:"varint,6001,opt,name=disable_toasts_in_game,json=disableToastsInGame" json:"disable_toasts_in_game,omitempty"`
 	PlaySoundOnToast                      *bool                     `protobuf:"varint,6002,opt,name=play_sound_on_toast,json=playSoundOnToast" json:"play_sound_on_toast,omitempty"`
@@ -857,6 +860,7 @@ type CMsgClientSettings struct {
 	AccessibilityColorFilterName          *string                   `protobuf:"bytes,26009,opt,name=accessibility_color_filter_name,json=accessibilityColorFilterName" json:"accessibility_color_filter_name,omitempty"`
 	AccessibilityDesktopUiScale           *float32                  `protobuf:"fixed32,26010,opt,name=accessibility_desktop_ui_scale,json=accessibilityDesktopUiScale" json:"accessibility_desktop_ui_scale,omitempty"`
 	AccessibilityScreenReaderLocale       *string                   `protobuf:"bytes,26011,opt,name=accessibility_screen_reader_locale,json=accessibilityScreenReaderLocale" json:"accessibility_screen_reader_locale,omitempty"`
+	AccessibilityMonoAudio                *bool                     `protobuf:"varint,26012,opt,name=accessibility_mono_audio,json=accessibilityMonoAudio" json:"accessibility_mono_audio,omitempty"`
 	RemotePlayWifiApEnabled               *bool                     `protobuf:"varint,27000,opt,name=remote_play_wifi_ap_enabled,json=remotePlayWifiApEnabled" json:"remote_play_wifi_ap_enabled,omitempty"`
 	RemotePlayWifiApChannel_5Ghz          *int32                    `protobuf:"varint,27001,opt,name=remote_play_wifi_ap_channel_5ghz,json=remotePlayWifiApChannel5ghz" json:"remote_play_wifi_ap_channel_5ghz,omitempty"`
 	RemotePlayWifiApChannel_6Ghz          *int32                    `protobuf:"varint,27002,opt,name=remote_play_wifi_ap_channel_6ghz,json=remotePlayWifiApChannel6ghz" json:"remote_play_wifi_ap_channel_6ghz,omitempty"`
@@ -1277,6 +1281,20 @@ func (x *CMsgClientSettings) GetOverlayFpsCounterAllowKmDriver() bool {
 	return false
 }
 
+func (x *CMsgClientSettings) GetAchievementNotificationToast() bool {
+	if x != nil && x.AchievementNotificationToast != nil {
+		return *x.AchievementNotificationToast
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetAchievementNotificationSound() bool {
+	if x != nil && x.AchievementNotificationSound != nil {
+		return *x.AchievementNotificationSound
+	}
+	return false
+}
+
 func (x *CMsgClientSettings) GetSmoothScrollWebviews() bool {
 	if x != nil && x.SmoothScrollWebviews != nil {
 		return *x.SmoothScrollWebviews
@@ -1350,6 +1368,13 @@ func (x *CMsgClientSettings) GetEnableGamescopeComposer() bool {
 func (x *CMsgClientSettings) GetEnableGamescopeComposerVr() bool {
 	if x != nil && x.EnableGamescopeComposerVr != nil {
 		return *x.EnableGamescopeComposerVr
+	}
+	return false
+}
+
+func (x *CMsgClientSettings) GetShowSwitchToDesktopAtLogin() bool {
+	if x != nil && x.ShowSwitchToDesktopAtLogin != nil {
+		return *x.ShowSwitchToDesktopAtLogin
 	}
 	return false
 }
@@ -2446,6 +2471,13 @@ func (x *CMsgClientSettings) GetAccessibilityScreenReaderLocale() string {
 	return ""
 }
 
+func (x *CMsgClientSettings) GetAccessibilityMonoAudio() bool {
+	if x != nil && x.AccessibilityMonoAudio != nil {
+		return *x.AccessibilityMonoAudio
+	}
+	return false
+}
+
 func (x *CMsgClientSettings) GetRemotePlayWifiApEnabled() bool {
 	if x != nil && x.RemotePlayWifiApEnabled != nil {
 		return *x.RemotePlayWifiApEnabled
@@ -2726,7 +2758,7 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"valueFloat\x12#\n" +
 	"\fvalue_string\x18\a \x01(\tH\x00R\vvalueString\x120\n" +
 	"\fvalue_hotkey\x18\b \x01(\v2\v.CMsgHotkeyH\x00R\vvalueHotkeyB\a\n" +
-	"\x05value\"ǿ\x01\n" +
+	"\x05value\"\x8d\xc3\x01\n" +
 	"\x12CMsgClientSettings\x12b\n" +
 	"\x15no_save_personal_info\x18\x01 \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'Software\\Valve\\Steam\\NoSavePersonalInfoR\x12noSavePersonalInfo\x12.\n" +
 	"\x0ein_client_beta\x18\x03 \x01(\bB\b\x80\xa6\x1d\x05\x90\xa6\x1d\x01R\finClientBeta\x128\n" +
@@ -2781,7 +2813,9 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x17overlay_fps_counter_key\x18\xbd\x1f \x01(\v2\v.CMsgHotkeyB4\x80\xa6\x1d\x03\x8a\xa6\x1d!system\\InGameOverlayShowFPSHotKey\xba\xa6\x1d\aDefaultR\x14overlayFpsCounterKey\x12r\n" +
 	"\x1doverlay_fps_counter_fps_graph\x18\xbe\x1f \x01(\bB/\x80\xa6\x1d\x03\x8a\xa6\x1d#system\\InGameOverlayShowFPSGraphFPS\x98\xa6\x1d\x01R\x19overlayFpsCounterFpsGraph\x12r\n" +
 	"\x1doverlay_fps_counter_cpu_graph\x18\xbf\x1f \x01(\bB/\x80\xa6\x1d\x03\x8a\xa6\x1d#system\\InGameOverlayShowFPSGraphCPU\x98\xa6\x1d\x01R\x19overlayFpsCounterCpuGraph\x12\x83\x01\n" +
-	"#overlay_fps_counter_allow_km_driver\x18\xc0\x1f \x01(\bB5\x80\xa6\x1d\x03\x8a\xa6\x1d)system\\InGameOverlayAllowKMDriveOnWindows\x98\xa6\x1d\x01R\x1eoverlayFpsCounterAllowKmDriver\x12;\n" +
+	"#overlay_fps_counter_allow_km_driver\x18\xc0\x1f \x01(\bB5\x80\xa6\x1d\x03\x8a\xa6\x1d)system\\InGameOverlayAllowKMDriveOnWindows\x98\xa6\x1d\x01R\x1eoverlayFpsCounterAllowKmDriver\x12v\n" +
+	"\x1eachievement_notification_toast\x18\xc1\x1f \x01(\bB/\x80\xa6\x1d\x03\x8a\xa6\x1d#system\\AchievementNotificationToast\x98\xa6\x1d\x01R\x1cachievementNotificationToast\x12v\n" +
+	"\x1eachievement_notification_sound\x18\xc2\x1f \x01(\bB/\x80\xa6\x1d\x03\x8a\xa6\x1d#system\\AchievementNotificationSound\x98\xa6\x1d\x01R\x1cachievementNotificationSound\x12;\n" +
 	"\x16smooth_scroll_webviews\x18\x88' \x01(\bB\x04\x80\xa6\x1d\x05R\x14smoothScrollWebviews\x12L\n" +
 	"\x1fenable_gpu_accelerated_webviews\x18\x89' \x01(\bB\x04\x80\xa6\x1d\x05R\x1cenableGpuAcceleratedWebviews\x12J\n" +
 	"\x1eenable_hardware_video_decoding\x18\x8b' \x01(\bB\x04\x80\xa6\x1d\x05R\x1benableHardwareVideoDecoding\x12+\n" +
@@ -2792,7 +2826,8 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x0ejumplist_flags\x18\x90' \x01(\rB%\x80\xa6\x1d\x03\x8a\xa6\x1d\x17system\\JumplistSettings\xa8\xa6\x1d\xf0\xde\x04R\rjumplistFlags\x12L\n" +
 	"\x10enable_ui_sounds\x18\x91' \x01(\bB!\x80\xa6\x1d\x03\x8a\xa6\x1d\x15system\\EnableUISounds\x98\xa6\x1d\x01R\x0eenableUiSounds\x12\x87\x01\n" +
 	"\x19enable_gamescope_composer\x18\x92' \x01(\bBJ\x80\xa6\x1d\x04\x8a\xa6\x1d>HKEY_CURRENT_USER\\Software\\Valve\\Steam\\EnableGamescopeComposer\x98\xa6\x1d\x00R\x17enableGamescopeComposer\x12\x8e\x01\n" +
-	"\x1cenable_gamescope_composer_vr\x18\x93' \x01(\bBL\x80\xa6\x1d\x04\x8a\xa6\x1d@HKEY_CURRENT_USER\\Software\\Valve\\Steam\\EnableGamescopeComposerVR\x98\xa6\x1d\x01R\x19enableGamescopeComposerVr\x12G\n" +
+	"\x1cenable_gamescope_composer_vr\x18\x93' \x01(\bBL\x80\xa6\x1d\x04\x8a\xa6\x1d@HKEY_CURRENT_USER\\Software\\Valve\\Steam\\EnableGamescopeComposerVR\x98\xa6\x1d\x01R\x19enableGamescopeComposerVr\x12s\n" +
+	"\x1fshow_switch_to_desktop_at_login\x18\x94' \x01(\bB-\x80\xa6\x1d\x01\x8a\xa6\x1d!system\\ShowSwitchToDesktopAtLogin\x90\xa6\x1d\x01R\x1ashowSwitchToDesktopAtLogin\x12G\n" +
 	"\x12disable_all_toasts\x18\xf0. \x01(\bB\x18\x80\xa6\x1d\x02\x8a\xa6\x1d\x10DisableAllToastsR\x10disableAllToasts\x12Q\n" +
 	"\x16disable_toasts_in_game\x18\xf1. \x01(\bB\x1b\x80\xa6\x1d\x02\x8a\xa6\x1d\x13DisableToastsInGameR\x13disableToastsInGame\x12L\n" +
 	"\x13play_sound_on_toast\x18\xf2. \x01(\bB\x1c\x80\xa6\x1d\x02\x8a\xa6\x1d\x10PlaySoundOnToast\x98\xa6\x1d\x01R\x10playSoundOnToast\x12M\n" +
@@ -2949,7 +2984,8 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"\x1faccessibility_minimum_font_size\x18\x98\xcb\x01 \x01(\rB)\x80\xa6\x1d\x03\x8a\xa6\x1d\x1dAccessibility/MinimumFontSize\xa0\xa6\x1d\x00R\x1caccessibilityMinimumFontSize\x12r\n" +
 	"\x1faccessibility_color_filter_name\x18\x99\xcb\x01 \x01(\tB)\x80\xa6\x1d\x01\x8a\xa6\x1d\x1dAccessibility/ColorFilterName\xba\xa6\x1d\x00R\x1caccessibilityColorFilterName\x12r\n" +
 	"\x1eaccessibility_desktop_ui_scale\x18\x9a\xcb\x01 \x01(\x02B+\x80\xa6\x1d\x01\x8a\xa6\x1d\x1cAccessibility/DesktopUIScale\xb5\xa6\x1d\x00\x00\x80?R\x1baccessibilityDesktopUiScale\x12\x7f\n" +
-	"\"accessibility_screen_reader_locale\x18\x9b\xcb\x01 \x01(\tB0\x80\xa6\x1d\x01\x8a\xa6\x1d Accessibility/ScreenReaderLocale\xba\xa6\x1d\x04autoR\x1faccessibilityScreenReaderLocale\x12f\n" +
+	"\"accessibility_screen_reader_locale\x18\x9b\xcb\x01 \x01(\tB0\x80\xa6\x1d\x01\x8a\xa6\x1d Accessibility/ScreenReaderLocale\xba\xa6\x1d\x04autoR\x1faccessibilityScreenReaderLocale\x12_\n" +
+	"\x18accessibility_mono_audio\x18\x9c\xcb\x01 \x01(\bB#\x80\xa6\x1d\x01\x8a\xa6\x1d\x17Accessibility/MonoAudio\x98\xa6\x1d\x00R\x16accessibilityMonoAudio\x12f\n" +
 	"\x1bremote_play_wifi_ap_enabled\x18\xf8\xd2\x01 \x01(\bB&\x80\xa6\x1d\x01\x8a\xa6\x1d\x1astreaming_v2\\WifiAPEnabled\x98\xa6\x1d\x01R\x17remotePlayWifiApEnabled\x12s\n" +
 	" remote_play_wifi_ap_channel_5ghz\x18\xf9\xd2\x01 \x01(\x05B*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPChannel5GHz\xa0\xa6\x1d\x00R\x1bremotePlayWifiApChannel5ghz\x12s\n" +
 	" remote_play_wifi_ap_channel_6ghz\x18\xfa\xd2\x01 \x01(\x05B*\x80\xa6\x1d\x01\x8a\xa6\x1d\x1estreaming_v2\\WifiAPChannel6GHz\xa0\xa6\x1d\x00R\x1bremotePlayWifiApChannel6ghz\x12v\n" +

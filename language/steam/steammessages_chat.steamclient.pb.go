@@ -235,6 +235,9 @@ const (
 	EChatRoomServerMessage_k_EChatRoomServerMsg_ChatRoomTaglineChanged EChatRoomServerMessage = 9
 	EChatRoomServerMessage_k_EChatRoomServerMsg_ChatRoomAvatarChanged  EChatRoomServerMessage = 10
 	EChatRoomServerMessage_k_EChatRoomServerMsg_AppCustom              EChatRoomServerMessage = 11
+	EChatRoomServerMessage_k_EChatRoomServerMsg_JoinedMany             EChatRoomServerMessage = 12
+	EChatRoomServerMessage_k_EChatRoomServerMsg_PartedMany             EChatRoomServerMessage = 13
+	EChatRoomServerMessage_k_EChatRoomServerMsg_InvitedMany            EChatRoomServerMessage = 14
 )
 
 // Enum value maps for EChatRoomServerMessage.
@@ -250,6 +253,9 @@ var (
 		9:  "k_EChatRoomServerMsg_ChatRoomTaglineChanged",
 		10: "k_EChatRoomServerMsg_ChatRoomAvatarChanged",
 		11: "k_EChatRoomServerMsg_AppCustom",
+		12: "k_EChatRoomServerMsg_JoinedMany",
+		13: "k_EChatRoomServerMsg_PartedMany",
+		14: "k_EChatRoomServerMsg_InvitedMany",
 	}
 	EChatRoomServerMessage_value = map[string]int32{
 		"k_EChatRoomServerMsg_Invalid":                0,
@@ -262,6 +268,9 @@ var (
 		"k_EChatRoomServerMsg_ChatRoomTaglineChanged": 9,
 		"k_EChatRoomServerMsg_ChatRoomAvatarChanged":  10,
 		"k_EChatRoomServerMsg_AppCustom":              11,
+		"k_EChatRoomServerMsg_JoinedMany":             12,
+		"k_EChatRoomServerMsg_PartedMany":             13,
+		"k_EChatRoomServerMsg_InvitedMany":            14,
 	}
 )
 
@@ -10645,7 +10654,7 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"!k_EChatroomNotificationLevel_None\x10\x01\x12*\n" +
 	"&k_EChatroomNotificationLevel_MentionMe\x10\x02\x12+\n" +
 	"'k_EChatroomNotificationLevel_MentionAll\x10\x03\x12,\n" +
-	"(k_EChatroomNotificationLevel_AllMessages\x10\x04*\x97\x03\n" +
+	"(k_EChatroomNotificationLevel_AllMessages\x10\x04*\x87\x04\n" +
 	"\x16EChatRoomServerMessage\x12 \n" +
 	"\x1ck_EChatRoomServerMsg_Invalid\x10\x00\x12'\n" +
 	"#k_EChatRoomServerMsg_RenameChatRoom\x10\x01\x12\x1f\n" +
@@ -10657,7 +10666,10 @@ const file_steammessages_chat_steamclient_proto_rawDesc = "" +
 	"+k_EChatRoomServerMsg_ChatRoomTaglineChanged\x10\t\x12.\n" +
 	"*k_EChatRoomServerMsg_ChatRoomAvatarChanged\x10\n" +
 	"\x12\"\n" +
-	"\x1ek_EChatRoomServerMsg_AppCustom\x10\v*\xa3\x01\n" +
+	"\x1ek_EChatRoomServerMsg_AppCustom\x10\v\x12#\n" +
+	"\x1fk_EChatRoomServerMsg_JoinedMany\x10\f\x12#\n" +
+	"\x1fk_EChatRoomServerMsg_PartedMany\x10\r\x12$\n" +
+	" k_EChatRoomServerMsg_InvitedMany\x10\x0e*\xa3\x01\n" +
 	"\x1cEChatRoomMessageReactionType\x12*\n" +
 	"&k_EChatRoomMessageReactionType_Invalid\x10\x00\x12+\n" +
 	"'k_EChatRoomMessageReactionType_Emoticon\x10\x01\x12*\n" +

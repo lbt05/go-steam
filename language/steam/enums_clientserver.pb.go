@@ -119,6 +119,7 @@ const (
 	EMsg_k_EMsgGMStatsForwardToAdminConnections                            EMsg = 338
 	EMsg_k_EMsgGMGetModifiedConVars                                        EMsg = 339
 	EMsg_k_EMsgGMGetModifiedConVarsResponse                                EMsg = 340
+	EMsg_k_EMsgGMNeedShellAndServerAddresses                               EMsg = 341
 	EMsg_k_EMsgBaseAIS                                                     EMsg = 400
 	EMsg_k_EMsgAISRequestContentDescription                                EMsg = 402
 	EMsg_k_EMsgAISGetPackageChangeNumber                                   EMsg = 405
@@ -341,8 +342,6 @@ const (
 	EMsg_k_EMsgGSStatusUpdate_Unused                                       EMsg = 907
 	EMsg_k_EMsgGSServerType                                                EMsg = 908
 	EMsg_k_EMsgGSPlayerList                                                EMsg = 909
-	EMsg_k_EMsgGSGetUserAchievementStatus                                  EMsg = 910
-	EMsg_k_EMsgGSGetUserAchievementStatusResponse                          EMsg = 911
 	EMsg_k_EMsgGSGetPlayStats                                              EMsg = 918
 	EMsg_k_EMsgGSGetPlayStatsResponse                                      EMsg = 919
 	EMsg_k_EMsgGSGetUserGroupStatus                                        EMsg = 920
@@ -692,7 +691,6 @@ const (
 	EMsg_k_EMsgAMGetCommunityPrivacyState                                  EMsg = 4116
 	EMsg_k_EMsgAMGetCommunityPrivacyStateResponse                          EMsg = 4117
 	EMsg_k_EMsgAMCheckClanInviteRateLimiting                               EMsg = 4118
-	EMsg_k_EMsgUGSGetUserAchievementStatus                                 EMsg = 4119
 	EMsg_k_EMsgAMGetIgnored                                                EMsg = 4120
 	EMsg_k_EMsgAMGetIgnoredResponse                                        EMsg = 4121
 	EMsg_k_EMsgAMSetIgnoredResponse                                        EMsg = 4122
@@ -717,7 +715,6 @@ const (
 	EMsg_k_EMsgAMCheckClanMembershipResponse                               EMsg = 4161
 	EMsg_k_EMsgAMProbeClanMembershipList                                   EMsg = 4162
 	EMsg_k_EMsgAMProbeClanMembershipListResponse                           EMsg = 4163
-	EMsg_k_EMsgUGSGetUserAchievementStatusResponse                         EMsg = 4164
 	EMsg_k_EMsgAMGetFriendsLobbies                                         EMsg = 4165
 	EMsg_k_EMsgAMGetFriendsLobbiesResponse                                 EMsg = 4166
 	EMsg_k_EMsgAMGetUserFriendNewsResponse                                 EMsg = 4172
@@ -1558,6 +1555,7 @@ var (
 		338: "k_EMsgGMStatsForwardToAdminConnections",
 		339: "k_EMsgGMGetModifiedConVars",
 		340: "k_EMsgGMGetModifiedConVarsResponse",
+		341: "k_EMsgGMNeedShellAndServerAddresses",
 		400: "k_EMsgBaseAIS",
 		402: "k_EMsgAISRequestContentDescription",
 		405: "k_EMsgAISGetPackageChangeNumber",
@@ -1780,8 +1778,6 @@ var (
 		907:  "k_EMsgGSStatusUpdate_Unused",
 		908:  "k_EMsgGSServerType",
 		909:  "k_EMsgGSPlayerList",
-		910:  "k_EMsgGSGetUserAchievementStatus",
-		911:  "k_EMsgGSGetUserAchievementStatusResponse",
 		918:  "k_EMsgGSGetPlayStats",
 		919:  "k_EMsgGSGetPlayStatsResponse",
 		920:  "k_EMsgGSGetUserGroupStatus",
@@ -2131,7 +2127,6 @@ var (
 		4116: "k_EMsgAMGetCommunityPrivacyState",
 		4117: "k_EMsgAMGetCommunityPrivacyStateResponse",
 		4118: "k_EMsgAMCheckClanInviteRateLimiting",
-		4119: "k_EMsgUGSGetUserAchievementStatus",
 		4120: "k_EMsgAMGetIgnored",
 		4121: "k_EMsgAMGetIgnoredResponse",
 		4122: "k_EMsgAMSetIgnoredResponse",
@@ -2156,7 +2151,6 @@ var (
 		4161: "k_EMsgAMCheckClanMembershipResponse",
 		4162: "k_EMsgAMProbeClanMembershipList",
 		4163: "k_EMsgAMProbeClanMembershipListResponse",
-		4164: "k_EMsgUGSGetUserAchievementStatusResponse",
 		4165: "k_EMsgAMGetFriendsLobbies",
 		4166: "k_EMsgAMGetFriendsLobbiesResponse",
 		4172: "k_EMsgAMGetUserFriendNewsResponse",
@@ -2994,6 +2988,7 @@ var (
 		"k_EMsgGMStatsForwardToAdminConnections":                            338,
 		"k_EMsgGMGetModifiedConVars":                                        339,
 		"k_EMsgGMGetModifiedConVarsResponse":                                340,
+		"k_EMsgGMNeedShellAndServerAddresses":                               341,
 		"k_EMsgBaseAIS":                                                     400,
 		"k_EMsgAISRequestContentDescription":                                402,
 		"k_EMsgAISGetPackageChangeNumber":                                   405,
@@ -3216,8 +3211,6 @@ var (
 		"k_EMsgGSStatusUpdate_Unused":                                       907,
 		"k_EMsgGSServerType":                                                908,
 		"k_EMsgGSPlayerList":                                                909,
-		"k_EMsgGSGetUserAchievementStatus":                                  910,
-		"k_EMsgGSGetUserAchievementStatusResponse":                          911,
 		"k_EMsgGSGetPlayStats":                                              918,
 		"k_EMsgGSGetPlayStatsResponse":                                      919,
 		"k_EMsgGSGetUserGroupStatus":                                        920,
@@ -3567,7 +3560,6 @@ var (
 		"k_EMsgAMGetCommunityPrivacyState":                                  4116,
 		"k_EMsgAMGetCommunityPrivacyStateResponse":                          4117,
 		"k_EMsgAMCheckClanInviteRateLimiting":                               4118,
-		"k_EMsgUGSGetUserAchievementStatus":                                 4119,
 		"k_EMsgAMGetIgnored":                                                4120,
 		"k_EMsgAMGetIgnoredResponse":                                        4121,
 		"k_EMsgAMSetIgnoredResponse":                                        4122,
@@ -3592,7 +3584,6 @@ var (
 		"k_EMsgAMCheckClanMembershipResponse":                               4161,
 		"k_EMsgAMProbeClanMembershipList":                                   4162,
 		"k_EMsgAMProbeClanMembershipListResponse":                           4163,
-		"k_EMsgUGSGetUserAchievementStatusResponse":                         4164,
 		"k_EMsgAMGetFriendsLobbies":                                         4165,
 		"k_EMsgAMGetFriendsLobbiesResponse":                                 4166,
 		"k_EMsgAMGetUserFriendNewsResponse":                                 4172,
@@ -4741,7 +4732,7 @@ var File_enums_clientserver_proto protoreflect.FileDescriptor
 
 const file_enums_clientserver_proto_rawDesc = "" +
 	"\n" +
-	"\x18enums_clientserver.proto*\xae\x91\x03\n" +
+	"\x18enums_clientserver.proto*\xaa\x90\x03\n" +
 	"\x04EMsg\x12\x11\n" +
 	"\rk_EMsgInvalid\x10\x00\x12\x0f\n" +
 	"\vk_EMsgMulti\x10\x01\x12\x19\n" +
@@ -4839,7 +4830,8 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x14k_EMsgHotFixProgress\x10\xd1\x02\x12+\n" +
 	"&k_EMsgGMStatsForwardToAdminConnections\x10\xd2\x02\x12\x1f\n" +
 	"\x1ak_EMsgGMGetModifiedConVars\x10\xd3\x02\x12'\n" +
-	"\"k_EMsgGMGetModifiedConVarsResponse\x10\xd4\x02\x12\x12\n" +
+	"\"k_EMsgGMGetModifiedConVarsResponse\x10\xd4\x02\x12(\n" +
+	"#k_EMsgGMNeedShellAndServerAddresses\x10\xd5\x02\x12\x12\n" +
 	"\rk_EMsgBaseAIS\x10\x90\x03\x12'\n" +
 	"\"k_EMsgAISRequestContentDescription\x10\x92\x03\x12$\n" +
 	"\x1fk_EMsgAISGetPackageChangeNumber\x10\x95\x03\x12,\n" +
@@ -5061,9 +5053,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x0fk_EMsgGSStatus2\x10\x8a\a\x12 \n" +
 	"\x1bk_EMsgGSStatusUpdate_Unused\x10\x8b\a\x12\x17\n" +
 	"\x12k_EMsgGSServerType\x10\x8c\a\x12\x17\n" +
-	"\x12k_EMsgGSPlayerList\x10\x8d\a\x12%\n" +
-	" k_EMsgGSGetUserAchievementStatus\x10\x8e\a\x12-\n" +
-	"(k_EMsgGSGetUserAchievementStatusResponse\x10\x8f\a\x12\x19\n" +
+	"\x12k_EMsgGSPlayerList\x10\x8d\a\x12\x19\n" +
 	"\x14k_EMsgGSGetPlayStats\x10\x96\a\x12!\n" +
 	"\x1ck_EMsgGSGetPlayStatsResponse\x10\x97\a\x12\x1f\n" +
 	"\x1ak_EMsgGSGetUserGroupStatus\x10\x98\a\x12\x1f\n" +
@@ -5425,8 +5415,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"+k_EMsgAMSetCommunityProfileSettingsResponse\x10\x93 \x12%\n" +
 	" k_EMsgAMGetCommunityPrivacyState\x10\x94 \x12-\n" +
 	"(k_EMsgAMGetCommunityPrivacyStateResponse\x10\x95 \x12(\n" +
-	"#k_EMsgAMCheckClanInviteRateLimiting\x10\x96 \x12&\n" +
-	"!k_EMsgUGSGetUserAchievementStatus\x10\x97 \x12\x17\n" +
+	"#k_EMsgAMCheckClanInviteRateLimiting\x10\x96 \x12\x17\n" +
 	"\x12k_EMsgAMGetIgnored\x10\x98 \x12\x1f\n" +
 	"\x1ak_EMsgAMGetIgnoredResponse\x10\x99 \x12\x1f\n" +
 	"\x1ak_EMsgAMSetIgnoredResponse\x10\x9a \x12&\n" +
@@ -5450,8 +5439,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x15k_EMsgAMEditBanReason\x10\xc0 \x12(\n" +
 	"#k_EMsgAMCheckClanMembershipResponse\x10\xc1 \x12$\n" +
 	"\x1fk_EMsgAMProbeClanMembershipList\x10\xc2 \x12,\n" +
-	"'k_EMsgAMProbeClanMembershipListResponse\x10\xc3 \x12.\n" +
-	")k_EMsgUGSGetUserAchievementStatusResponse\x10\xc4 \x12\x1e\n" +
+	"'k_EMsgAMProbeClanMembershipListResponse\x10\xc3 \x12\x1e\n" +
 	"\x19k_EMsgAMGetFriendsLobbies\x10\xc5 \x12&\n" +
 	"!k_EMsgAMGetFriendsLobbiesResponse\x10\xc6 \x12&\n" +
 	"!k_EMsgAMGetUserFriendNewsResponse\x10\xcc \x12%\n" +

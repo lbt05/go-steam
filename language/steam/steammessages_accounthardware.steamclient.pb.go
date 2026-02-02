@@ -1506,11 +1506,12 @@ func (x *CAccountHardware_GetSteamDeckComponents_Response) GetJsonComponents() s
 }
 
 type CAccountHardware_SaveHardware_Request struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	FriendlyName  *string                `protobuf:"bytes,1,opt,name=friendly_name,json=friendlyName" json:"friendly_name,omitempty"`
-	SystemInfo    *UserSystemInformation `protobuf:"bytes,2,opt,name=system_info,json=systemInfo" json:"system_info,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	FriendlyName        *string                `protobuf:"bytes,1,opt,name=friendly_name,json=friendlyName" json:"friendly_name,omitempty"`
+	SystemInfo          *UserSystemInformation `protobuf:"bytes,2,opt,name=system_info,json=systemInfo" json:"system_info,omitempty"`
+	BackfillUserReviews *bool                  `protobuf:"varint,3,opt,name=backfill_user_reviews,json=backfillUserReviews" json:"backfill_user_reviews,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *CAccountHardware_SaveHardware_Request) Reset() {
@@ -1555,6 +1556,13 @@ func (x *CAccountHardware_SaveHardware_Request) GetSystemInfo() *UserSystemInfor
 		return x.SystemInfo
 	}
 	return nil
+}
+
+func (x *CAccountHardware_SaveHardware_Request) GetBackfillUserReviews() bool {
+	if x != nil && x.BackfillUserReviews != nil {
+		return *x.BackfillUserReviews
+	}
+	return false
 }
 
 type CAccountHardware_SaveHardware_Response struct {
@@ -2176,11 +2184,12 @@ const file_steammessages_accounthardware_steamclient_proto_rawDesc = "" +
 	"\rserial_number\x18\x01 \x01(\tR\fserialNumber\x12'\n" +
 	"\x0fcontroller_code\x18\x02 \x01(\tR\x0econtrollerCode\"[\n" +
 	"0CAccountHardware_GetSteamDeckComponents_Response\x12'\n" +
-	"\x0fjson_components\x18\x01 \x01(\tR\x0ejsonComponents\"\x85\x01\n" +
+	"\x0fjson_components\x18\x01 \x01(\tR\x0ejsonComponents\"\xb9\x01\n" +
 	"%CAccountHardware_SaveHardware_Request\x12#\n" +
 	"\rfriendly_name\x18\x01 \x01(\tR\ffriendlyName\x127\n" +
 	"\vsystem_info\x18\x02 \x01(\v2\x16.UserSystemInformationR\n" +
-	"systemInfo\"I\n" +
+	"systemInfo\x122\n" +
+	"\x15backfill_user_reviews\x18\x03 \x01(\bR\x13backfillUserReviews\"I\n" +
 	"&CAccountHardware_SaveHardware_Response\x12\x1f\n" +
 	"\vhardware_id\x18\x01 \x01(\x04R\n" +
 	"hardwareId\"\xaa\x01\n" +

@@ -4503,6 +4503,7 @@ type CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig struct {
 	MustHaveTags    []uint32               `protobuf:"varint,7,rep,name=must_have_tags,json=mustHaveTags" json:"must_have_tags,omitempty"`
 	AnyOneOfTags    []uint32               `protobuf:"varint,8,rep,name=any_one_of_tags,json=anyOneOfTags" json:"any_one_of_tags,omitempty"`
 	MustNotHaveTags []uint32               `protobuf:"varint,9,rep,name=must_not_have_tags,json=mustNotHaveTags" json:"must_not_have_tags,omitempty"`
+	HubDescription  *string                `protobuf:"bytes,10,opt,name=hub_description,json=hubDescription" json:"hub_description,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -4598,6 +4599,13 @@ func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetMustNotH
 		return x.MustNotHaveTags
 	}
 	return nil
+}
+
+func (x *CStoreBrowse_GetContentHubConfig_Response_ContentHubConfig) GetHubDescription() string {
+	if x != nil && x.HubDescription != nil {
+		return *x.HubDescription
+	}
+	return ""
 }
 
 type CStoreBrowse_GetPriceStops_Response_PriceStop struct {
@@ -5178,11 +5186,11 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x0fedit_sort_order\x18\t \x01(\rR\reditSortOrder\"\xb6\x01\n" +
 	"(CStoreBrowse_GetContentHubConfig_Request\x12-\n" +
 	"\acontext\x18\x01 \x01(\v2\x13.StoreBrowseContextR\acontext\x12[\n" +
-	"\x1eexcluded_content_descriptorids\x18\x02 \x03(\x0e2\x15.EContentDescriptorIDR\x1cexcludedContentDescriptorids\"\xcc\x03\n" +
+	"\x1eexcluded_content_descriptorids\x18\x02 \x03(\x0e2\x15.EContentDescriptorIDR\x1cexcludedContentDescriptorids\"\xf5\x03\n" +
 	")CStoreBrowse_GetContentHubConfig_Response\x12[\n" +
 	"\n" +
 	"hubconfigs\x18\x01 \x03(\v2;.CStoreBrowse_GetContentHubConfig_Response.ContentHubConfigR\n" +
-	"hubconfigs\x1a\xc1\x02\n" +
+	"hubconfigs\x1a\xea\x02\n" +
 	"\x10ContentHubConfig\x12$\n" +
 	"\rhubcategoryid\x18\x01 \x01(\rR\rhubcategoryid\x12\x12\n" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x12\x16\n" +
@@ -5192,7 +5200,9 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\rreplaces_tags\x18\x06 \x03(\rR\freplacesTags\x12$\n" +
 	"\x0emust_have_tags\x18\a \x03(\rR\fmustHaveTags\x12%\n" +
 	"\x0fany_one_of_tags\x18\b \x03(\rR\fanyOneOfTags\x12+\n" +
-	"\x12must_not_have_tags\x18\t \x03(\rR\x0fmustNotHaveTags\"l\n" +
+	"\x12must_not_have_tags\x18\t \x03(\rR\x0fmustNotHaveTags\x12'\n" +
+	"\x0fhub_description\x18\n" +
+	" \x01(\tR\x0ehubDescription\"l\n" +
 	"\"CStoreBrowse_GetPriceStops_Request\x12!\n" +
 	"\fcountry_code\x18\x01 \x01(\tR\vcountryCode\x12#\n" +
 	"\rcurrency_code\x18\x02 \x01(\tR\fcurrencyCode\"\xfb\x01\n" +
