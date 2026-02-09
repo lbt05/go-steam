@@ -528,6 +528,7 @@ const (
 	EMsg_k_EMsgCMSetSecrets                                                EMsg = 1704
 	EMsg_k_EMsgCMGetSecrets                                                EMsg = 1705
 	EMsg_k_EMsgCMRemotePlayReplyPacket                                     EMsg = 1706
+	EMsg_k_EMsgCMRemotePlayOffline                                         EMsg = 1707
 	EMsg_k_EMsgBaseGC                                                      EMsg = 2200
 	EMsg_k_EMsgGCCmdRevive                                                 EMsg = 2203
 	EMsg_k_EMsgGCCmdDown                                                   EMsg = 2206
@@ -1964,6 +1965,7 @@ var (
 		1704: "k_EMsgCMSetSecrets",
 		1705: "k_EMsgCMGetSecrets",
 		1706: "k_EMsgCMRemotePlayReplyPacket",
+		1707: "k_EMsgCMRemotePlayOffline",
 		2200: "k_EMsgBaseGC",
 		2203: "k_EMsgGCCmdRevive",
 		2206: "k_EMsgGCCmdDown",
@@ -3397,6 +3399,7 @@ var (
 		"k_EMsgCMSetSecrets":                                                1704,
 		"k_EMsgCMGetSecrets":                                                1705,
 		"k_EMsgCMRemotePlayReplyPacket":                                     1706,
+		"k_EMsgCMRemotePlayOffline":                                         1707,
 		"k_EMsgBaseGC":                                                      2200,
 		"k_EMsgGCCmdRevive":                                                 2203,
 		"k_EMsgGCCmdDown":                                                   2206,
@@ -4732,7 +4735,7 @@ var File_enums_clientserver_proto protoreflect.FileDescriptor
 
 const file_enums_clientserver_proto_rawDesc = "" +
 	"\n" +
-	"\x18enums_clientserver.proto*\xaa\x90\x03\n" +
+	"\x18enums_clientserver.proto*ʐ\x03\n" +
 	"\x04EMsg\x12\x11\n" +
 	"\rk_EMsgInvalid\x10\x00\x12\x0f\n" +
 	"\vk_EMsgMulti\x10\x01\x12\x19\n" +
@@ -5252,7 +5255,8 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x17k_EMsgCMSessionRejected\x10\xa7\r\x12\x17\n" +
 	"\x12k_EMsgCMSetSecrets\x10\xa8\r\x12\x17\n" +
 	"\x12k_EMsgCMGetSecrets\x10\xa9\r\x12\"\n" +
-	"\x1dk_EMsgCMRemotePlayReplyPacket\x10\xaa\r\x12\x11\n" +
+	"\x1dk_EMsgCMRemotePlayReplyPacket\x10\xaa\r\x12\x1e\n" +
+	"\x19k_EMsgCMRemotePlayOffline\x10\xab\r\x12\x11\n" +
 	"\fk_EMsgBaseGC\x10\x98\x11\x12\x16\n" +
 	"\x11k_EMsgGCCmdRevive\x10\x9b\x11\x12\x14\n" +
 	"\x0fk_EMsgGCCmdDown\x10\x9e\x11\x12\x16\n" +
