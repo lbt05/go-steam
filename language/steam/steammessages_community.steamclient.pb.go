@@ -21,77 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type ECommentDeleteReason int32
-
-const (
-	ECommentDeleteReason_k_ECommentDeleteReason_Invalid         ECommentDeleteReason = 0
-	ECommentDeleteReason_k_ECommentDeleteReason_User            ECommentDeleteReason = 1
-	ECommentDeleteReason_k_ECommentDeleteReason_ThreadOwner     ECommentDeleteReason = 2
-	ECommentDeleteReason_k_ECommentDeleteReason_Moderator       ECommentDeleteReason = 3
-	ECommentDeleteReason_k_ECommentDeleteReason_Support         ECommentDeleteReason = 4
-	ECommentDeleteReason_k_ECommentDeleteReason_Spam            ECommentDeleteReason = 5
-	ECommentDeleteReason_k_ECommentDeleteReason_AccountDeletion ECommentDeleteReason = 6
-)
-
-// Enum value maps for ECommentDeleteReason.
-var (
-	ECommentDeleteReason_name = map[int32]string{
-		0: "k_ECommentDeleteReason_Invalid",
-		1: "k_ECommentDeleteReason_User",
-		2: "k_ECommentDeleteReason_ThreadOwner",
-		3: "k_ECommentDeleteReason_Moderator",
-		4: "k_ECommentDeleteReason_Support",
-		5: "k_ECommentDeleteReason_Spam",
-		6: "k_ECommentDeleteReason_AccountDeletion",
-	}
-	ECommentDeleteReason_value = map[string]int32{
-		"k_ECommentDeleteReason_Invalid":         0,
-		"k_ECommentDeleteReason_User":            1,
-		"k_ECommentDeleteReason_ThreadOwner":     2,
-		"k_ECommentDeleteReason_Moderator":       3,
-		"k_ECommentDeleteReason_Support":         4,
-		"k_ECommentDeleteReason_Spam":            5,
-		"k_ECommentDeleteReason_AccountDeletion": 6,
-	}
-)
-
-func (x ECommentDeleteReason) Enum() *ECommentDeleteReason {
-	p := new(ECommentDeleteReason)
-	*p = x
-	return p
-}
-
-func (x ECommentDeleteReason) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (ECommentDeleteReason) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[0].Descriptor()
-}
-
-func (ECommentDeleteReason) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[0]
-}
-
-func (x ECommentDeleteReason) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Do not use.
-func (x *ECommentDeleteReason) UnmarshalJSON(b []byte) error {
-	num, err := protoimpl.X.UnmarshalJSONEnum(x.Descriptor(), b)
-	if err != nil {
-		return err
-	}
-	*x = ECommentDeleteReason(num)
-	return nil
-}
-
-// Deprecated: Use ECommentDeleteReason.Descriptor instead.
-func (ECommentDeleteReason) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{0}
-}
-
 type EClanImageGroup int32
 
 const (
@@ -125,11 +54,11 @@ func (x EClanImageGroup) String() string {
 }
 
 func (EClanImageGroup) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[1].Descriptor()
+	return file_steammessages_community_steamclient_proto_enumTypes[0].Descriptor()
 }
 
 func (EClanImageGroup) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[1]
+	return &file_steammessages_community_steamclient_proto_enumTypes[0]
 }
 
 func (x EClanImageGroup) Number() protoreflect.EnumNumber {
@@ -148,7 +77,7 @@ func (x *EClanImageGroup) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use EClanImageGroup.Descriptor instead.
 func (EClanImageGroup) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{1}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{0}
 }
 
 type EClanImageFileType int32
@@ -208,11 +137,11 @@ func (x EClanImageFileType) String() string {
 }
 
 func (EClanImageFileType) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[2].Descriptor()
+	return file_steammessages_community_steamclient_proto_enumTypes[1].Descriptor()
 }
 
 func (EClanImageFileType) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[2]
+	return &file_steammessages_community_steamclient_proto_enumTypes[1]
 }
 
 func (x EClanImageFileType) Number() protoreflect.EnumNumber {
@@ -231,7 +160,7 @@ func (x *EClanImageFileType) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use EClanImageFileType.Descriptor instead.
 func (EClanImageFileType) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{2}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{1}
 }
 
 type EPartnerEventDisplayLocation int32
@@ -291,11 +220,11 @@ func (x EPartnerEventDisplayLocation) String() string {
 }
 
 func (EPartnerEventDisplayLocation) Descriptor() protoreflect.EnumDescriptor {
-	return file_steammessages_community_steamclient_proto_enumTypes[3].Descriptor()
+	return file_steammessages_community_steamclient_proto_enumTypes[2].Descriptor()
 }
 
 func (EPartnerEventDisplayLocation) Type() protoreflect.EnumType {
-	return &file_steammessages_community_steamclient_proto_enumTypes[3]
+	return &file_steammessages_community_steamclient_proto_enumTypes[2]
 }
 
 func (x EPartnerEventDisplayLocation) Number() protoreflect.EnumNumber {
@@ -314,7 +243,7 @@ func (x *EPartnerEventDisplayLocation) UnmarshalJSON(b []byte) error {
 
 // Deprecated: Use EPartnerEventDisplayLocation.Descriptor instead.
 func (EPartnerEventDisplayLocation) EnumDescriptor() ([]byte, []int) {
-	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{3}
+	return file_steammessages_community_steamclient_proto_rawDescGZIP(), []int{2}
 }
 
 type CCommunity_GetApps_Request struct {
@@ -4536,15 +4465,7 @@ const file_steammessages_community_steamclient_proto_rawDesc = "" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12*\n" +
 	"\x10recommendationid\x18\x02 \x01(\x04R\x10recommendationid\x12\"\n" +
 	"\ris_bot_review\x18\x03 \x01(\bR\visBotReview\"6\n" +
-	"4CCommunity_SetRecommendationBotReviewStatus_Response*\x9a\x02\n" +
-	"\x14ECommentDeleteReason\x12\"\n" +
-	"\x1ek_ECommentDeleteReason_Invalid\x10\x00\x12\x1f\n" +
-	"\x1bk_ECommentDeleteReason_User\x10\x01\x12&\n" +
-	"\"k_ECommentDeleteReason_ThreadOwner\x10\x02\x12$\n" +
-	" k_ECommentDeleteReason_Moderator\x10\x03\x12\"\n" +
-	"\x1ek_ECommentDeleteReason_Support\x10\x04\x12\x1f\n" +
-	"\x1bk_ECommentDeleteReason_Spam\x10\x05\x12*\n" +
-	"&k_ECommentDeleteReason_AccountDeletion\x10\x06*p\n" +
+	"4CCommunity_SetRecommendationBotReviewStatus_Response*p\n" +
 	"\x0fEClanImageGroup\x12\x1a\n" +
 	"\x16k_EClanImageGroup_None\x10\x00\x12\"\n" +
 	"\x1ek_EClanImageGroup_Announcement\x10\x01\x12\x1d\n" +
@@ -4615,163 +4536,163 @@ func file_steammessages_community_steamclient_proto_rawDescGZIP() []byte {
 	return file_steammessages_community_steamclient_proto_rawDescData
 }
 
-var file_steammessages_community_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_steammessages_community_steamclient_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_steammessages_community_steamclient_proto_msgTypes = make([]protoimpl.MessageInfo, 64)
 var file_steammessages_community_steamclient_proto_goTypes = []any{
-	(ECommentDeleteReason)(0),                                               // 0: ECommentDeleteReason
-	(EClanImageGroup)(0),                                                    // 1: EClanImageGroup
-	(EClanImageFileType)(0),                                                 // 2: EClanImageFileType
-	(EPartnerEventDisplayLocation)(0),                                       // 3: EPartnerEventDisplayLocation
-	(*CCommunity_GetApps_Request)(nil),                                      // 4: CCommunity_GetApps_Request
-	(*CCommunity_GetApps_Response)(nil),                                     // 5: CCommunity_GetApps_Response
-	(*CCommunity_GetAppRichPresenceLocalization_Request)(nil),               // 6: CCommunity_GetAppRichPresenceLocalization_Request
-	(*CCommunity_GetAppRichPresenceLocalization_Response)(nil),              // 7: CCommunity_GetAppRichPresenceLocalization_Response
-	(*CCommunity_GetCommentThread_Request)(nil),                             // 8: CCommunity_GetCommentThread_Request
-	(*CCommunity_Comment)(nil),                                              // 9: CCommunity_Comment
-	(*CCommunity_GetCommentThread_Response)(nil),                            // 10: CCommunity_GetCommentThread_Response
-	(*CCommunity_PostCommentToThread_Request)(nil),                          // 11: CCommunity_PostCommentToThread_Request
-	(*CCommunity_PostCommentToThread_Response)(nil),                         // 12: CCommunity_PostCommentToThread_Response
-	(*CCommunity_DeleteCommentFromThread_Request)(nil),                      // 13: CCommunity_DeleteCommentFromThread_Request
-	(*CCommunity_DeleteCommentFromThread_Response)(nil),                     // 14: CCommunity_DeleteCommentFromThread_Response
-	(*CCommunity_RateCommentThread_Request)(nil),                            // 15: CCommunity_RateCommentThread_Request
-	(*CCommunity_RateCommentThread_Response)(nil),                           // 16: CCommunity_RateCommentThread_Response
-	(*CCommunity_GetCommentThreadRatings_Request)(nil),                      // 17: CCommunity_GetCommentThreadRatings_Request
-	(*CCommunity_GetCommentThreadRatings_Response)(nil),                     // 18: CCommunity_GetCommentThreadRatings_Response
-	(*CCommunity_VerifyClanMembership_Request)(nil),                         // 19: CCommunity_VerifyClanMembership_Request
-	(*CCommunity_VerifyClanMembership_Response)(nil),                        // 20: CCommunity_VerifyClanMembership_Response
-	(*CCommunity_RateClanAnnouncement_Request)(nil),                         // 21: CCommunity_RateClanAnnouncement_Request
-	(*CCommunity_RateClanAnnouncement_Response)(nil),                        // 22: CCommunity_RateClanAnnouncement_Response
-	(*CCommunity_GetClanAnnouncementVoteForUser_Request)(nil),               // 23: CCommunity_GetClanAnnouncementVoteForUser_Request
-	(*CCommunity_GetClanAnnouncementVoteForUser_Response)(nil),              // 24: CCommunity_GetClanAnnouncementVoteForUser_Response
-	(*CCommunity_GetClanLocGroupImages_Request)(nil),                        // 25: CCommunity_GetClanLocGroupImages_Request
-	(*CCommunity_ClanLocGroupImage)(nil),                                    // 26: CCommunity_ClanLocGroupImage
-	(*CCommunity_GetClanLocGroupImages_Response)(nil),                       // 27: CCommunity_GetClanLocGroupImages_Response
-	(*CCommunity_GetAvatarHistory_Request)(nil),                             // 28: CCommunity_GetAvatarHistory_Request
-	(*CCommunity_GetAvatarHistory_Response)(nil),                            // 29: CCommunity_GetAvatarHistory_Response
-	(*CCommunity_GetClanEventCrowdInMetadata_Request)(nil),                  // 30: CCommunity_GetClanEventCrowdInMetadata_Request
-	(*CCommunity_GetClanEventCrowdInMetadata_Response)(nil),                 // 31: CCommunity_GetClanEventCrowdInMetadata_Response
-	(*CCommunity_GetClanCrowdInMetadata_Request)(nil),                       // 32: CCommunity_GetClanCrowdInMetadata_Request
-	(*CCommunity_GetClanCrowdInMetadata_Response)(nil),                      // 33: CCommunity_GetClanCrowdInMetadata_Response
-	(*CCommunity_FetchTranslationFromCrowdIn_Request)(nil),                  // 34: CCommunity_FetchTranslationFromCrowdIn_Request
-	(*CCommunity_FetchTranslationFromCrowdIn_Response)(nil),                 // 35: CCommunity_FetchTranslationFromCrowdIn_Response
-	(*CCommunity_HideAndReportComment_Request)(nil),                         // 36: CCommunity_HideAndReportComment_Request
-	(*CCommunity_HideAndReportComment_Response)(nil),                        // 37: CCommunity_HideAndReportComment_Response
-	(*CAppPriority)(nil),                                                    // 38: CAppPriority
-	(*CCommunity_GetUserPartnerEventNews_Request)(nil),                      // 39: CCommunity_GetUserPartnerEventNews_Request
-	(*CCommunity_GetUserPartnerEventNews_Response)(nil),                     // 40: CCommunity_GetUserPartnerEventNews_Response
-	(*CCommunity_GetBestEventsForUser_Request)(nil),                         // 41: CCommunity_GetBestEventsForUser_Request
-	(*CCommunity_PartnerEventResult)(nil),                                   // 42: CCommunity_PartnerEventResult
-	(*CCommunity_GetBestEventsForUser_Response)(nil),                        // 43: CCommunity_GetBestEventsForUser_Response
-	(*CCommunity_MarkPartnerEventsForUser_Request)(nil),                     // 44: CCommunity_MarkPartnerEventsForUser_Request
-	(*CCommunity_MarkPartnerEventsForUser_Response)(nil),                    // 45: CCommunity_MarkPartnerEventsForUser_Response
-	(*CCommunity_GetUserPartnerEventViewStatus_Request)(nil),                // 46: CCommunity_GetUserPartnerEventViewStatus_Request
-	(*CCommunity_GetUserPartnerEventViewStatus_Response)(nil),               // 47: CCommunity_GetUserPartnerEventViewStatus_Response
-	(*CCommunity_PartnerEventsShowMoreForApp_Request)(nil),                  // 48: CCommunity_PartnerEventsShowMoreForApp_Request
-	(*CCommunity_PartnerEventsShowMoreForApp_Response)(nil),                 // 49: CCommunity_PartnerEventsShowMoreForApp_Response
-	(*CCommunity_PartnerEventsShowLessForApp_Request)(nil),                  // 50: CCommunity_PartnerEventsShowLessForApp_Request
-	(*CCommunity_PartnerEventsShowLessForApp_Response)(nil),                 // 51: CCommunity_PartnerEventsShowLessForApp_Response
-	(*CCommunity_ClearUserPartnerEventsAppPriorities_Request)(nil),          // 52: CCommunity_ClearUserPartnerEventsAppPriorities_Request
-	(*CCommunity_ClearUserPartnerEventsAppPriorities_Response)(nil),         // 53: CCommunity_ClearUserPartnerEventsAppPriorities_Response
-	(*CCommunity_GetUserPartnerEventsAppPriorities_Request)(nil),            // 54: CCommunity_GetUserPartnerEventsAppPriorities_Request
-	(*CCommunity_PartnerEventsAppPriority)(nil),                             // 55: CCommunity_PartnerEventsAppPriority
-	(*CCommunity_GetUserPartnerEventsAppPriorities_Response)(nil),           // 56: CCommunity_GetUserPartnerEventsAppPriorities_Response
-	(*CCommunity_ClearSinglePartnerEventsAppPriority_Request)(nil),          // 57: CCommunity_ClearSinglePartnerEventsAppPriority_Request
-	(*CCommunity_ClearSinglePartnerEventsAppPriority_Response)(nil),         // 58: CCommunity_ClearSinglePartnerEventsAppPriority_Response
-	(*CCommunity_SetRecommendationBotReviewStatus_Request)(nil),             // 59: CCommunity_SetRecommendationBotReviewStatus_Request
-	(*CCommunity_SetRecommendationBotReviewStatus_Response)(nil),            // 60: CCommunity_SetRecommendationBotReviewStatus_Response
-	(*CCommunity_GetAppRichPresenceLocalization_Response_Token)(nil),        // 61: CCommunity_GetAppRichPresenceLocalization_Response.Token
-	(*CCommunity_GetAppRichPresenceLocalization_Response_TokenList)(nil),    // 62: CCommunity_GetAppRichPresenceLocalization_Response.TokenList
-	(*CCommunity_Comment_Reaction)(nil),                                     // 63: CCommunity_Comment.Reaction
-	(*CCommunity_GetAvatarHistory_Response_AvatarData)(nil),                 // 64: CCommunity_GetAvatarHistory_Response.AvatarData
-	(*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking)(nil), // 65: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
-	(*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent)(nil),  // 66: CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
-	(*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel)(nil), // 67: CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
-	(*CCDDBAppDetailCommon)(nil),                                            // 68: CCDDBAppDetailCommon
-	(ECommentThreadType)(0),                                                 // 69: ECommentThreadType
-	(*CMsgIPAddress)(nil),                                                   // 70: CMsgIPAddress
+	(EClanImageGroup)(0),                                                    // 0: EClanImageGroup
+	(EClanImageFileType)(0),                                                 // 1: EClanImageFileType
+	(EPartnerEventDisplayLocation)(0),                                       // 2: EPartnerEventDisplayLocation
+	(*CCommunity_GetApps_Request)(nil),                                      // 3: CCommunity_GetApps_Request
+	(*CCommunity_GetApps_Response)(nil),                                     // 4: CCommunity_GetApps_Response
+	(*CCommunity_GetAppRichPresenceLocalization_Request)(nil),               // 5: CCommunity_GetAppRichPresenceLocalization_Request
+	(*CCommunity_GetAppRichPresenceLocalization_Response)(nil),              // 6: CCommunity_GetAppRichPresenceLocalization_Response
+	(*CCommunity_GetCommentThread_Request)(nil),                             // 7: CCommunity_GetCommentThread_Request
+	(*CCommunity_Comment)(nil),                                              // 8: CCommunity_Comment
+	(*CCommunity_GetCommentThread_Response)(nil),                            // 9: CCommunity_GetCommentThread_Response
+	(*CCommunity_PostCommentToThread_Request)(nil),                          // 10: CCommunity_PostCommentToThread_Request
+	(*CCommunity_PostCommentToThread_Response)(nil),                         // 11: CCommunity_PostCommentToThread_Response
+	(*CCommunity_DeleteCommentFromThread_Request)(nil),                      // 12: CCommunity_DeleteCommentFromThread_Request
+	(*CCommunity_DeleteCommentFromThread_Response)(nil),                     // 13: CCommunity_DeleteCommentFromThread_Response
+	(*CCommunity_RateCommentThread_Request)(nil),                            // 14: CCommunity_RateCommentThread_Request
+	(*CCommunity_RateCommentThread_Response)(nil),                           // 15: CCommunity_RateCommentThread_Response
+	(*CCommunity_GetCommentThreadRatings_Request)(nil),                      // 16: CCommunity_GetCommentThreadRatings_Request
+	(*CCommunity_GetCommentThreadRatings_Response)(nil),                     // 17: CCommunity_GetCommentThreadRatings_Response
+	(*CCommunity_VerifyClanMembership_Request)(nil),                         // 18: CCommunity_VerifyClanMembership_Request
+	(*CCommunity_VerifyClanMembership_Response)(nil),                        // 19: CCommunity_VerifyClanMembership_Response
+	(*CCommunity_RateClanAnnouncement_Request)(nil),                         // 20: CCommunity_RateClanAnnouncement_Request
+	(*CCommunity_RateClanAnnouncement_Response)(nil),                        // 21: CCommunity_RateClanAnnouncement_Response
+	(*CCommunity_GetClanAnnouncementVoteForUser_Request)(nil),               // 22: CCommunity_GetClanAnnouncementVoteForUser_Request
+	(*CCommunity_GetClanAnnouncementVoteForUser_Response)(nil),              // 23: CCommunity_GetClanAnnouncementVoteForUser_Response
+	(*CCommunity_GetClanLocGroupImages_Request)(nil),                        // 24: CCommunity_GetClanLocGroupImages_Request
+	(*CCommunity_ClanLocGroupImage)(nil),                                    // 25: CCommunity_ClanLocGroupImage
+	(*CCommunity_GetClanLocGroupImages_Response)(nil),                       // 26: CCommunity_GetClanLocGroupImages_Response
+	(*CCommunity_GetAvatarHistory_Request)(nil),                             // 27: CCommunity_GetAvatarHistory_Request
+	(*CCommunity_GetAvatarHistory_Response)(nil),                            // 28: CCommunity_GetAvatarHistory_Response
+	(*CCommunity_GetClanEventCrowdInMetadata_Request)(nil),                  // 29: CCommunity_GetClanEventCrowdInMetadata_Request
+	(*CCommunity_GetClanEventCrowdInMetadata_Response)(nil),                 // 30: CCommunity_GetClanEventCrowdInMetadata_Response
+	(*CCommunity_GetClanCrowdInMetadata_Request)(nil),                       // 31: CCommunity_GetClanCrowdInMetadata_Request
+	(*CCommunity_GetClanCrowdInMetadata_Response)(nil),                      // 32: CCommunity_GetClanCrowdInMetadata_Response
+	(*CCommunity_FetchTranslationFromCrowdIn_Request)(nil),                  // 33: CCommunity_FetchTranslationFromCrowdIn_Request
+	(*CCommunity_FetchTranslationFromCrowdIn_Response)(nil),                 // 34: CCommunity_FetchTranslationFromCrowdIn_Response
+	(*CCommunity_HideAndReportComment_Request)(nil),                         // 35: CCommunity_HideAndReportComment_Request
+	(*CCommunity_HideAndReportComment_Response)(nil),                        // 36: CCommunity_HideAndReportComment_Response
+	(*CAppPriority)(nil),                                                    // 37: CAppPriority
+	(*CCommunity_GetUserPartnerEventNews_Request)(nil),                      // 38: CCommunity_GetUserPartnerEventNews_Request
+	(*CCommunity_GetUserPartnerEventNews_Response)(nil),                     // 39: CCommunity_GetUserPartnerEventNews_Response
+	(*CCommunity_GetBestEventsForUser_Request)(nil),                         // 40: CCommunity_GetBestEventsForUser_Request
+	(*CCommunity_PartnerEventResult)(nil),                                   // 41: CCommunity_PartnerEventResult
+	(*CCommunity_GetBestEventsForUser_Response)(nil),                        // 42: CCommunity_GetBestEventsForUser_Response
+	(*CCommunity_MarkPartnerEventsForUser_Request)(nil),                     // 43: CCommunity_MarkPartnerEventsForUser_Request
+	(*CCommunity_MarkPartnerEventsForUser_Response)(nil),                    // 44: CCommunity_MarkPartnerEventsForUser_Response
+	(*CCommunity_GetUserPartnerEventViewStatus_Request)(nil),                // 45: CCommunity_GetUserPartnerEventViewStatus_Request
+	(*CCommunity_GetUserPartnerEventViewStatus_Response)(nil),               // 46: CCommunity_GetUserPartnerEventViewStatus_Response
+	(*CCommunity_PartnerEventsShowMoreForApp_Request)(nil),                  // 47: CCommunity_PartnerEventsShowMoreForApp_Request
+	(*CCommunity_PartnerEventsShowMoreForApp_Response)(nil),                 // 48: CCommunity_PartnerEventsShowMoreForApp_Response
+	(*CCommunity_PartnerEventsShowLessForApp_Request)(nil),                  // 49: CCommunity_PartnerEventsShowLessForApp_Request
+	(*CCommunity_PartnerEventsShowLessForApp_Response)(nil),                 // 50: CCommunity_PartnerEventsShowLessForApp_Response
+	(*CCommunity_ClearUserPartnerEventsAppPriorities_Request)(nil),          // 51: CCommunity_ClearUserPartnerEventsAppPriorities_Request
+	(*CCommunity_ClearUserPartnerEventsAppPriorities_Response)(nil),         // 52: CCommunity_ClearUserPartnerEventsAppPriorities_Response
+	(*CCommunity_GetUserPartnerEventsAppPriorities_Request)(nil),            // 53: CCommunity_GetUserPartnerEventsAppPriorities_Request
+	(*CCommunity_PartnerEventsAppPriority)(nil),                             // 54: CCommunity_PartnerEventsAppPriority
+	(*CCommunity_GetUserPartnerEventsAppPriorities_Response)(nil),           // 55: CCommunity_GetUserPartnerEventsAppPriorities_Response
+	(*CCommunity_ClearSinglePartnerEventsAppPriority_Request)(nil),          // 56: CCommunity_ClearSinglePartnerEventsAppPriority_Request
+	(*CCommunity_ClearSinglePartnerEventsAppPriority_Response)(nil),         // 57: CCommunity_ClearSinglePartnerEventsAppPriority_Response
+	(*CCommunity_SetRecommendationBotReviewStatus_Request)(nil),             // 58: CCommunity_SetRecommendationBotReviewStatus_Request
+	(*CCommunity_SetRecommendationBotReviewStatus_Response)(nil),            // 59: CCommunity_SetRecommendationBotReviewStatus_Response
+	(*CCommunity_GetAppRichPresenceLocalization_Response_Token)(nil),        // 60: CCommunity_GetAppRichPresenceLocalization_Response.Token
+	(*CCommunity_GetAppRichPresenceLocalization_Response_TokenList)(nil),    // 61: CCommunity_GetAppRichPresenceLocalization_Response.TokenList
+	(*CCommunity_Comment_Reaction)(nil),                                     // 62: CCommunity_Comment.Reaction
+	(*CCommunity_GetAvatarHistory_Response_AvatarData)(nil),                 // 63: CCommunity_GetAvatarHistory_Response.AvatarData
+	(*CCommunity_MarkPartnerEventsForUser_Request_PartnerEventMarking)(nil), // 64: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
+	(*CCommunity_GetUserPartnerEventViewStatus_Response_PartnerEvent)(nil),  // 65: CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
+	(*CCommunity_SetRecommendationBotReviewStatus_Request_ReviewLabel)(nil), // 66: CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
+	(*CCDDBAppDetailCommon)(nil),                                            // 67: CCDDBAppDetailCommon
+	(ECommentThreadType)(0),                                                 // 68: ECommentThreadType
+	(*CMsgIPAddress)(nil),                                                   // 69: CMsgIPAddress
+	(ECommentDeleteReason)(0),                                               // 70: ECommentDeleteReason
 	(EContentReportReason)(0),                                               // 71: EContentReportReason
 	(EProtoClanEventType)(0),                                                // 72: EProtoClanEventType
 	(*CClanMatchEventByRange)(nil),                                          // 73: CClanMatchEventByRange
 }
 var file_steammessages_community_steamclient_proto_depIdxs = []int32{
-	68, // 0: CCommunity_GetApps_Response.apps:type_name -> CCDDBAppDetailCommon
-	62, // 1: CCommunity_GetAppRichPresenceLocalization_Response.token_lists:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.TokenList
-	69, // 2: CCommunity_GetCommentThread_Request.comment_thread_type:type_name -> ECommentThreadType
-	70, // 3: CCommunity_Comment.ipaddress:type_name -> CMsgIPAddress
-	63, // 4: CCommunity_Comment.reactions:type_name -> CCommunity_Comment.Reaction
-	0,  // 5: CCommunity_Comment.delete_reason:type_name -> ECommentDeleteReason
-	9,  // 6: CCommunity_GetCommentThread_Response.comments:type_name -> CCommunity_Comment
-	9,  // 7: CCommunity_GetCommentThread_Response.deleted_comments:type_name -> CCommunity_Comment
-	69, // 8: CCommunity_PostCommentToThread_Request.comment_thread_type:type_name -> ECommentThreadType
-	69, // 9: CCommunity_DeleteCommentFromThread_Request.comment_thread_type:type_name -> ECommentThreadType
-	1,  // 10: CCommunity_GetClanLocGroupImages_Request.group:type_name -> EClanImageGroup
-	2,  // 11: CCommunity_ClanLocGroupImage.file_type:type_name -> EClanImageFileType
-	1,  // 12: CCommunity_ClanLocGroupImage.group:type_name -> EClanImageGroup
-	26, // 13: CCommunity_GetClanLocGroupImages_Response.images:type_name -> CCommunity_ClanLocGroupImage
-	64, // 14: CCommunity_GetAvatarHistory_Response.avatars:type_name -> CCommunity_GetAvatarHistory_Response.AvatarData
+	67, // 0: CCommunity_GetApps_Response.apps:type_name -> CCDDBAppDetailCommon
+	61, // 1: CCommunity_GetAppRichPresenceLocalization_Response.token_lists:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.TokenList
+	68, // 2: CCommunity_GetCommentThread_Request.comment_thread_type:type_name -> ECommentThreadType
+	69, // 3: CCommunity_Comment.ipaddress:type_name -> CMsgIPAddress
+	62, // 4: CCommunity_Comment.reactions:type_name -> CCommunity_Comment.Reaction
+	70, // 5: CCommunity_Comment.delete_reason:type_name -> ECommentDeleteReason
+	8,  // 6: CCommunity_GetCommentThread_Response.comments:type_name -> CCommunity_Comment
+	8,  // 7: CCommunity_GetCommentThread_Response.deleted_comments:type_name -> CCommunity_Comment
+	68, // 8: CCommunity_PostCommentToThread_Request.comment_thread_type:type_name -> ECommentThreadType
+	68, // 9: CCommunity_DeleteCommentFromThread_Request.comment_thread_type:type_name -> ECommentThreadType
+	0,  // 10: CCommunity_GetClanLocGroupImages_Request.group:type_name -> EClanImageGroup
+	1,  // 11: CCommunity_ClanLocGroupImage.file_type:type_name -> EClanImageFileType
+	0,  // 12: CCommunity_ClanLocGroupImage.group:type_name -> EClanImageGroup
+	25, // 13: CCommunity_GetClanLocGroupImages_Response.images:type_name -> CCommunity_ClanLocGroupImage
+	63, // 14: CCommunity_GetAvatarHistory_Response.avatars:type_name -> CCommunity_GetAvatarHistory_Response.AvatarData
 	71, // 15: CCommunity_HideAndReportComment_Request.report_reason:type_name -> EContentReportReason
 	72, // 16: CCommunity_GetUserPartnerEventNews_Request.filter_event_type:type_name -> EProtoClanEventType
-	38, // 17: CCommunity_GetUserPartnerEventNews_Request.app_list:type_name -> CAppPriority
+	37, // 17: CCommunity_GetUserPartnerEventNews_Request.app_list:type_name -> CAppPriority
 	73, // 18: CCommunity_GetUserPartnerEventNews_Response.results:type_name -> CClanMatchEventByRange
-	42, // 19: CCommunity_GetBestEventsForUser_Response.results:type_name -> CCommunity_PartnerEventResult
-	65, // 20: CCommunity_MarkPartnerEventsForUser_Request.markings:type_name -> CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
-	66, // 21: CCommunity_GetUserPartnerEventViewStatus_Response.events:type_name -> CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
-	55, // 22: CCommunity_GetUserPartnerEventsAppPriorities_Response.priorities:type_name -> CCommunity_PartnerEventsAppPriority
-	67, // 23: CCommunity_SetRecommendationBotReviewStatus_Request.review_labels:type_name -> CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
-	61, // 24: CCommunity_GetAppRichPresenceLocalization_Response.TokenList.tokens:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.Token
-	3,  // 25: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking.display_location:type_name -> EPartnerEventDisplayLocation
-	4,  // 26: Community.GetApps:input_type -> CCommunity_GetApps_Request
-	6,  // 27: Community.GetAppRichPresenceLocalization:input_type -> CCommunity_GetAppRichPresenceLocalization_Request
-	8,  // 28: Community.GetCommentThread:input_type -> CCommunity_GetCommentThread_Request
-	11, // 29: Community.PostCommentToThread:input_type -> CCommunity_PostCommentToThread_Request
-	13, // 30: Community.DeleteCommentFromThread:input_type -> CCommunity_DeleteCommentFromThread_Request
-	15, // 31: Community.RateCommentThread:input_type -> CCommunity_RateCommentThread_Request
-	17, // 32: Community.GetCommentThreadRatings:input_type -> CCommunity_GetCommentThreadRatings_Request
-	19, // 33: Community.VerifyClanMembership:input_type -> CCommunity_VerifyClanMembership_Request
-	21, // 34: Community.RateClanAnnouncement:input_type -> CCommunity_RateClanAnnouncement_Request
-	23, // 35: Community.GetClanAnnouncementVoteForUser:input_type -> CCommunity_GetClanAnnouncementVoteForUser_Request
-	25, // 36: Community.GetClanLocGroupImages:input_type -> CCommunity_GetClanLocGroupImages_Request
-	28, // 37: Community.GetAvatarHistory:input_type -> CCommunity_GetAvatarHistory_Request
-	30, // 38: Community.GetClanEventCrowdInMetadata:input_type -> CCommunity_GetClanEventCrowdInMetadata_Request
-	32, // 39: Community.GetClanCrowdInMetadata:input_type -> CCommunity_GetClanCrowdInMetadata_Request
-	34, // 40: Community.FetchTranslationFromCrowdIn:input_type -> CCommunity_FetchTranslationFromCrowdIn_Request
-	36, // 41: Community.HideAndReportComment:input_type -> CCommunity_HideAndReportComment_Request
-	39, // 42: Community.GetUserPartnerEventNews:input_type -> CCommunity_GetUserPartnerEventNews_Request
-	41, // 43: Community.GetBestEventsForUser:input_type -> CCommunity_GetBestEventsForUser_Request
-	44, // 44: Community.MarkPartnerEventsForUser:input_type -> CCommunity_MarkPartnerEventsForUser_Request
-	46, // 45: Community.GetUserPartnerEventViewStatus:input_type -> CCommunity_GetUserPartnerEventViewStatus_Request
-	48, // 46: Community.PartnerEventsShowMoreForApp:input_type -> CCommunity_PartnerEventsShowMoreForApp_Request
-	50, // 47: Community.PartnerEventsShowLessForApp:input_type -> CCommunity_PartnerEventsShowLessForApp_Request
-	52, // 48: Community.ClearUserPartnerEventsAppPriorities:input_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Request
-	54, // 49: Community.GetUserPartnerEventsAppPriorities:input_type -> CCommunity_GetUserPartnerEventsAppPriorities_Request
-	57, // 50: Community.ClearSinglePartnerEventsAppPriority:input_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Request
-	59, // 51: Community.SetRecommendationBotReviewStatus:input_type -> CCommunity_SetRecommendationBotReviewStatus_Request
-	5,  // 52: Community.GetApps:output_type -> CCommunity_GetApps_Response
-	7,  // 53: Community.GetAppRichPresenceLocalization:output_type -> CCommunity_GetAppRichPresenceLocalization_Response
-	10, // 54: Community.GetCommentThread:output_type -> CCommunity_GetCommentThread_Response
-	12, // 55: Community.PostCommentToThread:output_type -> CCommunity_PostCommentToThread_Response
-	14, // 56: Community.DeleteCommentFromThread:output_type -> CCommunity_DeleteCommentFromThread_Response
-	16, // 57: Community.RateCommentThread:output_type -> CCommunity_RateCommentThread_Response
-	18, // 58: Community.GetCommentThreadRatings:output_type -> CCommunity_GetCommentThreadRatings_Response
-	20, // 59: Community.VerifyClanMembership:output_type -> CCommunity_VerifyClanMembership_Response
-	22, // 60: Community.RateClanAnnouncement:output_type -> CCommunity_RateClanAnnouncement_Response
-	24, // 61: Community.GetClanAnnouncementVoteForUser:output_type -> CCommunity_GetClanAnnouncementVoteForUser_Response
-	27, // 62: Community.GetClanLocGroupImages:output_type -> CCommunity_GetClanLocGroupImages_Response
-	29, // 63: Community.GetAvatarHistory:output_type -> CCommunity_GetAvatarHistory_Response
-	31, // 64: Community.GetClanEventCrowdInMetadata:output_type -> CCommunity_GetClanEventCrowdInMetadata_Response
-	33, // 65: Community.GetClanCrowdInMetadata:output_type -> CCommunity_GetClanCrowdInMetadata_Response
-	35, // 66: Community.FetchTranslationFromCrowdIn:output_type -> CCommunity_FetchTranslationFromCrowdIn_Response
-	37, // 67: Community.HideAndReportComment:output_type -> CCommunity_HideAndReportComment_Response
-	40, // 68: Community.GetUserPartnerEventNews:output_type -> CCommunity_GetUserPartnerEventNews_Response
-	43, // 69: Community.GetBestEventsForUser:output_type -> CCommunity_GetBestEventsForUser_Response
-	45, // 70: Community.MarkPartnerEventsForUser:output_type -> CCommunity_MarkPartnerEventsForUser_Response
-	47, // 71: Community.GetUserPartnerEventViewStatus:output_type -> CCommunity_GetUserPartnerEventViewStatus_Response
-	49, // 72: Community.PartnerEventsShowMoreForApp:output_type -> CCommunity_PartnerEventsShowMoreForApp_Response
-	51, // 73: Community.PartnerEventsShowLessForApp:output_type -> CCommunity_PartnerEventsShowLessForApp_Response
-	53, // 74: Community.ClearUserPartnerEventsAppPriorities:output_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Response
-	56, // 75: Community.GetUserPartnerEventsAppPriorities:output_type -> CCommunity_GetUserPartnerEventsAppPriorities_Response
-	58, // 76: Community.ClearSinglePartnerEventsAppPriority:output_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Response
-	60, // 77: Community.SetRecommendationBotReviewStatus:output_type -> CCommunity_SetRecommendationBotReviewStatus_Response
+	41, // 19: CCommunity_GetBestEventsForUser_Response.results:type_name -> CCommunity_PartnerEventResult
+	64, // 20: CCommunity_MarkPartnerEventsForUser_Request.markings:type_name -> CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking
+	65, // 21: CCommunity_GetUserPartnerEventViewStatus_Response.events:type_name -> CCommunity_GetUserPartnerEventViewStatus_Response.PartnerEvent
+	54, // 22: CCommunity_GetUserPartnerEventsAppPriorities_Response.priorities:type_name -> CCommunity_PartnerEventsAppPriority
+	66, // 23: CCommunity_SetRecommendationBotReviewStatus_Request.review_labels:type_name -> CCommunity_SetRecommendationBotReviewStatus_Request.ReviewLabel
+	60, // 24: CCommunity_GetAppRichPresenceLocalization_Response.TokenList.tokens:type_name -> CCommunity_GetAppRichPresenceLocalization_Response.Token
+	2,  // 25: CCommunity_MarkPartnerEventsForUser_Request.PartnerEventMarking.display_location:type_name -> EPartnerEventDisplayLocation
+	3,  // 26: Community.GetApps:input_type -> CCommunity_GetApps_Request
+	5,  // 27: Community.GetAppRichPresenceLocalization:input_type -> CCommunity_GetAppRichPresenceLocalization_Request
+	7,  // 28: Community.GetCommentThread:input_type -> CCommunity_GetCommentThread_Request
+	10, // 29: Community.PostCommentToThread:input_type -> CCommunity_PostCommentToThread_Request
+	12, // 30: Community.DeleteCommentFromThread:input_type -> CCommunity_DeleteCommentFromThread_Request
+	14, // 31: Community.RateCommentThread:input_type -> CCommunity_RateCommentThread_Request
+	16, // 32: Community.GetCommentThreadRatings:input_type -> CCommunity_GetCommentThreadRatings_Request
+	18, // 33: Community.VerifyClanMembership:input_type -> CCommunity_VerifyClanMembership_Request
+	20, // 34: Community.RateClanAnnouncement:input_type -> CCommunity_RateClanAnnouncement_Request
+	22, // 35: Community.GetClanAnnouncementVoteForUser:input_type -> CCommunity_GetClanAnnouncementVoteForUser_Request
+	24, // 36: Community.GetClanLocGroupImages:input_type -> CCommunity_GetClanLocGroupImages_Request
+	27, // 37: Community.GetAvatarHistory:input_type -> CCommunity_GetAvatarHistory_Request
+	29, // 38: Community.GetClanEventCrowdInMetadata:input_type -> CCommunity_GetClanEventCrowdInMetadata_Request
+	31, // 39: Community.GetClanCrowdInMetadata:input_type -> CCommunity_GetClanCrowdInMetadata_Request
+	33, // 40: Community.FetchTranslationFromCrowdIn:input_type -> CCommunity_FetchTranslationFromCrowdIn_Request
+	35, // 41: Community.HideAndReportComment:input_type -> CCommunity_HideAndReportComment_Request
+	38, // 42: Community.GetUserPartnerEventNews:input_type -> CCommunity_GetUserPartnerEventNews_Request
+	40, // 43: Community.GetBestEventsForUser:input_type -> CCommunity_GetBestEventsForUser_Request
+	43, // 44: Community.MarkPartnerEventsForUser:input_type -> CCommunity_MarkPartnerEventsForUser_Request
+	45, // 45: Community.GetUserPartnerEventViewStatus:input_type -> CCommunity_GetUserPartnerEventViewStatus_Request
+	47, // 46: Community.PartnerEventsShowMoreForApp:input_type -> CCommunity_PartnerEventsShowMoreForApp_Request
+	49, // 47: Community.PartnerEventsShowLessForApp:input_type -> CCommunity_PartnerEventsShowLessForApp_Request
+	51, // 48: Community.ClearUserPartnerEventsAppPriorities:input_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Request
+	53, // 49: Community.GetUserPartnerEventsAppPriorities:input_type -> CCommunity_GetUserPartnerEventsAppPriorities_Request
+	56, // 50: Community.ClearSinglePartnerEventsAppPriority:input_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Request
+	58, // 51: Community.SetRecommendationBotReviewStatus:input_type -> CCommunity_SetRecommendationBotReviewStatus_Request
+	4,  // 52: Community.GetApps:output_type -> CCommunity_GetApps_Response
+	6,  // 53: Community.GetAppRichPresenceLocalization:output_type -> CCommunity_GetAppRichPresenceLocalization_Response
+	9,  // 54: Community.GetCommentThread:output_type -> CCommunity_GetCommentThread_Response
+	11, // 55: Community.PostCommentToThread:output_type -> CCommunity_PostCommentToThread_Response
+	13, // 56: Community.DeleteCommentFromThread:output_type -> CCommunity_DeleteCommentFromThread_Response
+	15, // 57: Community.RateCommentThread:output_type -> CCommunity_RateCommentThread_Response
+	17, // 58: Community.GetCommentThreadRatings:output_type -> CCommunity_GetCommentThreadRatings_Response
+	19, // 59: Community.VerifyClanMembership:output_type -> CCommunity_VerifyClanMembership_Response
+	21, // 60: Community.RateClanAnnouncement:output_type -> CCommunity_RateClanAnnouncement_Response
+	23, // 61: Community.GetClanAnnouncementVoteForUser:output_type -> CCommunity_GetClanAnnouncementVoteForUser_Response
+	26, // 62: Community.GetClanLocGroupImages:output_type -> CCommunity_GetClanLocGroupImages_Response
+	28, // 63: Community.GetAvatarHistory:output_type -> CCommunity_GetAvatarHistory_Response
+	30, // 64: Community.GetClanEventCrowdInMetadata:output_type -> CCommunity_GetClanEventCrowdInMetadata_Response
+	32, // 65: Community.GetClanCrowdInMetadata:output_type -> CCommunity_GetClanCrowdInMetadata_Response
+	34, // 66: Community.FetchTranslationFromCrowdIn:output_type -> CCommunity_FetchTranslationFromCrowdIn_Response
+	36, // 67: Community.HideAndReportComment:output_type -> CCommunity_HideAndReportComment_Response
+	39, // 68: Community.GetUserPartnerEventNews:output_type -> CCommunity_GetUserPartnerEventNews_Response
+	42, // 69: Community.GetBestEventsForUser:output_type -> CCommunity_GetBestEventsForUser_Response
+	44, // 70: Community.MarkPartnerEventsForUser:output_type -> CCommunity_MarkPartnerEventsForUser_Response
+	46, // 71: Community.GetUserPartnerEventViewStatus:output_type -> CCommunity_GetUserPartnerEventViewStatus_Response
+	48, // 72: Community.PartnerEventsShowMoreForApp:output_type -> CCommunity_PartnerEventsShowMoreForApp_Response
+	50, // 73: Community.PartnerEventsShowLessForApp:output_type -> CCommunity_PartnerEventsShowLessForApp_Response
+	52, // 74: Community.ClearUserPartnerEventsAppPriorities:output_type -> CCommunity_ClearUserPartnerEventsAppPriorities_Response
+	55, // 75: Community.GetUserPartnerEventsAppPriorities:output_type -> CCommunity_GetUserPartnerEventsAppPriorities_Response
+	57, // 76: Community.ClearSinglePartnerEventsAppPriority:output_type -> CCommunity_ClearSinglePartnerEventsAppPriority_Response
+	59, // 77: Community.SetRecommendationBotReviewStatus:output_type -> CCommunity_SetRecommendationBotReviewStatus_Response
 	52, // [52:78] is the sub-list for method output_type
 	26, // [26:52] is the sub-list for method input_type
 	26, // [26:26] is the sub-list for extension type_name
@@ -4792,7 +4713,7 @@ func file_steammessages_community_steamclient_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_community_steamclient_proto_rawDesc), len(file_steammessages_community_steamclient_proto_rawDesc)),
-			NumEnums:      4,
+			NumEnums:      3,
 			NumMessages:   64,
 			NumExtensions: 0,
 			NumServices:   1,

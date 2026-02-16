@@ -763,6 +763,14 @@ type CMsgClientSettings struct {
 	ControllerEnableChord                 *bool                     `protobuf:"varint,140011,opt,name=controller_enable_chord,json=controllerEnableChord" json:"controller_enable_chord,omitempty"`
 	ControllerPollRate                    *bool                     `protobuf:"varint,140012,opt,name=controller_poll_rate,json=controllerPollRate" json:"controller_poll_rate,omitempty"`
 	ControllerSiapiConfigAuthorMode       *bool                     `protobuf:"varint,140013,opt,name=controller_siapi_config_author_mode,json=controllerSiapiConfigAuthorMode" json:"controller_siapi_config_author_mode,omitempty"`
+	ControllerChatRadialMenuOption_0      *string                   `protobuf:"bytes,140030,opt,name=controller_chat_radial_menu_option_0,json=controllerChatRadialMenuOption0" json:"controller_chat_radial_menu_option_0,omitempty"`
+	ControllerChatRadialMenuOption_1      *string                   `protobuf:"bytes,140031,opt,name=controller_chat_radial_menu_option_1,json=controllerChatRadialMenuOption1" json:"controller_chat_radial_menu_option_1,omitempty"`
+	ControllerChatRadialMenuOption_2      *string                   `protobuf:"bytes,140032,opt,name=controller_chat_radial_menu_option_2,json=controllerChatRadialMenuOption2" json:"controller_chat_radial_menu_option_2,omitempty"`
+	ControllerChatRadialMenuOption_3      *string                   `protobuf:"bytes,140033,opt,name=controller_chat_radial_menu_option_3,json=controllerChatRadialMenuOption3" json:"controller_chat_radial_menu_option_3,omitempty"`
+	ControllerChatRadialMenuOption_4      *string                   `protobuf:"bytes,140034,opt,name=controller_chat_radial_menu_option_4,json=controllerChatRadialMenuOption4" json:"controller_chat_radial_menu_option_4,omitempty"`
+	ControllerChatRadialMenuOption_5      *string                   `protobuf:"bytes,140035,opt,name=controller_chat_radial_menu_option_5,json=controllerChatRadialMenuOption5" json:"controller_chat_radial_menu_option_5,omitempty"`
+	ControllerChatRadialMenuOption_6      *string                   `protobuf:"bytes,140036,opt,name=controller_chat_radial_menu_option_6,json=controllerChatRadialMenuOption6" json:"controller_chat_radial_menu_option_6,omitempty"`
+	ControllerChatRadialMenuOption_7      *string                   `protobuf:"bytes,140037,opt,name=controller_chat_radial_menu_option_7,json=controllerChatRadialMenuOption7" json:"controller_chat_radial_menu_option_7,omitempty"`
 	StartupMovieId                        *uint64                   `protobuf:"varint,16000,opt,name=startup_movie_id,json=startupMovieId" json:"startup_movie_id,omitempty"`
 	StartupMovieLocalPath                 *string                   `protobuf:"bytes,16001,opt,name=startup_movie_local_path,json=startupMovieLocalPath" json:"startup_movie_local_path,omitempty"`
 	StartupMovieShuffle                   *bool                     `protobuf:"varint,16002,opt,name=startup_movie_shuffle,json=startupMovieShuffle" json:"startup_movie_shuffle,omitempty"`
@@ -1792,6 +1800,62 @@ func (x *CMsgClientSettings) GetControllerSiapiConfigAuthorMode() bool {
 	return false
 }
 
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_0() string {
+	if x != nil && x.ControllerChatRadialMenuOption_0 != nil {
+		return *x.ControllerChatRadialMenuOption_0
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_1() string {
+	if x != nil && x.ControllerChatRadialMenuOption_1 != nil {
+		return *x.ControllerChatRadialMenuOption_1
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_2() string {
+	if x != nil && x.ControllerChatRadialMenuOption_2 != nil {
+		return *x.ControllerChatRadialMenuOption_2
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_3() string {
+	if x != nil && x.ControllerChatRadialMenuOption_3 != nil {
+		return *x.ControllerChatRadialMenuOption_3
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_4() string {
+	if x != nil && x.ControllerChatRadialMenuOption_4 != nil {
+		return *x.ControllerChatRadialMenuOption_4
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_5() string {
+	if x != nil && x.ControllerChatRadialMenuOption_5 != nil {
+		return *x.ControllerChatRadialMenuOption_5
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_6() string {
+	if x != nil && x.ControllerChatRadialMenuOption_6 != nil {
+		return *x.ControllerChatRadialMenuOption_6
+	}
+	return ""
+}
+
+func (x *CMsgClientSettings) GetControllerChatRadialMenuOption_7() string {
+	if x != nil && x.ControllerChatRadialMenuOption_7 != nil {
+		return *x.ControllerChatRadialMenuOption_7
+	}
+	return ""
+}
+
 func (x *CMsgClientSettings) GetStartupMovieId() uint64 {
 	if x != nil && x.StartupMovieId != nil {
 		return *x.StartupMovieId
@@ -2758,7 +2822,7 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"valueFloat\x12#\n" +
 	"\fvalue_string\x18\a \x01(\tH\x00R\vvalueString\x120\n" +
 	"\fvalue_hotkey\x18\b \x01(\v2\v.CMsgHotkeyH\x00R\vvalueHotkeyB\a\n" +
-	"\x05value\"\x8d\xc3\x01\n" +
+	"\x05value\"\xbd\xca\x01\n" +
 	"\x12CMsgClientSettings\x12b\n" +
 	"\x15no_save_personal_info\x18\x01 \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'Software\\Valve\\Steam\\NoSavePersonalInfoR\x12noSavePersonalInfo\x12.\n" +
 	"\x0ein_client_beta\x18\x03 \x01(\bB\b\x80\xa6\x1d\x05\x90\xa6\x1d\x01R\finClientBeta\x128\n" +
@@ -2887,7 +2951,15 @@ const file_steammessages_clientsettings_proto_rawDesc = "" +
 	"#controller_combine_nintendo_joycons\x18\xbam \x01(\bB/\x80\xa6\x1d\x01\x8a\xa6\x1d'SteamInput/Configurator/CombinedJoyconsR controllerCombineNintendoJoycons\x12b\n" +
 	"\x17controller_enable_chord\x18\xeb\xc5\b \x01(\bB(\x80\xa6\x1d\x03\x8a\xa6\x1d\x1cSteamController_Enable_Chord\x98\xa6\x1d\x01R\x15controllerEnableChord\x12Y\n" +
 	"\x14controller_poll_rate\x18\xec\xc5\b \x01(\bB%\x80\xa6\x1d\x03\x8a\xa6\x1d\x19SteamController_Poll_Rate\xa0\xa6\x1d\x02R\x12controllerPollRate\x12\x83\x01\n" +
-	"#controller_siapi_config_author_mode\x18\xed\xc5\b \x01(\bB3\x80\xa6\x1d\x03\x8a\xa6\x1d'SteamInput/Configurator/SIAPIAuhtorMode\x98\xa6\x1d\x00R\x1fcontrollerSiapiConfigAuthorMode\x12Y\n" +
+	"#controller_siapi_config_author_mode\x18\xed\xc5\b \x01(\bB3\x80\xa6\x1d\x03\x8a\xa6\x1d'SteamInput/Configurator/SIAPIAuhtorMode\x98\xa6\x1d\x00R\x1fcontrollerSiapiConfigAuthorMode\x12t\n" +
+	"$controller_chat_radial_menu_option_0\x18\xfe\xc5\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/0R\x1fcontrollerChatRadialMenuOption0\x12t\n" +
+	"$controller_chat_radial_menu_option_1\x18\xff\xc5\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/1R\x1fcontrollerChatRadialMenuOption1\x12t\n" +
+	"$controller_chat_radial_menu_option_2\x18\x80\xc6\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/2R\x1fcontrollerChatRadialMenuOption2\x12t\n" +
+	"$controller_chat_radial_menu_option_3\x18\x81\xc6\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/3R\x1fcontrollerChatRadialMenuOption3\x12t\n" +
+	"$controller_chat_radial_menu_option_4\x18\x82\xc6\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/4R\x1fcontrollerChatRadialMenuOption4\x12t\n" +
+	"$controller_chat_radial_menu_option_5\x18\x83\xc6\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/5R\x1fcontrollerChatRadialMenuOption5\x12t\n" +
+	"$controller_chat_radial_menu_option_6\x18\x84\xc6\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/6R\x1fcontrollerChatRadialMenuOption6\x12t\n" +
+	"$controller_chat_radial_menu_option_7\x18\x85\xc6\b \x01(\tB#\x80\xa6\x1d\x03\x8a\xa6\x1d\x1bSteamInput/ChatRadialMenu/7R\x1fcontrollerChatRadialMenuOption7\x12Y\n" +
 	"\x10startup_movie_id\x18\x80} \x01(\x04B.\x80\xa6\x1d\x01\x8a\xa6\x1d\"Customization/StartupMovie/MovieID\x90\xa6\x1d\x01R\x0estartupMovieId\x12j\n" +
 	"\x18startup_movie_local_path\x18\x81} \x01(\tB0\x80\xa6\x1d\x01\x8a\xa6\x1d$Customization/StartupMovie/LocalPath\x90\xa6\x1d\x01R\x15startupMovieLocalPath\x12c\n" +
 	"\x15startup_movie_shuffle\x18\x82} \x01(\bB.\x80\xa6\x1d\x01\x8a\xa6\x1d\"Customization/StartupMovie/Shuffle\x90\xa6\x1d\x01R\x13startupMovieShuffle\x12s\n" +

@@ -350,6 +350,13 @@ func (x EProvideDeckFeedbackPreference) EncodeValues(key string, v *url.Values) 
 	return nil
 }
 
+// EncodeValues implements the query.Encoder interface for EHardwareCompatibilityFeedbackDetails.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EHardwareCompatibilityFeedbackDetails) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
 // EncodeValues implements the query.Encoder interface for EGameFrameRateReportingPreference.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x EGameFrameRateReportingPreference) EncodeValues(key string, v *url.Values) error {
@@ -563,6 +570,20 @@ func (x EResolutionAutomation) EncodeValues(key string, v *url.Values) error {
 // EncodeValues implements the query.Encoder interface for EPressOutletAction.
 // This allows the enum to be encoded as its numerical value in URL parameters.
 func (x EPressOutletAction) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
+// EncodeValues implements the query.Encoder interface for EPressOutletMemberPendingState.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x EPressOutletMemberPendingState) EncodeValues(key string, v *url.Values) error {
+	v.Add(key, strconv.FormatInt(int64(x), 10))
+	return nil
+}
+
+// EncodeValues implements the query.Encoder interface for ECommentDeleteReason.
+// This allows the enum to be encoded as its numerical value in URL parameters.
+func (x ECommentDeleteReason) EncodeValues(key string, v *url.Values) error {
 	v.Add(key, strconv.FormatInt(int64(x), 10))
 	return nil
 }

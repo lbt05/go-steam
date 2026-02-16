@@ -574,6 +574,50 @@ func (*CRemoteClient_CancelPairing_Response) Descriptor() ([]byte, []int) {
 	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{10}
 }
 
+type CRemoteClient_CancelPairing_Notification struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SessionId     *uint64                `protobuf:"fixed64,1,opt,name=session_id,json=sessionId" json:"session_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CRemoteClient_CancelPairing_Notification) Reset() {
+	*x = CRemoteClient_CancelPairing_Notification{}
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CRemoteClient_CancelPairing_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CRemoteClient_CancelPairing_Notification) ProtoMessage() {}
+
+func (x *CRemoteClient_CancelPairing_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CRemoteClient_CancelPairing_Notification.ProtoReflect.Descriptor instead.
+func (*CRemoteClient_CancelPairing_Notification) Descriptor() ([]byte, []int) {
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *CRemoteClient_CancelPairing_Notification) GetSessionId() uint64 {
+	if x != nil && x.SessionId != nil {
+		return *x.SessionId
+	}
+	return 0
+}
+
 type CRemoteClient_RegisterStatusUpdate_Notification struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	SessionId      *uint64                `protobuf:"fixed64,1,opt,name=session_id,json=sessionId" json:"session_id,omitempty"`
@@ -586,7 +630,7 @@ type CRemoteClient_RegisterStatusUpdate_Notification struct {
 
 func (x *CRemoteClient_RegisterStatusUpdate_Notification) Reset() {
 	*x = CRemoteClient_RegisterStatusUpdate_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[11]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -598,7 +642,7 @@ func (x *CRemoteClient_RegisterStatusUpdate_Notification) String() string {
 func (*CRemoteClient_RegisterStatusUpdate_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_RegisterStatusUpdate_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[11]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -611,7 +655,7 @@ func (x *CRemoteClient_RegisterStatusUpdate_Notification) ProtoReflect() protore
 
 // Deprecated: Use CRemoteClient_RegisterStatusUpdate_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_RegisterStatusUpdate_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{11}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CRemoteClient_RegisterStatusUpdate_Notification) GetSessionId() uint64 {
@@ -652,7 +696,7 @@ type CRemoteClient_UnregisterStatusUpdate_Notification struct {
 
 func (x *CRemoteClient_UnregisterStatusUpdate_Notification) Reset() {
 	*x = CRemoteClient_UnregisterStatusUpdate_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[12]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -664,7 +708,7 @@ func (x *CRemoteClient_UnregisterStatusUpdate_Notification) String() string {
 func (*CRemoteClient_UnregisterStatusUpdate_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_UnregisterStatusUpdate_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[12]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -677,7 +721,7 @@ func (x *CRemoteClient_UnregisterStatusUpdate_Notification) ProtoReflect() proto
 
 // Deprecated: Use CRemoteClient_UnregisterStatusUpdate_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_UnregisterStatusUpdate_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{12}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CRemoteClient_UnregisterStatusUpdate_Notification) GetSessionId() uint64 {
@@ -705,7 +749,7 @@ type CRemoteClient_DeviceDetails struct {
 
 func (x *CRemoteClient_DeviceDetails) Reset() {
 	*x = CRemoteClient_DeviceDetails{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[13]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -717,7 +761,7 @@ func (x *CRemoteClient_DeviceDetails) String() string {
 func (*CRemoteClient_DeviceDetails) ProtoMessage() {}
 
 func (x *CRemoteClient_DeviceDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[13]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -730,7 +774,7 @@ func (x *CRemoteClient_DeviceDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CRemoteClient_DeviceDetails.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_DeviceDetails) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{13}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CRemoteClient_DeviceDetails) GetDeviceFriendlyName() string {
@@ -765,7 +809,7 @@ type CRemoteClient_Online_Notification struct {
 
 func (x *CRemoteClient_Online_Notification) Reset() {
 	*x = CRemoteClient_Online_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[14]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -777,7 +821,7 @@ func (x *CRemoteClient_Online_Notification) String() string {
 func (*CRemoteClient_Online_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_Online_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[14]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -790,7 +834,7 @@ func (x *CRemoteClient_Online_Notification) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CRemoteClient_Online_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_Online_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{14}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CRemoteClient_Online_Notification) GetSteamid() uint64 {
@@ -825,7 +869,7 @@ type CRemoteClient_Offline_Notification struct {
 
 func (x *CRemoteClient_Offline_Notification) Reset() {
 	*x = CRemoteClient_Offline_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[15]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -837,7 +881,7 @@ func (x *CRemoteClient_Offline_Notification) String() string {
 func (*CRemoteClient_Offline_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_Offline_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[15]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -850,7 +894,7 @@ func (x *CRemoteClient_Offline_Notification) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CRemoteClient_Offline_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_Offline_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{15}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CRemoteClient_Offline_Notification) GetSessionId() uint64 {
@@ -885,7 +929,7 @@ type CRemoteClient_ClientLogin struct {
 
 func (x *CRemoteClient_ClientLogin) Reset() {
 	*x = CRemoteClient_ClientLogin{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[16]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -897,7 +941,7 @@ func (x *CRemoteClient_ClientLogin) String() string {
 func (*CRemoteClient_ClientLogin) ProtoMessage() {}
 
 func (x *CRemoteClient_ClientLogin) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[16]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -910,7 +954,7 @@ func (x *CRemoteClient_ClientLogin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CRemoteClient_ClientLogin.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_ClientLogin) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{16}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CRemoteClient_ClientLogin) GetRemoteClientId() uint64 {
@@ -949,7 +993,7 @@ type CRemoteClient_ClientDetails struct {
 
 func (x *CRemoteClient_ClientDetails) Reset() {
 	*x = CRemoteClient_ClientDetails{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[17]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +1005,7 @@ func (x *CRemoteClient_ClientDetails) String() string {
 func (*CRemoteClient_ClientDetails) ProtoMessage() {}
 
 func (x *CRemoteClient_ClientDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[17]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +1018,7 @@ func (x *CRemoteClient_ClientDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CRemoteClient_ClientDetails.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_ClientDetails) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{17}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *CRemoteClient_ClientDetails) GetRemoteClientId() uint64 {
@@ -1034,7 +1078,7 @@ type CRemoteClient_GetRecentClients_Request struct {
 
 func (x *CRemoteClient_GetRecentClients_Request) Reset() {
 	*x = CRemoteClient_GetRecentClients_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[18]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1046,7 +1090,7 @@ func (x *CRemoteClient_GetRecentClients_Request) String() string {
 func (*CRemoteClient_GetRecentClients_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_GetRecentClients_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[18]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1059,7 +1103,7 @@ func (x *CRemoteClient_GetRecentClients_Request) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CRemoteClient_GetRecentClients_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_GetRecentClients_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{18}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{19}
 }
 
 type CRemoteClient_GetRecentClients_Response struct {
@@ -1071,7 +1115,7 @@ type CRemoteClient_GetRecentClients_Response struct {
 
 func (x *CRemoteClient_GetRecentClients_Response) Reset() {
 	*x = CRemoteClient_GetRecentClients_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[19]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1083,7 +1127,7 @@ func (x *CRemoteClient_GetRecentClients_Response) String() string {
 func (*CRemoteClient_GetRecentClients_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_GetRecentClients_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[19]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1096,7 +1140,7 @@ func (x *CRemoteClient_GetRecentClients_Response) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CRemoteClient_GetRecentClients_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_GetRecentClients_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{19}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *CRemoteClient_GetRecentClients_Response) GetClients() []*CRemoteClient_ClientDetails {
@@ -1123,7 +1167,7 @@ const (
 
 func (x *CRemoteClient_Task) Reset() {
 	*x = CRemoteClient_Task{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[20]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1135,7 +1179,7 @@ func (x *CRemoteClient_Task) String() string {
 func (*CRemoteClient_Task) ProtoMessage() {}
 
 func (x *CRemoteClient_Task) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[20]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1148,7 +1192,7 @@ func (x *CRemoteClient_Task) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CRemoteClient_Task.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_Task) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{20}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CRemoteClient_Task) GetType() ECLientTaskListType {
@@ -1189,7 +1233,7 @@ type CRemoteClient_AddClientTask_Request struct {
 
 func (x *CRemoteClient_AddClientTask_Request) Reset() {
 	*x = CRemoteClient_AddClientTask_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[21]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1201,7 +1245,7 @@ func (x *CRemoteClient_AddClientTask_Request) String() string {
 func (*CRemoteClient_AddClientTask_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_AddClientTask_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[21]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1214,7 +1258,7 @@ func (x *CRemoteClient_AddClientTask_Request) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CRemoteClient_AddClientTask_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_AddClientTask_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{21}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *CRemoteClient_AddClientTask_Request) GetRemoteClientId() uint64 {
@@ -1239,7 +1283,7 @@ type CRemoteClient_AddClientTask_Response struct {
 
 func (x *CRemoteClient_AddClientTask_Response) Reset() {
 	*x = CRemoteClient_AddClientTask_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[22]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1251,7 +1295,7 @@ func (x *CRemoteClient_AddClientTask_Response) String() string {
 func (*CRemoteClient_AddClientTask_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_AddClientTask_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[22]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1264,7 +1308,7 @@ func (x *CRemoteClient_AddClientTask_Response) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CRemoteClient_AddClientTask_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_AddClientTask_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{22}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{23}
 }
 
 type CRemoteClient_TaskList_Notification struct {
@@ -1277,7 +1321,7 @@ type CRemoteClient_TaskList_Notification struct {
 
 func (x *CRemoteClient_TaskList_Notification) Reset() {
 	*x = CRemoteClient_TaskList_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[23]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1289,7 +1333,7 @@ func (x *CRemoteClient_TaskList_Notification) String() string {
 func (*CRemoteClient_TaskList_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_TaskList_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[23]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1302,7 +1346,7 @@ func (x *CRemoteClient_TaskList_Notification) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CRemoteClient_TaskList_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_TaskList_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{23}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CRemoteClient_TaskList_Notification) GetRemoteClientId() uint64 {
@@ -1330,7 +1374,7 @@ type CRemoteClient_MarkTaskComplete_Request struct {
 
 func (x *CRemoteClient_MarkTaskComplete_Request) Reset() {
 	*x = CRemoteClient_MarkTaskComplete_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[24]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1342,7 +1386,7 @@ func (x *CRemoteClient_MarkTaskComplete_Request) String() string {
 func (*CRemoteClient_MarkTaskComplete_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_MarkTaskComplete_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[24]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1355,7 +1399,7 @@ func (x *CRemoteClient_MarkTaskComplete_Request) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CRemoteClient_MarkTaskComplete_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_MarkTaskComplete_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{24}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CRemoteClient_MarkTaskComplete_Request) GetRemoteClientId() uint64 {
@@ -1387,7 +1431,7 @@ type CRemoteClient_MarkTaskComplete_Response struct {
 
 func (x *CRemoteClient_MarkTaskComplete_Response) Reset() {
 	*x = CRemoteClient_MarkTaskComplete_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[25]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1399,7 +1443,7 @@ func (x *CRemoteClient_MarkTaskComplete_Response) String() string {
 func (*CRemoteClient_MarkTaskComplete_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_MarkTaskComplete_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[25]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1412,7 +1456,7 @@ func (x *CRemoteClient_MarkTaskComplete_Response) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CRemoteClient_MarkTaskComplete_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_MarkTaskComplete_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{25}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{26}
 }
 
 type CRemoteClient_RemotePacket_Notification struct {
@@ -1426,7 +1470,7 @@ type CRemoteClient_RemotePacket_Notification struct {
 
 func (x *CRemoteClient_RemotePacket_Notification) Reset() {
 	*x = CRemoteClient_RemotePacket_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[26]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1438,7 +1482,7 @@ func (x *CRemoteClient_RemotePacket_Notification) String() string {
 func (*CRemoteClient_RemotePacket_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_RemotePacket_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[26]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1451,7 +1495,7 @@ func (x *CRemoteClient_RemotePacket_Notification) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CRemoteClient_RemotePacket_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_RemotePacket_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{26}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *CRemoteClient_RemotePacket_Notification) GetSessionId() uint64 {
@@ -1485,7 +1529,7 @@ type CRemoteClient_ReplyPacket_Notification struct {
 
 func (x *CRemoteClient_ReplyPacket_Notification) Reset() {
 	*x = CRemoteClient_ReplyPacket_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[27]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1497,7 +1541,7 @@ func (x *CRemoteClient_ReplyPacket_Notification) String() string {
 func (*CRemoteClient_ReplyPacket_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_ReplyPacket_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[27]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1510,7 +1554,7 @@ func (x *CRemoteClient_ReplyPacket_Notification) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use CRemoteClient_ReplyPacket_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_ReplyPacket_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{27}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CRemoteClient_ReplyPacket_Notification) GetSessionId() uint64 {
@@ -1536,7 +1580,7 @@ type CRemoteClient_GetReplies_Request struct {
 
 func (x *CRemoteClient_GetReplies_Request) Reset() {
 	*x = CRemoteClient_GetReplies_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[28]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1548,7 +1592,7 @@ func (x *CRemoteClient_GetReplies_Request) String() string {
 func (*CRemoteClient_GetReplies_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_GetReplies_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[28]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1561,7 +1605,7 @@ func (x *CRemoteClient_GetReplies_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CRemoteClient_GetReplies_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_GetReplies_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{28}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CRemoteClient_GetReplies_Request) GetSessionId() uint64 {
@@ -1580,7 +1624,7 @@ type CRemoteClient_GetReplies_Response struct {
 
 func (x *CRemoteClient_GetReplies_Response) Reset() {
 	*x = CRemoteClient_GetReplies_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[29]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1592,7 +1636,7 @@ func (x *CRemoteClient_GetReplies_Response) String() string {
 func (*CRemoteClient_GetReplies_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_GetReplies_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[29]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1605,7 +1649,7 @@ func (x *CRemoteClient_GetReplies_Response) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CRemoteClient_GetReplies_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_GetReplies_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{29}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CRemoteClient_GetReplies_Response) GetPayload() [][]byte {
@@ -1625,7 +1669,7 @@ type CRemoteClient_AllocateRelayServer_Request struct {
 
 func (x *CRemoteClient_AllocateRelayServer_Request) Reset() {
 	*x = CRemoteClient_AllocateRelayServer_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[30]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1637,7 +1681,7 @@ func (x *CRemoteClient_AllocateRelayServer_Request) String() string {
 func (*CRemoteClient_AllocateRelayServer_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_AllocateRelayServer_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[30]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1650,7 +1694,7 @@ func (x *CRemoteClient_AllocateRelayServer_Request) ProtoReflect() protoreflect.
 
 // Deprecated: Use CRemoteClient_AllocateRelayServer_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_AllocateRelayServer_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{30}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *CRemoteClient_AllocateRelayServer_Request) GetCellid() uint32 {
@@ -1676,7 +1720,7 @@ type CRemoteClient_AllocateRelayServer_Response struct {
 
 func (x *CRemoteClient_AllocateRelayServer_Response) Reset() {
 	*x = CRemoteClient_AllocateRelayServer_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[31]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1688,7 +1732,7 @@ func (x *CRemoteClient_AllocateRelayServer_Response) String() string {
 func (*CRemoteClient_AllocateRelayServer_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_AllocateRelayServer_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[31]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1701,7 +1745,7 @@ func (x *CRemoteClient_AllocateRelayServer_Response) ProtoReflect() protoreflect
 
 // Deprecated: Use CRemoteClient_AllocateRelayServer_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_AllocateRelayServer_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{31}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CRemoteClient_AllocateRelayServer_Response) GetRelayServer() string {
@@ -1720,7 +1764,7 @@ type CRemoteClient_AllocateSDR_Request struct {
 
 func (x *CRemoteClient_AllocateSDR_Request) Reset() {
 	*x = CRemoteClient_AllocateSDR_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[32]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1732,7 +1776,7 @@ func (x *CRemoteClient_AllocateSDR_Request) String() string {
 func (*CRemoteClient_AllocateSDR_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_AllocateSDR_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[32]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1745,7 +1789,7 @@ func (x *CRemoteClient_AllocateSDR_Request) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use CRemoteClient_AllocateSDR_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_AllocateSDR_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{32}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *CRemoteClient_AllocateSDR_Request) GetAppid() uint32 {
@@ -1763,7 +1807,7 @@ type CRemoteClient_AllocateSDR_Response struct {
 
 func (x *CRemoteClient_AllocateSDR_Response) Reset() {
 	*x = CRemoteClient_AllocateSDR_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[33]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1775,7 +1819,7 @@ func (x *CRemoteClient_AllocateSDR_Response) String() string {
 func (*CRemoteClient_AllocateSDR_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_AllocateSDR_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[33]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1788,7 +1832,79 @@ func (x *CRemoteClient_AllocateSDR_Response) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CRemoteClient_AllocateSDR_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_AllocateSDR_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{33}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{34}
+}
+
+type CRemoteClient_EnableSteamBroadcast_Notification struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CRemoteClient_EnableSteamBroadcast_Notification) Reset() {
+	*x = CRemoteClient_EnableSteamBroadcast_Notification{}
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CRemoteClient_EnableSteamBroadcast_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CRemoteClient_EnableSteamBroadcast_Notification) ProtoMessage() {}
+
+func (x *CRemoteClient_EnableSteamBroadcast_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CRemoteClient_EnableSteamBroadcast_Notification.ProtoReflect.Descriptor instead.
+func (*CRemoteClient_EnableSteamBroadcast_Notification) Descriptor() ([]byte, []int) {
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{35}
+}
+
+type CRemoteClient_DisableSteamBroadcast_Notification struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CRemoteClient_DisableSteamBroadcast_Notification) Reset() {
+	*x = CRemoteClient_DisableSteamBroadcast_Notification{}
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CRemoteClient_DisableSteamBroadcast_Notification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CRemoteClient_DisableSteamBroadcast_Notification) ProtoMessage() {}
+
+func (x *CRemoteClient_DisableSteamBroadcast_Notification) ProtoReflect() protoreflect.Message {
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CRemoteClient_DisableSteamBroadcast_Notification.ProtoReflect.Descriptor instead.
+func (*CRemoteClient_DisableSteamBroadcast_Notification) Descriptor() ([]byte, []int) {
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{36}
 }
 
 type CRemoteClient_SteamBroadcast_Notification struct {
@@ -1802,7 +1918,7 @@ type CRemoteClient_SteamBroadcast_Notification struct {
 
 func (x *CRemoteClient_SteamBroadcast_Notification) Reset() {
 	*x = CRemoteClient_SteamBroadcast_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[34]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1814,7 +1930,7 @@ func (x *CRemoteClient_SteamBroadcast_Notification) String() string {
 func (*CRemoteClient_SteamBroadcast_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_SteamBroadcast_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[34]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1827,7 +1943,7 @@ func (x *CRemoteClient_SteamBroadcast_Notification) ProtoReflect() protoreflect.
 
 // Deprecated: Use CRemoteClient_SteamBroadcast_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_SteamBroadcast_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{34}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *CRemoteClient_SteamBroadcast_Notification) GetSteamid() uint64 {
@@ -1864,7 +1980,7 @@ type CRemoteClient_SteamToSteam_Notification struct {
 
 func (x *CRemoteClient_SteamToSteam_Notification) Reset() {
 	*x = CRemoteClient_SteamToSteam_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[35]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1876,7 +1992,7 @@ func (x *CRemoteClient_SteamToSteam_Notification) String() string {
 func (*CRemoteClient_SteamToSteam_Notification) ProtoMessage() {}
 
 func (x *CRemoteClient_SteamToSteam_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[35]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1889,7 +2005,7 @@ func (x *CRemoteClient_SteamToSteam_Notification) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CRemoteClient_SteamToSteam_Notification.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_SteamToSteam_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{35}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *CRemoteClient_SteamToSteam_Notification) GetSteamid() uint64 {
@@ -1941,7 +2057,7 @@ type CRemotePlay_SessionStarted_Request struct {
 
 func (x *CRemotePlay_SessionStarted_Request) Reset() {
 	*x = CRemotePlay_SessionStarted_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[36]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1953,7 +2069,7 @@ func (x *CRemotePlay_SessionStarted_Request) String() string {
 func (*CRemotePlay_SessionStarted_Request) ProtoMessage() {}
 
 func (x *CRemotePlay_SessionStarted_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[36]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1966,7 +2082,7 @@ func (x *CRemotePlay_SessionStarted_Request) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use CRemotePlay_SessionStarted_Request.ProtoReflect.Descriptor instead.
 func (*CRemotePlay_SessionStarted_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{36}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *CRemotePlay_SessionStarted_Request) GetHostAccountId() uint32 {
@@ -2020,7 +2136,7 @@ type CRemotePlay_SessionStarted_Response struct {
 
 func (x *CRemotePlay_SessionStarted_Response) Reset() {
 	*x = CRemotePlay_SessionStarted_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[37]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2032,7 +2148,7 @@ func (x *CRemotePlay_SessionStarted_Response) String() string {
 func (*CRemotePlay_SessionStarted_Response) ProtoMessage() {}
 
 func (x *CRemotePlay_SessionStarted_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[37]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2045,7 +2161,7 @@ func (x *CRemotePlay_SessionStarted_Response) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use CRemotePlay_SessionStarted_Response.ProtoReflect.Descriptor instead.
 func (*CRemotePlay_SessionStarted_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{37}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *CRemotePlay_SessionStarted_Response) GetRecordId() uint64 {
@@ -2067,7 +2183,7 @@ type CRemotePlay_SessionStopped_Notification struct {
 
 func (x *CRemotePlay_SessionStopped_Notification) Reset() {
 	*x = CRemotePlay_SessionStopped_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[38]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2079,7 +2195,7 @@ func (x *CRemotePlay_SessionStopped_Notification) String() string {
 func (*CRemotePlay_SessionStopped_Notification) ProtoMessage() {}
 
 func (x *CRemotePlay_SessionStopped_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[38]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2092,7 +2208,7 @@ func (x *CRemotePlay_SessionStopped_Notification) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CRemotePlay_SessionStopped_Notification.ProtoReflect.Descriptor instead.
 func (*CRemotePlay_SessionStopped_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{38}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *CRemotePlay_SessionStopped_Notification) GetRecordId() uint64 {
@@ -2136,7 +2252,7 @@ type CRemotePlayTogether_Notification struct {
 
 func (x *CRemotePlayTogether_Notification) Reset() {
 	*x = CRemotePlayTogether_Notification{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[39]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2148,7 +2264,7 @@ func (x *CRemotePlayTogether_Notification) String() string {
 func (*CRemotePlayTogether_Notification) ProtoMessage() {}
 
 func (x *CRemotePlayTogether_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[39]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2161,7 +2277,7 @@ func (x *CRemotePlayTogether_Notification) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CRemotePlayTogether_Notification.ProtoReflect.Descriptor instead.
 func (*CRemotePlayTogether_Notification) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{39}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *CRemotePlayTogether_Notification) GetSteamid() uint64 {
@@ -2207,7 +2323,7 @@ type CRemoteClient_CreateRemotePlayTogetherInvitation_Request struct {
 
 func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Request) Reset() {
 	*x = CRemoteClient_CreateRemotePlayTogetherInvitation_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[40]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2219,7 +2335,7 @@ func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Request) String() stri
 func (*CRemoteClient_CreateRemotePlayTogetherInvitation_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[40]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2232,7 +2348,7 @@ func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Request) ProtoReflect(
 
 // Deprecated: Use CRemoteClient_CreateRemotePlayTogetherInvitation_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_CreateRemotePlayTogetherInvitation_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{40}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Request) GetAppid() uint32 {
@@ -2258,7 +2374,7 @@ type CRemoteClient_CreateRemotePlayTogetherInvitation_Response struct {
 
 func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Response) Reset() {
 	*x = CRemoteClient_CreateRemotePlayTogetherInvitation_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[41]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2270,7 +2386,7 @@ func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Response) String() str
 func (*CRemoteClient_CreateRemotePlayTogetherInvitation_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[41]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2283,7 +2399,7 @@ func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Response) ProtoReflect
 
 // Deprecated: Use CRemoteClient_CreateRemotePlayTogetherInvitation_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_CreateRemotePlayTogetherInvitation_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{41}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *CRemoteClient_CreateRemotePlayTogetherInvitation_Response) GetInvitationCode() string {
@@ -2302,7 +2418,7 @@ type CRemoteClient_DeleteRemotePlayTogetherInvitation_Request struct {
 
 func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) Reset() {
 	*x = CRemoteClient_DeleteRemotePlayTogetherInvitation_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[42]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2314,7 +2430,7 @@ func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) String() stri
 func (*CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[42]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2327,7 +2443,7 @@ func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) ProtoReflect(
 
 // Deprecated: Use CRemoteClient_DeleteRemotePlayTogetherInvitation_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{42}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Request) GetInvitationCode() string {
@@ -2345,7 +2461,7 @@ type CRemoteClient_DeleteRemotePlayTogetherInvitation_Response struct {
 
 func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Response) Reset() {
 	*x = CRemoteClient_DeleteRemotePlayTogetherInvitation_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[43]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2357,7 +2473,7 @@ func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Response) String() str
 func (*CRemoteClient_DeleteRemotePlayTogetherInvitation_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[43]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2370,7 +2486,7 @@ func (x *CRemoteClient_DeleteRemotePlayTogetherInvitation_Response) ProtoReflect
 
 // Deprecated: Use CRemoteClient_DeleteRemotePlayTogetherInvitation_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_DeleteRemotePlayTogetherInvitation_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{43}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{46}
 }
 
 type CRemoteClient_LookupRemotePlayTogetherInvitation_Request struct {
@@ -2382,7 +2498,7 @@ type CRemoteClient_LookupRemotePlayTogetherInvitation_Request struct {
 
 func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Request) Reset() {
 	*x = CRemoteClient_LookupRemotePlayTogetherInvitation_Request{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[44]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2394,7 +2510,7 @@ func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Request) String() stri
 func (*CRemoteClient_LookupRemotePlayTogetherInvitation_Request) ProtoMessage() {}
 
 func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[44]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2407,7 +2523,7 @@ func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Request) ProtoReflect(
 
 // Deprecated: Use CRemoteClient_LookupRemotePlayTogetherInvitation_Request.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_LookupRemotePlayTogetherInvitation_Request) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{44}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Request) GetInvitationCode() string {
@@ -2426,7 +2542,7 @@ type CRemoteClient_LookupRemotePlayTogetherInvitation_Response struct {
 
 func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Response) Reset() {
 	*x = CRemoteClient_LookupRemotePlayTogetherInvitation_Response{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[45]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2438,7 +2554,7 @@ func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Response) String() str
 func (*CRemoteClient_LookupRemotePlayTogetherInvitation_Response) ProtoMessage() {}
 
 func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[45]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2451,7 +2567,7 @@ func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Response) ProtoReflect
 
 // Deprecated: Use CRemoteClient_LookupRemotePlayTogetherInvitation_Response.ProtoReflect.Descriptor instead.
 func (*CRemoteClient_LookupRemotePlayTogetherInvitation_Response) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{45}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *CRemoteClient_LookupRemotePlayTogetherInvitation_Response) GetInvitationUrl() string {
@@ -2479,7 +2595,7 @@ type CCMRemoteClient_ClientMessage struct {
 
 func (x *CCMRemoteClient_ClientMessage) Reset() {
 	*x = CCMRemoteClient_ClientMessage{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[46]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2491,7 +2607,7 @@ func (x *CCMRemoteClient_ClientMessage) String() string {
 func (*CCMRemoteClient_ClientMessage) ProtoMessage() {}
 
 func (x *CCMRemoteClient_ClientMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[46]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2504,7 +2620,7 @@ func (x *CCMRemoteClient_ClientMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CCMRemoteClient_ClientMessage.ProtoReflect.Descriptor instead.
 func (*CCMRemoteClient_ClientMessage) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{46}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *CCMRemoteClient_ClientMessage) GetMessage() isCCMRemoteClient_ClientMessage_Message {
@@ -2646,7 +2762,7 @@ type CCMRemoteClient_ServerMessage struct {
 
 func (x *CCMRemoteClient_ServerMessage) Reset() {
 	*x = CCMRemoteClient_ServerMessage{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[47]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2658,7 +2774,7 @@ func (x *CCMRemoteClient_ServerMessage) String() string {
 func (*CCMRemoteClient_ServerMessage) ProtoMessage() {}
 
 func (x *CCMRemoteClient_ServerMessage) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[47]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2671,7 +2787,7 @@ func (x *CCMRemoteClient_ServerMessage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CCMRemoteClient_ServerMessage.ProtoReflect.Descriptor instead.
 func (*CCMRemoteClient_ServerMessage) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{47}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *CCMRemoteClient_ServerMessage) GetResult() int32 {
@@ -2800,7 +2916,7 @@ type CRemotePlayTogether_Notification_Player struct {
 
 func (x *CRemotePlayTogether_Notification_Player) Reset() {
 	*x = CRemotePlayTogether_Notification_Player{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[48]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2812,7 +2928,7 @@ func (x *CRemotePlayTogether_Notification_Player) String() string {
 func (*CRemotePlayTogether_Notification_Player) ProtoMessage() {}
 
 func (x *CRemotePlayTogether_Notification_Player) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[48]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2825,7 +2941,7 @@ func (x *CRemotePlayTogether_Notification_Player) ProtoReflect() protoreflect.Me
 
 // Deprecated: Use CRemotePlayTogether_Notification_Player.ProtoReflect.Descriptor instead.
 func (*CRemotePlayTogether_Notification_Player) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{39, 0}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{42, 0}
 }
 
 func (x *CRemotePlayTogether_Notification_Player) GetSteamid() uint64 {
@@ -2880,7 +2996,7 @@ type CRemotePlayTogether_Notification_ControllerSlotObsolete struct {
 
 func (x *CRemotePlayTogether_Notification_ControllerSlotObsolete) Reset() {
 	*x = CRemotePlayTogether_Notification_ControllerSlotObsolete{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[49]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2892,7 +3008,7 @@ func (x *CRemotePlayTogether_Notification_ControllerSlotObsolete) String() strin
 func (*CRemotePlayTogether_Notification_ControllerSlotObsolete) ProtoMessage() {}
 
 func (x *CRemotePlayTogether_Notification_ControllerSlotObsolete) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[49]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2905,7 +3021,7 @@ func (x *CRemotePlayTogether_Notification_ControllerSlotObsolete) ProtoReflect()
 
 // Deprecated: Use CRemotePlayTogether_Notification_ControllerSlotObsolete.ProtoReflect.Descriptor instead.
 func (*CRemotePlayTogether_Notification_ControllerSlotObsolete) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{39, 1}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{42, 1}
 }
 
 func (x *CRemotePlayTogether_Notification_ControllerSlotObsolete) GetSlotid() uint32 {
@@ -2933,7 +3049,7 @@ type CRemotePlayTogether_Notification_ControllerSlot struct {
 
 func (x *CRemotePlayTogether_Notification_ControllerSlot) Reset() {
 	*x = CRemotePlayTogether_Notification_ControllerSlot{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[50]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2945,7 +3061,7 @@ func (x *CRemotePlayTogether_Notification_ControllerSlot) String() string {
 func (*CRemotePlayTogether_Notification_ControllerSlot) ProtoMessage() {}
 
 func (x *CRemotePlayTogether_Notification_ControllerSlot) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[50]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2958,7 +3074,7 @@ func (x *CRemotePlayTogether_Notification_ControllerSlot) ProtoReflect() protore
 
 // Deprecated: Use CRemotePlayTogether_Notification_ControllerSlot.ProtoReflect.Descriptor instead.
 func (*CRemotePlayTogether_Notification_ControllerSlot) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{39, 2}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{42, 2}
 }
 
 func (x *CRemotePlayTogether_Notification_ControllerSlot) GetSlotid() uint32 {
@@ -2998,7 +3114,7 @@ type CRemotePlayTogether_Notification_GroupUpdated struct {
 
 func (x *CRemotePlayTogether_Notification_GroupUpdated) Reset() {
 	*x = CRemotePlayTogether_Notification_GroupUpdated{}
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[51]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3010,7 +3126,7 @@ func (x *CRemotePlayTogether_Notification_GroupUpdated) String() string {
 func (*CRemotePlayTogether_Notification_GroupUpdated) ProtoMessage() {}
 
 func (x *CRemotePlayTogether_Notification_GroupUpdated) ProtoReflect() protoreflect.Message {
-	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[51]
+	mi := &file_steammessages_remoteclient_service_messages_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3023,7 +3139,7 @@ func (x *CRemotePlayTogether_Notification_GroupUpdated) ProtoReflect() protorefl
 
 // Deprecated: Use CRemotePlayTogether_Notification_GroupUpdated.ProtoReflect.Descriptor instead.
 func (*CRemotePlayTogether_Notification_GroupUpdated) Descriptor() ([]byte, []int) {
-	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{39, 3}
+	return file_steammessages_remoteclient_service_messages_proto_rawDescGZIP(), []int{42, 3}
 }
 
 func (x *CRemotePlayTogether_Notification_GroupUpdated) GetHostSteamid() uint64 {
@@ -3116,7 +3232,10 @@ const file_steammessages_remoteclient_service_messages_proto_rawDesc = "" +
 	"#CRemoteClient_CancelPairing_Request\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x06R\tsessionId\"&\n" +
-	"$CRemoteClient_CancelPairing_Response\"\xb0\x01\n" +
+	"$CRemoteClient_CancelPairing_Response\"I\n" +
+	"(CRemoteClient_CancelPairing_Notification\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\x06R\tsessionId\"\xb0\x01\n" +
 	"/CRemoteClient_RegisterStatusUpdate_Notification\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\x06R\tsessionId\x12\x18\n" +
@@ -3194,7 +3313,9 @@ const file_steammessages_remoteclient_service_messages_proto_rawDesc = "" +
 	"\frelay_server\x18\x01 \x01(\tR\vrelayServer\"9\n" +
 	"!CRemoteClient_AllocateSDR_Request\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\"$\n" +
-	"\"CRemoteClient_AllocateSDR_Response\"{\n" +
+	"\"CRemoteClient_AllocateSDR_Response\"1\n" +
+	"/CRemoteClient_EnableSteamBroadcast_Notification\"2\n" +
+	"0CRemoteClient_DisableSteamBroadcast_Notification\"{\n" +
 	")CRemoteClient_SteamBroadcast_Notification\x12\x18\n" +
 	"\asteamid\x18\x01 \x01(\x06R\asteamid\x12\x1a\n" +
 	"\bclientid\x18\x02 \x01(\x06R\bclientid\x12\x18\n" +
@@ -3294,7 +3415,7 @@ func file_steammessages_remoteclient_service_messages_proto_rawDescGZIP() []byte
 }
 
 var file_steammessages_remoteclient_service_messages_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_steammessages_remoteclient_service_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 52)
+var file_steammessages_remoteclient_service_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 55)
 var file_steammessages_remoteclient_service_messages_proto_goTypes = []any{
 	(ECLientTaskListType)(0),                                          // 0: ECLientTaskListType
 	(*CRemoteClient_CreateSession_Request)(nil),                       // 1: CRemoteClient_CreateSession_Request
@@ -3308,74 +3429,77 @@ var file_steammessages_remoteclient_service_messages_proto_goTypes = []any{
 	(*CRemoteClient_GetPairingInfo_Response)(nil),                     // 9: CRemoteClient_GetPairingInfo_Response
 	(*CRemoteClient_CancelPairing_Request)(nil),                       // 10: CRemoteClient_CancelPairing_Request
 	(*CRemoteClient_CancelPairing_Response)(nil),                      // 11: CRemoteClient_CancelPairing_Response
-	(*CRemoteClient_RegisterStatusUpdate_Notification)(nil),           // 12: CRemoteClient_RegisterStatusUpdate_Notification
-	(*CRemoteClient_UnregisterStatusUpdate_Notification)(nil),         // 13: CRemoteClient_UnregisterStatusUpdate_Notification
-	(*CRemoteClient_DeviceDetails)(nil),                               // 14: CRemoteClient_DeviceDetails
-	(*CRemoteClient_Online_Notification)(nil),                         // 15: CRemoteClient_Online_Notification
-	(*CRemoteClient_Offline_Notification)(nil),                        // 16: CRemoteClient_Offline_Notification
-	(*CRemoteClient_ClientLogin)(nil),                                 // 17: CRemoteClient_ClientLogin
-	(*CRemoteClient_ClientDetails)(nil),                               // 18: CRemoteClient_ClientDetails
-	(*CRemoteClient_GetRecentClients_Request)(nil),                    // 19: CRemoteClient_GetRecentClients_Request
-	(*CRemoteClient_GetRecentClients_Response)(nil),                   // 20: CRemoteClient_GetRecentClients_Response
-	(*CRemoteClient_Task)(nil),                                        // 21: CRemoteClient_Task
-	(*CRemoteClient_AddClientTask_Request)(nil),                       // 22: CRemoteClient_AddClientTask_Request
-	(*CRemoteClient_AddClientTask_Response)(nil),                      // 23: CRemoteClient_AddClientTask_Response
-	(*CRemoteClient_TaskList_Notification)(nil),                       // 24: CRemoteClient_TaskList_Notification
-	(*CRemoteClient_MarkTaskComplete_Request)(nil),                    // 25: CRemoteClient_MarkTaskComplete_Request
-	(*CRemoteClient_MarkTaskComplete_Response)(nil),                   // 26: CRemoteClient_MarkTaskComplete_Response
-	(*CRemoteClient_RemotePacket_Notification)(nil),                   // 27: CRemoteClient_RemotePacket_Notification
-	(*CRemoteClient_ReplyPacket_Notification)(nil),                    // 28: CRemoteClient_ReplyPacket_Notification
-	(*CRemoteClient_GetReplies_Request)(nil),                          // 29: CRemoteClient_GetReplies_Request
-	(*CRemoteClient_GetReplies_Response)(nil),                         // 30: CRemoteClient_GetReplies_Response
-	(*CRemoteClient_AllocateRelayServer_Request)(nil),                 // 31: CRemoteClient_AllocateRelayServer_Request
-	(*CRemoteClient_AllocateRelayServer_Response)(nil),                // 32: CRemoteClient_AllocateRelayServer_Response
-	(*CRemoteClient_AllocateSDR_Request)(nil),                         // 33: CRemoteClient_AllocateSDR_Request
-	(*CRemoteClient_AllocateSDR_Response)(nil),                        // 34: CRemoteClient_AllocateSDR_Response
-	(*CRemoteClient_SteamBroadcast_Notification)(nil),                 // 35: CRemoteClient_SteamBroadcast_Notification
-	(*CRemoteClient_SteamToSteam_Notification)(nil),                   // 36: CRemoteClient_SteamToSteam_Notification
-	(*CRemotePlay_SessionStarted_Request)(nil),                        // 37: CRemotePlay_SessionStarted_Request
-	(*CRemotePlay_SessionStarted_Response)(nil),                       // 38: CRemotePlay_SessionStarted_Response
-	(*CRemotePlay_SessionStopped_Notification)(nil),                   // 39: CRemotePlay_SessionStopped_Notification
-	(*CRemotePlayTogether_Notification)(nil),                          // 40: CRemotePlayTogether_Notification
-	(*CRemoteClient_CreateRemotePlayTogetherInvitation_Request)(nil),  // 41: CRemoteClient_CreateRemotePlayTogetherInvitation_Request
-	(*CRemoteClient_CreateRemotePlayTogetherInvitation_Response)(nil), // 42: CRemoteClient_CreateRemotePlayTogetherInvitation_Response
-	(*CRemoteClient_DeleteRemotePlayTogetherInvitation_Request)(nil),  // 43: CRemoteClient_DeleteRemotePlayTogetherInvitation_Request
-	(*CRemoteClient_DeleteRemotePlayTogetherInvitation_Response)(nil), // 44: CRemoteClient_DeleteRemotePlayTogetherInvitation_Response
-	(*CRemoteClient_LookupRemotePlayTogetherInvitation_Request)(nil),  // 45: CRemoteClient_LookupRemotePlayTogetherInvitation_Request
-	(*CRemoteClient_LookupRemotePlayTogetherInvitation_Response)(nil), // 46: CRemoteClient_LookupRemotePlayTogetherInvitation_Response
-	(*CCMRemoteClient_ClientMessage)(nil),                             // 47: CCMRemoteClient_ClientMessage
-	(*CCMRemoteClient_ServerMessage)(nil),                             // 48: CCMRemoteClient_ServerMessage
-	(*CRemotePlayTogether_Notification_Player)(nil),                   // 49: CRemotePlayTogether_Notification.Player
-	(*CRemotePlayTogether_Notification_ControllerSlotObsolete)(nil),   // 50: CRemotePlayTogether_Notification.ControllerSlot_obsolete
-	(*CRemotePlayTogether_Notification_ControllerSlot)(nil),           // 51: CRemotePlayTogether_Notification.ControllerSlot
-	(*CRemotePlayTogether_Notification_GroupUpdated)(nil),             // 52: CRemotePlayTogether_Notification.GroupUpdated
+	(*CRemoteClient_CancelPairing_Notification)(nil),                  // 12: CRemoteClient_CancelPairing_Notification
+	(*CRemoteClient_RegisterStatusUpdate_Notification)(nil),           // 13: CRemoteClient_RegisterStatusUpdate_Notification
+	(*CRemoteClient_UnregisterStatusUpdate_Notification)(nil),         // 14: CRemoteClient_UnregisterStatusUpdate_Notification
+	(*CRemoteClient_DeviceDetails)(nil),                               // 15: CRemoteClient_DeviceDetails
+	(*CRemoteClient_Online_Notification)(nil),                         // 16: CRemoteClient_Online_Notification
+	(*CRemoteClient_Offline_Notification)(nil),                        // 17: CRemoteClient_Offline_Notification
+	(*CRemoteClient_ClientLogin)(nil),                                 // 18: CRemoteClient_ClientLogin
+	(*CRemoteClient_ClientDetails)(nil),                               // 19: CRemoteClient_ClientDetails
+	(*CRemoteClient_GetRecentClients_Request)(nil),                    // 20: CRemoteClient_GetRecentClients_Request
+	(*CRemoteClient_GetRecentClients_Response)(nil),                   // 21: CRemoteClient_GetRecentClients_Response
+	(*CRemoteClient_Task)(nil),                                        // 22: CRemoteClient_Task
+	(*CRemoteClient_AddClientTask_Request)(nil),                       // 23: CRemoteClient_AddClientTask_Request
+	(*CRemoteClient_AddClientTask_Response)(nil),                      // 24: CRemoteClient_AddClientTask_Response
+	(*CRemoteClient_TaskList_Notification)(nil),                       // 25: CRemoteClient_TaskList_Notification
+	(*CRemoteClient_MarkTaskComplete_Request)(nil),                    // 26: CRemoteClient_MarkTaskComplete_Request
+	(*CRemoteClient_MarkTaskComplete_Response)(nil),                   // 27: CRemoteClient_MarkTaskComplete_Response
+	(*CRemoteClient_RemotePacket_Notification)(nil),                   // 28: CRemoteClient_RemotePacket_Notification
+	(*CRemoteClient_ReplyPacket_Notification)(nil),                    // 29: CRemoteClient_ReplyPacket_Notification
+	(*CRemoteClient_GetReplies_Request)(nil),                          // 30: CRemoteClient_GetReplies_Request
+	(*CRemoteClient_GetReplies_Response)(nil),                         // 31: CRemoteClient_GetReplies_Response
+	(*CRemoteClient_AllocateRelayServer_Request)(nil),                 // 32: CRemoteClient_AllocateRelayServer_Request
+	(*CRemoteClient_AllocateRelayServer_Response)(nil),                // 33: CRemoteClient_AllocateRelayServer_Response
+	(*CRemoteClient_AllocateSDR_Request)(nil),                         // 34: CRemoteClient_AllocateSDR_Request
+	(*CRemoteClient_AllocateSDR_Response)(nil),                        // 35: CRemoteClient_AllocateSDR_Response
+	(*CRemoteClient_EnableSteamBroadcast_Notification)(nil),           // 36: CRemoteClient_EnableSteamBroadcast_Notification
+	(*CRemoteClient_DisableSteamBroadcast_Notification)(nil),          // 37: CRemoteClient_DisableSteamBroadcast_Notification
+	(*CRemoteClient_SteamBroadcast_Notification)(nil),                 // 38: CRemoteClient_SteamBroadcast_Notification
+	(*CRemoteClient_SteamToSteam_Notification)(nil),                   // 39: CRemoteClient_SteamToSteam_Notification
+	(*CRemotePlay_SessionStarted_Request)(nil),                        // 40: CRemotePlay_SessionStarted_Request
+	(*CRemotePlay_SessionStarted_Response)(nil),                       // 41: CRemotePlay_SessionStarted_Response
+	(*CRemotePlay_SessionStopped_Notification)(nil),                   // 42: CRemotePlay_SessionStopped_Notification
+	(*CRemotePlayTogether_Notification)(nil),                          // 43: CRemotePlayTogether_Notification
+	(*CRemoteClient_CreateRemotePlayTogetherInvitation_Request)(nil),  // 44: CRemoteClient_CreateRemotePlayTogetherInvitation_Request
+	(*CRemoteClient_CreateRemotePlayTogetherInvitation_Response)(nil), // 45: CRemoteClient_CreateRemotePlayTogetherInvitation_Response
+	(*CRemoteClient_DeleteRemotePlayTogetherInvitation_Request)(nil),  // 46: CRemoteClient_DeleteRemotePlayTogetherInvitation_Request
+	(*CRemoteClient_DeleteRemotePlayTogetherInvitation_Response)(nil), // 47: CRemoteClient_DeleteRemotePlayTogetherInvitation_Response
+	(*CRemoteClient_LookupRemotePlayTogetherInvitation_Request)(nil),  // 48: CRemoteClient_LookupRemotePlayTogetherInvitation_Request
+	(*CRemoteClient_LookupRemotePlayTogetherInvitation_Response)(nil), // 49: CRemoteClient_LookupRemotePlayTogetherInvitation_Response
+	(*CCMRemoteClient_ClientMessage)(nil),                             // 50: CCMRemoteClient_ClientMessage
+	(*CCMRemoteClient_ServerMessage)(nil),                             // 51: CCMRemoteClient_ServerMessage
+	(*CRemotePlayTogether_Notification_Player)(nil),                   // 52: CRemotePlayTogether_Notification.Player
+	(*CRemotePlayTogether_Notification_ControllerSlotObsolete)(nil),   // 53: CRemotePlayTogether_Notification.ControllerSlot_obsolete
+	(*CRemotePlayTogether_Notification_ControllerSlot)(nil),           // 54: CRemotePlayTogether_Notification.ControllerSlot
+	(*CRemotePlayTogether_Notification_GroupUpdated)(nil),             // 55: CRemotePlayTogether_Notification.GroupUpdated
 }
 var file_steammessages_remoteclient_service_messages_proto_depIdxs = []int32{
-	14, // 0: CRemoteClient_Online_Notification.device_details:type_name -> CRemoteClient_DeviceDetails
-	14, // 1: CRemoteClient_ClientLogin.device_details:type_name -> CRemoteClient_DeviceDetails
-	14, // 2: CRemoteClient_ClientDetails.device_details:type_name -> CRemoteClient_DeviceDetails
-	18, // 3: CRemoteClient_GetRecentClients_Response.clients:type_name -> CRemoteClient_ClientDetails
+	15, // 0: CRemoteClient_Online_Notification.device_details:type_name -> CRemoteClient_DeviceDetails
+	15, // 1: CRemoteClient_ClientLogin.device_details:type_name -> CRemoteClient_DeviceDetails
+	15, // 2: CRemoteClient_ClientDetails.device_details:type_name -> CRemoteClient_DeviceDetails
+	19, // 3: CRemoteClient_GetRecentClients_Response.clients:type_name -> CRemoteClient_ClientDetails
 	0,  // 4: CRemoteClient_Task.type:type_name -> ECLientTaskListType
-	21, // 5: CRemoteClient_AddClientTask_Request.task:type_name -> CRemoteClient_Task
-	21, // 6: CRemoteClient_TaskList_Notification.tasklist:type_name -> CRemoteClient_Task
-	52, // 7: CRemotePlayTogether_Notification.group_updated:type_name -> CRemotePlayTogether_Notification.GroupUpdated
+	22, // 5: CRemoteClient_AddClientTask_Request.task:type_name -> CRemoteClient_Task
+	22, // 6: CRemoteClient_TaskList_Notification.tasklist:type_name -> CRemoteClient_Task
+	55, // 7: CRemotePlayTogether_Notification.group_updated:type_name -> CRemotePlayTogether_Notification.GroupUpdated
 	1,  // 8: CCMRemoteClient_ClientMessage.create_session_request:type_name -> CRemoteClient_CreateSession_Request
 	4,  // 9: CCMRemoteClient_ClientMessage.start_pairing_request:type_name -> CRemoteClient_StartPairing_Request
 	6,  // 10: CCMRemoteClient_ClientMessage.set_pairing_info_request:type_name -> CRemoteClient_SetPairingInfo_Request
 	10, // 11: CCMRemoteClient_ClientMessage.cancel_pairing_request:type_name -> CRemoteClient_CancelPairing_Request
-	12, // 12: CCMRemoteClient_ClientMessage.register_status_update:type_name -> CRemoteClient_RegisterStatusUpdate_Notification
-	13, // 13: CCMRemoteClient_ClientMessage.unregister_status_update:type_name -> CRemoteClient_UnregisterStatusUpdate_Notification
-	27, // 14: CCMRemoteClient_ClientMessage.remote_packet:type_name -> CRemoteClient_RemotePacket_Notification
+	13, // 12: CCMRemoteClient_ClientMessage.register_status_update:type_name -> CRemoteClient_RegisterStatusUpdate_Notification
+	14, // 13: CCMRemoteClient_ClientMessage.unregister_status_update:type_name -> CRemoteClient_UnregisterStatusUpdate_Notification
+	28, // 14: CCMRemoteClient_ClientMessage.remote_packet:type_name -> CRemoteClient_RemotePacket_Notification
 	2,  // 15: CCMRemoteClient_ServerMessage.create_session_response:type_name -> CRemoteClient_CreateSession_Response
 	5,  // 16: CCMRemoteClient_ServerMessage.start_pairing_response:type_name -> CRemoteClient_StartPairing_Response
 	7,  // 17: CCMRemoteClient_ServerMessage.set_pairing_info_response:type_name -> CRemoteClient_SetPairingInfo_Response
 	11, // 18: CCMRemoteClient_ServerMessage.cancel_pairing_response:type_name -> CRemoteClient_CancelPairing_Response
-	30, // 19: CCMRemoteClient_ServerMessage.reply_packet:type_name -> CRemoteClient_GetReplies_Response
-	16, // 20: CCMRemoteClient_ServerMessage.offline:type_name -> CRemoteClient_Offline_Notification
-	49, // 21: CRemotePlayTogether_Notification.ControllerSlot.player:type_name -> CRemotePlayTogether_Notification.Player
-	50, // 22: CRemotePlayTogether_Notification.GroupUpdated.controller_slots_obsolete:type_name -> CRemotePlayTogether_Notification.ControllerSlot_obsolete
-	49, // 23: CRemotePlayTogether_Notification.GroupUpdated.player_slots:type_name -> CRemotePlayTogether_Notification.Player
-	51, // 24: CRemotePlayTogether_Notification.GroupUpdated.controller_slots:type_name -> CRemotePlayTogether_Notification.ControllerSlot
+	31, // 19: CCMRemoteClient_ServerMessage.reply_packet:type_name -> CRemoteClient_GetReplies_Response
+	17, // 20: CCMRemoteClient_ServerMessage.offline:type_name -> CRemoteClient_Offline_Notification
+	52, // 21: CRemotePlayTogether_Notification.ControllerSlot.player:type_name -> CRemotePlayTogether_Notification.Player
+	53, // 22: CRemotePlayTogether_Notification.GroupUpdated.controller_slots_obsolete:type_name -> CRemotePlayTogether_Notification.ControllerSlot_obsolete
+	52, // 23: CRemotePlayTogether_Notification.GroupUpdated.player_slots:type_name -> CRemotePlayTogether_Notification.Player
+	54, // 24: CRemotePlayTogether_Notification.GroupUpdated.controller_slots:type_name -> CRemotePlayTogether_Notification.ControllerSlot
 	25, // [25:25] is the sub-list for method output_type
 	25, // [25:25] is the sub-list for method input_type
 	25, // [25:25] is the sub-list for extension type_name
@@ -3388,10 +3512,10 @@ func file_steammessages_remoteclient_service_messages_proto_init() {
 	if File_steammessages_remoteclient_service_messages_proto != nil {
 		return
 	}
-	file_steammessages_remoteclient_service_messages_proto_msgTypes[39].OneofWrappers = []any{
+	file_steammessages_remoteclient_service_messages_proto_msgTypes[42].OneofWrappers = []any{
 		(*CRemotePlayTogether_Notification_GroupUpdated_)(nil),
 	}
-	file_steammessages_remoteclient_service_messages_proto_msgTypes[46].OneofWrappers = []any{
+	file_steammessages_remoteclient_service_messages_proto_msgTypes[49].OneofWrappers = []any{
 		(*CCMRemoteClient_ClientMessage_CreateSessionRequest)(nil),
 		(*CCMRemoteClient_ClientMessage_StartPairingRequest)(nil),
 		(*CCMRemoteClient_ClientMessage_SetPairingInfoRequest)(nil),
@@ -3400,7 +3524,7 @@ func file_steammessages_remoteclient_service_messages_proto_init() {
 		(*CCMRemoteClient_ClientMessage_UnregisterStatusUpdate)(nil),
 		(*CCMRemoteClient_ClientMessage_RemotePacket)(nil),
 	}
-	file_steammessages_remoteclient_service_messages_proto_msgTypes[47].OneofWrappers = []any{
+	file_steammessages_remoteclient_service_messages_proto_msgTypes[50].OneofWrappers = []any{
 		(*CCMRemoteClient_ServerMessage_CreateSessionResponse)(nil),
 		(*CCMRemoteClient_ServerMessage_StartPairingResponse)(nil),
 		(*CCMRemoteClient_ServerMessage_SetPairingInfoResponse)(nil),
@@ -3414,7 +3538,7 @@ func file_steammessages_remoteclient_service_messages_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_steammessages_remoteclient_service_messages_proto_rawDesc), len(file_steammessages_remoteclient_service_messages_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   52,
+			NumMessages:   55,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

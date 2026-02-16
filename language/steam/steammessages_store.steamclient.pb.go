@@ -3420,11 +3420,12 @@ func (*CStore_ReloadAllReservationPositionMessages_Notification) Descriptor() ([
 }
 
 type CSteamDeckCompatibility_SetFeedback_Request struct {
-	state         protoimpl.MessageState           `protogen:"open.v1"`
-	Appid         *uint32                          `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
-	Feedback      *ESteamDeckCompatibilityFeedback `protobuf:"varint,2,opt,name=feedback,enum=ESteamDeckCompatibilityFeedback,def=0" json:"feedback,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState           `protogen:"open.v1"`
+	Appid           *uint32                          `protobuf:"varint,1,opt,name=appid" json:"appid,omitempty"`
+	Feedback        *ESteamDeckCompatibilityFeedback `protobuf:"varint,2,opt,name=feedback,enum=ESteamDeckCompatibilityFeedback,def=0" json:"feedback,omitempty"`
+	FeedbackDetails *uint32                          `protobuf:"varint,3,opt,name=feedback_details,json=feedbackDetails" json:"feedback_details,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 // Default values for CSteamDeckCompatibility_SetFeedback_Request fields.
@@ -3474,6 +3475,13 @@ func (x *CSteamDeckCompatibility_SetFeedback_Request) GetFeedback() ESteamDeckCo
 		return *x.Feedback
 	}
 	return Default_CSteamDeckCompatibility_SetFeedback_Request_Feedback
+}
+
+func (x *CSteamDeckCompatibility_SetFeedback_Request) GetFeedbackDetails() uint32 {
+	if x != nil && x.FeedbackDetails != nil {
+		return *x.FeedbackDetails
+	}
+	return 0
 }
 
 type CSteamDeckCompatibility_SetFeedback_Response struct {
@@ -4434,10 +4442,11 @@ const file_steammessages_store_steamclient_proto_rawDesc = "" +
 	"0CStore_GetAllReservationPositionMessages_Request\"m\n" +
 	"1CStore_GetAllReservationPositionMessages_Response\x128\n" +
 	"\bsettings\x18\x01 \x03(\v2\x1c.CReservationPositionMessageR\bsettings\":\n" +
-	"8CStore_ReloadAllReservationPositionMessages_Notification\"\xaa\x01\n" +
+	"8CStore_ReloadAllReservationPositionMessages_Notification\"\xd5\x01\n" +
 	"+CSteamDeckCompatibility_SetFeedback_Request\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\x12e\n" +
-	"\bfeedback\x18\x02 \x01(\x0e2 .ESteamDeckCompatibilityFeedback:'k_ESteamDeckCompatibilityFeedback_UnsetR\bfeedback\".\n" +
+	"\bfeedback\x18\x02 \x01(\x0e2 .ESteamDeckCompatibilityFeedback:'k_ESteamDeckCompatibilityFeedback_UnsetR\bfeedback\x12)\n" +
+	"\x10feedback_details\x18\x03 \x01(\rR\x0ffeedbackDetails\".\n" +
 	",CSteamDeckCompatibility_SetFeedback_Response\"D\n" +
 	",CSteamDeckCompatibility_ShouldPrompt_Request\x12\x14\n" +
 	"\x05appid\x18\x01 \x01(\rR\x05appid\"\xec\x01\n" +

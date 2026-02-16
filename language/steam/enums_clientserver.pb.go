@@ -250,18 +250,14 @@ const (
 	EMsg_k_EMsgClientRemoveFriend                                          EMsg = 714
 	EMsg_k_EMsgClientGamesPlayedNoDataBlob                                 EMsg = 715
 	EMsg_k_EMsgClientChangeStatus                                          EMsg = 716
-	EMsg_k_EMsgClientVacStatusResponse                                     EMsg = 717
 	EMsg_k_EMsgClientFriendMsg                                             EMsg = 718
 	EMsg_k_EMsgClientGameConnect_obsolete                                  EMsg = 719
 	EMsg_k_EMsgClientGamesPlayed2_obsolete                                 EMsg = 720
 	EMsg_k_EMsgClientGameEnded_obsolete                                    EMsg = 721
 	EMsg_k_EMsgClientSystemIM                                              EMsg = 726
 	EMsg_k_EMsgClientSystemIMAck                                           EMsg = 727
-	EMsg_k_EMsgClientGetLicenses                                           EMsg = 728
 	EMsg_k_EMsgClientGetLegacyGameKey                                      EMsg = 730
 	EMsg_k_EMsgClientContentServerLogOn_Deprecated                         EMsg = 731
-	EMsg_k_EMsgClientAckVACBan2                                            EMsg = 732
-	EMsg_k_EMsgClientGetPurchaseReceipts                                   EMsg = 736
 	EMsg_k_EMsgClientGamesPlayed3_obsolete                                 EMsg = 738
 	EMsg_k_EMsgClientAckGuestPass                                          EMsg = 740
 	EMsg_k_EMsgClientRedeemGuestPass                                       EMsg = 741
@@ -269,7 +265,6 @@ const (
 	EMsg_k_EMsgClientRegisterKey                                           EMsg = 743
 	EMsg_k_EMsgClientInviteUserToClan                                      EMsg = 744
 	EMsg_k_EMsgClientAcknowledgeClanInvite                                 EMsg = 745
-	EMsg_k_EMsgClientPurchaseWithMachineID                                 EMsg = 746
 	EMsg_k_EMsgClientAppUsageEvent                                         EMsg = 747
 	EMsg_k_EMsgClientLogOnResponse                                         EMsg = 751
 	EMsg_k_EMsgClientSetHeartbeatRate                                      EMsg = 755
@@ -290,7 +285,6 @@ const (
 	EMsg_k_EMsgClientGameConnectTokens                                     EMsg = 779
 	EMsg_k_EMsgClientLicenseList                                           EMsg = 780
 	EMsg_k_EMsgClientVACBanStatus                                          EMsg = 782
-	EMsg_k_EMsgClientEncryptPct                                            EMsg = 784
 	EMsg_k_EMsgClientGetLegacyGameKeyResponse                              EMsg = 785
 	EMsg_k_EMsgClientAddFriend                                             EMsg = 791
 	EMsg_k_EMsgClientAddFriendResponse                                     EMsg = 792
@@ -1687,18 +1681,14 @@ var (
 		714:  "k_EMsgClientRemoveFriend",
 		715:  "k_EMsgClientGamesPlayedNoDataBlob",
 		716:  "k_EMsgClientChangeStatus",
-		717:  "k_EMsgClientVacStatusResponse",
 		718:  "k_EMsgClientFriendMsg",
 		719:  "k_EMsgClientGameConnect_obsolete",
 		720:  "k_EMsgClientGamesPlayed2_obsolete",
 		721:  "k_EMsgClientGameEnded_obsolete",
 		726:  "k_EMsgClientSystemIM",
 		727:  "k_EMsgClientSystemIMAck",
-		728:  "k_EMsgClientGetLicenses",
 		730:  "k_EMsgClientGetLegacyGameKey",
 		731:  "k_EMsgClientContentServerLogOn_Deprecated",
-		732:  "k_EMsgClientAckVACBan2",
-		736:  "k_EMsgClientGetPurchaseReceipts",
 		738:  "k_EMsgClientGamesPlayed3_obsolete",
 		740:  "k_EMsgClientAckGuestPass",
 		741:  "k_EMsgClientRedeemGuestPass",
@@ -1706,7 +1696,6 @@ var (
 		743:  "k_EMsgClientRegisterKey",
 		744:  "k_EMsgClientInviteUserToClan",
 		745:  "k_EMsgClientAcknowledgeClanInvite",
-		746:  "k_EMsgClientPurchaseWithMachineID",
 		747:  "k_EMsgClientAppUsageEvent",
 		751:  "k_EMsgClientLogOnResponse",
 		755:  "k_EMsgClientSetHeartbeatRate",
@@ -1727,7 +1716,6 @@ var (
 		779:  "k_EMsgClientGameConnectTokens",
 		780:  "k_EMsgClientLicenseList",
 		782:  "k_EMsgClientVACBanStatus",
-		784:  "k_EMsgClientEncryptPct",
 		785:  "k_EMsgClientGetLegacyGameKeyResponse",
 		791:  "k_EMsgClientAddFriend",
 		792:  "k_EMsgClientAddFriendResponse",
@@ -3121,18 +3109,14 @@ var (
 		"k_EMsgClientRemoveFriend":                                          714,
 		"k_EMsgClientGamesPlayedNoDataBlob":                                 715,
 		"k_EMsgClientChangeStatus":                                          716,
-		"k_EMsgClientVacStatusResponse":                                     717,
 		"k_EMsgClientFriendMsg":                                             718,
 		"k_EMsgClientGameConnect_obsolete":                                  719,
 		"k_EMsgClientGamesPlayed2_obsolete":                                 720,
 		"k_EMsgClientGameEnded_obsolete":                                    721,
 		"k_EMsgClientSystemIM":                                              726,
 		"k_EMsgClientSystemIMAck":                                           727,
-		"k_EMsgClientGetLicenses":                                           728,
 		"k_EMsgClientGetLegacyGameKey":                                      730,
 		"k_EMsgClientContentServerLogOn_Deprecated":                         731,
-		"k_EMsgClientAckVACBan2":                                            732,
-		"k_EMsgClientGetPurchaseReceipts":                                   736,
 		"k_EMsgClientGamesPlayed3_obsolete":                                 738,
 		"k_EMsgClientAckGuestPass":                                          740,
 		"k_EMsgClientRedeemGuestPass":                                       741,
@@ -3140,7 +3124,6 @@ var (
 		"k_EMsgClientRegisterKey":                                           743,
 		"k_EMsgClientInviteUserToClan":                                      744,
 		"k_EMsgClientAcknowledgeClanInvite":                                 745,
-		"k_EMsgClientPurchaseWithMachineID":                                 746,
 		"k_EMsgClientAppUsageEvent":                                         747,
 		"k_EMsgClientLogOnResponse":                                         751,
 		"k_EMsgClientSetHeartbeatRate":                                      755,
@@ -3161,7 +3144,6 @@ var (
 		"k_EMsgClientGameConnectTokens":                                     779,
 		"k_EMsgClientLicenseList":                                           780,
 		"k_EMsgClientVACBanStatus":                                          782,
-		"k_EMsgClientEncryptPct":                                            784,
 		"k_EMsgClientGetLegacyGameKeyResponse":                              785,
 		"k_EMsgClientAddFriend":                                             791,
 		"k_EMsgClientAddFriendResponse":                                     792,
@@ -4735,7 +4717,7 @@ var File_enums_clientserver_proto protoreflect.FileDescriptor
 
 const file_enums_clientserver_proto_rawDesc = "" +
 	"\n" +
-	"\x18enums_clientserver.proto*ʐ\x03\n" +
+	"\x18enums_clientserver.proto*\x80\x8f\x03\n" +
 	"\x04EMsg\x12\x11\n" +
 	"\rk_EMsgInvalid\x10\x00\x12\x0f\n" +
 	"\vk_EMsgMulti\x10\x01\x12\x19\n" +
@@ -4964,27 +4946,22 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x18k_EMsgClientPingResponse\x10\xc8\x05\x12\x1d\n" +
 	"\x18k_EMsgClientRemoveFriend\x10\xca\x05\x12&\n" +
 	"!k_EMsgClientGamesPlayedNoDataBlob\x10\xcb\x05\x12\x1d\n" +
-	"\x18k_EMsgClientChangeStatus\x10\xcc\x05\x12\"\n" +
-	"\x1dk_EMsgClientVacStatusResponse\x10\xcd\x05\x12\x1a\n" +
+	"\x18k_EMsgClientChangeStatus\x10\xcc\x05\x12\x1a\n" +
 	"\x15k_EMsgClientFriendMsg\x10\xce\x05\x12%\n" +
 	" k_EMsgClientGameConnect_obsolete\x10\xcf\x05\x12&\n" +
 	"!k_EMsgClientGamesPlayed2_obsolete\x10\xd0\x05\x12#\n" +
 	"\x1ek_EMsgClientGameEnded_obsolete\x10\xd1\x05\x12\x19\n" +
 	"\x14k_EMsgClientSystemIM\x10\xd6\x05\x12\x1c\n" +
-	"\x17k_EMsgClientSystemIMAck\x10\xd7\x05\x12\x1c\n" +
-	"\x17k_EMsgClientGetLicenses\x10\xd8\x05\x12!\n" +
+	"\x17k_EMsgClientSystemIMAck\x10\xd7\x05\x12!\n" +
 	"\x1ck_EMsgClientGetLegacyGameKey\x10\xda\x05\x12.\n" +
-	")k_EMsgClientContentServerLogOn_Deprecated\x10\xdb\x05\x12\x1b\n" +
-	"\x16k_EMsgClientAckVACBan2\x10\xdc\x05\x12$\n" +
-	"\x1fk_EMsgClientGetPurchaseReceipts\x10\xe0\x05\x12&\n" +
+	")k_EMsgClientContentServerLogOn_Deprecated\x10\xdb\x05\x12&\n" +
 	"!k_EMsgClientGamesPlayed3_obsolete\x10\xe2\x05\x12\x1d\n" +
 	"\x18k_EMsgClientAckGuestPass\x10\xe4\x05\x12 \n" +
 	"\x1bk_EMsgClientRedeemGuestPass\x10\xe5\x05\x12\x1c\n" +
 	"\x17k_EMsgClientGamesPlayed\x10\xe6\x05\x12\x1c\n" +
 	"\x17k_EMsgClientRegisterKey\x10\xe7\x05\x12!\n" +
 	"\x1ck_EMsgClientInviteUserToClan\x10\xe8\x05\x12&\n" +
-	"!k_EMsgClientAcknowledgeClanInvite\x10\xe9\x05\x12&\n" +
-	"!k_EMsgClientPurchaseWithMachineID\x10\xea\x05\x12\x1e\n" +
+	"!k_EMsgClientAcknowledgeClanInvite\x10\xe9\x05\x12\x1e\n" +
 	"\x19k_EMsgClientAppUsageEvent\x10\xeb\x05\x12\x1e\n" +
 	"\x19k_EMsgClientLogOnResponse\x10\xef\x05\x12!\n" +
 	"\x1ck_EMsgClientSetHeartbeatRate\x10\xf3\x05\x12&\n" +
@@ -5004,8 +4981,7 @@ const file_enums_clientserver_proto_rawDesc = "" +
 	"\x13k_EMsgGSStatusReply\x10\x86\x06\x12\"\n" +
 	"\x1dk_EMsgClientGameConnectTokens\x10\x8b\x06\x12\x1c\n" +
 	"\x17k_EMsgClientLicenseList\x10\x8c\x06\x12\x1d\n" +
-	"\x18k_EMsgClientVACBanStatus\x10\x8e\x06\x12\x1b\n" +
-	"\x16k_EMsgClientEncryptPct\x10\x90\x06\x12)\n" +
+	"\x18k_EMsgClientVACBanStatus\x10\x8e\x06\x12)\n" +
 	"$k_EMsgClientGetLegacyGameKeyResponse\x10\x91\x06\x12\x1a\n" +
 	"\x15k_EMsgClientAddFriend\x10\x97\x06\x12\"\n" +
 	"\x1dk_EMsgClientAddFriendResponse\x10\x98\x06\x12%\n" +

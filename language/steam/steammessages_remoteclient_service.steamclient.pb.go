@@ -39,11 +39,13 @@ const file_steammessages_remoteclient_service_steamclient_proto_rawDesc = "" +
 	"\x1cSendRemotePlaySessionStopped\x12(.CRemotePlay_SessionStopped_Notification\x1a\v.NoResponse\x12N\n" +
 	"\x1cSendRemotePlayTogetherPacket\x12!.CRemotePlayTogether_Notification\x1a\v.NoResponse\x12\x9b\x01\n" +
 	"\"CreateRemotePlayTogetherInvitation\x129.CRemoteClient_CreateRemotePlayTogetherInvitation_Request\x1a:.CRemoteClient_CreateRemotePlayTogetherInvitation_Response\x12\x9b\x01\n" +
-	"\"DeleteRemotePlayTogetherInvitation\x129.CRemoteClient_DeleteRemotePlayTogetherInvitation_Request\x1a:.CRemoteClient_DeleteRemotePlayTogetherInvitation_Response2\xeb\x04\n" +
+	"\"DeleteRemotePlayTogetherInvitation\x129.CRemoteClient_DeleteRemotePlayTogetherInvitation_Request\x1a:.CRemoteClient_DeleteRemotePlayTogetherInvitation_Response2\xa7\x06\n" +
 	"\x17RemoteClientSteamClient\x12[\n" +
 	"\x1aNotifyRegisterStatusUpdate\x120.CRemoteClient_RegisterStatusUpdate_Notification\x1a\v.NoResponse\x12_\n" +
 	"\x1cNotifyUnregisterStatusUpdate\x122.CRemoteClient_UnregisterStatusUpdate_Notification\x1a\v.NoResponse\x12K\n" +
-	"\x12NotifyRemotePacket\x12(.CRemoteClient_RemotePacket_Notification\x1a\v.NoResponse\x12U\n" +
+	"\x12NotifyRemotePacket\x12(.CRemoteClient_RemotePacket_Notification\x1a\v.NoResponse\x12[\n" +
+	"\x1aNotifyEnableSteamBroadcast\x120.CRemoteClient_EnableSteamBroadcast_Notification\x1a\v.NoResponse\x12]\n" +
+	"\x1bNotifyDisableSteamBroadcast\x121.CRemoteClient_DisableSteamBroadcast_Notification\x1a\v.NoResponse\x12U\n" +
 	"\x1aNotifySteamBroadcastPacket\x12*.CRemoteClient_SteamBroadcast_Notification\x1a\v.NoResponse\x12Q\n" +
 	"\x18NotifySteamToSteamPacket\x12(.CRemoteClient_SteamToSteam_Notification\x1a\v.NoResponse\x12P\n" +
 	"\x1eNotifyRemotePlayTogetherPacket\x12!.CRemotePlayTogether_Notification\x1a\v.NoResponse\x12C\n" +
@@ -67,16 +69,18 @@ var file_steammessages_remoteclient_service_steamclient_proto_goTypes = []any{
 	(*CRemoteClient_RegisterStatusUpdate_Notification)(nil),          // 14: CRemoteClient_RegisterStatusUpdate_Notification
 	(*CRemoteClient_UnregisterStatusUpdate_Notification)(nil),        // 15: CRemoteClient_UnregisterStatusUpdate_Notification
 	(*CRemoteClient_RemotePacket_Notification)(nil),                  // 16: CRemoteClient_RemotePacket_Notification
-	(*CRemoteClient_TaskList_Notification)(nil),                      // 17: CRemoteClient_TaskList_Notification
-	(*CRemoteClient_GetPairingInfo_Response)(nil),                    // 18: CRemoteClient_GetPairingInfo_Response
-	(*NoResponse)(nil), // 19: NoResponse
-	(*CRemoteClient_GetRecentClients_Response)(nil),                   // 20: CRemoteClient_GetRecentClients_Response
-	(*CRemoteClient_MarkTaskComplete_Response)(nil),                   // 21: CRemoteClient_MarkTaskComplete_Response
-	(*CRemoteClient_AllocateRelayServer_Response)(nil),                // 22: CRemoteClient_AllocateRelayServer_Response
-	(*CRemoteClient_AllocateSDR_Response)(nil),                        // 23: CRemoteClient_AllocateSDR_Response
-	(*CRemotePlay_SessionStarted_Response)(nil),                       // 24: CRemotePlay_SessionStarted_Response
-	(*CRemoteClient_CreateRemotePlayTogetherInvitation_Response)(nil), // 25: CRemoteClient_CreateRemotePlayTogetherInvitation_Response
-	(*CRemoteClient_DeleteRemotePlayTogetherInvitation_Response)(nil), // 26: CRemoteClient_DeleteRemotePlayTogetherInvitation_Response
+	(*CRemoteClient_EnableSteamBroadcast_Notification)(nil),          // 17: CRemoteClient_EnableSteamBroadcast_Notification
+	(*CRemoteClient_DisableSteamBroadcast_Notification)(nil),         // 18: CRemoteClient_DisableSteamBroadcast_Notification
+	(*CRemoteClient_TaskList_Notification)(nil),                      // 19: CRemoteClient_TaskList_Notification
+	(*CRemoteClient_GetPairingInfo_Response)(nil),                    // 20: CRemoteClient_GetPairingInfo_Response
+	(*NoResponse)(nil), // 21: NoResponse
+	(*CRemoteClient_GetRecentClients_Response)(nil),                   // 22: CRemoteClient_GetRecentClients_Response
+	(*CRemoteClient_MarkTaskComplete_Response)(nil),                   // 23: CRemoteClient_MarkTaskComplete_Response
+	(*CRemoteClient_AllocateRelayServer_Response)(nil),                // 24: CRemoteClient_AllocateRelayServer_Response
+	(*CRemoteClient_AllocateSDR_Response)(nil),                        // 25: CRemoteClient_AllocateSDR_Response
+	(*CRemotePlay_SessionStarted_Response)(nil),                       // 26: CRemotePlay_SessionStarted_Response
+	(*CRemoteClient_CreateRemotePlayTogetherInvitation_Response)(nil), // 27: CRemoteClient_CreateRemotePlayTogetherInvitation_Response
+	(*CRemoteClient_DeleteRemotePlayTogetherInvitation_Response)(nil), // 28: CRemoteClient_DeleteRemotePlayTogetherInvitation_Response
 }
 var file_steammessages_remoteclient_service_steamclient_proto_depIdxs = []int32{
 	0,  // 0: RemoteClient.GetPairingInfo:input_type -> CRemoteClient_GetPairingInfo_Request
@@ -96,33 +100,37 @@ var file_steammessages_remoteclient_service_steamclient_proto_depIdxs = []int32{
 	14, // 14: RemoteClientSteamClient.NotifyRegisterStatusUpdate:input_type -> CRemoteClient_RegisterStatusUpdate_Notification
 	15, // 15: RemoteClientSteamClient.NotifyUnregisterStatusUpdate:input_type -> CRemoteClient_UnregisterStatusUpdate_Notification
 	16, // 16: RemoteClientSteamClient.NotifyRemotePacket:input_type -> CRemoteClient_RemotePacket_Notification
-	7,  // 17: RemoteClientSteamClient.NotifySteamBroadcastPacket:input_type -> CRemoteClient_SteamBroadcast_Notification
-	8,  // 18: RemoteClientSteamClient.NotifySteamToSteamPacket:input_type -> CRemoteClient_SteamToSteam_Notification
-	11, // 19: RemoteClientSteamClient.NotifyRemotePlayTogetherPacket:input_type -> CRemotePlayTogether_Notification
-	17, // 20: RemoteClientSteamClient.NotifyTaskList:input_type -> CRemoteClient_TaskList_Notification
-	18, // 21: RemoteClient.GetPairingInfo:output_type -> CRemoteClient_GetPairingInfo_Response
-	19, // 22: RemoteClient.NotifyOnline:output_type -> NoResponse
-	20, // 23: RemoteClient.GetRecentClients:output_type -> CRemoteClient_GetRecentClients_Response
-	21, // 24: RemoteClient.MarkTaskComplete:output_type -> CRemoteClient_MarkTaskComplete_Response
-	19, // 25: RemoteClient.NotifyReplyPacket:output_type -> NoResponse
-	22, // 26: RemoteClient.AllocateRelayServer:output_type -> CRemoteClient_AllocateRelayServer_Response
-	23, // 27: RemoteClient.AllocateSDR:output_type -> CRemoteClient_AllocateSDR_Response
-	19, // 28: RemoteClient.SendSteamBroadcastPacket:output_type -> NoResponse
-	19, // 29: RemoteClient.SendSteamToSteamPacket:output_type -> NoResponse
-	24, // 30: RemoteClient.SendRemotePlaySessionStarted:output_type -> CRemotePlay_SessionStarted_Response
-	19, // 31: RemoteClient.SendRemotePlaySessionStopped:output_type -> NoResponse
-	19, // 32: RemoteClient.SendRemotePlayTogetherPacket:output_type -> NoResponse
-	25, // 33: RemoteClient.CreateRemotePlayTogetherInvitation:output_type -> CRemoteClient_CreateRemotePlayTogetherInvitation_Response
-	26, // 34: RemoteClient.DeleteRemotePlayTogetherInvitation:output_type -> CRemoteClient_DeleteRemotePlayTogetherInvitation_Response
-	19, // 35: RemoteClientSteamClient.NotifyRegisterStatusUpdate:output_type -> NoResponse
-	19, // 36: RemoteClientSteamClient.NotifyUnregisterStatusUpdate:output_type -> NoResponse
-	19, // 37: RemoteClientSteamClient.NotifyRemotePacket:output_type -> NoResponse
-	19, // 38: RemoteClientSteamClient.NotifySteamBroadcastPacket:output_type -> NoResponse
-	19, // 39: RemoteClientSteamClient.NotifySteamToSteamPacket:output_type -> NoResponse
-	19, // 40: RemoteClientSteamClient.NotifyRemotePlayTogetherPacket:output_type -> NoResponse
-	19, // 41: RemoteClientSteamClient.NotifyTaskList:output_type -> NoResponse
-	21, // [21:42] is the sub-list for method output_type
-	0,  // [0:21] is the sub-list for method input_type
+	17, // 17: RemoteClientSteamClient.NotifyEnableSteamBroadcast:input_type -> CRemoteClient_EnableSteamBroadcast_Notification
+	18, // 18: RemoteClientSteamClient.NotifyDisableSteamBroadcast:input_type -> CRemoteClient_DisableSteamBroadcast_Notification
+	7,  // 19: RemoteClientSteamClient.NotifySteamBroadcastPacket:input_type -> CRemoteClient_SteamBroadcast_Notification
+	8,  // 20: RemoteClientSteamClient.NotifySteamToSteamPacket:input_type -> CRemoteClient_SteamToSteam_Notification
+	11, // 21: RemoteClientSteamClient.NotifyRemotePlayTogetherPacket:input_type -> CRemotePlayTogether_Notification
+	19, // 22: RemoteClientSteamClient.NotifyTaskList:input_type -> CRemoteClient_TaskList_Notification
+	20, // 23: RemoteClient.GetPairingInfo:output_type -> CRemoteClient_GetPairingInfo_Response
+	21, // 24: RemoteClient.NotifyOnline:output_type -> NoResponse
+	22, // 25: RemoteClient.GetRecentClients:output_type -> CRemoteClient_GetRecentClients_Response
+	23, // 26: RemoteClient.MarkTaskComplete:output_type -> CRemoteClient_MarkTaskComplete_Response
+	21, // 27: RemoteClient.NotifyReplyPacket:output_type -> NoResponse
+	24, // 28: RemoteClient.AllocateRelayServer:output_type -> CRemoteClient_AllocateRelayServer_Response
+	25, // 29: RemoteClient.AllocateSDR:output_type -> CRemoteClient_AllocateSDR_Response
+	21, // 30: RemoteClient.SendSteamBroadcastPacket:output_type -> NoResponse
+	21, // 31: RemoteClient.SendSteamToSteamPacket:output_type -> NoResponse
+	26, // 32: RemoteClient.SendRemotePlaySessionStarted:output_type -> CRemotePlay_SessionStarted_Response
+	21, // 33: RemoteClient.SendRemotePlaySessionStopped:output_type -> NoResponse
+	21, // 34: RemoteClient.SendRemotePlayTogetherPacket:output_type -> NoResponse
+	27, // 35: RemoteClient.CreateRemotePlayTogetherInvitation:output_type -> CRemoteClient_CreateRemotePlayTogetherInvitation_Response
+	28, // 36: RemoteClient.DeleteRemotePlayTogetherInvitation:output_type -> CRemoteClient_DeleteRemotePlayTogetherInvitation_Response
+	21, // 37: RemoteClientSteamClient.NotifyRegisterStatusUpdate:output_type -> NoResponse
+	21, // 38: RemoteClientSteamClient.NotifyUnregisterStatusUpdate:output_type -> NoResponse
+	21, // 39: RemoteClientSteamClient.NotifyRemotePacket:output_type -> NoResponse
+	21, // 40: RemoteClientSteamClient.NotifyEnableSteamBroadcast:output_type -> NoResponse
+	21, // 41: RemoteClientSteamClient.NotifyDisableSteamBroadcast:output_type -> NoResponse
+	21, // 42: RemoteClientSteamClient.NotifySteamBroadcastPacket:output_type -> NoResponse
+	21, // 43: RemoteClientSteamClient.NotifySteamToSteamPacket:output_type -> NoResponse
+	21, // 44: RemoteClientSteamClient.NotifyRemotePlayTogetherPacket:output_type -> NoResponse
+	21, // 45: RemoteClientSteamClient.NotifyTaskList:output_type -> NoResponse
+	23, // [23:46] is the sub-list for method output_type
+	0,  // [0:23] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

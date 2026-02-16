@@ -694,7 +694,6 @@ type StoreBrowseContext struct {
 	Language      *string                `protobuf:"bytes,1,opt,name=language" json:"language,omitempty"`
 	Elanguage     *int32                 `protobuf:"varint,2,opt,name=elanguage" json:"elanguage,omitempty"`
 	CountryCode   *string                `protobuf:"bytes,3,opt,name=country_code,json=countryCode" json:"country_code,omitempty"`
-	SteamRealm    *int32                 `protobuf:"varint,4,opt,name=steam_realm,json=steamRealm" json:"steam_realm,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -748,13 +747,6 @@ func (x *StoreBrowseContext) GetCountryCode() string {
 		return *x.CountryCode
 	}
 	return ""
-}
-
-func (x *StoreBrowseContext) GetSteamRealm() int32 {
-	if x != nil && x.SteamRealm != nil {
-		return *x.SteamRealm
-	}
-	return 0
 }
 
 type StoreBrowseItemDataRequest struct {
@@ -2982,21 +2974,23 @@ func (x *StoreItem_Assets) GetRawPageBackground() string {
 }
 
 type StoreItem_ReleaseInfo struct {
-	state                    protoimpl.MessageState `protogen:"open.v1"`
-	SteamReleaseDate         *uint32                `protobuf:"varint,1,opt,name=steam_release_date,json=steamReleaseDate" json:"steam_release_date,omitempty"`
-	OriginalReleaseDate      *uint32                `protobuf:"varint,2,opt,name=original_release_date,json=originalReleaseDate" json:"original_release_date,omitempty"`
-	OriginalSteamReleaseDate *uint32                `protobuf:"varint,3,opt,name=original_steam_release_date,json=originalSteamReleaseDate" json:"original_steam_release_date,omitempty"`
-	IsComingSoon             *bool                  `protobuf:"varint,4,opt,name=is_coming_soon,json=isComingSoon" json:"is_coming_soon,omitempty"`
-	IsPreload                *bool                  `protobuf:"varint,5,opt,name=is_preload,json=isPreload" json:"is_preload,omitempty"`
-	CustomReleaseDateMessage *string                `protobuf:"bytes,6,opt,name=custom_release_date_message,json=customReleaseDateMessage" json:"custom_release_date_message,omitempty"`
-	IsAbridgedReleaseDate    *bool                  `protobuf:"varint,7,opt,name=is_abridged_release_date,json=isAbridgedReleaseDate" json:"is_abridged_release_date,omitempty"`
-	ComingSoonDisplay        *string                `protobuf:"bytes,8,opt,name=coming_soon_display,json=comingSoonDisplay" json:"coming_soon_display,omitempty"`
-	IsEarlyAccess            *bool                  `protobuf:"varint,10,opt,name=is_early_access,json=isEarlyAccess" json:"is_early_access,omitempty"`
-	MacReleaseDate           *uint32                `protobuf:"varint,20,opt,name=mac_release_date,json=macReleaseDate" json:"mac_release_date,omitempty"`
-	LinuxReleaseDate         *uint32                `protobuf:"varint,21,opt,name=linux_release_date,json=linuxReleaseDate" json:"linux_release_date,omitempty"`
-	LimitedLaunchActive      *bool                  `protobuf:"varint,22,opt,name=limited_launch_active,json=limitedLaunchActive" json:"limited_launch_active,omitempty"`
-	unknownFields            protoimpl.UnknownFields
-	sizeCache                protoimpl.SizeCache
+	state                       protoimpl.MessageState `protogen:"open.v1"`
+	SteamReleaseDate            *uint32                `protobuf:"varint,1,opt,name=steam_release_date,json=steamReleaseDate" json:"steam_release_date,omitempty"`
+	OriginalReleaseDate         *uint32                `protobuf:"varint,2,opt,name=original_release_date,json=originalReleaseDate" json:"original_release_date,omitempty"`
+	OriginalSteamReleaseDate    *uint32                `protobuf:"varint,3,opt,name=original_steam_release_date,json=originalSteamReleaseDate" json:"original_steam_release_date,omitempty"`
+	ReleaseFromEarlyAccessDate  *uint32                `protobuf:"varint,11,opt,name=release_from_early_access_date,json=releaseFromEarlyAccessDate" json:"release_from_early_access_date,omitempty"`
+	ReleaseFromEarlyAccessStyle *uint32                `protobuf:"varint,12,opt,name=release_from_early_access_style,json=releaseFromEarlyAccessStyle" json:"release_from_early_access_style,omitempty"`
+	IsComingSoon                *bool                  `protobuf:"varint,4,opt,name=is_coming_soon,json=isComingSoon" json:"is_coming_soon,omitempty"`
+	IsPreload                   *bool                  `protobuf:"varint,5,opt,name=is_preload,json=isPreload" json:"is_preload,omitempty"`
+	CustomReleaseDateMessage    *string                `protobuf:"bytes,6,opt,name=custom_release_date_message,json=customReleaseDateMessage" json:"custom_release_date_message,omitempty"`
+	IsAbridgedReleaseDate       *bool                  `protobuf:"varint,7,opt,name=is_abridged_release_date,json=isAbridgedReleaseDate" json:"is_abridged_release_date,omitempty"`
+	ComingSoonDisplay           *string                `protobuf:"bytes,8,opt,name=coming_soon_display,json=comingSoonDisplay" json:"coming_soon_display,omitempty"`
+	IsEarlyAccess               *bool                  `protobuf:"varint,10,opt,name=is_early_access,json=isEarlyAccess" json:"is_early_access,omitempty"`
+	MacReleaseDate              *uint32                `protobuf:"varint,20,opt,name=mac_release_date,json=macReleaseDate" json:"mac_release_date,omitempty"`
+	LinuxReleaseDate            *uint32                `protobuf:"varint,21,opt,name=linux_release_date,json=linuxReleaseDate" json:"linux_release_date,omitempty"`
+	LimitedLaunchActive         *bool                  `protobuf:"varint,22,opt,name=limited_launch_active,json=limitedLaunchActive" json:"limited_launch_active,omitempty"`
+	unknownFields               protoimpl.UnknownFields
+	sizeCache                   protoimpl.SizeCache
 }
 
 func (x *StoreItem_ReleaseInfo) Reset() {
@@ -3046,6 +3040,20 @@ func (x *StoreItem_ReleaseInfo) GetOriginalReleaseDate() uint32 {
 func (x *StoreItem_ReleaseInfo) GetOriginalSteamReleaseDate() uint32 {
 	if x != nil && x.OriginalSteamReleaseDate != nil {
 		return *x.OriginalSteamReleaseDate
+	}
+	return 0
+}
+
+func (x *StoreItem_ReleaseInfo) GetReleaseFromEarlyAccessDate() uint32 {
+	if x != nil && x.ReleaseFromEarlyAccessDate != nil {
+		return *x.ReleaseFromEarlyAccessDate
+	}
+	return 0
+}
+
+func (x *StoreItem_ReleaseInfo) GetReleaseFromEarlyAccessStyle() uint32 {
+	if x != nil && x.ReleaseFromEarlyAccessStyle != nil {
+		return *x.ReleaseFromEarlyAccessStyle
 	}
 	return 0
 }
@@ -4255,8 +4263,6 @@ type StoreItem_Trailers_Trailer struct {
 	TrailerName      *string                               `protobuf:"bytes,1,opt,name=trailer_name,json=trailerName" json:"trailer_name,omitempty"`
 	TrailerUrlFormat *string                               `protobuf:"bytes,2,opt,name=trailer_url_format,json=trailerUrlFormat" json:"trailer_url_format,omitempty"`
 	TrailerCategory  *ETrailerCategory                     `protobuf:"varint,13,opt,name=trailer_category,json=trailerCategory,enum=ETrailerCategory,def=0" json:"trailer_category,omitempty"`
-	Trailer_480P     []*StoreItem_Trailers_VideoSource     `protobuf:"bytes,3,rep,name=trailer_480p,json=trailer480p" json:"trailer_480p,omitempty"`
-	TrailerMax       []*StoreItem_Trailers_VideoSource     `protobuf:"bytes,4,rep,name=trailer_max,json=trailerMax" json:"trailer_max,omitempty"`
 	Microtrailer     []*StoreItem_Trailers_VideoSource     `protobuf:"bytes,5,rep,name=microtrailer" json:"microtrailer,omitempty"`
 	AdaptiveTrailers []*StoreItem_Trailers_AdaptiveTrailer `protobuf:"bytes,6,rep,name=adaptive_trailers,json=adaptiveTrailers" json:"adaptive_trailers,omitempty"`
 	ScreenshotMedium *string                               `protobuf:"bytes,10,opt,name=screenshot_medium,json=screenshotMedium" json:"screenshot_medium,omitempty"`
@@ -4321,20 +4327,6 @@ func (x *StoreItem_Trailers_Trailer) GetTrailerCategory() ETrailerCategory {
 		return *x.TrailerCategory
 	}
 	return Default_StoreItem_Trailers_Trailer_TrailerCategory
-}
-
-func (x *StoreItem_Trailers_Trailer) GetTrailer_480P() []*StoreItem_Trailers_VideoSource {
-	if x != nil {
-		return x.Trailer_480P
-	}
-	return nil
-}
-
-func (x *StoreItem_Trailers_Trailer) GetTrailerMax() []*StoreItem_Trailers_VideoSource {
-	if x != nil {
-		return x.TrailerMax
-	}
-	return nil
 }
 
 func (x *StoreItem_Trailers_Trailer) GetMicrotrailer() []*StoreItem_Trailers_VideoSource {
@@ -4875,13 +4867,11 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\bbundleid\x18\x03 \x01(\rR\bbundleid\x12\x14\n" +
 	"\x05tagid\x18\x04 \x01(\rR\x05tagid\x12\x1c\n" +
 	"\tcreatorid\x18\x05 \x01(\rR\tcreatorid\x12$\n" +
-	"\rhubcategoryid\x18\x06 \x01(\rR\rhubcategoryid\"\x92\x01\n" +
+	"\rhubcategoryid\x18\x06 \x01(\rR\rhubcategoryid\"q\n" +
 	"\x12StoreBrowseContext\x12\x1a\n" +
 	"\blanguage\x18\x01 \x01(\tR\blanguage\x12\x1c\n" +
 	"\telanguage\x18\x02 \x01(\x05R\telanguage\x12!\n" +
-	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\x12\x1f\n" +
-	"\vsteam_realm\x18\x04 \x01(\x05R\n" +
-	"steamRealm\"\x88\a\n" +
+	"\fcountry_code\x18\x03 \x01(\tR\vcountryCode\"\x88\a\n" +
 	"\x1aStoreBrowseItemDataRequest\x12%\n" +
 	"\x0einclude_assets\x18\x01 \x01(\bR\rincludeAssets\x12'\n" +
 	"\x0finclude_release\x18\x02 \x01(\bR\x0eincludeRelease\x12+\n" +
@@ -4904,7 +4894,7 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x1dCStoreBrowse_GetItems_Request\x12\x1e\n" +
 	"\x03ids\x18\x01 \x03(\v2\f.StoreItemIDR\x03ids\x12-\n" +
 	"\acontext\x18\x02 \x01(\v2\x13.StoreBrowseContextR\acontext\x12>\n" +
-	"\fdata_request\x18\x03 \x01(\v2\x1b.StoreBrowseItemDataRequestR\vdataRequest\"\xddD\n" +
+	"\fdata_request\x18\x03 \x01(\v2\x1b.StoreBrowseItemDataRequestR\vdataRequest\"\xe1D\n" +
 	"\tStoreItem\x12F\n" +
 	"\titem_type\x18\x01 \x01(\x0e2\x0f.EStoreItemType:\x18k_EStoreItemType_InvalidR\bitemType\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\rR\x02id\x12\x18\n" +
@@ -5016,11 +5006,13 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\vclan_avatar\x18\x0e \x01(\tR\n" +
 	"clanAvatar\x120\n" +
 	"\x14page_background_path\x18\x0f \x01(\tR\x12pageBackgroundPath\x12.\n" +
-	"\x13raw_page_background\x18\x10 \x01(\tR\x11rawPageBackground\x1a\xcf\x04\n" +
+	"\x13raw_page_background\x18\x10 \x01(\tR\x11rawPageBackground\x1a\xd9\x05\n" +
 	"\vReleaseInfo\x12,\n" +
 	"\x12steam_release_date\x18\x01 \x01(\rR\x10steamReleaseDate\x122\n" +
 	"\x15original_release_date\x18\x02 \x01(\rR\x13originalReleaseDate\x12=\n" +
-	"\x1boriginal_steam_release_date\x18\x03 \x01(\rR\x18originalSteamReleaseDate\x12$\n" +
+	"\x1boriginal_steam_release_date\x18\x03 \x01(\rR\x18originalSteamReleaseDate\x12B\n" +
+	"\x1erelease_from_early_access_date\x18\v \x01(\rR\x1areleaseFromEarlyAccessDate\x12D\n" +
+	"\x1frelease_from_early_access_style\x18\f \x01(\rR\x1breleaseFromEarlyAccessStyle\x12$\n" +
 	"\x0eis_coming_soon\x18\x04 \x01(\bR\fisComingSoon\x12\x1d\n" +
 	"\n" +
 	"is_preload\x18\x05 \x01(\bR\tisPreload\x12=\n" +
@@ -5094,7 +5086,7 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\n" +
 	"Screenshot\x12\x1a\n" +
 	"\bfilename\x18\x01 \x01(\tR\bfilename\x12\x18\n" +
-	"\aordinal\x18\x02 \x01(\x05R\aordinal\x1a\x81\a\n" +
+	"\aordinal\x18\x02 \x01(\x05R\aordinal\x1a\xfb\x05\n" +
 	"\bTrailers\x12;\n" +
 	"\n" +
 	"highlights\x18\x01 \x03(\v2\x1b.StoreItem.Trailers.TrailerR\n" +
@@ -5105,14 +5097,11 @@ const file_steammessages_storebrowse_steamclient_proto_rawDesc = "" +
 	"\x04type\x18\x02 \x01(\tR\x04type\x1aH\n" +
 	"\x0fAdaptiveTrailer\x12\x19\n" +
 	"\bcdn_path\x18\x01 \x01(\tR\acdnPath\x12\x1a\n" +
-	"\bencoding\x18\x02 \x01(\tR\bencoding\x1a\xea\x04\n" +
+	"\bencoding\x18\x02 \x01(\tR\bencoding\x1a\xe4\x03\n" +
 	"\aTrailer\x12!\n" +
 	"\ftrailer_name\x18\x01 \x01(\tR\vtrailerName\x12,\n" +
 	"\x12trailer_url_format\x18\x02 \x01(\tR\x10trailerUrlFormat\x12X\n" +
-	"\x10trailer_category\x18\r \x01(\x0e2\x11.ETrailerCategory:\x1ak_ETrailerCategory_InvalidR\x0ftrailerCategory\x12B\n" +
-	"\ftrailer_480p\x18\x03 \x03(\v2\x1f.StoreItem.Trailers.VideoSourceR\vtrailer480p\x12@\n" +
-	"\vtrailer_max\x18\x04 \x03(\v2\x1f.StoreItem.Trailers.VideoSourceR\n" +
-	"trailerMax\x12C\n" +
+	"\x10trailer_category\x18\r \x01(\x0e2\x11.ETrailerCategory:\x1ak_ETrailerCategory_InvalidR\x0ftrailerCategory\x12C\n" +
 	"\fmicrotrailer\x18\x05 \x03(\v2\x1f.StoreItem.Trailers.VideoSourceR\fmicrotrailer\x12P\n" +
 	"\x11adaptive_trailers\x18\x06 \x03(\v2#.StoreItem.Trailers.AdaptiveTrailerR\x10adaptiveTrailers\x12+\n" +
 	"\x11screenshot_medium\x18\n" +
@@ -5514,30 +5503,28 @@ var file_steammessages_storebrowse_steamclient_proto_depIdxs = []int32{
 	5,  // 65: StoreItem.Link.link_type:type_name -> EStoreLinkType
 	2,  // 66: StoreItem.Reviews.StoreReviewSummary.review_score:type_name -> EUserReviewScore
 	3,  // 67: StoreItem.Trailers.Trailer.trailer_category:type_name -> ETrailerCategory
-	49, // 68: StoreItem.Trailers.Trailer.trailer_480p:type_name -> StoreItem.Trailers.VideoSource
-	49, // 69: StoreItem.Trailers.Trailer.trailer_max:type_name -> StoreItem.Trailers.VideoSource
-	49, // 70: StoreItem.Trailers.Trailer.microtrailer:type_name -> StoreItem.Trailers.VideoSource
-	50, // 71: StoreItem.Trailers.Trailer.adaptive_trailers:type_name -> StoreItem.Trailers.AdaptiveTrailer
-	6,  // 72: CStoreBrowse_GetStoreCategories_Response.Category.type:type_name -> EStoreCategoryType
-	10, // 73: StoreBrowse.GetItems:input_type -> CStoreBrowse_GetItems_Request
-	15, // 74: StoreBrowse.GetStoreCategories:input_type -> CStoreBrowse_GetStoreCategories_Request
-	17, // 75: StoreBrowse.GetContentHubConfig:input_type -> CStoreBrowse_GetContentHubConfig_Request
-	19, // 76: StoreBrowse.GetPriceStops:input_type -> CStoreBrowse_GetPriceStops_Request
-	21, // 77: StoreBrowse.GetDLCForApps:input_type -> CStoreBrowse_GetDLCForApps_Request
-	23, // 78: StoreBrowse.GetDLCForAppsSolr:input_type -> CStoreBrowse_GetDLCForAppsSolr_Request
-	25, // 79: StoreBrowse.GetHardwareItems:input_type -> CStoreBrowse_GetHardwareItems_Request
-	14, // 80: StoreBrowse.GetItems:output_type -> CStoreBrowse_GetItems_Response
-	16, // 81: StoreBrowse.GetStoreCategories:output_type -> CStoreBrowse_GetStoreCategories_Response
-	18, // 82: StoreBrowse.GetContentHubConfig:output_type -> CStoreBrowse_GetContentHubConfig_Response
-	20, // 83: StoreBrowse.GetPriceStops:output_type -> CStoreBrowse_GetPriceStops_Response
-	22, // 84: StoreBrowse.GetDLCForApps:output_type -> CStoreBrowse_GetDLCForApps_Response
-	24, // 85: StoreBrowse.GetDLCForAppsSolr:output_type -> CStoreBrowse_GetDLCForAppsSolr_Response
-	27, // 86: StoreBrowse.GetHardwareItems:output_type -> CStoreBrowse_GetHardwareItems_Response
-	80, // [80:87] is the sub-list for method output_type
-	73, // [73:80] is the sub-list for method input_type
-	73, // [73:73] is the sub-list for extension type_name
-	73, // [73:73] is the sub-list for extension extendee
-	0,  // [0:73] is the sub-list for field type_name
+	49, // 68: StoreItem.Trailers.Trailer.microtrailer:type_name -> StoreItem.Trailers.VideoSource
+	50, // 69: StoreItem.Trailers.Trailer.adaptive_trailers:type_name -> StoreItem.Trailers.AdaptiveTrailer
+	6,  // 70: CStoreBrowse_GetStoreCategories_Response.Category.type:type_name -> EStoreCategoryType
+	10, // 71: StoreBrowse.GetItems:input_type -> CStoreBrowse_GetItems_Request
+	15, // 72: StoreBrowse.GetStoreCategories:input_type -> CStoreBrowse_GetStoreCategories_Request
+	17, // 73: StoreBrowse.GetContentHubConfig:input_type -> CStoreBrowse_GetContentHubConfig_Request
+	19, // 74: StoreBrowse.GetPriceStops:input_type -> CStoreBrowse_GetPriceStops_Request
+	21, // 75: StoreBrowse.GetDLCForApps:input_type -> CStoreBrowse_GetDLCForApps_Request
+	23, // 76: StoreBrowse.GetDLCForAppsSolr:input_type -> CStoreBrowse_GetDLCForAppsSolr_Request
+	25, // 77: StoreBrowse.GetHardwareItems:input_type -> CStoreBrowse_GetHardwareItems_Request
+	14, // 78: StoreBrowse.GetItems:output_type -> CStoreBrowse_GetItems_Response
+	16, // 79: StoreBrowse.GetStoreCategories:output_type -> CStoreBrowse_GetStoreCategories_Response
+	18, // 80: StoreBrowse.GetContentHubConfig:output_type -> CStoreBrowse_GetContentHubConfig_Response
+	20, // 81: StoreBrowse.GetPriceStops:output_type -> CStoreBrowse_GetPriceStops_Response
+	22, // 82: StoreBrowse.GetDLCForApps:output_type -> CStoreBrowse_GetDLCForApps_Response
+	24, // 83: StoreBrowse.GetDLCForAppsSolr:output_type -> CStoreBrowse_GetDLCForAppsSolr_Response
+	27, // 84: StoreBrowse.GetHardwareItems:output_type -> CStoreBrowse_GetHardwareItems_Response
+	78, // [78:85] is the sub-list for method output_type
+	71, // [71:78] is the sub-list for method input_type
+	71, // [71:71] is the sub-list for extension type_name
+	71, // [71:71] is the sub-list for extension extendee
+	0,  // [0:71] is the sub-list for field type_name
 }
 
 func init() { file_steammessages_storebrowse_steamclient_proto_init() }
