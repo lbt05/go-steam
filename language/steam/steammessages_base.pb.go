@@ -2774,7 +2774,6 @@ type UserSystemInformation struct {
 	CpuName            *string                `protobuf:"bytes,10,opt,name=cpu_name,json=cpuName" json:"cpu_name,omitempty"`
 	GamingDeviceType   *uint32                `protobuf:"varint,11,opt,name=gaming_device_type,json=gamingDeviceType" json:"gaming_device_type,omitempty"`
 	DxDriverVersion    *string                `protobuf:"bytes,12,opt,name=dx_driver_version,json=dxDriverVersion" json:"dx_driver_version,omitempty"`
-	DxDriverName       *string                `protobuf:"bytes,13,opt,name=dx_driver_name,json=dxDriverName" json:"dx_driver_name,omitempty"`
 	AdapterDescription *string                `protobuf:"bytes,14,opt,name=adapter_description,json=adapterDescription" json:"adapter_description,omitempty"`
 	DriverVersion      *string                `protobuf:"bytes,15,opt,name=driver_version,json=driverVersion" json:"driver_version,omitempty"`
 	DriverDate         *string                `protobuf:"bytes,16,opt,name=driver_date,json=driverDate" json:"driver_date,omitempty"`
@@ -2893,13 +2892,6 @@ func (x *UserSystemInformation) GetGamingDeviceType() uint32 {
 func (x *UserSystemInformation) GetDxDriverVersion() string {
 	if x != nil && x.DxDriverVersion != nil {
 		return *x.DxDriverVersion
-	}
-	return ""
-}
-
-func (x *UserSystemInformation) GetDxDriverName() string {
-	if x != nil && x.DxDriverName != nil {
-		return *x.DxDriverName
 	}
 	return ""
 }
@@ -3386,7 +3378,7 @@ const file_steammessages_base_proto_rawDesc = "" +
 	"\x1econtent_descriptors_to_exclude\x18\x01 \x03(\v23.UserContentDescriptorPreferences.ContentDescriptorR\x1bcontentDescriptorsToExclude\x1ao\n" +
 	"\x11ContentDescriptor\x121\n" +
 	"\x14content_descriptorid\x18\x01 \x01(\rR\x13contentDescriptorid\x12'\n" +
-	"\x0ftimestamp_added\x18\x02 \x01(\rR\x0etimestampAdded\"\xcf\x04\n" +
+	"\x0ftimestamp_added\x18\x02 \x01(\rR\x0etimestampAdded\"\xa9\x04\n" +
 	"\x15UserSystemInformation\x12\"\n" +
 	"\fmanufacturer\x18\x01 \x01(\tR\fmanufacturer\x12\x14\n" +
 	"\x05model\x18\x02 \x01(\tR\x05model\x12\"\n" +
@@ -3404,8 +3396,7 @@ const file_steammessages_base_proto_rawDesc = "" +
 	"\bcpu_name\x18\n" +
 	" \x01(\tR\acpuName\x12,\n" +
 	"\x12gaming_device_type\x18\v \x01(\rR\x10gamingDeviceType\x12*\n" +
-	"\x11dx_driver_version\x18\f \x01(\tR\x0fdxDriverVersion\x12$\n" +
-	"\x0edx_driver_name\x18\r \x01(\tR\fdxDriverName\x12/\n" +
+	"\x11dx_driver_version\x18\f \x01(\tR\x0fdxDriverVersion\x12/\n" +
 	"\x13adapter_description\x18\x0e \x01(\tR\x12adapterDescription\x12%\n" +
 	"\x0edriver_version\x18\x0f \x01(\tR\rdriverVersion\x12\x1f\n" +
 	"\vdriver_date\x18\x10 \x01(\tR\n" +

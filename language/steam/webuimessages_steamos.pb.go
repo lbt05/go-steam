@@ -120,6 +120,9 @@ type CSteamOSManagerState struct {
 	IsVrsAvailable                       *bool                  `protobuf:"varint,28,opt,name=is_vrs_available,json=isVrsAvailable" json:"is_vrs_available,omitempty"`
 	IsWifiDriverReloadAvailable          *bool                  `protobuf:"varint,29,opt,name=is_wifi_driver_reload_available,json=isWifiDriverReloadAvailable" json:"is_wifi_driver_reload_available,omitempty"`
 	IsPasswordChangeSupported            *bool                  `protobuf:"varint,30,opt,name=is_password_change_supported,json=isPasswordChangeSupported" json:"is_password_change_supported,omitempty"`
+	IsSessionManagementSupported         *bool                  `protobuf:"varint,31,opt,name=is_session_management_supported,json=isSessionManagementSupported" json:"is_session_management_supported,omitempty"`
+	DesktopSessionsAvailable             []string               `protobuf:"bytes,32,rep,name=desktop_sessions_available,json=desktopSessionsAvailable" json:"desktop_sessions_available,omitempty"`
+	DesktopSessionDefault                *string                `protobuf:"bytes,33,opt,name=desktop_session_default,json=desktopSessionDefault" json:"desktop_session_default,omitempty"`
 	unknownFields                        protoimpl.UnknownFields
 	sizeCache                            protoimpl.SizeCache
 }
@@ -360,6 +363,27 @@ func (x *CSteamOSManagerState) GetIsPasswordChangeSupported() bool {
 		return *x.IsPasswordChangeSupported
 	}
 	return false
+}
+
+func (x *CSteamOSManagerState) GetIsSessionManagementSupported() bool {
+	if x != nil && x.IsSessionManagementSupported != nil {
+		return *x.IsSessionManagementSupported
+	}
+	return false
+}
+
+func (x *CSteamOSManagerState) GetDesktopSessionsAvailable() []string {
+	if x != nil {
+		return x.DesktopSessionsAvailable
+	}
+	return nil
+}
+
+func (x *CSteamOSManagerState) GetDesktopSessionDefault() string {
+	if x != nil && x.DesktopSessionDefault != nil {
+		return *x.DesktopSessionDefault
+	}
+	return ""
 }
 
 type CSteamOSManager_GetState_Request struct {
@@ -1123,6 +1147,158 @@ func (*CSteamOSManager_PrepareFactoryImageTest_Response) Descriptor() ([]byte, [
 	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{20}
 }
 
+type CSteamOSManager_SwitchToDesktop_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamOSManager_SwitchToDesktop_Request) Reset() {
+	*x = CSteamOSManager_SwitchToDesktop_Request{}
+	mi := &file_webuimessages_steamos_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamOSManager_SwitchToDesktop_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamOSManager_SwitchToDesktop_Request) ProtoMessage() {}
+
+func (x *CSteamOSManager_SwitchToDesktop_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steamos_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamOSManager_SwitchToDesktop_Request.ProtoReflect.Descriptor instead.
+func (*CSteamOSManager_SwitchToDesktop_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{21}
+}
+
+type CSteamOSManager_SwitchToDesktop_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamOSManager_SwitchToDesktop_Response) Reset() {
+	*x = CSteamOSManager_SwitchToDesktop_Response{}
+	mi := &file_webuimessages_steamos_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamOSManager_SwitchToDesktop_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamOSManager_SwitchToDesktop_Response) ProtoMessage() {}
+
+func (x *CSteamOSManager_SwitchToDesktop_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steamos_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamOSManager_SwitchToDesktop_Response.ProtoReflect.Descriptor instead.
+func (*CSteamOSManager_SwitchToDesktop_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{22}
+}
+
+type CSteamOSManager_SetDefaultDesktopSession_Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SessionName   *string                `protobuf:"bytes,1,opt,name=session_name,json=sessionName" json:"session_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Request) Reset() {
+	*x = CSteamOSManager_SetDefaultDesktopSession_Request{}
+	mi := &file_webuimessages_steamos_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamOSManager_SetDefaultDesktopSession_Request) ProtoMessage() {}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steamos_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamOSManager_SetDefaultDesktopSession_Request.ProtoReflect.Descriptor instead.
+func (*CSteamOSManager_SetDefaultDesktopSession_Request) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Request) GetSessionName() string {
+	if x != nil && x.SessionName != nil {
+		return *x.SessionName
+	}
+	return ""
+}
+
+type CSteamOSManager_SetDefaultDesktopSession_Response struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Response) Reset() {
+	*x = CSteamOSManager_SetDefaultDesktopSession_Response{}
+	mi := &file_webuimessages_steamos_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Response) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CSteamOSManager_SetDefaultDesktopSession_Response) ProtoMessage() {}
+
+func (x *CSteamOSManager_SetDefaultDesktopSession_Response) ProtoReflect() protoreflect.Message {
+	mi := &file_webuimessages_steamos_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CSteamOSManager_SetDefaultDesktopSession_Response.ProtoReflect.Descriptor instead.
+func (*CSteamOSManager_SetDefaultDesktopSession_Response) Descriptor() ([]byte, []int) {
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{24}
+}
+
 type CSteamOSSLSPlugin struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Etype         *ESLSHelper            `protobuf:"varint,1,opt,name=etype,enum=ESLSHelper,def=0" json:"etype,omitempty"`
@@ -1139,7 +1315,7 @@ const (
 
 func (x *CSteamOSSLSPlugin) Reset() {
 	*x = CSteamOSSLSPlugin{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[21]
+	mi := &file_webuimessages_steamos_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1151,7 +1327,7 @@ func (x *CSteamOSSLSPlugin) String() string {
 func (*CSteamOSSLSPlugin) ProtoMessage() {}
 
 func (x *CSteamOSSLSPlugin) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[21]
+	mi := &file_webuimessages_steamos_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1164,7 +1340,7 @@ func (x *CSteamOSSLSPlugin) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CSteamOSSLSPlugin.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLSPlugin) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{21}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CSteamOSSLSPlugin) GetEtype() ESLSHelper {
@@ -1199,7 +1375,7 @@ type CSteamOSSLSState struct {
 
 func (x *CSteamOSSLSState) Reset() {
 	*x = CSteamOSSLSState{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[22]
+	mi := &file_webuimessages_steamos_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1211,7 +1387,7 @@ func (x *CSteamOSSLSState) String() string {
 func (*CSteamOSSLSState) ProtoMessage() {}
 
 func (x *CSteamOSSLSState) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[22]
+	mi := &file_webuimessages_steamos_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1224,7 +1400,7 @@ func (x *CSteamOSSLSState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CSteamOSSLSState.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLSState) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{22}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *CSteamOSSLSState) GetIsAvailable() bool {
@@ -1256,7 +1432,7 @@ type CSteamOSSLS_GetState_Request struct {
 
 func (x *CSteamOSSLS_GetState_Request) Reset() {
 	*x = CSteamOSSLS_GetState_Request{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[23]
+	mi := &file_webuimessages_steamos_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1268,7 +1444,7 @@ func (x *CSteamOSSLS_GetState_Request) String() string {
 func (*CSteamOSSLS_GetState_Request) ProtoMessage() {}
 
 func (x *CSteamOSSLS_GetState_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[23]
+	mi := &file_webuimessages_steamos_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1281,7 +1457,7 @@ func (x *CSteamOSSLS_GetState_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CSteamOSSLS_GetState_Request.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_GetState_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{23}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{27}
 }
 
 type CSteamOSSLS_GetState_Response struct {
@@ -1293,7 +1469,7 @@ type CSteamOSSLS_GetState_Response struct {
 
 func (x *CSteamOSSLS_GetState_Response) Reset() {
 	*x = CSteamOSSLS_GetState_Response{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[24]
+	mi := &file_webuimessages_steamos_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1305,7 +1481,7 @@ func (x *CSteamOSSLS_GetState_Response) String() string {
 func (*CSteamOSSLS_GetState_Response) ProtoMessage() {}
 
 func (x *CSteamOSSLS_GetState_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[24]
+	mi := &file_webuimessages_steamos_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1318,7 +1494,7 @@ func (x *CSteamOSSLS_GetState_Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CSteamOSSLS_GetState_Response.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_GetState_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{24}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *CSteamOSSLS_GetState_Response) GetState() *CSteamOSSLSState {
@@ -1336,7 +1512,7 @@ type CSteamOSSLS_StateChanged_Notification struct {
 
 func (x *CSteamOSSLS_StateChanged_Notification) Reset() {
 	*x = CSteamOSSLS_StateChanged_Notification{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[25]
+	mi := &file_webuimessages_steamos_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1348,7 +1524,7 @@ func (x *CSteamOSSLS_StateChanged_Notification) String() string {
 func (*CSteamOSSLS_StateChanged_Notification) ProtoMessage() {}
 
 func (x *CSteamOSSLS_StateChanged_Notification) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[25]
+	mi := &file_webuimessages_steamos_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1361,7 +1537,7 @@ func (x *CSteamOSSLS_StateChanged_Notification) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CSteamOSSLS_StateChanged_Notification.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_StateChanged_Notification) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{25}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{29}
 }
 
 type CSteamOSSLS_SetEnabled_Request struct {
@@ -1373,7 +1549,7 @@ type CSteamOSSLS_SetEnabled_Request struct {
 
 func (x *CSteamOSSLS_SetEnabled_Request) Reset() {
 	*x = CSteamOSSLS_SetEnabled_Request{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[26]
+	mi := &file_webuimessages_steamos_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1385,7 +1561,7 @@ func (x *CSteamOSSLS_SetEnabled_Request) String() string {
 func (*CSteamOSSLS_SetEnabled_Request) ProtoMessage() {}
 
 func (x *CSteamOSSLS_SetEnabled_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[26]
+	mi := &file_webuimessages_steamos_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1398,7 +1574,7 @@ func (x *CSteamOSSLS_SetEnabled_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CSteamOSSLS_SetEnabled_Request.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_SetEnabled_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{26}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *CSteamOSSLS_SetEnabled_Request) GetEnabled() bool {
@@ -1416,7 +1592,7 @@ type CSteamOSSLS_SetEnabled_Response struct {
 
 func (x *CSteamOSSLS_SetEnabled_Response) Reset() {
 	*x = CSteamOSSLS_SetEnabled_Response{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[27]
+	mi := &file_webuimessages_steamos_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1428,7 +1604,7 @@ func (x *CSteamOSSLS_SetEnabled_Response) String() string {
 func (*CSteamOSSLS_SetEnabled_Response) ProtoMessage() {}
 
 func (x *CSteamOSSLS_SetEnabled_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[27]
+	mi := &file_webuimessages_steamos_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1441,7 +1617,7 @@ func (x *CSteamOSSLS_SetEnabled_Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CSteamOSSLS_SetEnabled_Response.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_SetEnabled_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{27}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{31}
 }
 
 type CSteamOSSLS_SetPluginEnabled_Request struct {
@@ -1459,7 +1635,7 @@ const (
 
 func (x *CSteamOSSLS_SetPluginEnabled_Request) Reset() {
 	*x = CSteamOSSLS_SetPluginEnabled_Request{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[28]
+	mi := &file_webuimessages_steamos_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1471,7 +1647,7 @@ func (x *CSteamOSSLS_SetPluginEnabled_Request) String() string {
 func (*CSteamOSSLS_SetPluginEnabled_Request) ProtoMessage() {}
 
 func (x *CSteamOSSLS_SetPluginEnabled_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[28]
+	mi := &file_webuimessages_steamos_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1484,7 +1660,7 @@ func (x *CSteamOSSLS_SetPluginEnabled_Request) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use CSteamOSSLS_SetPluginEnabled_Request.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_SetPluginEnabled_Request) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{28}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *CSteamOSSLS_SetPluginEnabled_Request) GetEtype() ESLSHelper {
@@ -1509,7 +1685,7 @@ type CSteamOSSLS_SetPluginEnabled_Response struct {
 
 func (x *CSteamOSSLS_SetPluginEnabled_Response) Reset() {
 	*x = CSteamOSSLS_SetPluginEnabled_Response{}
-	mi := &file_webuimessages_steamos_proto_msgTypes[29]
+	mi := &file_webuimessages_steamos_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1521,7 +1697,7 @@ func (x *CSteamOSSLS_SetPluginEnabled_Response) String() string {
 func (*CSteamOSSLS_SetPluginEnabled_Response) ProtoMessage() {}
 
 func (x *CSteamOSSLS_SetPluginEnabled_Response) ProtoReflect() protoreflect.Message {
-	mi := &file_webuimessages_steamos_proto_msgTypes[29]
+	mi := &file_webuimessages_steamos_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1534,7 +1710,7 @@ func (x *CSteamOSSLS_SetPluginEnabled_Response) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use CSteamOSSLS_SetPluginEnabled_Response.ProtoReflect.Descriptor instead.
 func (*CSteamOSSLS_SetPluginEnabled_Response) Descriptor() ([]byte, []int) {
-	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{29}
+	return file_webuimessages_steamos_proto_rawDescGZIP(), []int{33}
 }
 
 var File_webuimessages_steamos_proto protoreflect.FileDescriptor
@@ -1547,7 +1723,7 @@ const file_webuimessages_steamos_proto_rawDesc = "" +
 	"is_running\x18\x01 \x01(\bR\tisRunning\x12\x1a\n" +
 	"\bprogress\x18\x02 \x01(\x05R\bprogress\x12,\n" +
 	"\x12is_restart_pending\x18\x03 \x01(\bR\x10isRestartPending\x12<\n" +
-	"\x1artime_estimated_completion\x18\x04 \x01(\aR\x18rtimeEstimatedCompletion\"\xd6\r\n" +
+	"\x1artime_estimated_completion\x18\x04 \x01(\aR\x18rtimeEstimatedCompletion\"\x93\x0f\n" +
 	"\x14CSteamOSManagerState\x120\n" +
 	"\x14is_service_available\x18\x01 \x01(\bR\x12isServiceAvailable\x12\x1d\n" +
 	"\n" +
@@ -1579,7 +1755,10 @@ const file_webuimessages_steamos_proto_rawDesc = "" +
 	"\x1bis_system_tracing_available\x18\x1b \x01(\bR\x18isSystemTracingAvailable\x12(\n" +
 	"\x10is_vrs_available\x18\x1c \x01(\bR\x0eisVrsAvailable\x12D\n" +
 	"\x1fis_wifi_driver_reload_available\x18\x1d \x01(\bR\x1bisWifiDriverReloadAvailable\x12?\n" +
-	"\x1cis_password_change_supported\x18\x1e \x01(\bR\x19isPasswordChangeSupported\"\"\n" +
+	"\x1cis_password_change_supported\x18\x1e \x01(\bR\x19isPasswordChangeSupported\x12E\n" +
+	"\x1fis_session_management_supported\x18\x1f \x01(\bR\x1cisSessionManagementSupported\x12<\n" +
+	"\x1adesktop_sessions_available\x18  \x03(\tR\x18desktopSessionsAvailable\x126\n" +
+	"\x17desktop_session_default\x18! \x01(\tR\x15desktopSessionDefault\"\"\n" +
 	" CSteamOSManager_GetState_Request\"P\n" +
 	"!CSteamOSManager_GetState_Response\x12+\n" +
 	"\x05state\x18\x01 \x01(\v2\x15.CSteamOSManagerStateR\x05state\"+\n" +
@@ -1607,7 +1786,12 @@ const file_webuimessages_steamos_proto_rawDesc = "" +
 	"\fhas_password\x18\x01 \x01(\bR\vhasPassword\"V\n" +
 	"/CSteamOSManager_PrepareFactoryImageTest_Request\x12#\n" +
 	"\rfactory_reset\x18\x01 \x01(\bR\ffactoryReset\"2\n" +
-	"0CSteamOSManager_PrepareFactoryImageTest_Response\"\x8e\x01\n" +
+	"0CSteamOSManager_PrepareFactoryImageTest_Response\")\n" +
+	"'CSteamOSManager_SwitchToDesktop_Request\"*\n" +
+	"(CSteamOSManager_SwitchToDesktop_Response\"U\n" +
+	"0CSteamOSManager_SetDefaultDesktopSession_Request\x12!\n" +
+	"\fsession_name\x18\x01 \x01(\tR\vsessionName\"3\n" +
+	"1CSteamOSManager_SetDefaultDesktopSession_Response\"\x8e\x01\n" +
 	"\x11CSteamOSSLSPlugin\x127\n" +
 	"\x05etype\x18\x01 \x01(\x0e2\v.ESLSHelper:\x14k_ESLSHelper_InvalidR\x05etype\x12!\n" +
 	"\fis_available\x18\x02 \x01(\bR\visAvailable\x12\x1d\n" +
@@ -1628,7 +1812,7 @@ const file_webuimessages_steamos_proto_rawDesc = "" +
 	"$CSteamOSSLS_SetPluginEnabled_Request\x127\n" +
 	"\x05etype\x18\x01 \x01(\x0e2\v.ESLSHelper:\x14k_ESLSHelper_InvalidR\x05etype\x12\x18\n" +
 	"\aenabled\x18\x02 \x01(\bR\aenabled\"'\n" +
-	"%CSteamOSSLS_SetPluginEnabled_Response2\xe7\a\n" +
+	"%CSteamOSSLS_SetPluginEnabled_Response2\xd3\t\n" +
 	"\x0eSteamOSManager\x12Q\n" +
 	"\bGetState\x12!.CSteamOSManager_GetState_Request\x1a\".CSteamOSManager_GetState_Response\x12R\n" +
 	"\x12NotifyStateChanged\x12*.CSteamOSManager_StateChanged_Notification\x1a\x10.WebUINoResponse\x12\x81\x01\n" +
@@ -1638,7 +1822,9 @@ const file_webuimessages_steamos_proto_rawDesc = "" +
 	"\x17PrepareFactoryImageTest\x120.CSteamOSManager_PrepareFactoryImageTest_Request\x1a1.CSteamOSManager_PrepareFactoryImageTest_Response\x12\x90\x01\n" +
 	"\x1dRefreshScreenReaderAutoLocale\x126.CSteamOSManager_RefreshScreenReaderAutoLocale_Request\x1a7.CSteamOSManager_RefreshScreenReaderAutoLocale_Response\x12X\n" +
 	"\x0fSetUserPassword\x12!.CSteamOS_SetUserPassword_Request\x1a\".CSteamOS_SetUserPassword_Response\x12a\n" +
-	"\x12GetUserHasPassword\x12$.CSteamOS_GetUserHasPassword_Request\x1a%.CSteamOS_GetUserHasPassword_Response\x1a\x04\x80\x97\"\x012\xe1\x02\n" +
+	"\x12GetUserHasPassword\x12$.CSteamOS_GetUserHasPassword_Request\x1a%.CSteamOS_GetUserHasPassword_Response\x12f\n" +
+	"\x0fSwitchToDesktop\x12(.CSteamOSManager_SwitchToDesktop_Request\x1a).CSteamOSManager_SwitchToDesktop_Response\x12\x81\x01\n" +
+	"\x18SetDefaultDesktopSession\x121.CSteamOSManager_SetDefaultDesktopSession_Request\x1a2.CSteamOSManager_SetDefaultDesktopSession_Response\x1a\x04\x80\x97\"\x012\xe1\x02\n" +
 	"\n" +
 	"SteamOSSLS\x12I\n" +
 	"\bGetState\x12\x1d.CSteamOSSLS_GetState_Request\x1a\x1e.CSteamOSSLS_GetState_Response\x12N\n" +
@@ -1659,7 +1845,7 @@ func file_webuimessages_steamos_proto_rawDescGZIP() []byte {
 	return file_webuimessages_steamos_proto_rawDescData
 }
 
-var file_webuimessages_steamos_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_webuimessages_steamos_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_webuimessages_steamos_proto_goTypes = []any{
 	(*CMsgFactoryResetState)(nil),                                  // 0: CMsgFactoryResetState
 	(*CSteamOSManagerState)(nil),                                   // 1: CSteamOSManagerState
@@ -1682,28 +1868,32 @@ var file_webuimessages_steamos_proto_goTypes = []any{
 	(*CSteamOS_GetUserHasPassword_Response)(nil),                   // 18: CSteamOS_GetUserHasPassword_Response
 	(*CSteamOSManager_PrepareFactoryImageTest_Request)(nil),        // 19: CSteamOSManager_PrepareFactoryImageTest_Request
 	(*CSteamOSManager_PrepareFactoryImageTest_Response)(nil),       // 20: CSteamOSManager_PrepareFactoryImageTest_Response
-	(*CSteamOSSLSPlugin)(nil),                                      // 21: CSteamOSSLSPlugin
-	(*CSteamOSSLSState)(nil),                                       // 22: CSteamOSSLSState
-	(*CSteamOSSLS_GetState_Request)(nil),                           // 23: CSteamOSSLS_GetState_Request
-	(*CSteamOSSLS_GetState_Response)(nil),                          // 24: CSteamOSSLS_GetState_Response
-	(*CSteamOSSLS_StateChanged_Notification)(nil),                  // 25: CSteamOSSLS_StateChanged_Notification
-	(*CSteamOSSLS_SetEnabled_Request)(nil),                         // 26: CSteamOSSLS_SetEnabled_Request
-	(*CSteamOSSLS_SetEnabled_Response)(nil),                        // 27: CSteamOSSLS_SetEnabled_Response
-	(*CSteamOSSLS_SetPluginEnabled_Request)(nil),                   // 28: CSteamOSSLS_SetPluginEnabled_Request
-	(*CSteamOSSLS_SetPluginEnabled_Response)(nil),                  // 29: CSteamOSSLS_SetPluginEnabled_Response
-	(EStartupMovieVariant)(0),                                      // 30: EStartupMovieVariant
-	(ESLSHelper)(0),                                                // 31: ESLSHelper
-	(*WebUINoResponse)(nil),                                        // 32: WebUINoResponse
+	(*CSteamOSManager_SwitchToDesktop_Request)(nil),                // 21: CSteamOSManager_SwitchToDesktop_Request
+	(*CSteamOSManager_SwitchToDesktop_Response)(nil),               // 22: CSteamOSManager_SwitchToDesktop_Response
+	(*CSteamOSManager_SetDefaultDesktopSession_Request)(nil),       // 23: CSteamOSManager_SetDefaultDesktopSession_Request
+	(*CSteamOSManager_SetDefaultDesktopSession_Response)(nil),      // 24: CSteamOSManager_SetDefaultDesktopSession_Response
+	(*CSteamOSSLSPlugin)(nil),                                      // 25: CSteamOSSLSPlugin
+	(*CSteamOSSLSState)(nil),                                       // 26: CSteamOSSLSState
+	(*CSteamOSSLS_GetState_Request)(nil),                           // 27: CSteamOSSLS_GetState_Request
+	(*CSteamOSSLS_GetState_Response)(nil),                          // 28: CSteamOSSLS_GetState_Response
+	(*CSteamOSSLS_StateChanged_Notification)(nil),                  // 29: CSteamOSSLS_StateChanged_Notification
+	(*CSteamOSSLS_SetEnabled_Request)(nil),                         // 30: CSteamOSSLS_SetEnabled_Request
+	(*CSteamOSSLS_SetEnabled_Response)(nil),                        // 31: CSteamOSSLS_SetEnabled_Response
+	(*CSteamOSSLS_SetPluginEnabled_Request)(nil),                   // 32: CSteamOSSLS_SetPluginEnabled_Request
+	(*CSteamOSSLS_SetPluginEnabled_Response)(nil),                  // 33: CSteamOSSLS_SetPluginEnabled_Response
+	(EStartupMovieVariant)(0),                                      // 34: EStartupMovieVariant
+	(ESLSHelper)(0),                                                // 35: ESLSHelper
+	(*WebUINoResponse)(nil),                                        // 36: WebUINoResponse
 }
 var file_webuimessages_steamos_proto_depIdxs = []int32{
-	30, // 0: CSteamOSManagerState.startup_movie_variant:type_name -> EStartupMovieVariant
+	34, // 0: CSteamOSManagerState.startup_movie_variant:type_name -> EStartupMovieVariant
 	0,  // 1: CSteamOSManagerState.factory_reset_state:type_name -> CMsgFactoryResetState
 	1,  // 2: CSteamOSManager_GetState_Response.state:type_name -> CSteamOSManagerState
-	31, // 3: CSteamOSManager_IsTelemetryHelperAvailable_Request.etype:type_name -> ESLSHelper
-	31, // 4: CSteamOSSLSPlugin.etype:type_name -> ESLSHelper
-	21, // 5: CSteamOSSLSState.plugins:type_name -> CSteamOSSLSPlugin
-	22, // 6: CSteamOSSLS_GetState_Response.state:type_name -> CSteamOSSLSState
-	31, // 7: CSteamOSSLS_SetPluginEnabled_Request.etype:type_name -> ESLSHelper
+	35, // 3: CSteamOSManager_IsTelemetryHelperAvailable_Request.etype:type_name -> ESLSHelper
+	35, // 4: CSteamOSSLSPlugin.etype:type_name -> ESLSHelper
+	25, // 5: CSteamOSSLSState.plugins:type_name -> CSteamOSSLSPlugin
+	26, // 6: CSteamOSSLS_GetState_Response.state:type_name -> CSteamOSSLSState
+	35, // 7: CSteamOSSLS_SetPluginEnabled_Request.etype:type_name -> ESLSHelper
 	2,  // 8: SteamOSManager.GetState:input_type -> CSteamOSManager_GetState_Request
 	4,  // 9: SteamOSManager.NotifyStateChanged:input_type -> CSteamOSManager_StateChanged_Notification
 	7,  // 10: SteamOSManager.OptOutOfSideloadedClient:input_type -> CSteamOSManager_OptOutOfSideloadedClient_Request
@@ -1713,25 +1903,29 @@ var file_webuimessages_steamos_proto_depIdxs = []int32{
 	13, // 14: SteamOSManager.RefreshScreenReaderAutoLocale:input_type -> CSteamOSManager_RefreshScreenReaderAutoLocale_Request
 	15, // 15: SteamOSManager.SetUserPassword:input_type -> CSteamOS_SetUserPassword_Request
 	17, // 16: SteamOSManager.GetUserHasPassword:input_type -> CSteamOS_GetUserHasPassword_Request
-	23, // 17: SteamOSSLS.GetState:input_type -> CSteamOSSLS_GetState_Request
-	25, // 18: SteamOSSLS.NotifyStateChanged:input_type -> CSteamOSSLS_StateChanged_Notification
-	26, // 19: SteamOSSLS.SetEnabled:input_type -> CSteamOSSLS_SetEnabled_Request
-	28, // 20: SteamOSSLS.SetPluginEnabled:input_type -> CSteamOSSLS_SetPluginEnabled_Request
-	3,  // 21: SteamOSManager.GetState:output_type -> CSteamOSManager_GetState_Response
-	32, // 22: SteamOSManager.NotifyStateChanged:output_type -> WebUINoResponse
-	8,  // 23: SteamOSManager.OptOutOfSideloadedClient:output_type -> CSteamOSManager_OptOutOfSideloadedClient_Response
-	10, // 24: SteamOSManager.ApplyMandatoryUpdate:output_type -> CSteamOSManager_ApplyMandatoryUpdate_Response
-	12, // 25: SteamOSManager.FactoryReset:output_type -> CSteamOSManager_FactoryReset_Response
-	20, // 26: SteamOSManager.PrepareFactoryImageTest:output_type -> CSteamOSManager_PrepareFactoryImageTest_Response
-	14, // 27: SteamOSManager.RefreshScreenReaderAutoLocale:output_type -> CSteamOSManager_RefreshScreenReaderAutoLocale_Response
-	16, // 28: SteamOSManager.SetUserPassword:output_type -> CSteamOS_SetUserPassword_Response
-	18, // 29: SteamOSManager.GetUserHasPassword:output_type -> CSteamOS_GetUserHasPassword_Response
-	24, // 30: SteamOSSLS.GetState:output_type -> CSteamOSSLS_GetState_Response
-	32, // 31: SteamOSSLS.NotifyStateChanged:output_type -> WebUINoResponse
-	27, // 32: SteamOSSLS.SetEnabled:output_type -> CSteamOSSLS_SetEnabled_Response
-	29, // 33: SteamOSSLS.SetPluginEnabled:output_type -> CSteamOSSLS_SetPluginEnabled_Response
-	21, // [21:34] is the sub-list for method output_type
-	8,  // [8:21] is the sub-list for method input_type
+	21, // 17: SteamOSManager.SwitchToDesktop:input_type -> CSteamOSManager_SwitchToDesktop_Request
+	23, // 18: SteamOSManager.SetDefaultDesktopSession:input_type -> CSteamOSManager_SetDefaultDesktopSession_Request
+	27, // 19: SteamOSSLS.GetState:input_type -> CSteamOSSLS_GetState_Request
+	29, // 20: SteamOSSLS.NotifyStateChanged:input_type -> CSteamOSSLS_StateChanged_Notification
+	30, // 21: SteamOSSLS.SetEnabled:input_type -> CSteamOSSLS_SetEnabled_Request
+	32, // 22: SteamOSSLS.SetPluginEnabled:input_type -> CSteamOSSLS_SetPluginEnabled_Request
+	3,  // 23: SteamOSManager.GetState:output_type -> CSteamOSManager_GetState_Response
+	36, // 24: SteamOSManager.NotifyStateChanged:output_type -> WebUINoResponse
+	8,  // 25: SteamOSManager.OptOutOfSideloadedClient:output_type -> CSteamOSManager_OptOutOfSideloadedClient_Response
+	10, // 26: SteamOSManager.ApplyMandatoryUpdate:output_type -> CSteamOSManager_ApplyMandatoryUpdate_Response
+	12, // 27: SteamOSManager.FactoryReset:output_type -> CSteamOSManager_FactoryReset_Response
+	20, // 28: SteamOSManager.PrepareFactoryImageTest:output_type -> CSteamOSManager_PrepareFactoryImageTest_Response
+	14, // 29: SteamOSManager.RefreshScreenReaderAutoLocale:output_type -> CSteamOSManager_RefreshScreenReaderAutoLocale_Response
+	16, // 30: SteamOSManager.SetUserPassword:output_type -> CSteamOS_SetUserPassword_Response
+	18, // 31: SteamOSManager.GetUserHasPassword:output_type -> CSteamOS_GetUserHasPassword_Response
+	22, // 32: SteamOSManager.SwitchToDesktop:output_type -> CSteamOSManager_SwitchToDesktop_Response
+	24, // 33: SteamOSManager.SetDefaultDesktopSession:output_type -> CSteamOSManager_SetDefaultDesktopSession_Response
+	28, // 34: SteamOSSLS.GetState:output_type -> CSteamOSSLS_GetState_Response
+	36, // 35: SteamOSSLS.NotifyStateChanged:output_type -> WebUINoResponse
+	31, // 36: SteamOSSLS.SetEnabled:output_type -> CSteamOSSLS_SetEnabled_Response
+	33, // 37: SteamOSSLS.SetPluginEnabled:output_type -> CSteamOSSLS_SetPluginEnabled_Response
+	23, // [23:38] is the sub-list for method output_type
+	8,  // [8:23] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
 	8,  // [8:8] is the sub-list for extension extendee
 	0,  // [0:8] is the sub-list for field type_name
@@ -1751,7 +1945,7 @@ func file_webuimessages_steamos_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_webuimessages_steamos_proto_rawDesc), len(file_webuimessages_steamos_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   2,
 		},
