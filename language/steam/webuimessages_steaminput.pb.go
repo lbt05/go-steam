@@ -1907,7 +1907,6 @@ func (*CSteamInputService_WaitInitialControllerStateEnumerated_Request) Descript
 
 type CSteamInputService_WaitInitialControllerStateEnumerated_Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Controller    []uint32               `protobuf:"varint,1,rep,name=controller" json:"controller,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1940,13 +1939,6 @@ func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Response) Proto
 // Deprecated: Use CSteamInputService_WaitInitialControllerStateEnumerated_Response.ProtoReflect.Descriptor instead.
 func (*CSteamInputService_WaitInitialControllerStateEnumerated_Response) Descriptor() ([]byte, []int) {
 	return file_webuimessages_steaminput_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *CSteamInputService_WaitInitialControllerStateEnumerated_Response) GetController() []uint32 {
-	if x != nil {
-		return x.Controller
-	}
-	return nil
 }
 
 type CSteamInputService_ShouldTritonPairInOobe_Response struct {
@@ -3532,11 +3524,8 @@ const file_webuimessages_steaminput_proto_rawDesc = "" +
 	"\x14paired_serial_number\x18\x03 \x01(\tR\x12pairedSerialNumber\x12\x16\n" +
 	"\x06paired\x18\x04 \x01(\bR\x06paired\"3\n" +
 	"1CSteamInputService_ShouldTritonPairInOobe_Request\"A\n" +
-	"?CSteamInputService_WaitInitialControllerStateEnumerated_Request\"b\n" +
-	"@CSteamInputService_WaitInitialControllerStateEnumerated_Response\x12\x1e\n" +
-	"\n" +
-	"controller\x18\x01 \x03(\rR\n" +
-	"controller\"\xcc\x01\n" +
+	"?CSteamInputService_WaitInitialControllerStateEnumerated_Request\"B\n" +
+	"@CSteamInputService_WaitInitialControllerStateEnumerated_Response\"\xcc\x01\n" +
 	"2CSteamInputService_ShouldTritonPairInOobe_Response\x12H\n" +
 	"\tpair_type\x18\x01 \x01(\x0e2\x10.ETritonPairType:\x19k_ETritonPairType_UnknownR\bpairType\x12)\n" +
 	"\x10controller_index\x18\x02 \x01(\rR\x0fcontrollerIndex\x12!\n" +
