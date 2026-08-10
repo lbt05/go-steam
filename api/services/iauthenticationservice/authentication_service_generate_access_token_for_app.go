@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/lewisgibson/go-steam/language/steam"
-	"github.com/lewisgibson/go-steam/steamid"
+	"github.com/lbt05/go-steam/language/steam"
+	"github.com/lbt05/go-steam/steamid"
 )
 
 // GenerateAccessTokenForAppParameters describes the parameters for the GenerateAccessTokenForApp method.

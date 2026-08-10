@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/lewisgibson/go-steam/api/services/itwofactorservice"
+	"github.com/lbt05/go-steam/api/services/itwofactorservice"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )

@@ -3,12 +3,12 @@ package api
 import (
 	"fmt"
 
-	"github.com/lewisgibson/go-steam/api/services/iauthenticationservice"
-	"github.com/lewisgibson/go-steam/api/services/ieconservice"
-	"github.com/lewisgibson/go-steam/api/services/isteamdirectory"
-	"github.com/lewisgibson/go-steam/api/services/itwofactorservice"
-	"github.com/lewisgibson/go-steam/api/transports"
-	"github.com/lewisgibson/go-steam/internal/lazy"
+	"github.com/lbt05/go-steam/api/services/iauthenticationservice"
+	"github.com/lbt05/go-steam/api/services/ieconservice"
+	"github.com/lbt05/go-steam/api/services/isteamdirectory"
+	"github.com/lbt05/go-steam/api/services/itwofactorservice"
+	"github.com/lbt05/go-steam/api/transports"
+	"github.com/lbt05/go-steam/internal/lazy"
 )
 
 // ErrNilTransport is the error returned when the transport is nil.

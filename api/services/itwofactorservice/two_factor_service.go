@@ -1,14 +1,14 @@
 package itwofactorservice
 
 import (
-	"github.com/lewisgibson/go-steam/api/transports"
+	"github.com/lbt05/go-steam/api/transports"
 )
 
 // ITwoFactorService is the interface for the ITwoFactorService API
 type ITwoFactorService struct {
 	// Transport is the transport for the ITwoFactorService service.
 	//
-	//go:generate mockgen -package=itwofactorservice_test -destination=mock_transport_test.go github.com/lewisgibson/go-steam/api/transports Transport
+	//go:generate mockgen -package=itwofactorservice_test -destination=mock_transport_test.go github.com/lbt05/go-steam/api/transports Transport
 	transport transports.Transport
 }
 

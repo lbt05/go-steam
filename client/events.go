@@ -1,7 +1,7 @@
 package client
 
 import (
-	"github.com/lewisgibson/go-steam/protocol"
+	"github.com/lbt05/go-steam/protocol"
 )
 
 func (c *Client) Events() <-chan protocol.Event {

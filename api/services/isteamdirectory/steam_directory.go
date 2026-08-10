@@ -1,14 +1,14 @@
 package isteamdirectory
 
 import (
-	"github.com/lewisgibson/go-steam/api/transports"
+	"github.com/lbt05/go-steam/api/transports"
 )
 
 // ISteamDirectory is the ISteamDirectory service.
 type ISteamDirectory struct {
 	// Transport is the transport for the ISteamDirectory service.
 	//
-	//go:generate mockgen -package=isteamdirectory_test -destination=mock_transport_test.go github.com/lewisgibson/go-steam/api/transports Transport
+	//go:generate mockgen -package=isteamdirectory_test -destination=mock_transport_test.go github.com/lbt05/go-steam/api/transports Transport
 	transport transports.Transport
 }
 

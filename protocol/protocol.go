@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/lewisgibson/go-steam/language/steam"
-	"github.com/lewisgibson/go-steam/steamid"
+	"github.com/lbt05/go-steam/language/steam"
+	"github.com/lbt05/go-steam/steamid"
 )
 
 const (

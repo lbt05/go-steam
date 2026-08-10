@@ -3,7 +3,7 @@ package crypto_test
 import (
 	"testing"
 
-	"github.com/lewisgibson/go-steam/crypto"
+	"github.com/lbt05/go-steam/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

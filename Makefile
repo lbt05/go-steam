@@ -30,7 +30,7 @@ test: ## Run tests
 		-race -count=1 -covermode=atomic \
 		-coverprofile=coverage/coverage.cov \
 		./...
-	@go run github.com/axw/gocov/gocov@latest convert coverage/coverage.cov | go run github.com/AlekSi/gocov-xml@latest > coverage/coverage.xml
+	@go run github.com/boumenot/gocover-cobertura@v1.4.0 < coverage/coverage.cov > coverage/coverage.xml
 
 .PHONY: bench
 bench: ## Run benchmarks

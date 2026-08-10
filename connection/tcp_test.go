@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lewisgibson/go-steam/connection"
-	"github.com/lewisgibson/go-steam/crypto"
+	"github.com/lbt05/go-steam/connection"
+	"github.com/lbt05/go-steam/crypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"

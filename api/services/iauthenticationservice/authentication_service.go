@@ -1,14 +1,14 @@
 package iauthenticationservice
 
 import (
-	"github.com/lewisgibson/go-steam/api/transports"
+	"github.com/lbt05/go-steam/api/transports"
 )
 
 // IAuthenticationService is the interface for the IAuthenticationService API
 type IAuthenticationService struct {
 	// Transport is the transport for the IAuthenticationService service.
 	//
-	//go:generate mockgen -package=iauthenticationservice_test -destination=mock_transport_test.go github.com/lewisgibson/go-steam/api/transports Transport
+	//go:generate mockgen -package=iauthenticationservice_test -destination=mock_transport_test.go github.com/lbt05/go-steam/api/transports Transport
 	transport transports.Transport
 }
 

@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lewisgibson/go-steam/totp"
+	"github.com/lbt05/go-steam/totp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

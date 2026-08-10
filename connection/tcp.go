@@ -10,7 +10,7 @@ import (
 	"net"
 	"sync"
 
-	"github.com/lewisgibson/go-steam/crypto"
+	"github.com/lbt05/go-steam/crypto"
 )
 
 // Common errors for TCP connection operations.

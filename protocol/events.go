@@ -1,8 +1,10 @@
 package protocol
 
 import (
-	"github.com/lewisgibson/go-steam/language/steam"
-	"github.com/lewisgibson/go-steam/steamid"
+	"github.com/lbt05/go-steam/api/services/iauthenticationservice"
+	"github.com/lbt05/go-steam/identity"
+	"github.com/lbt05/go-steam/language/steam"
+	"github.com/lbt05/go-steam/steamid"
 )
 
 // Events returns the events channel.
@@ -56,3 +58,14 @@ type EventUserNotification struct {
 }
 
 func (e *EventUserNotification) isEvent() {}
+
+// EventSteamGuardChallenge is emitted after Client.BeginAuthSession succeeds.
+// It carries the AuthSession returned by the server plus the Steam Guard
+// confirmation types the user can choose between when calling
+// Client.SubmitSteamGuardCode.
+type EventSteamGuardChallenge struct {
+	Session              *identity.AuthSession
+	AllowedConfirmations []iauthenticationservice.AllowedConfirmation
+}
+
+func (e *EventSteamGuardChallenge) isEvent() {}

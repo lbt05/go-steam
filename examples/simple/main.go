@@ -1,15 +1,20 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"fmt"
 	"math/rand/v2"
 	"os"
 	"os/signal"
+	"strings"
+	"time"
 
-	"github.com/lewisgibson/go-steam/client"
-	"github.com/lewisgibson/go-steam/protocol"
+	"github.com/lbt05/go-steam/client"
+	"github.com/lbt05/go-steam/identity"
+	"github.com/lbt05/go-steam/protocol"
+	"github.com/lbt05/go-steam/totp"
 )
 
 func main() {
@@ -33,13 +38,24 @@ func main() {
 	}
 	credentials := credentialsList[rand.IntN(len(credentialsList))] //nolint:gosec
 
-	c, err := client.NewClient(&client.Credentials{
+	c, err := client.NewClient()
+	if err != nil {
+		fmt.Printf("failed to create client: %v\n", err)
+		return
+	}
+
+	session, err := c.BeginAuthSession(ctx, &client.Credentials{
 		Username:     credentials.Username,
 		Password:     credentials.Password,
 		SharedSecret: credentials.SharedSecret,
 	})
 	if err != nil {
-		fmt.Printf("failed to create client: %v\n", err)
+		fmt.Printf("failed to begin auth session: %v\n", err)
+		return
+	}
+
+	if err := submitSteamGuardCode(ctx, c, session, credentials.SharedSecret); err != nil {
+		fmt.Printf("failed to submit Steam Guard code: %v\n", err)
 		return
 	}
 
@@ -70,6 +86,9 @@ func main() {
 			case *protocol.EventMessageReceived:
 				fmt.Printf("<- %s %s\n", event.EMsg.String(), event.Header)
 
+			case *protocol.EventSteamGuardChallenge:
+				fmt.Printf("Steam Guard challenge required: allowed=%d\n", len(event.AllowedConfirmations))
+
 			case *protocol.EventConnected:
 				fmt.Printf("Connected!\n")
 
@@ -88,4 +107,31 @@ func main() {
 			}
 		}
 	}
+}
+
+// submitSteamGuardCode drives the second half of the two-step login. When a
+// SharedSecret is configured, it generates a TOTP code automatically;
+// otherwise it prompts the user on stdin for an email or mobile code.
+// The Steam Guard type (DeviceCode vs EmailCode) is chosen by the client from
+// session.AllowedConfirmations.
+func submitSteamGuardCode(ctx context.Context, c *client.Client, session *identity.AuthSession, sharedSecret string) error {
+	var code string
+	var err error
+
+	if sharedSecret != "" {
+		code, err = totp.CreateAuthenticationCode(sharedSecret, time.Now())
+		if err != nil {
+			return fmt.Errorf("failed to generate TOTP code: %w", err)
+		}
+	} else {
+		fmt.Println("Enter Steam Guard code:")
+		reader := bufio.NewReader(os.Stdin)
+		line, _ := reader.ReadString('\n')
+		code = strings.TrimSpace(line)
+	}
+
+	if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+		return err
+	}
+	return nil
 }

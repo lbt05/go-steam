@@ -4,14 +4,14 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lewisgibson/go-steam/language/steam"
-	"github.com/lewisgibson/go-steam/protocol"
+	"github.com/lbt05/go-steam/language/steam"
+	"github.com/lbt05/go-steam/protocol"
 	"google.golang.org/protobuf/proto"
 )
 
 // Logon logs the client into Steam using a steamID and refresh token.
 func (c *Client) Logon(ctx context.Context) error {
-	identity, err := c.identity.Identity(ctx)
+	identity, err := c.Identity(ctx)
 	if err != nil {
 		return fmt.Errorf("failed to get identity: %w", err)
 	}

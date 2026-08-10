@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/lewisgibson/go-steam/internal/unixtime"
-	"github.com/lewisgibson/go-steam/steamid"
+	"github.com/lbt05/go-steam/internal/unixtime"
+	"github.com/lbt05/go-steam/steamid"
 )
 
 // GetTradeOffersParameters describes the parameters for the GetTradeOffers method.

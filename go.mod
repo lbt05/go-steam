@@ -1,4 +1,4 @@
-module github.com/lewisgibson/go-steam
+module github.com/lbt05/go-steam
 
 go 1.24.4
 

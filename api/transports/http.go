@@ -16,7 +16,7 @@ import (
 
 // HTTPClient is a client that can perform HTTP requests.
 //
-//go:generate mockgen -package=transports_test -destination=mock_http_client_test.go github.com/lewisgibson/go-steam/api/transports HTTPClient
+//go:generate mockgen -package=transports_test -destination=mock_http_client_test.go github.com/lbt05/go-steam/api/transports HTTPClient
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }

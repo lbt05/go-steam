@@ -8,7 +8,7 @@ import (
 
 	_ "embed"
 
-	"github.com/lewisgibson/go-steam/api/services/ieconservice"
+	"github.com/lbt05/go-steam/api/services/ieconservice"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )

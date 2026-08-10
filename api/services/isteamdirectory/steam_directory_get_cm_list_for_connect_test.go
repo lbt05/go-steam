@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/lewisgibson/go-steam/api/services/isteamdirectory"
+	"github.com/lbt05/go-steam/api/services/isteamdirectory"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"

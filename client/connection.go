@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"slices"
 
-	"github.com/lewisgibson/go-steam/api/services/isteamdirectory"
-	"github.com/lewisgibson/go-steam/connection"
-	"github.com/lewisgibson/go-steam/protocol"
+	"github.com/lbt05/go-steam/api/services/isteamdirectory"
+	"github.com/lbt05/go-steam/connection"
+	"github.com/lbt05/go-steam/protocol"
 )
 
 // Connect connects to the server.
@@ -25,7 +25,7 @@ func (c *Client) Connect(ctx context.Context) error {
 
 // connect sets up and runs the connection.
 func (c *Client) connect(ctx context.Context) error {
-	if _, err := c.identity.Identity(ctx); err != nil {
+	if _, err := c.Identity(ctx); err != nil {
 		return fmt.Errorf("failed to get identity: %w", err)
 	}
 

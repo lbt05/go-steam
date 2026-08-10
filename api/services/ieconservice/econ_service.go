@@ -1,14 +1,14 @@
 package ieconservice
 
 import (
-	"github.com/lewisgibson/go-steam/api/transports"
+	"github.com/lbt05/go-steam/api/transports"
 )
 
 // IEconService is the interface for the IEconService API
 type IEconService struct {
 	// Transport is the transport for the IEconService service.
 	//
-	//go:generate mockgen -package=ieconservice_test -destination=mock_transport_test.go github.com/lewisgibson/go-steam/api/transports Transport
+	//go:generate mockgen -package=ieconservice_test -destination=mock_transport_test.go github.com/lbt05/go-steam/api/transports Transport
 	transport transports.Transport
 }
 

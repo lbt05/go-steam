@@ -3,7 +3,7 @@ package ieconservice_test
 import (
 	"testing"
 
-	"github.com/lewisgibson/go-steam/api/services/ieconservice"
+	"github.com/lbt05/go-steam/api/services/ieconservice"
 	"github.com/stretchr/testify/assert"
 )
 

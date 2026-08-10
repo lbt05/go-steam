@@ -1,7 +1,7 @@
 # go-steam
 
-[![Build Workflow](https://github.com/lewisgibson/go-steam/actions/workflows/build.yaml/badge.svg)](https://github.com/lewisgibson/go-steam/actions/workflows/build.yaml)
-[![Pkg Go Dev](https://pkg.go.dev/badge/github.com/lewisgibson/go-steam)](https://pkg.go.dev/github.com/lewisgibson/go-steam)
+[![Build Workflow](https://github.com/lbt05/go-steam/actions/workflows/build.yaml/badge.svg)](https://github.com/lbt05/go-steam/actions/workflows/build.yaml)
+[![Pkg Go Dev](https://pkg.go.dev/badge/github.com/lbt05/go-steam)](https://pkg.go.dev/github.com/lbt05/go-steam)
 
 > ⚠️ **Warning**: This library is under active development and is expected to have breaking changes. Use at your own risk.
 
@@ -23,84 +23,127 @@ A Go library for interacting with the Steam network protocol. Connect to Steam, 
 
 ## Resources
 
--   [Discussions](https://github.com/lewisgibson/go-steam/discussions)
--   [Reference](https://pkg.go.dev/github.com/lewisgibson/go-steam)
+-   [Discussions](https://github.com/lbt05/go-steam/discussions)
+-   [Reference](https://pkg.go.dev/github.com/lbt05/go-steam)
 -   [Examples](examples/)
 
 ## Installation
 
 ```sh
-go get github.com/lewisgibson/go-steam
+go get github.com/lbt05/go-steam
 ```
 
 ## Quickstart
 
-### Basic Usage
+### Two-Step Login
+
+Login is a two-step flow. First call `BeginAuthSession` to encrypt your
+password and open a Steam authentication session; Steam will then ask for a
+Steam Guard code (TOTP, email or mobile). Submit it with
+`SubmitSteamGuardCode`, then connect and log on as usual.
 
 ```go
 package main
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"log"
 	"os"
 	"os/signal"
+	"strings"
+	"time"
 
-	"github.com/lewisgibson/go-steam/client"
-	"github.com/lewisgibson/go-steam/protocol"
+	"github.com/lbt05/go-steam/client"
+	"github.com/lbt05/go-steam/protocol"
+	"github.com/lbt05/go-steam/totp"
 )
 
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
 
-	// Create a new Steam client with credentials
-	c, err := client.NewClient(&client.Credentials{
-		Username:     "your_username",
-		Password:     "your_password",
-		SharedSecret: "your_shared_secret", // Base64-encoded Steam Guard secret
+	// Create a Steam client. No credentials yet — they are passed to
+	// BeginAuthSession below so the login flow can be driven explicitly.
+	c, err := client.NewClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Step 1: open an auth session.
+	session, err := c.BeginAuthSession(ctx, &client.Credentials{
+		Username: "your_username",
+		Password: "your_password",
+		// SharedSecret is optional. Leave empty if you need to be prompted
+		// for an email/mobile Steam Guard code.
+		SharedSecret: "your_base64_shared_secret",
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Connect to Steam in a goroutine
+	// Step 2: produce and submit the Steam Guard code. The SharedSecret and
+	// a user-entered code are mutually exclusive — pick one path. SubmitSteamGuardCode
+	// chooses the correct code type (DeviceCode for TOTP, EmailCode for
+	// email 2FA, etc.) automatically from session.AllowedConfirmations.
+	code, err := steamGuardCode("your_base64_shared_secret")
+	if err != nil {
+		log.Fatal(err)
+	}
+	if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+		log.Fatal(err)
+	}
+
+	// Connect to Steam and log on once the auth session has completed.
 	go func() {
 		if err := c.Connect(ctx); err != nil {
 			log.Printf("Connection error: %v", err)
 		}
 	}()
+	defer c.Disconnect()
 
-	// Handle events
 	for {
 		select {
 		case <-ctx.Done():
 			return
-
 		case event := <-c.Events():
-			switch event := event.(type) {
+			switch e := event.(type) {
+			case *protocol.EventSteamGuardChallenge:
+				fmt.Printf("Steam Guard required (%d confirmations allowed)\n", len(e.AllowedConfirmations))
 			case *protocol.EventConnected:
 				fmt.Println("Connected to Steam!")
-
-				// Log on after connecting
 				if err := c.Logon(ctx); err != nil {
 					log.Printf("Logon error: %v", err)
 				}
-
 			case *protocol.EventLoggedOn:
-				fmt.Printf("Logged on! SteamID: %d\n", event.SteamID)
-
-			case *protocol.EventMessageReceived:
-				fmt.Printf("Received: %s\n", event.EMsg.String())
-
+				fmt.Printf("Logged on! SteamID: %d\n", e.SteamID)
+				return
 			case *protocol.EventError:
-				log.Printf("Error: %v", event.Err)
+				log.Printf("Error: %v", e.Err)
 			}
 		}
 	}
 }
+
+// steamGuardCode returns the Steam Guard code to submit. With a shared
+// secret it derives a fresh TOTP code; otherwise it prompts the user on
+// stdin for an email or mobile code.
+func steamGuardCode(sharedSecret string) (string, error) {
+	if sharedSecret != "" {
+		return totp.CreateAuthenticationCode(sharedSecret, time.Now())
+	}
+	fmt.Print("Enter Steam Guard code: ")
+	line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+	return strings.TrimSpace(line), nil
+}
 ```
+
+A complete, runnable version of this example lives in
+[`examples/simple-client/main.go`](examples/simple-client/main.go). The
+[`examples/simple`](examples/simple/) directory contains a richer demo that
+reads multiple accounts from a JSON environment variable and pretty-prints
+all protocol events.
 
 ### Steam ID Manipulation
 
@@ -111,7 +154,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/lewisgibson/go-steam/steamid"
+	"github.com/lbt05/go-steam/steamid"
 )
 
 func main() {
@@ -143,7 +186,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/lewisgibson/go-steam/totp"
+	"github.com/lbt05/go-steam/totp"
 )
 
 func main() {
@@ -166,24 +209,18 @@ package main
 
 import (
 	"net"
+	"time"
 
-	"github.com/lewisgibson/go-steam/client"
-	"github.com/lewisgibson/go-steam/connection"
+	"github.com/lbt05/go-steam/client"
+	"github.com/lbt05/go-steam/connection"
 )
 
 func main() {
-	// Create custom dialer
 	dialer := &net.Dialer{
 		Timeout: 10 * time.Second,
 	}
 
-	// Create client with options
 	c, err := client.NewClient(
-		&client.Credentials{
-			Username:     "your_username",
-			Password:     "your_password",
-			SharedSecret: "your_shared_secret",
-		},
 		client.WithDialer(dialer),
 		client.WithReconnect(true), // Enable automatic reconnection
 	)
@@ -191,7 +228,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// ... use client
+	// Credentials are passed to BeginAuthSession, not to NewClient.
+	_ = c
 }
 ```
 
@@ -199,15 +237,19 @@ func main() {
 
 ### Client Package
 
--   `NewClient(identity IdentityProvider, opts ...ClientOption) (*Client, error)` - Create a new Steam client
+-   `NewClient(opts ...ClientOption) (*Client, error)` - Create a new Steam client
+-   `BeginAuthSession(ctx, *Credentials) (*identity.AuthSession, error)` - First half of login; encrypts the password and opens an auth session
+-   `SubmitSteamGuardCode(ctx, *identity.AuthSession, code string) (Identity, error)` - Second half of login; submits a Steam Guard code (TOTP, email, mobile, etc.) and caches the resulting identity. The code type is chosen automatically from `session.AllowedConfirmations`.
+-   `Identity(ctx) (Identity, error)` - Returns the identity cached by the most recent `SubmitSteamGuardCode` call
 -   `Connect(ctx context.Context) error` - Connect to Steam servers
 -   `Disconnect() error` - Disconnect from Steam
--   `Logon(ctx context.Context) error` - Log on to Steam
+-   `Logon(ctx context.Context) error` - Log on to Steam using the cached identity
 -   `Events() <-chan protocol.Event` - Get event channel
 
 ### Client Options
 
--   `WithAPI(api API)` - Set custom API client
+-   `WithAPI(api API)` - Set custom Steam Directory API client
+-   `WithAuthAPI(api identity.API)` - Set custom identity API used during the two-step authentication flow
 -   `WithDialer(dialer connection.Dialer)` - Set custom network dialer
 -   `WithReconnect(reconnect bool)` - Enable/disable automatic reconnection
 
@@ -215,6 +257,7 @@ func main() {
 
 -   `EventConnected` - Connected to Steam server
 -   `EventLoggedOn` - Successfully logged on
+-   `EventSteamGuardChallenge` - Emitted after `BeginAuthSession`; carries the `identity.AuthSession` and the allowed Steam Guard confirmation types
 -   `EventMessageSent` - Protocol message sent
 -   `EventMessageReceived` - Protocol message received
 -   `EventItemAnnouncements` - Item notifications
@@ -271,7 +314,8 @@ go-steam/
 
 See the [examples directory](examples/) for more detailed usage examples:
 
--   [Simple Client](examples/simple/) - Basic connection and authentication
+-   [Simple Client](examples/simple-client/) - Minimal two-step login (SharedSecret or interactive email code)
+-   [Full Demo](examples/simple/) - Multi-account demo with verbose protocol event tracing
 
 ## Development
 

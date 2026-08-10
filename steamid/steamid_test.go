@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/lewisgibson/go-steam/steamid"
+	"github.com/lbt05/go-steam/steamid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

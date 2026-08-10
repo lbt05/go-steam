@@ -11,13 +11,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/lewisgibson/go-steam/api"
-	"github.com/lewisgibson/go-steam/api/services/iauthenticationservice"
-	"github.com/lewisgibson/go-steam/api/services/itwofactorservice"
-	"github.com/lewisgibson/go-steam/api/transports"
-	"github.com/lewisgibson/go-steam/language/steam"
-	"github.com/lewisgibson/go-steam/steamid"
-	"github.com/lewisgibson/go-steam/totp"
+	"github.com/lbt05/go-steam/api"
+	"github.com/lbt05/go-steam/api/services/iauthenticationservice"
+	"github.com/lbt05/go-steam/api/services/itwofactorservice"
+	"github.com/lbt05/go-steam/api/transports"
+	"github.com/lbt05/go-steam/language/steam"
+	"github.com/lbt05/go-steam/steamid"
+	"github.com/lbt05/go-steam/totp"
 )
 
 // Identity represents access for a Steam account.
@@ -52,6 +52,17 @@ func (i *Identity) CreatedAt() time.Time {
 // ExpiresAt returns the expires at time of the identity.
 func (i *Identity) ExpiresAt() time.Time {
 	return i.expiresAt
+}
+
+// AuthSession represents an in-progress Steam authentication session returned
+// by BeginAuthSession. The session must be passed to SubmitSteamGuardCode
+// together with the user-supplied Steam Guard code to complete login.
+type AuthSession struct {
+	ClientID             uint64
+	RequestID            string
+	SteamID              steamid.SteamID
+	Interval             time.Duration
+	AllowedConfirmations []iauthenticationservice.AllowedConfirmation
 }
 
 // Credentials identify a single Steam account.
@@ -104,92 +115,207 @@ func NewCredentialsIdentityProvider(credentials Credentials, opts ...Credentials
 	return idp, nil
 }
 
-// Identity returns the identity of the client.
+// BeginAuthSession performs the first half of the login flow: it encrypts the
+// password with Steam's RSA public key and opens an authentication session,
+// returning the session state required by SubmitSteamGuardCode.
+//
+// The returned AuthSession exposes AllowedConfirmations so callers can decide
+// which Steam Guard code type (EmailCode or DeviceCode) to submit next.
+func (idp *CredentialsIdentityProvider) BeginAuthSession(ctx context.Context) (*AuthSession, error) {
+	idp.mutex.Lock()
+	defer idp.mutex.Unlock()
+
+	encryptedPassword, timestamp, err := idp.encryptPassword(ctx, idp.credentials.AccountName, idp.credentials.Password)
+	if err != nil {
+		return nil, fmt.Errorf("failed to encrypt password: %w", err)
+	}
+
+	authSession, err := idp.beginAuthSessionViaCredentials(ctx, idp.credentials.AccountName, encryptedPassword, timestamp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to begin auth session: %w", err)
+	}
+
+	return &AuthSession{
+		ClientID:             authSession.ClientID,
+		RequestID:            authSession.RequestID,
+		SteamID:              authSession.SteamID,
+		Interval:             time.Duration(authSession.Interval) * time.Second,
+		AllowedConfirmations: authSession.AllowedConfirmations,
+	}, nil
+}
+
+// SubmitSteamGuardCode performs the second half of the login flow: it submits
+// the user-supplied Steam Guard code to Steam, polls until a refresh token is
+// issued, and caches the resulting identity for subsequent calls.
+//
+// The code type (e.g. DeviceCode for TOTP or EmailCode for email 2FA) is
+// chosen automatically from session.AllowedConfirmations with the following
+// priority order: DeviceCode, EmailCode, DeviceConfirmation, EmailConfirmation,
+// MachineToken. Unknown, None and LegacyMachineAuth are ignored.
+func (idp *CredentialsIdentityProvider) SubmitSteamGuardCode(ctx context.Context, session *AuthSession, code string) (*Identity, error) {
+	if session == nil {
+		return nil, fmt.Errorf("auth session is nil")
+	}
+
+	codeType, ok := pickAllowedConfirmationType(session.AllowedConfirmations)
+	if !ok {
+		return nil, fmt.Errorf("no allowed confirmation type can accept a code")
+	}
+
+	idp.mutex.Lock()
+	defer idp.mutex.Unlock()
+
+	if idp.identity != nil && idp.identity.expiresAt.After(time.Now()) {
+		return idp.identity, nil
+	}
+
+	_, err := idp.api.IAuthenticationService().UpdateAuthSessionWithSteamGuardCode(ctx, iauthenticationservice.UpdateAuthSessionWithSteamGuardCodeParameters{
+		ClientID: session.ClientID,
+		SteamID:  session.SteamID,
+		Code:     code,
+		CodeType: codeType,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("failed to update with Steam Guard code: %w", err)
+	}
+
+	var authSessionStatus *iauthenticationservice.PollAuthSessionStatusResponse
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		default:
+		}
+
+		authSessionStatus, err = idp.api.IAuthenticationService().PollAuthSessionStatus(ctx, iauthenticationservice.PollAuthSessionStatusParameters{
+			ClientID:  session.ClientID,
+			RequestID: session.RequestID,
+		})
+		if err != nil {
+			return nil, fmt.Errorf("failed to poll auth session: %w", err)
+		}
+
+		if authSessionStatus.RefreshToken != "" {
+			break
+		}
+
+		select {
+		case <-time.After(session.Interval):
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		}
+	}
+
+	idp.identity = &Identity{
+		steamID:      session.SteamID,
+		accessToken:  authSessionStatus.AccessToken,
+		refreshToken: authSessionStatus.RefreshToken,
+		createdAt:    time.Now(),
+		expiresAt:    time.Now().Add(time.Hour), // This is not documented anywhere, but it seems to be the case.
+	}
+
+	return idp.identity, nil
+}
+
+// Identity runs the full single-shot login flow when SharedSecret is available:
+// it generates a TOTP code from the shared secret and submits it as a
+// DeviceCode Steam Guard code. If SharedSecret is empty, callers should use
+// BeginAuthSession and SubmitSteamGuardCode instead.
 func (idp *CredentialsIdentityProvider) Identity(ctx context.Context) (*Identity, error) {
 	idp.mutex.Lock()
 	defer idp.mutex.Unlock()
 
-	if idp.identity == nil || idp.identity.expiresAt.Before(time.Now()) {
-		encryptedPassword, timestamp, err := idp.encryptPassword(ctx, idp.credentials.AccountName, idp.credentials.Password)
+	if idp.identity != nil && idp.identity.expiresAt.After(time.Now()) {
+		return idp.identity, nil
+	}
+
+	session, err := idp.beginSessionLocked(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	if idp.credentials.SharedSecret == "" {
+		return nil, fmt.Errorf("shared secret is empty; call BeginAuthSession and SubmitSteamGuardCode to provide a Steam Guard code")
+	}
+
+	serverTimeResp, err := idp.api.ITwoFactorService().QueryTime(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get Steam server time: %w", err)
+	}
+
+	tfa, err := totp.CreateAuthenticationCode(idp.credentials.SharedSecret, time.Unix(serverTimeResp.ServerTime, 0))
+	if err != nil {
+		return nil, fmt.Errorf("failed to generate TFA code: %w", err)
+	}
+
+	_, err = idp.api.IAuthenticationService().UpdateAuthSessionWithSteamGuardCode(ctx, iauthenticationservice.UpdateAuthSessionWithSteamGuardCodeParameters{
+		ClientID: session.ClientID,
+		SteamID:  session.SteamID,
+		Code:     tfa,
+		CodeType: steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceCode,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("failed to update with 2FA: %w", err)
+	}
+
+	var authSessionStatus *iauthenticationservice.PollAuthSessionStatusResponse
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		default:
+		}
+
+		authSessionStatus, err = idp.api.IAuthenticationService().PollAuthSessionStatus(ctx, iauthenticationservice.PollAuthSessionStatusParameters{
+			ClientID:  session.ClientID,
+			RequestID: session.RequestID,
+		})
 		if err != nil {
-			return nil, fmt.Errorf("failed to encrypt password: %w", err)
+			return nil, fmt.Errorf("failed to poll auth session: %w", err)
 		}
 
-		authSession, err := idp.beginAuthSessionViaCredentials(ctx, idp.credentials.AccountName, encryptedPassword, timestamp)
-		if err != nil {
-			return nil, fmt.Errorf("failed to begin auth session: %w", err)
+		if authSessionStatus.RefreshToken != "" {
+			break
 		}
 
-		var found bool
-		for _, confirmation := range authSession.AllowedConfirmations {
-			if confirmation.ConfirmationType == steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceCode {
-				found = true
-				break
-			}
-		}
-		if !found {
-			return nil, fmt.Errorf("no allowed confirmation found")
-		}
-
-		var authSessionStatus *iauthenticationservice.PollAuthSessionStatusResponse
-		for {
-			select {
-			default:
-			case <-ctx.Done():
-				return nil, ctx.Err()
-			}
-
-			authSessionStatus, err = idp.api.IAuthenticationService().PollAuthSessionStatus(ctx, iauthenticationservice.PollAuthSessionStatusParameters{
-				ClientID:  authSession.ClientID,
-				RequestID: authSession.RequestID,
-			})
-			if err != nil {
-				return nil, fmt.Errorf("failed to poll auth session: %w", err)
-			}
-
-			if authSessionStatus.RefreshToken != "" {
-				break
-			}
-
-			if authSessionStatus.NewChallengeURL == "" {
-				serverTimeResp, err := idp.api.ITwoFactorService().QueryTime(ctx)
-				if err != nil {
-					return nil, fmt.Errorf("failed to get Steam server time: %w", err)
-				}
-
-				tfa, err := totp.CreateAuthenticationCode(idp.credentials.SharedSecret, time.Unix(serverTimeResp.ServerTime, 0))
-				if err != nil {
-					return nil, fmt.Errorf("failed to generate TFA code: %w", err)
-				}
-
-				_, err = idp.api.IAuthenticationService().UpdateAuthSessionWithSteamGuardCode(ctx, iauthenticationservice.UpdateAuthSessionWithSteamGuardCodeParameters{
-					ClientID: authSession.ClientID,
-					SteamID:  authSession.SteamID,
-					Code:     tfa,
-					CodeType: steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceCode,
-				})
-				if err != nil {
-					return nil, fmt.Errorf("failed to update with 2FA: %w", err)
-				}
-			}
-
-			select {
-			case <-time.After(time.Duration(authSession.Interval) * time.Second):
-			case <-ctx.Done():
-				return nil, ctx.Err()
-			}
-		}
-
-		idp.identity = &Identity{
-			steamID:      authSession.SteamID,
-			accessToken:  authSessionStatus.AccessToken,
-			refreshToken: authSessionStatus.RefreshToken,
-			createdAt:    time.Now(),
-			expiresAt:    time.Now().Add(time.Hour), // This is not documented anywhere, but it seems to be the case.
+		select {
+		case <-time.After(session.Interval):
+		case <-ctx.Done():
+			return nil, ctx.Err()
 		}
 	}
 
+	idp.identity = &Identity{
+		steamID:      session.SteamID,
+		accessToken:  authSessionStatus.AccessToken,
+		refreshToken: authSessionStatus.RefreshToken,
+		createdAt:    time.Now(),
+		expiresAt:    time.Now().Add(time.Hour),
+	}
+
 	return idp.identity, nil
+}
+
+// beginSessionLocked performs the BeginAuthSession flow assuming idp.mutex is
+// already held by the caller.
+func (idp *CredentialsIdentityProvider) beginSessionLocked(ctx context.Context) (*AuthSession, error) {
+	encryptedPassword, timestamp, err := idp.encryptPassword(ctx, idp.credentials.AccountName, idp.credentials.Password)
+	if err != nil {
+		return nil, fmt.Errorf("failed to encrypt password: %w", err)
+	}
+
+	authSession, err := idp.beginAuthSessionViaCredentials(ctx, idp.credentials.AccountName, encryptedPassword, timestamp)
+	if err != nil {
+		return nil, fmt.Errorf("failed to begin auth session: %w", err)
+	}
+
+	return &AuthSession{
+		ClientID:             authSession.ClientID,
+		RequestID:            authSession.RequestID,
+		SteamID:              authSession.SteamID,
+		Interval:             time.Duration(authSession.Interval) * time.Second,
+		AllowedConfirmations: authSession.AllowedConfirmations,
+	}, nil
 }
 
 // encryptPassword encrypts the password using the RSA public key.
@@ -239,4 +365,36 @@ func (idp *CredentialsIdentityProvider) beginAuthSessionViaCredentials(ctx conte
 		},
 		QosLevel: 4,
 	})
+}
+
+// pickAllowedConfirmationType selects the EAuthSessionGuardType that should be
+// used to submit a user-supplied Steam Guard code from the confirmations Steam
+// has authorised for this session. Higher-priority types are returned first:
+//
+//	DeviceCode          — TOTP, the common automated path.
+//	EmailCode           — email 2FA code, the common interactive path.
+//	DeviceConfirmation  — mobile-app push approval.
+//	EmailConfirmation   — email link approval.
+//	MachineToken        — pre-saved machine token.
+//
+// Unknown, None and LegacyMachineAuth are deliberately ignored. The second
+// return value is false when none of the supported types is allowed.
+func pickAllowedConfirmationType(confirmations []iauthenticationservice.AllowedConfirmation) (steam.EAuthSessionGuardType, bool) {
+	priority := []steam.EAuthSessionGuardType{
+		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceCode,
+		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailCode,
+		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
+		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailConfirmation,
+		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_MachineToken,
+	}
+	allowed := make(map[steam.EAuthSessionGuardType]struct{}, len(confirmations))
+	for _, c := range confirmations {
+		allowed[c.ConfirmationType] = struct{}{}
+	}
+	for _, p := range priority {
+		if _, ok := allowed[p]; ok {
+			return p, true
+		}
+	}
+	return 0, false
 }

@@ -3,7 +3,7 @@ package connection_test
 import (
 	"testing"
 
-	"github.com/lewisgibson/go-steam/connection"
+	"github.com/lbt05/go-steam/connection"
 	"github.com/stretchr/testify/assert"
 )
 

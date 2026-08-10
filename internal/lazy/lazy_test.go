@@ -3,7 +3,7 @@ package lazy_test
 import (
 	"testing"
 
-	"github.com/lewisgibson/go-steam/internal/lazy"
+	"github.com/lbt05/go-steam/internal/lazy"
 	"github.com/stretchr/testify/require"
 )
 

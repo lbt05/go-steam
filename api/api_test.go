@@ -3,14 +3,14 @@ package api_test
 import (
 	"testing"
 
-	"github.com/lewisgibson/go-steam/api"
-	"github.com/lewisgibson/go-steam/api/transports"
+	"github.com/lbt05/go-steam/api"
+	"github.com/lbt05/go-steam/api/transports"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 )
 
-//go:generate mockgen -package=api_test -destination=mock_transport_test.go github.com/lewisgibson/go-steam/api/transports Transport
+//go:generate mockgen -package=api_test -destination=mock_transport_test.go github.com/lbt05/go-steam/api/transports Transport
 
 func TestNewAPI_NilTransport(t *testing.T) {
 	t.Parallel()
