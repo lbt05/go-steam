@@ -5,6 +5,7 @@ import (
 
 	"github.com/lbt05/go-steam/api/services/iauthenticationservice"
 	"github.com/lbt05/go-steam/api/services/ieconservice"
+	"github.com/lbt05/go-steam/api/services/iplayerservice"
 	"github.com/lbt05/go-steam/api/services/isteamdirectory"
 	"github.com/lbt05/go-steam/api/services/itwofactorservice"
 	"github.com/lbt05/go-steam/api/transports"
@@ -17,6 +18,7 @@ var ErrNilTransport = fmt.Errorf("transport is nil")
 // API is the main API client.
 type API struct {
 	iEconService           *lazy.Value[*ieconservice.IEconService]
+	iPlayerService         *lazy.Value[*iplayerservice.IPlayerService]
 	iSteamDirectory        *lazy.Value[*isteamdirectory.ISteamDirectory]
 	iAuthenticationService *lazy.Value[*iauthenticationservice.IAuthenticationService]
 	iTwoFactorService      *lazy.Value[*itwofactorservice.ITwoFactorService]
@@ -30,6 +32,9 @@ func NewAPI(transport transports.Transport) (*API, error) {
 	return &API{
 		iEconService: lazy.New(func() *ieconservice.IEconService {
 			return ieconservice.NewIEconService(transport)
+		}),
+		iPlayerService: lazy.New(func() *iplayerservice.IPlayerService {
+			return iplayerservice.NewIPlayerService(transport)
 		}),
 		iSteamDirectory: lazy.New(func() *isteamdirectory.ISteamDirectory {
 			return isteamdirectory.NewISteamDirectory(transport)
@@ -46,6 +51,11 @@ func NewAPI(transport transports.Transport) (*API, error) {
 // IEconService returns the IEconService service.
 func (s *API) IEconService() *ieconservice.IEconService {
 	return s.iEconService.Get()
+}
+
+// IPlayerService returns the IPlayerService service.
+func (s *API) IPlayerService() *iplayerservice.IPlayerService {
+	return s.iPlayerService.Get()
 }
 
 // SteamDirectory returns the SteamDirectory service.

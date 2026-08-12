@@ -1,0 +1,39 @@
+{
+    "response": {
+        "game_count": 2,
+        "games": [
+            {
+                "appid": 440,
+                "name": "Team Fortress 2",
+                "playtime_forever": 12345,
+                "playtime_2weeks": 30,
+                "img_icon_url": "c5c8b2b6e8b1a3e4f7c9d0e1f2a3b4c5d6e7f8a9",
+                "has_community_visible_stats": true,
+                "playtime_windows_forever": 9000,
+                "playtime_mac_forever": 0,
+                "playtime_linux_forever": 3345,
+                "rtime_last_played": 1700000000,
+                "capsule_filename": "tf_2.jpg",
+                "has_workshop": true,
+                "has_market": true,
+                "has_dlc": true,
+                "has_leaderboards": false,
+                "content_descriptorids": [1, 5]
+            },
+            {
+                "appid": 730,
+                "name": "Counter-Strike 2",
+                "playtime_forever": 500,
+                "img_icon_url": "8b1d7c8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c",
+                "has_community_visible_stats": true,
+                "playtime_windows_forever": 500,
+                "rtime_last_played": 1700123456,
+                "has_workshop": true,
+                "has_market": true,
+                "has_dlc": false,
+                "has_leaderboards": true,
+                "content_descriptorids": []
+            }
+        ]
+    }
+}

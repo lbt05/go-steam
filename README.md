@@ -279,6 +279,22 @@ func main() {
 -   `CreateAuthenticationCode(sharedSecret string, time time.Time) (string, error)` - Generate Steam Guard code
 -   `CreateDeviceID(steamID uint64) string` - Generate device ID from SteamID
 
+### Web API Services
+
+Each Web API service is reachable through `*api.API`. Reach the player service
+and call:
+
+```go
+games, err := apiClient.IPlayerService().GetOwnedGames(ctx, iplayerservice.GetOwnedGamesParameters{
+    SteamID:        session.SteamID.Uint64(),
+    IncludeAppInfo: true,
+})
+```
+
+-   `(*api.API).IPlayerService().GetOwnedGames(ctx, GetOwnedGamesParameters) (*GetOwnedGamesResponse, error)` - List the games owned by the given SteamID. Requires the player's game details to be set to Public.
+
+See the per-service `*_test.go` files (e.g. `api/services/ieconservice/econ_service_get_trade_offers_test.go`) for usage patterns with a custom `transports.Transport`.
+
 ## Architecture
 
 ### Package Structure
@@ -289,6 +305,7 @@ go-steam/
 │   ├── services/        # Service implementations
 │   │   ├── iauthenticationservice/
 │   │   ├── ieconservice/
+│   │   ├── iplayerservice/
 │   │   ├── isteamdirectory/
 │   │   └── itwofactorservice/
 │   └── transports/      # HTTP transport layer
