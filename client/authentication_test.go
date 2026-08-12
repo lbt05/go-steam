@@ -41,6 +41,11 @@ type fakeResponse struct {
 type fakeTransport struct {
 	mu        sync.Mutex
 	responses []fakeResponse
+	calls     []fakeCall
+}
+
+type fakeCall struct {
+	method string
 }
 
 func newFakeTransport(responses ...fakeResponse) *fakeTransport {
@@ -50,6 +55,7 @@ func newFakeTransport(responses ...fakeResponse) *fakeTransport {
 func (f *fakeTransport) Call(_ context.Context, _ /* verb */ string, service, method string, _ /* version */ int, _, response any) error {
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	f.calls = append(f.calls, fakeCall{method: method})
 	if len(f.responses) == 0 {
 		return errors.New("fakeTransport: no more programmed responses")
 	}
@@ -219,6 +225,70 @@ func TestClient_SubmitSteamGuardCode_BeforeBegin(t *testing.T) {
 	require.NoError(t, err)
 
 	_, err = c.SubmitSteamGuardCode(t.Context(), &identity.AuthSession{}, "x")
+	require.Error(t, err)
+	require.Contains(t, err.Error(), "BeginAuthSession first")
+}
+
+func TestClient_WaitForConfirmation_AfterBeginAuthSession(t *testing.T) {
+	t.Parallel()
+
+	key, err := rsa.GenerateKey(rand.Reader, 2048)
+	require.NoError(t, err)
+
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: map[string]string{
+			"publickey_mod": hex.EncodeToString(key.N.Bytes()),
+			"publickey_exp": "10001",
+			"timestamp":     "1700000000",
+		}},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: map[string]any{
+			"client_id":  "5",
+			"request_id": "req",
+			"interval":   1,
+			"allowed_confirmations": []map[string]any{
+				{"confirmation_type": int32(steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation), "associated_message": ""},
+			},
+			"steamid": strconv.FormatUint(76561197960265728+5, 10),
+		}},
+		fakeResponse{method: "PollAuthSessionStatus", body: map[string]string{
+			"refresh_token": "refresh-push",
+			"access_token":  "access-push",
+		}},
+	)
+
+	c := newClientWithFakeAPI(t, ft)
+
+	session, err := c.BeginAuthSession(t.Context(), &client.Credentials{
+		Username: "user",
+		Password: "pass",
+	})
+	require.NoError(t, err)
+
+	// Drain the challenge event.
+	<-c.Events()
+
+	id, err := c.WaitForConfirmation(t.Context(), session)
+	require.NoError(t, err)
+	require.NotNil(t, id)
+
+	cached, err := c.Identity(t.Context())
+	require.NoError(t, err)
+	require.Equal(t, "refresh-push", cached.RefreshToken())
+
+	for _, call := range ft.calls {
+		// WaitForConfirmation must not invoke UpdateAuthSessionWithSteamGuardCode.
+		require.NotEqual(t, "UpdateAuthSessionWithSteamGuardCode", call.method,
+			"WaitForConfirmation must not submit a Steam Guard code")
+	}
+}
+
+func TestClient_WaitForConfirmation_BeforeBegin(t *testing.T) {
+	t.Parallel()
+
+	c, err := client.NewClient()
+	require.NoError(t, err)
+
+	_, err = c.WaitForConfirmation(t.Context(), &identity.AuthSession{})
 	require.Error(t, err)
 	require.Contains(t, err.Error(), "BeginAuthSession first")
 }

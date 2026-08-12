@@ -8,8 +8,12 @@
 //	export STEAM_SHARED_SECRET=your_base64_shared_secret
 //	go run ./examples/simple-client
 //
-// Without STEAM_SHARED_SECRET the program prompts on stdin for an email or
-// mobile Steam Guard code.
+// The program picks the right second-half flow based on what Steam allows:
+//   - SharedSecret set   → TOTP code via SubmitSteamGuardCode (DeviceCode).
+//   - Push or email-link → WaitForConfirmation (no code to type; the user
+//                          approves on the Steam Mobile app or via email).
+//   - Otherwise          → prompt on stdin for an email code, then
+//                          SubmitSteamGuardCode (EmailCode).
 package main
 
 import (
@@ -23,6 +27,7 @@ import (
 	"time"
 
 	"github.com/lbt05/go-steam/client"
+	"github.com/lbt05/go-steam/identity"
 	"github.com/lbt05/go-steam/protocol"
 	"github.com/lbt05/go-steam/totp"
 )
@@ -54,17 +59,11 @@ func main() {
 	}
 	fmt.Printf("auth session opened: client_id=%d interval=%s\n", session.ClientID, session.Interval)
 
-	// Second half: produce the Steam Guard code and submit it. With a
-	// SharedSecret the TOTP code is generated automatically (no prompt);
-	// otherwise the user is asked to type in an email or mobile code.
-	code, err := steamGuardCode(sharedSecret)
-	if err != nil {
-		log.Fatalf("prepare Steam Guard code: %v", err)
+	// Second half: dispatch on what Steam allows and what the caller has.
+	if err := authorize(ctx, c, session, sharedSecret); err != nil {
+		log.Fatalf("authorize: %v", err)
 	}
-	if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
-		log.Fatalf("submit Steam Guard code: %v", err)
-	}
-	fmt.Println("Steam Guard code accepted; tokens cached.")
+	fmt.Println("authorized; tokens cached.")
 
 	// Drive the connection and logon in the background.
 	go func() {
@@ -78,7 +77,6 @@ func main() {
 		}
 	}()
 
-	// Consume events until interrupted.
 	for {
 		select {
 		case <-ctx.Done():
@@ -102,22 +100,40 @@ func main() {
 	}
 }
 
-// steamGuardCode returns the Steam Guard code to submit. The two-step login
-// flow is mutually exclusive: a SharedSecret means a TOTP code is generated
-// automatically (no user input), while an empty SharedSecret means the user
-// is prompted on stdin for an email or mobile code.
-func steamGuardCode(sharedSecret string) (string, error) {
+// authorize runs the second half of the login flow, dispatching to the
+// appropriate client method based on what Steam allows in the session and
+// what credentials the caller has supplied. SharedSecret implies TOTP
+// (DeviceCode). Otherwise, if Steam allows an external approval flow
+// (DeviceConfirmation/EmailConfirmation), we wait for the user to tap
+// Approve in the Steam Mobile app or click the email link. Otherwise we
+// prompt on stdin for an email or mobile code.
+func authorize(ctx context.Context, c *client.Client, session *identity.AuthSession, sharedSecret string) error {
 	if sharedSecret != "" {
-		// TOTP path. Steam's TOTP uses a 30-second step. A small clock
-		// skew between this machine and Steam is usually tolerated; for
-		// stricter reliability, query Steam's server time via
-		// ITwoFactorService.QueryTime and pass it to
-		// totp.CreateAuthenticationCode instead of time.Now().
-		return totp.CreateAuthenticationCode(sharedSecret, time.Now())
+		code, err := totp.CreateAuthenticationCode(sharedSecret, time.Now())
+		if err != nil {
+			return fmt.Errorf("generate TOTP code: %w", err)
+		}
+		if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+			return err
+		}
+		return nil
 	}
 
-	// Email/mobile code path: prompt the user.
+	// No SharedSecret — try external confirmation first (mobile push /
+	// email link). If Steam doesn't allow that, fall back to prompting for
+	// an email code on stdin.
+	if _, err := c.WaitForConfirmation(ctx, session); err == nil {
+		fmt.Println("approved externally; tokens cached.")
+		return nil
+	} else if !strings.Contains(err.Error(), "no allowed external confirmation") {
+		return err
+	}
+
 	fmt.Print("Enter Steam Guard code: ")
 	line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
-	return strings.TrimSpace(line), nil
+	code := strings.TrimSpace(line)
+	if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+		return err
+	}
+	return nil
 }

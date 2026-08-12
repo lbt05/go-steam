@@ -109,28 +109,33 @@ func main() {
 	}
 }
 
-// submitSteamGuardCode drives the second half of the two-step login. When a
-// SharedSecret is configured, it generates a TOTP code automatically;
-// otherwise it prompts the user on stdin for an email or mobile code.
-// The Steam Guard type (DeviceCode vs EmailCode) is chosen by the client from
-// session.AllowedConfirmations.
+// submitSteamGuardCode drives the second half of the two-step login. With
+// a SharedSecret it generates a TOTP code automatically (DeviceCode).
+// Without a SharedSecret it first tries WaitForConfirmation in case Steam
+// allowed only an external approval flow (mobile push or email link); if
+// that isn't allowed it falls back to prompting for an email or mobile
+// code on stdin (EmailCode).
 func submitSteamGuardCode(ctx context.Context, c *client.Client, session *identity.AuthSession, sharedSecret string) error {
-	var code string
-	var err error
-
 	if sharedSecret != "" {
-		code, err = totp.CreateAuthenticationCode(sharedSecret, time.Now())
+		code, err := totp.CreateAuthenticationCode(sharedSecret, time.Now())
 		if err != nil {
 			return fmt.Errorf("failed to generate TOTP code: %w", err)
 		}
-	} else {
-		fmt.Println("Enter Steam Guard code:")
-		reader := bufio.NewReader(os.Stdin)
-		line, _ := reader.ReadString('\n')
-		code = strings.TrimSpace(line)
+		if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+			return err
+		}
+		return nil
 	}
 
-	if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+	if _, err := c.WaitForConfirmation(ctx, session); err == nil {
+		return nil
+	} else if !strings.Contains(err.Error(), "no allowed external confirmation") {
+		return err
+	}
+
+	fmt.Println("Enter Steam Guard code:")
+	line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+	if _, err := c.SubmitSteamGuardCode(ctx, session, strings.TrimSpace(line)); err != nil {
 		return err
 	}
 	return nil

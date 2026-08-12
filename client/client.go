@@ -154,8 +154,11 @@ func (c *Client) BeginAuthSession(ctx context.Context, credentials *Credentials)
 // client. The cached identity is returned by subsequent Identity calls
 // (used by Client.Connect and Client.Logon).
 //
-// The code type (DeviceCode for TOTP, EmailCode for email 2FA, etc.) is
-// chosen automatically from session.AllowedConfirmations.
+// The code type (DeviceCode for TOTP, EmailCode for email 2FA, MachineToken
+// for a pre-saved token) is chosen automatically from
+// session.AllowedConfirmations. If the session only allows external
+// approval (DeviceConfirmation or EmailConfirmation), this method returns
+// an error and the caller should use WaitForConfirmation instead.
 func (c *Client) SubmitSteamGuardCode(ctx context.Context, session *identity.AuthSession, code string) (Identity, error) {
 	c.authMu.Lock()
 	defer c.authMu.Unlock()
@@ -172,10 +175,36 @@ func (c *Client) SubmitSteamGuardCode(ctx context.Context, session *identity.Aut
 	return id, nil
 }
 
+// WaitForConfirmation performs the second half of the login flow when the
+// user authorises the login externally — by approving a push notification
+// in the Steam Mobile app (DeviceConfirmation) or by clicking the approval
+// link in an email (EmailConfirmation). The method polls Steam until a
+// refresh token is issued and caches the resulting identity on the client.
+//
+// No code is submitted. The caller should instruct the user to complete the
+// approval on their phone or via email. If the session only allows
+// code-bearing types (DeviceCode, EmailCode, MachineToken), this method
+// returns an error and the caller should use SubmitSteamGuardCode instead.
+func (c *Client) WaitForConfirmation(ctx context.Context, session *identity.AuthSession) (Identity, error) {
+	c.authMu.Lock()
+	defer c.authMu.Unlock()
+
+	if c.authIDP == nil {
+		return nil, errors.New("identity provider not initialized; call BeginAuthSession first")
+	}
+
+	id, err := c.authIDP.WaitForConfirmation(ctx, session)
+	if err != nil {
+		return nil, err
+	}
+	c.authIdentity = id
+	return id, nil
+}
+
 // Identity returns the identity cached by the most recent successful
-// SubmitSteamGuardCode call. It is used by Connect and Logon to fetch
-// the refresh token; calling it before authentication completes returns
-// an error.
+// SubmitSteamGuardCode or WaitForConfirmation call. It is used by Connect
+// and Logon to fetch the refresh token; calling it before authentication
+// completes returns an error.
 func (c *Client) Identity(_ context.Context) (Identity, error) {
 	c.authMu.Lock()
 	defer c.authMu.Unlock()

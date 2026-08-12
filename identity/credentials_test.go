@@ -475,5 +475,168 @@ func TestCredentialsIdentityProvider_SubmitSteamGuardCode_NoAllowedConfirmation(
 
 	_, err = idp.SubmitSteamGuardCode(t.Context(), session, "12345")
 	require.Error(t, err)
-	require.Contains(t, err.Error(), "no allowed confirmation type")
+	require.Contains(t, err.Error(), "no allowed confirmation accepts a code")
+}
+
+func TestCredentialsIdentityProvider_SubmitSteamGuardCode_PicksEmailCodeOverDeviceConfirmation(t *testing.T) {
+	t.Parallel()
+
+	key := getTestRSAKey(t)
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: rsaResponseFor(t, key)},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: beginResponseFor(11, "req", 76561197960265728+1, 1,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailCode,
+		)},
+		fakeResponse{method: "UpdateAuthSessionWithSteamGuardCode"},
+		fakeResponse{method: "PollAuthSessionStatus", body: pollResponseFor("r", "a")},
+	)
+
+	idp := newTestProvider(t, ft, identity.Credentials{AccountName: "user", Password: "pass"})
+
+	session, err := idp.BeginAuthSession(t.Context())
+	require.NoError(t, err)
+
+	_, err = idp.SubmitSteamGuardCode(t.Context(), session, "ABCDE")
+	require.NoError(t, err)
+
+	var updateCall *fakeCall
+	for i := range ft.calls {
+		if ft.calls[i].method == "UpdateAuthSessionWithSteamGuardCode" {
+			updateCall = &ft.calls[i]
+			break
+		}
+	}
+	require.NotNil(t, updateCall)
+	params, ok := updateCall.params.(iauthenticationservice.UpdateAuthSessionWithSteamGuardCodeParameters)
+	require.True(t, ok)
+	require.Equal(t, steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailCode, params.CodeType,
+		"EmailCode (a code-bearing type) should be preferred over DeviceConfirmation (external approval)")
+}
+
+func TestCredentialsIdentityProvider_SubmitSteamGuardCode_FailsWhenOnlyConfirmationTypeAllowed(t *testing.T) {
+	t.Parallel()
+
+	key := getTestRSAKey(t)
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: rsaResponseFor(t, key)},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: beginResponseFor(11, "req", 76561197960265728+1, 1,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
+		)},
+	)
+
+	idp := newTestProvider(t, ft, identity.Credentials{AccountName: "user", Password: "pass"})
+
+	session, err := idp.BeginAuthSession(t.Context())
+	require.NoError(t, err)
+
+	_, err = idp.SubmitSteamGuardCode(t.Context(), session, "x")
+	require.Error(t, err)
+	require.Contains(t, err.Error(), "no allowed confirmation accepts a code")
+}
+
+func TestCredentialsIdentityProvider_WaitForConfirmation_PollsUntilToken(t *testing.T) {
+	t.Parallel()
+
+	key := getTestRSAKey(t)
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: rsaResponseFor(t, key)},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: beginResponseFor(11, "req", 76561197960265728+1, 1,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
+		)},
+		fakeResponse{method: "PollAuthSessionStatus", body: pollResponseFor("", "")},
+		fakeResponse{method: "PollAuthSessionStatus", body: pollResponseFor("refresh-push", "access-push")},
+	)
+
+	idp := newTestProvider(t, ft, identity.Credentials{AccountName: "user", Password: "pass"})
+
+	session, err := idp.BeginAuthSession(t.Context())
+	require.NoError(t, err)
+
+	id, err := idp.WaitForConfirmation(t.Context(), session)
+	require.NoError(t, err)
+	require.NotNil(t, id)
+	require.Equal(t, "refresh-push", id.RefreshToken())
+
+	// Should NOT have called UpdateAuthSessionWithSteamGuardCode for a confirmation flow.
+	for _, c := range ft.calls {
+		require.NotEqual(t, "UpdateAuthSessionWithSteamGuardCode", c.method,
+			"WaitForConfirmation must not call UpdateAuthSessionWithSteamGuardCode")
+	}
+}
+
+func TestCredentialsIdentityProvider_WaitForConfirmation_PicksDeviceConfirmationOverEmailConfirmation(t *testing.T) {
+	t.Parallel()
+
+	key := getTestRSAKey(t)
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: rsaResponseFor(t, key)},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: beginResponseFor(11, "req", 76561197960265728+1, 1,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailConfirmation,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
+		)},
+		fakeResponse{method: "PollAuthSessionStatus", body: pollResponseFor("r", "a")},
+	)
+
+	idp := newTestProvider(t, ft, identity.Credentials{AccountName: "user", Password: "pass"})
+
+	session, err := idp.BeginAuthSession(t.Context())
+	require.NoError(t, err)
+
+	_, err = idp.WaitForConfirmation(t.Context(), session)
+	require.NoError(t, err)
+}
+
+func TestCredentialsIdentityProvider_WaitForConfirmation_FailsWhenOnlyCodeTypeAllowed(t *testing.T) {
+	t.Parallel()
+
+	key := getTestRSAKey(t)
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: rsaResponseFor(t, key)},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: beginResponseFor(11, "req", 76561197960265728+1, 1,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceCode,
+		)},
+	)
+
+	idp := newTestProvider(t, ft, identity.Credentials{AccountName: "user", Password: "pass"})
+
+	session, err := idp.BeginAuthSession(t.Context())
+	require.NoError(t, err)
+
+	_, err = idp.WaitForConfirmation(t.Context(), session)
+	require.Error(t, err)
+	require.Contains(t, err.Error(), "no allowed external confirmation")
+}
+
+func TestCredentialsIdentityProvider_WaitForConfirmation_NilSession(t *testing.T) {
+	t.Parallel()
+
+	idp := newTestProvider(t, newFakeTransport(), identity.Credentials{AccountName: "user", Password: "pass"})
+
+	_, err := idp.WaitForConfirmation(t.Context(), nil)
+	require.Error(t, err)
+}
+
+func TestCredentialsIdentityProvider_WaitForConfirmation_ContextCancelDuringPoll(t *testing.T) {
+	t.Parallel()
+
+	key := getTestRSAKey(t)
+	ft := newFakeTransport(
+		fakeResponse{method: "GetPasswordRSAPublicKey", body: rsaResponseFor(t, key)},
+		fakeResponse{method: "BeginAuthSessionViaCredentials", body: beginResponseFor(1, "req", 76561197960265728+1, 60,
+			steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
+		)},
+		fakeResponse{method: "PollAuthSessionStatus", body: pollResponseFor("", "")},
+	)
+
+	idp := newTestProvider(t, ft, identity.Credentials{AccountName: "user", Password: "pass"})
+
+	session, err := idp.BeginAuthSession(t.Context())
+	require.NoError(t, err)
+
+	ctx, cancel := context.WithCancel(t.Context())
+	cancel()
+
+	_, err = idp.WaitForConfirmation(ctx, session)
+	require.ErrorIs(t, err, context.Canceled)
 }

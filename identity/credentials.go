@@ -144,22 +144,25 @@ func (idp *CredentialsIdentityProvider) BeginAuthSession(ctx context.Context) (*
 	}, nil
 }
 
-// SubmitSteamGuardCode performs the second half of the login flow: it submits
-// the user-supplied Steam Guard code to Steam, polls until a refresh token is
-// issued, and caches the resulting identity for subsequent calls.
+// SubmitSteamGuardCode performs the second half of the login flow when the
+// user (or a TOTP generator) holds a Steam Guard code: it submits the code to
+// Steam, polls until a refresh token is issued, and caches the resulting
+// identity for subsequent calls.
 //
-// The code type (e.g. DeviceCode for TOTP or EmailCode for email 2FA) is
-// chosen automatically from session.AllowedConfirmations with the following
-// priority order: DeviceCode, EmailCode, DeviceConfirmation, EmailConfirmation,
-// MachineToken. Unknown, None and LegacyMachineAuth are ignored.
+// The code type (DeviceCode for TOTP, EmailCode for email 2FA, or MachineToken
+// for a pre-saved token) is chosen automatically from
+// session.AllowedConfirmations. If the session only allows external approval
+// flows (DeviceConfirmation or EmailConfirmation), this method returns
+// "no allowed confirmation accepts a code" and the caller must use
+// WaitForConfirmation instead.
 func (idp *CredentialsIdentityProvider) SubmitSteamGuardCode(ctx context.Context, session *AuthSession, code string) (*Identity, error) {
 	if session == nil {
 		return nil, fmt.Errorf("auth session is nil")
 	}
 
-	codeType, ok := pickAllowedConfirmationType(session.AllowedConfirmations)
+	codeType, ok := pickCodeType(session.AllowedConfirmations)
 	if !ok {
-		return nil, fmt.Errorf("no allowed confirmation type can accept a code")
+		return nil, fmt.Errorf("no allowed confirmation accepts a code; use WaitForConfirmation for push or email-link approval")
 	}
 
 	idp.mutex.Lock()
@@ -180,6 +183,74 @@ func (idp *CredentialsIdentityProvider) SubmitSteamGuardCode(ctx context.Context
 	}
 
 	var authSessionStatus *iauthenticationservice.PollAuthSessionStatusResponse
+	for {
+		select {
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		default:
+		}
+
+		authSessionStatus, err = idp.api.IAuthenticationService().PollAuthSessionStatus(ctx, iauthenticationservice.PollAuthSessionStatusParameters{
+			ClientID:  session.ClientID,
+			RequestID: session.RequestID,
+		})
+		if err != nil {
+			return nil, fmt.Errorf("failed to poll auth session: %w", err)
+		}
+
+		if authSessionStatus.RefreshToken != "" {
+			break
+		}
+
+		select {
+		case <-time.After(session.Interval):
+		case <-ctx.Done():
+			return nil, ctx.Err()
+		}
+	}
+
+	idp.identity = &Identity{
+		steamID:      session.SteamID,
+		accessToken:  authSessionStatus.AccessToken,
+		refreshToken: authSessionStatus.RefreshToken,
+		createdAt:    time.Now(),
+		expiresAt:    time.Now().Add(time.Hour), // This is not documented anywhere, but it seems to be the case.
+	}
+
+	return idp.identity, nil
+}
+
+// WaitForConfirmation performs the second half of the login flow when the
+// user authorises the login externally — either by approving a push
+// notification in the Steam Mobile app (DeviceConfirmation) or by clicking
+// the approval link in an email (EmailConfirmation). The method picks the
+// best confirmation type from session.AllowedConfirmations and polls
+// PollAuthSessionStatus until Steam issues a refresh token. No code is
+// submitted; the user must complete the approval on their phone or via
+// email. The resulting identity is cached for subsequent calls.
+//
+// If the session only allows code-bearing types (DeviceCode, EmailCode,
+// MachineToken), this method returns "no allowed external confirmation"
+// and the caller should use SubmitSteamGuardCode instead.
+func (idp *CredentialsIdentityProvider) WaitForConfirmation(ctx context.Context, session *AuthSession) (*Identity, error) {
+	if session == nil {
+		return nil, fmt.Errorf("auth session is nil")
+	}
+
+	_, ok := pickConfirmationType(session.AllowedConfirmations)
+	if !ok {
+		return nil, fmt.Errorf("no allowed external confirmation; use SubmitSteamGuardCode for a Steam Guard code")
+	}
+
+	idp.mutex.Lock()
+	defer idp.mutex.Unlock()
+
+	if idp.identity != nil && idp.identity.expiresAt.After(time.Now()) {
+		return idp.identity, nil
+	}
+
+	var authSessionStatus *iauthenticationservice.PollAuthSessionStatusResponse
+	var err error
 	for {
 		select {
 		case <-ctx.Done():
@@ -367,25 +438,49 @@ func (idp *CredentialsIdentityProvider) beginAuthSessionViaCredentials(ctx conte
 	})
 }
 
-// pickAllowedConfirmationType selects the EAuthSessionGuardType that should be
-// used to submit a user-supplied Steam Guard code from the confirmations Steam
-// has authorised for this session. Higher-priority types are returned first:
+// pickCodeType selects the EAuthSessionGuardType that should be used to submit
+// a user-supplied Steam Guard code (TOTP, email, or saved machine token). The
+// priority order is:
 //
-//	DeviceCode          — TOTP, the common automated path.
-//	EmailCode           — email 2FA code, the common interactive path.
-//	DeviceConfirmation  — mobile-app push approval.
-//	EmailConfirmation   — email link approval.
-//	MachineToken        — pre-saved machine token.
+//	DeviceCode  — TOTP, the common automated path.
+//	EmailCode   — email 2FA code, the common interactive path.
+//	MachineToken — pre-saved machine token.
 //
 // Unknown, None and LegacyMachineAuth are deliberately ignored. The second
-// return value is false when none of the supported types is allowed.
-func pickAllowedConfirmationType(confirmations []iauthenticationservice.AllowedConfirmation) (steam.EAuthSessionGuardType, bool) {
+// return value is false when none of the supported code-bearing types is
+// allowed — callers should then use WaitForConfirmation instead.
+func pickCodeType(confirmations []iauthenticationservice.AllowedConfirmation) (steam.EAuthSessionGuardType, bool) {
 	priority := []steam.EAuthSessionGuardType{
 		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceCode,
 		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailCode,
+		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_MachineToken,
+	}
+	allowed := make(map[steam.EAuthSessionGuardType]struct{}, len(confirmations))
+	for _, c := range confirmations {
+		allowed[c.ConfirmationType] = struct{}{}
+	}
+	for _, p := range priority {
+		if _, ok := allowed[p]; ok {
+			return p, true
+		}
+	}
+	return 0, false
+}
+
+// pickConfirmationType selects the EAuthSessionGuardType used for external
+// approval flows (Steam Mobile push or email-link confirmation) where the
+// user authorises the login outside the client. Priority order:
+//
+//	DeviceConfirmation — push notification to the Steam Mobile app.
+//	EmailConfirmation  — approval link sent by email.
+//
+// Unknown, None and LegacyMachineAuth are deliberately ignored. The second
+// return value is false when none of the supported confirmation types is
+// allowed.
+func pickConfirmationType(confirmations []iauthenticationservice.AllowedConfirmation) (steam.EAuthSessionGuardType, bool) {
+	priority := []steam.EAuthSessionGuardType{
 		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_DeviceConfirmation,
 		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_EmailConfirmation,
-		steam.EAuthSessionGuardType_k_EAuthSessionGuardType_MachineToken,
 	}
 	allowed := make(map[steam.EAuthSessionGuardType]struct{}, len(confirmations))
 	for _, c := range confirmations {

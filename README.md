@@ -39,8 +39,11 @@ go get github.com/lbt05/go-steam
 
 Login is a two-step flow. First call `BeginAuthSession` to encrypt your
 password and open a Steam authentication session; Steam will then ask for a
-Steam Guard code (TOTP, email or mobile). Submit it with
-`SubmitSteamGuardCode`, then connect and log on as usual.
+Steam Guard code. Submit it via one of three paths based on what Steam
+allows (see `session.AllowedConfirmations`):
+
+-   **`SubmitSteamGuardCode`** — when you have a code (TOTP from `SharedSecret`, an emailed/mobile code from the user, or a saved `MachineToken`).
+-   **`WaitForConfirmation`** — when Steam only allows external approval: a Steam Mobile push notification (`DeviceConfirmation`) or an email link (`EmailConfirmation`). The client just polls; the user approves on their phone or via email.
 
 ```go
 package main
@@ -56,6 +59,7 @@ import (
 	"time"
 
 	"github.com/lbt05/go-steam/client"
+	"github.com/lbt05/go-steam/identity"
 	"github.com/lbt05/go-steam/protocol"
 	"github.com/lbt05/go-steam/totp"
 )
@@ -83,15 +87,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Step 2: produce and submit the Steam Guard code. The SharedSecret and
-	// a user-entered code are mutually exclusive — pick one path. SubmitSteamGuardCode
-	// chooses the correct code type (DeviceCode for TOTP, EmailCode for
-	// email 2FA, etc.) automatically from session.AllowedConfirmations.
-	code, err := steamGuardCode("your_base64_shared_secret")
-	if err != nil {
-		log.Fatal(err)
-	}
-	if _, err := c.SubmitSteamGuardCode(ctx, session, code); err != nil {
+	// Step 2: complete the second half of the flow. Pick the path that
+	// matches what Steam allows and what the caller has.
+	if err := authorize(ctx, c, session, "your_base64_shared_secret"); err != nil {
 		log.Fatal(err)
 	}
 
@@ -126,13 +124,29 @@ func main() {
 	}
 }
 
-// steamGuardCode returns the Steam Guard code to submit. With a shared
-// secret it derives a fresh TOTP code; otherwise it prompts the user on
-// stdin for an email or mobile code.
-func steamGuardCode(sharedSecret string) (string, error) {
+// authorize drives the second half of the login flow. With a SharedSecret
+// the code is a fresh TOTP submitted as such; without one, the client first
+// tries WaitForConfirmation (mobile push / email-link approval) and falls
+// back to prompting the user for an email or mobile code.
+func authorize(ctx context.Context, c *client.Client, session *identity.AuthSession, sharedSecret string) error {
 	if sharedSecret != "" {
-		return totp.CreateAuthenticationCode(sharedSecret, time.Now())
+		code, err := totp.CreateAuthenticationCode(sharedSecret, time.Now())
+		if err != nil {
+			return err
+		}
+		_, err = c.SubmitSteamGuardCode(ctx, session, code)
+		return err
 	}
+	if _, err := c.WaitForConfirmation(ctx, session); err == nil {
+		return nil
+	} else if !strings.Contains(err.Error(), "no allowed external confirmation") {
+		return err
+	}
+	fmt.Print("Enter Steam Guard code: ")
+	line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
+	_, err := c.SubmitSteamGuardCode(ctx, session, strings.TrimSpace(line))
+	return err
+}
 	fmt.Print("Enter Steam Guard code: ")
 	line, _ := bufio.NewReader(os.Stdin).ReadString('\n')
 	return strings.TrimSpace(line), nil
@@ -239,8 +253,9 @@ func main() {
 
 -   `NewClient(opts ...ClientOption) (*Client, error)` - Create a new Steam client
 -   `BeginAuthSession(ctx, *Credentials) (*identity.AuthSession, error)` - First half of login; encrypts the password and opens an auth session
--   `SubmitSteamGuardCode(ctx, *identity.AuthSession, code string) (Identity, error)` - Second half of login; submits a Steam Guard code (TOTP, email, mobile, etc.) and caches the resulting identity. The code type is chosen automatically from `session.AllowedConfirmations`.
--   `Identity(ctx) (Identity, error)` - Returns the identity cached by the most recent `SubmitSteamGuardCode` call
+-   `SubmitSteamGuardCode(ctx, *identity.AuthSession, code string) (Identity, error)` - Second half of login; submits a Steam Guard code (TOTP, email, or machine token) and caches the resulting identity. The code type is chosen automatically from `session.AllowedConfirmations`. Returns an error if the session only allows external approval.
+-   `WaitForConfirmation(ctx, *identity.AuthSession) (Identity, error)` - Second half of login for external approval flows (Steam Mobile push notification or email link). Polls until the user approves; the cached identity is returned. Returns an error if the session only allows code-bearing types.
+-   `Identity(ctx) (Identity, error)` - Returns the identity cached by the most recent `SubmitSteamGuardCode` or `WaitForConfirmation` call
 -   `Connect(ctx context.Context) error` - Connect to Steam servers
 -   `Disconnect() error` - Disconnect from Steam
 -   `Logon(ctx context.Context) error` - Log on to Steam using the cached identity
@@ -331,7 +346,7 @@ go-steam/
 
 See the [examples directory](examples/) for more detailed usage examples:
 
--   [Simple Client](examples/simple-client/) - Minimal two-step login (SharedSecret or interactive email code)
+-   [Simple Client](examples/simple-client/) - Minimal two-step login (SharedSecret, email code, or external push/email-link confirmation)
 -   [Full Demo](examples/simple/) - Multi-account demo with verbose protocol event tracing
 
 ## Development
