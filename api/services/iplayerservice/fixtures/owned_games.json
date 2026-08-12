@@ -1,6 +1,6 @@
 {
     "response": {
-        "game_count": 2,
+        "game_count": 3,
         "games": [
             {
                 "appid": 440,
@@ -33,6 +33,12 @@
                 "has_dlc": false,
                 "has_leaderboards": true,
                 "content_descriptorids": []
+            },
+            {
+                "appid": 10,
+                "name": "Counter-Strike (no icon)",
+                "playtime_forever": 60,
+                "has_community_visible_stats": false
             }
         ]
     }
