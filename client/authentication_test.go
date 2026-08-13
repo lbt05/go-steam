@@ -17,6 +17,7 @@ import (
 	"github.com/lbt05/go-steam/identity"
 	"github.com/lbt05/go-steam/language/steam"
 	"github.com/lbt05/go-steam/protocol"
+	"github.com/lbt05/go-steam/steamid"
 	"github.com/stretchr/testify/require"
 )
 
@@ -291,4 +292,78 @@ func TestClient_WaitForConfirmation_BeforeBegin(t *testing.T) {
 	_, err = c.WaitForConfirmation(t.Context(), &identity.AuthSession{})
 	require.Error(t, err)
 	require.Contains(t, err.Error(), "BeginAuthSession first")
+}
+
+func TestClient_SetIdentity_ThenIdentityReturnsIt(t *testing.T) {
+	t.Parallel()
+
+	c, err := client.NewClient()
+	require.NoError(t, err)
+
+	sid := steamid.SteamID(76561197960265728 + 7)
+	const token = "saved-refresh-token"
+
+	// Before SetIdentity the cached identity is empty.
+	_, err = c.Identity(t.Context())
+	require.Error(t, err)
+
+	id, err := c.SetIdentity(sid, token)
+	require.NoError(t, err)
+	require.NotNil(t, id)
+
+	cached, err := c.Identity(t.Context())
+	require.NoError(t, err)
+	require.Equal(t, sid, cached.SteamID())
+	require.Equal(t, token, cached.RefreshToken())
+}
+
+func TestClient_SetIdentity_ReplacesPreviousIdentity(t *testing.T) {
+	t.Parallel()
+
+	c, err := client.NewClient()
+	require.NoError(t, err)
+
+	first := steamid.SteamID(76561197960265728 + 1)
+	second := steamid.SteamID(76561197960265728 + 2)
+
+	_, err = c.SetIdentity(first, "token-a")
+	require.NoError(t, err)
+
+	_, err = c.SetIdentity(second, "token-b")
+	require.NoError(t, err)
+
+	cached, err := c.Identity(t.Context())
+	require.NoError(t, err)
+	require.Equal(t, second, cached.SteamID())
+	require.Equal(t, "token-b", cached.RefreshToken())
+}
+
+func TestClient_SetIdentity_EmptyRefreshToken(t *testing.T) {
+	t.Parallel()
+
+	c, err := client.NewClient()
+	require.NoError(t, err)
+
+	_, err = c.SetIdentity(steamid.SteamID(76561197960265728+1), "")
+	require.Error(t, err)
+	require.Contains(t, err.Error(), "refresh token is empty")
+
+	// A failed SetIdentity must not cache anything.
+	_, err = c.Identity(t.Context())
+	require.Error(t, err)
+}
+
+func TestClient_SetIdentity_InvalidSteamID(t *testing.T) {
+	t.Parallel()
+
+	c, err := client.NewClient()
+	require.NoError(t, err)
+
+	_, err = c.SetIdentity(steamid.SteamID(0), "token")
+	require.Error(t, err)
+	require.Contains(t, err.Error(), "steamID is invalid")
+
+	// A failed SetIdentity must not cache anything.
+	_, err = c.Identity(t.Context())
+	require.Error(t, err)
 }

@@ -54,6 +54,25 @@ func (i *Identity) ExpiresAt() time.Time {
 	return i.expiresAt
 }
 
+// NewIdentity constructs an Identity from persisted values, typically saved
+// from a previous successful login via Identity.SteamID and
+// Identity.RefreshToken. It allows a caller to skip the full Steam Guard
+// flow on subsequent launches by passing the returned *Identity into
+// Client.SetIdentity.
+//
+// expiresAt is set to one hour from now, matching the convention used when
+// the identity is produced by the auth flow; accessToken is left empty
+// because CM logon only consumes the refresh token (see Client.Logon).
+func NewIdentity(steamID steamid.SteamID, refreshToken string) *Identity {
+	now := time.Now()
+	return &Identity{
+		steamID:      steamID,
+		refreshToken: refreshToken,
+		createdAt:    now,
+		expiresAt:    now.Add(time.Hour),
+	}
+}
+
 // AuthSession represents an in-progress Steam authentication session returned
 // by BeginAuthSession. The session must be passed to SubmitSteamGuardCode
 // together with the user-supplied Steam Guard code to complete login.

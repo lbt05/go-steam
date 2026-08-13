@@ -16,6 +16,7 @@ import (
 	"github.com/lbt05/go-steam/api/services/itwofactorservice"
 	"github.com/lbt05/go-steam/identity"
 	"github.com/lbt05/go-steam/language/steam"
+	"github.com/lbt05/go-steam/steamid"
 	"github.com/stretchr/testify/require"
 )
 
@@ -639,4 +640,37 @@ func TestCredentialsIdentityProvider_WaitForConfirmation_ContextCancelDuringPoll
 
 	_, err = idp.WaitForConfirmation(ctx, session)
 	require.ErrorIs(t, err, context.Canceled)
+}
+
+func TestNewIdentity_RoundTripsValues(t *testing.T) {
+	t.Parallel()
+
+	sid := steamid.SteamID(76561197960265728 + 42)
+	const token = "refresh-token-xyz"
+
+	id := identity.NewIdentity(sid, token)
+	require.NotNil(t, id)
+
+	require.Equal(t, sid, id.SteamID())
+	require.Equal(t, token, id.RefreshToken())
+	require.Empty(t, id.AccessToken())
+	require.WithinDuration(t, time.Now(), id.CreatedAt(), time.Second)
+	require.True(t, id.ExpiresAt().After(time.Now()))
+}
+
+func TestNewIdentity_IndependentInstances(t *testing.T) {
+	t.Parallel()
+
+	sid := steamid.SteamID(76561197960265728 + 1)
+	a := identity.NewIdentity(sid, "rt-a")
+	b := identity.NewIdentity(sid, "rt-b")
+
+	require.Equal(t, "rt-a", a.RefreshToken())
+	require.Equal(t, "rt-b", b.RefreshToken())
+
+	// Mutating one must not leak into the other — guards against accidental
+	// shared state if the implementation ever changes.
+	a2 := identity.NewIdentity(sid, "rt-a2")
+	require.Equal(t, "rt-a", a.RefreshToken())
+	require.Equal(t, "rt-a2", a2.RefreshToken())
 }

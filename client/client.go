@@ -202,14 +202,41 @@ func (c *Client) WaitForConfirmation(ctx context.Context, session *identity.Auth
 }
 
 // Identity returns the identity cached by the most recent successful
-// SubmitSteamGuardCode or WaitForConfirmation call. It is used by Connect
-// and Logon to fetch the refresh token; calling it before authentication
-// completes returns an error.
+// SubmitSteamGuardCode, WaitForConfirmation, or SetIdentity call. It is used
+// by Connect and Logon to fetch the refresh token; calling it before the
+// identity is populated returns an error.
 func (c *Client) Identity(_ context.Context) (Identity, error) {
 	c.authMu.Lock()
 	defer c.authMu.Unlock()
 	if c.authIdentity == nil {
-		return nil, errors.New("identity not set; call BeginAuthSession and SubmitSteamGuardCode first")
+		return nil, errors.New("identity not set; call BeginAuthSession and SubmitSteamGuardCode, or SetIdentity, first")
 	}
 	return c.authIdentity, nil
+}
+
+// SetIdentity installs a pre-existing identity (typically loaded from disk
+// after a previous successful login) so that subsequent calls to Logon skip
+// the full Steam Guard flow and reuse the supplied refresh token instead.
+//
+// The steamID and refreshToken must come from a previous successful
+// authentication — values previously returned by Identity.SteamID and
+// Identity.RefreshToken are the intended source. Calling SetIdentity
+// invalidates any identity previously cached by SubmitSteamGuardCode or
+// WaitForConfirmation on this client. An error is returned if the
+// refresh token is empty or the steamID is invalid.
+func (c *Client) SetIdentity(steamID steamid.SteamID, refreshToken string) (Identity, error) {
+	if !steamID.IsValid() {
+		return nil, errors.New("steamID is invalid")
+	}
+	if refreshToken == "" {
+		return nil, errors.New("refresh token is empty")
+	}
+
+	id := identity.NewIdentity(steamID, refreshToken)
+
+	c.authMu.Lock()
+	c.authIdentity = id
+	c.authMu.Unlock()
+
+	return id, nil
 }
